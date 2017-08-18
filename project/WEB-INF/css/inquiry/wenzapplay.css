@@ -1,0 +1,106 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160420
+ */
+ .paysuc_basic {
+ 	background: #fff;
+ 	position: relative;
+ 	margin-top: 10px;
+ 	margin-bottom: 10px;
+ }
+  .paysuc_basic div{
+ 	/* margin: 10px 0px 10px 10px; */
+ 	font-size: 18px;
+ 	padding-right: 5px;
+ 	height: 44px;
+ 	line-height: 44px;
+ 	padding-left: 10px;
+ 	color: #333;
+ }
+ .paysuc_basic div p{
+ 	font-size: 0.8em;
+ 	color: rgba(103, 94, 94, 0.71);
+ 	margin-right: 10px;
+ 	margin-left: 10px;
+ 	letter-spacing: 1.5px;
+ }
+ .paysuc_basic div p.description{
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
+ }
+ .basic_content2 p.fontstyle{
+ 	color: #fc5656;
+ 	font-size: 18px;
+ }
+ .basic_content2 p.fontstyle1{
+ 	font-size: 18px;
+ 	color: #666;
+ }
+.basic_buttom {
+	position: relative;
+	/* 这一句代码是ie自带滤镜的渐变效果，渐变开始的颜色是#ffffff，结束的颜色是#ECE9D8，gradientType=0表示纵向淅变，如果把它改成1就是横向渐变~~ */
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#60718e, endColorstr=#74829a);/*IE<9>*/
+	/* 下面这三行就是为了实现在不同浏览器下整个页面的流式布局 */
+	display:-moz-box;
+    display:-webkit-box;
+    display:box;
+}
+/* 此部分为上海已约关注显示的格式 */
+/* 1. 先定基本公共格式，比如字体大小，颜色等等 */
+.basic_content p{
+	color: rgba(128, 115, 115, 0.83);
+}
+.basic_content {
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+}
+/*3. 定义如果显示三个模块，他们具体怎样区分，用到了box-flex属性。box-flex 属性规定框的子元素是否可伸缩其尺寸。-moz-box-flex:1.0; Firefox 
+/*-webkit-box-flex:1.0;  Safari 和 Chrome */
+.basic_content2{
+	display: inline-block;
+	-moz-box-flex:6;
+    -webkit-box-flex:6;
+    box-flex:6;
+}
+textarea {
+	width: 100%;
+	resize: none;
+	border: none;
+	font-size: 13px;
+	color: #888;
+	/* padding-bottom: 10px; */
+	/* padding-top: 10px; */
+}
+.spread_line_buttom1 {
+	border-bottom:1px solid #ddd ;
+}
+.basic_textarea {
+	padding: 10px;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 399px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+}

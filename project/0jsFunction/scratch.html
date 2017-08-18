@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>scratch 刮刮卡</title>
+<link href="css/q.css" rel="stylesheet" type="text/css" />
+</head>
+<style type="text/css">
+.scratch { position: relative; width: 100%; height: 80%; }
+.scratchbox { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-size: 100% 100%; backface-visibility: hidden; overflow: hidden; z-index: 1; text-align: center; }
+.scratch.on .scratchbox { background: url(images/scratch01.jpg); background-size: 100% 100%; backface-visibility: hidden; overflow: hidden; }
+#canvas { width: 100%; height: 100%; opacity: 1; -webkit-transition: opacity .5s; -ms-transition: opacity .5s; -moz-transition: opacity .5s; }
+.removeimg { opacity: 0 !important; }
+canvas { z-index: 2; position: absolute; }
+.scratch.gua { width: 140px; height: 50px; }
+.scratch.gua.on .scratchbox { background: none; line-height: 50px; }
+</style>
+</head><body>
+<div class="scratch">
+  <div class="scratchbox"></div>
+  <canvas id="canvas"></canvas>
+</div>
+<div style="height:30px"></div>
+<div class="scratch gua">
+  <div class="scratchbox">一等奖</div>
+  <canvas id="canvas2"></canvas>
+</div>
+<script src="js/jquery.js"></script> 
+<script src="js/qjs.js"></script> 
+<script>
+$(function(){
+	$('#canvas').scratch({
+		image: "images/scratch02.jpg", //false 灰色背景
+		percent: 0.85,
+		radius: 30
+	});
+	$('#canvas2').scratch({
+		image: false,
+		percent: 0.5,
+		radius: 8
+	});
+});
+</script>
+</body>
+</html>

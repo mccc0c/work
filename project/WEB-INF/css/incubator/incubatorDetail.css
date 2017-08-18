@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/* 
+	*@author ansl
+	*@date 20160819
+	* 孵化器详情
+*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+}
+/* list-style 简写属性在一个声明中设置所有的列表属性 */
+ul,ol{
+	list-style:none;
+}
+a {
+	text-decoration: none;
+}
+.main {
+	width: 100%;
+	background: #f1f1f1;
+	padding-bottom: 0px;
+	overflow:hidden;
+}
+.common_label {
+	background: #fff;
+	padding-left: 15px;
+}
+
+.spread_line_top {
+	border-top:1px solid #ddd ;
+}
+.spread_line_buttom {
+	border-bottom:1px solid #ddd ;
+}
+/*孵化器*/
+.common_label .title{
+	padding: 15px 0;
+	font-size: 18px;
+	color: #333333;
+	border-bottom: 1px solid #ddd;
+}
+.common_content {
+	border-bottom: 1px solid #ddd;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.common_content2 {
+	margin-bottom:10px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+ .fhq_basic {
+ 	width: 100%;
+ 	height: 268px;
+ 	max-height: 26%;
+ 	background: url(../../images/incubator/detail_bg.png);
+ 	background-size: 100%,100%;
+ 	position: relative;
+ 	margin-bottom: 1px;
+ }
+ div.basic_img_head_fhq {
+ 	height: 112px;
+ 	width: 100%;
+ 	position: absolute;
+ 	top: 10%;
+ }
+ /*导师详情*/
+ .img_head {
+ 	width: 100px;
+ 	height: 100px;
+ 	border: 1px solid #9aa0c3;
+ 	padding: 5px;
+ 	border-radius: 55px;
+ 	position: absolute;
+ 	top: 25%;
+ 	left: 50%;
+	margin-top: -55px;
+	margin-left: -55px;	
+ }
+/*孵化器详情*/
+ .img_head_fhq {
+ 	width: 100px;
+ 	height: 100px;
+ 	border: 1px solid #9aa0c3;
+ 	padding: 5px;
+ 	border-radius: 55px;
+ 	margin: auto;
+ }
+.img_head_fhq img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	display: block;
+}
+div.baisc_head_content {
+	position: absolute;
+	top: 60%;
+	width: 100%;
+}
+/* 因为字体如果没有控制时是相对整个daoshi_basic，所以用padding-top 可以设置字体的上下位置，技巧，ansl */
+.head_message{
+	padding-top: 65%;
+ 	position: absolute;
+ 	left: 50%;
+	margin-top: -55px;
+	margin-left: -55px;	
+}
+
+/*从这个位置开始 ansl*/
+.icon_format {
+	width: 8px;
+	height: 23px;
+	padding:5px;
+}
+ .weizhi {
+	display: inline-block;
+	text-align: center;
+}
+.icon_format1 {
+	width: 14px;
+	height: 23px;
+	padding:5px;
+}
+.icon_format_jump {
+	width: 4px;
+	padding:5px;
+	margin-top: -9px;
+}
+.icon_format_jump2 {
+	width: 4px;
+	padding:5px;
+	margin-top: -20px;
+}
+.head_message_fhq p{
+	font-size: 18px;
+	line-height: 24px;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 5px;
+}
+.basic_buttom {
+	width: 100%;
+	height: 20px;
+	/* 这一句代码是ie自带滤镜的渐变效果，渐变开始的颜色是#ffffff，结束的颜色是#ECE9D8，gradientType=0表示纵向淅变，如果把它改成1就是横向渐变~~ */
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#60718e, endColorstr=#74829a);/*IE<9>*/
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+}
+.basic_content {
+	font-size: 13px;
+	line-height: 20px;
+	color: #fff;
+}
+.spread_line_left {
+	border-left: 1px solid #ddd;
+}
+.spread_line_right {
+	border-right: 1px solid #ddd;
+}
+/*3. 定义如果显示三个模块，他们具体怎样区分，用到了box-flex属性。box-flex 属性规定框的子元素是否可伸缩其尺寸。-moz-box-flex:1.0; Firefox 
+/*-webkit-box-flex:1.0;  Safari 和 Chrome */
+.basic_content1{
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+}
+/*定义图片的格式，因为地图的图片，太大所以要单独在重新设置宽度*/
+.basic_content i.map_icon{
+	background: url('../../images/incubator/map_icon.png') no-repeat;
+	background-size: 15px 20px;
+}
+.common_content3 {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-right: 15px;
+	color: #666;
+	font-size: 13px;
+	line-height: 20px;
+	/* display: none; */
+}
+/*主孵产业图标*/
+.basic_content3 i.zhufcy_icon{
+	background: url('../../images/incubator/zhufcy_icon.png') no-repeat center center;
+	background-position:center;
+	background-size: 100% auto;
+}
+/*成立时间图标*/
+.basic_content3 i.chenglsj_icon{
+	background: url('../../images/incubator/chenglsj_icon.png') no-repeat center center;
+	background-position:center;
+	background-size: 100% auto;
+}
+/*地址图标*/
+.basic_content3 i.map_icon1{
+	background: url('../../images/incubator/map_icon3.png') no-repeat center center;
+	background-position:center;
+	background-size: 100% auto;
+}
+/*联系电话图标*/
+.basic_content3 i.phone_icon{
+	background: url('../../images/incubator/phone_icon.png') no-repeat center center;
+	background-position:center;
+	background-size: 100% auto;
+}
+/*跳转图标*/
+.basic_content3 i.jump_icon{
+	background: url('../../images/incubator/jump_icon.png') no-repeat center center;
+	display: inline-block;
+}
+div.jumpBgIcon{
+	background: url('../../images/incubator/jump_icon.png') no-repeat right center;
+	background-size: 15px;
+}
+.basic_content i {
+	display: inline-block;
+	float: right;
+}
+
+.basic_content3 i {
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+	display: inline-block;
+	float: left;
+}
+/*行业*/
+.hangye{
+	display:-moz-box;
+    display:-webkit-box;
+    display:box; 
+    
+}
+/*为了实现流式布局*/
+.hangye_content{
+	-moz-box-flex:8;
+    -webkit-box-flex:8;
+    box-flex:8;
+}
+/*为了实现电话模块的流失布局*/
+.hangye_content3{
+	-moz-box-flex:7;
+	-webkit-box-flex:7;
+	box-flex:7;
+	padding-left: 10px;
+	padding-right: 20px;
+}
+.hangye_content p{
+	display: inline-block;
+	padding: 0 10px;
+	line-height: 24px;
+	font-size: 0.85em;
+	margin-right: 5px;
+	text-align:left;
+}
+.hangye_content3 p{
+	line-height: 20px;
+	font-size: 13px;
+	text-align:left;
+	color: #666666;
+	word-break: break-all;
+}
+.common_content3 p{
+	/* padding-top: 10px; */
+	/* line-height:24px; */
+}
+.common_content3 img {
+	width: 100%
+}
+.common_content3 p.textindent{
+	/* text-indent: 1.0em; */
+}
+.hangye_content3 h4{
+	color: #333333;
+	font-size: 16px;
+	line-height: 25px;
+}
+.common_content3 ol{
+	margin-top: 10px;
+}
+.common_content3 ol li{
+	line-height: 24px;
+}
+.images_format{
+	/* width: 100%; */
+	/* max-height: 30%; */
+	/* padding: 10px 14px 10px 0; */
+}
+.section_bottom{
+	margin-bottom: 10px;
+}
+/* 浮动层 */
+.cover{
+	background: rgba(0,0,0,0.6);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1010;
+	display: none;
+}
+.tapImage {
+	position: fixed;
+	z-index: 1011;
+	top: 35%;
+	left: 0px;
+	right: 0px;
+	/* height: 100%; */
+	width: 100%;
+}
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 360px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:361px) and (max-width: 410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+
+}
+/*电脑之间时才会显示这部分代码*/
+@media only screen and (min-device-width:1024px){
+
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="http://www.easyrong.com/theme/red_theme/yirongtong/css/easy.css" rel="stylesheet" type="text/css" />   
+    <style>
+        /*更新财务数据弹窗*/
+        .dialog .title{border-bottom:1px solid #ddd;width:90%;margin:0 auto;margin-top:30px;}
+        .dialog .title h3{border-bottom:3px solid #ee6f15;width:24%;margin:0 auto;padding-bottom:4px;font-size:14px;font-weight:bold;text-align:center;}
+        .dialog .dcontent{font-size:16px;padding:30px 0;}
+        .dialog_refresh_data{border:5px solid rgba(0,0,0,0.6);background: #fff;}
+        .dialog_refresh_data .operate_datapicker{width:90%;margin:0 auto;}
+        .dialog_refresh_data .operate_datapicker table{width:100%;border:1px solid #ddd;border-collapse:collapse;}
+        .dialog_refresh_data .operate_datapicker td{width:113px;height:113px;border:1px solid #ddd}
+        .dialog_refresh_data .operate_datapicker caption{border:1px solid #ddd;height:45px;border-bottom:0px;}
+        .dialog_refresh_data .refresh_year>div{margin:2px;background:#f5f5f5;width:444px;height:41px;line-height:41px;text-align:center;font-size:18px;color:#333;}
+        .dialog_refresh_data .refresh_year>div i{cursor:pointer;width:11px;height:41px;}
+        .dialog_refresh_data .refresh_year>div .yearl{margin-left:13px;background:url('images/m_10.png') no-repeat center;float:left;}
+        .dialog_refresh_data .refresh_year>div .yearr{margin-right:13px;background:url('images/m_11.png') no-repeat center;float:right;}
+        .dialog_refresh_data .operate_datapicker .month{font-size:28px;display:block;width:100%;text-align:center;line-height:38px;}
+        .declare,.nodeclare{font-size:14px;display:block;width:68px;margin:4px auto;}
+        .declare i,.nodeclare i{width:18px;height:19px;margin-right:3px;float:left;}
+        .declare{color:#333;}
+        .nodeclare{color:#888;}
+        .declare i{background:url(images/m_04.png) no-repeat center left;}
+        .nodeclare i{background:url(images/m_05.png) no-repeat center left;}
+        .btns_wrapper{width:100%;text-align:center;}
+        .btns_wrapper ul{display:inline;margin-left:-10px;}
+        .btns_wrapper ul li{display:inline-block;margin-left:10px;line-height:25px;font-size:14px;color:#888888;}
+        .btns_wrapper ul li a{color:#0070df;line-height:20px;padding:3px 5px;font-size:14px;text-decoration:underline;cursor:pointer;}
+        .btns_wrapper .notshow{display:none;}
+        .dialog .dclose {    background: url(images/close.png) 0 0 no-repeat;    width: 35px; height: 25px;}
+        .notshow{display: none;}
+        .modalbg{filter: alpha(opacity=50)!important; }
+    </style> 
+</head>
+
+<body>
+    <a href="#" class="refresh_btn">更新财务数据</a>
+
+    <!-- 更新财务数据弹窗 -->
+    <div class="dialog dialog_refresh_data">
+        <a href="#" class="dclose">&nbsp;</a>
+        <div class="title">
+            <h3>更新财务数据</h3>
+        </div>
+        <div class="dcontent">
+            <div class="operate_datapicker">
+                <table border="1">
+                    <tbody id="result">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://cxkjfw.easyrong.test2/theme/red_theme/public/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://www.easyrong.com/theme/red_theme/yirongtong/js/easy.js"></script>
+    
+    <script>
+        var loanlist;
+        /*更新财务数据弹窗*/
+        var $refresh_btn = $('.refresh_btn').modal({
+                dialog: '.dialog_refresh_data',
+                width: '500px',
+                height: '500px',
+                beforeOpen: function() {
+                    searchdata('loan.json');
+
+                },
+                onOk: function() {}
+            });
+        var searchdata = function(url){
+                $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function(r) {
+                            $('#result').html('');
+                            loanlist = r;
+                            $('#result').tmpl('tmpl', loanlist);
+                        }
+                    })
+            };
+        $(function() {           
+            /*左箭头*/
+            $(document).on('click', '.yearl', function() {
+                searchdata('loan_2016.json');
+                
+            });
+            /*右箭头*/
+            $(document).on('click', '.yearr', function() {
+                searchdata('loan.json');
+                
+            });
+
+        })
+    </script>
+    <!-- <script >
+        $(function(){
+            $(document).on("click",".remind",function(){
+                $refresh_btn.close();
+            })
+        })
+    </script> -->
+    <script type="text/html" id="tmpl">
+        <% var nowyear = new Date(); nowyear = nowyear.getFullYear(); %>
+            <% if ( nowyear == loanlist.year ) { %>
+                <caption class="refresh_year">
+                    <div><i class="yearl"></i>
+                        <%=loanlist.year%>年<i class="notshow yearr"></i></div>
+                </caption>
+                <% }%>
+                    <% if ( nowyear > loanlist.year ) { %>
+                        <caption class="refresh_year">
+                            <div><i class="yearl"></i>
+                                <%=loanlist.year%>年<i class="yearr"></i></div>
+                        </caption>
+                        <% }%>
+                            <% for ( var i = 0; i < loanlist.list.length; i++ ) {
+                    var e=loanlist.list;
+                    if(i%4==0){ %>
+                                <tr>
+                                    <% }%>
+                                        <td><span class="month"><%=i+1%>月</span>
+                                            <% if(e[i].status==1){%>
+                                                <span class="declare"><i></i>已申报</span>
+                                                <% } else{%>
+                                                    <span class="nodeclare"><i></i>未申报</span>
+                                                    <% } %>
+                                                        <div class="btns_wrapper">
+                                                            <% if(e[i].operate==0){%>
+                                                                <ul class="state1">
+                                                                    <li><a class="refresh_btns">更新</a></li>
+                                                                    <li><a class="refresh_btns" href="#">下载</a></li>
+                                                                </ul>
+                                                                <% } else if(e[i].operate==1){%>
+                                                                    <ul class="state2">
+                                                                        <li><a class="refresh_btns">上传</a></li>
+                                                                    </ul>
+                                                                    <% } else if(e[i].operate==2){%>
+                                                                        <ul class=" state3">
+                                                                            <li>尚未到申报时间</li>
+                                                                        </ul>
+                                                                        <%if(i%4==3){ %>
+                                </tr>
+                                <% }%>
+                                    <%} %>
+                                        </div>
+                                        </td>
+                                        <%} %>
+    </script>
+</body>
+
+</html>

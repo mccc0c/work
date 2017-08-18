@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>轮播图</title>
+	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<style type="text/css">
+		.slider{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+<div class="slider">
+	<ul id="slider1">
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/3.jpg"></li>
+		<li><img src="images/4.jpg"></li>
+		<li><img src="images/5.jpg"></li>
+	</ul>
+</div>
+<script src="js/jquery.js"></script> 
+<script src="js/jquery.easing.1.3.js"></script> 
+<script src="js/slider.js"></script> 
+<script >
+	$(function(){
+		("#slider1").slider({
+			event:'mouseenter'
+		});
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>
+        嘉兴科技金融服务平台 </title>
+    <meta name="description" content="嘉兴科技金融服务平台">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" type="image/ico" href="http://jxkjjrfw.easyrong.test2/theme/red_theme/favicon.ico">
+    <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/css/new_base.css" rel="stylesheet">
+    <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/css/new_header.css" rel="stylesheet">
+    <link href="http://www.easyrong.com/theme/red_theme/yirongtong/css/easy.css" rel="stylesheet">
+    
+    <!-- <link href="css/easy.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="./css/mystyle.css">
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/public/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/js/searchChild.js"></script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/js/js.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--头部-->
+        <div class="top_header">
+            <div class="m1200">
+                <a href="http://www.easyrong.test2/" class="top_index">一融首页</a>
+                <ul class="top_list">
+                    <li style="padding-right:0">|</li>
+                    <li class="top_mobile">
+                        <a href="http://wireless.h5.easyrong.com/downpage/pc/ent" target="_blank">手机版</a>
+                    </li>
+                </ul>
+                <div class="login_state">
+                    <div class="name_member" style="position:relative">欢迎您
+                        <a href="/member/yr_member/index">
+                    ajie                </a>
+                        <div class="login-down">
+                            <em></em>
+                            <a href="/member/yrd_projects/index">债权项目</a>
+                            <a href="/member/yrf_projects_track/wait_submit">股权项目</a>
+                            <a href="/member/Yrd_loans_apply/index">产品申请</a>
+                            <a href="http://fw.jxkjjrfw.easyrong.test2/member/order">订单管理</a>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" onclick="location.href='/yr_user/logout?timestamp='+new Date().getTime()" class="quit">退出</a>
+                </div>
+            </div>
+        </div>
+        <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/css/menu.css" rel="stylesheet">
+        <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/js/menu.js"></script>
+        <!--导航-->
+        <div class="menu-container">
+            <div class="m1200 menu-content">
+                <div class="menu-logo">
+                    <a href="/"><img src="/uploadfile/yr/zpt/main_logo/20170524/file_1495606098.png" alt=""></a>
+                </div>
+                <div class="yuanqu">
+                    <a href="http://jxkjjrfw.yrfh.easyrong.test2:8080/static/html/index.html" target="_blank">园区管理系统</a>
+                </div>
+                <ul class="menu-nav clearfix">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    <li class="more">
+                        <a href="http://fw.jxkjjrfw.easyrong.test2">一融邦</a>
+                        <div class="menu-nav-down">
+                            <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/images/new/nav_bang.jpg" height="60" width="160" alt="">
+                            <a href="http://fw.jxkjjrfw.easyrong.test2/service" target="_blank">服务库</a>
+                        </div>
+                    </li>
+                    <li class="more ">
+                        <a href="/yrf/home">一融赋</a>
+                        <div class="menu-nav-down">
+                            <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/images/new/nav_fu.jpg" height="60" width="160" alt="">
+                            <a href="/yrf/project" target="_blank">项目库</a>
+                            <a href="/yrf/investor" target="_blank">投资人</a>
+                        </div>
+                    </li>
+                    <li class="more ">
+                        <a href="/yrd/home">一融贷</a>
+                        <div class="menu-nav-down">
+                            <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/images/new/nav_dai.jpg" height="60" width="160" alt="">
+                            <a href="/yrd/goods/search" target="_blank">找贷款</a>
+                            <a href="/yrd/projects/index" target="_blank">选项目</a>
+                            <a href="/yrd/tools/diagnostic" target="_blank">贷款工具</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/yrfh">一融孵化</a>
+                    </li>
+                    <li>
+                        <a href="http://dataplatform.easyrong.test2:8080/" target="_blank">一融数据</a>
+                    </li>
+                    <li>
+                        <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/public/images/header/new_icon.png" class="new-icon" />
+                        <a href="http://easycloud.jxkjjrfw.easyrong.test2/">一融云</a>
+                    </li>
+                    <li>
+                        <a href="/yrh/home/policy/1">新闻政策</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/css/base.css" rel="stylesheet">
+        <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/css/common.css" rel="stylesheet">
+        <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/member/css/datepicker.min.css" rel="stylesheet">
+        <div class="wrapper">
+            <div class="titleBar">
+                <div class="main1200">
+                    <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/images/edit.jpg" height="80" width="217" alt="">
+                </div>
+            </div>
+            <div class="main1200 browserTip">*建议使用IE9以上的IE浏览器，或是chrome、火狐、360浏览器</div>
+            <div class="main1200 pb5">
+                <form id="form1" name="form1" method="post" action="http://jxkjjrfw.easyrong.test2/yrtong/home/edit">
+                    <!--基础信息-->
+                    <div class="mainBar pt50 pl100 pr50 pb20 mb20">
+                        <h3 class="mb15">一、基础信息</h3>
+                        <ul class="editList clearfix">
+                            <li>
+                                <label>企业名称</label>
+                                <input type="text" class="normal_input" name="enterprise_name" id="enterprise_name" value="">
+                                <p class="errorTip" id="enterprise_name_tip"></p>
+                                <span id="enterprise_name_note">以营业执照为准</span>
+                            </li>
+                            <li>
+                                <label>所属区域</label>
+                                <label style="width:50px">浙江省</label>
+                                <label style="width:50px">嘉兴市</label>
+                                <select class="gray_select" name="district" id="district">
+                                    <option value='0'>请选择</option>
+                                    <option value='3447'>港区</option>
+                                    <option value='3448'>经开区</option>
+                                    <option value='3248'>南湖区</option>
+                                    <option value='3249'>秀洲区</option>
+                                    <option value='3250'>海宁市</option>
+                                    <option value='3251'>嘉善县</option>
+                                    <option value='3252'>平湖市</option>
+                                    <option value='3253'>桐乡市</option>
+                                    <option value='3254'>海盐县</option>
+                                </select>
+                                <p class="errorTip" id="region_tip"></p>
+                            </li>
+                            <li>
+                                <label>注册时间</label>
+                                <input type="text" class="normal_input w90 datepicker from" name="register_date" id="time" value="" readonly>
+                                <p class="errorTip" id="time_tip"></p>
+                            </li>
+                            <li>
+                                <label>注册资本</label>
+                                <input type="text" class="normal_input" name="register_capital" id="register_capital" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="register_capital_tip"></p>
+                            </li>
+                            <li>
+                                <label>法定代表人</label>
+                                <input type="text" class="normal_input" name="legal_person" id="legal_person" value="">
+                                <p class="errorTip" id="legal_person_tip"></p>
+                            </li>
+                            <li>
+                                <label>法定代表人联系方式</label>
+                                <input type="text" class="normal_input" name="legal_person_phone" id="legal_phone" value="">
+                                <p class="errorTip" id="legal_phone_tip"></p>
+                            </li>
+                            <li>
+                                <label>组织机构代码</label>
+                                <input type="text" class="normal_input" name="institution_code" id="code" value="">
+                                <p class="errorTip" id="code_tip"></p>
+                            </li>
+                            <li>
+                                <label>通讯地址</label>
+                                <input type="text" class="normal_input" name="contact_address" id="contact_address" value="">
+                                <p class="errorTip" id="contact_address_tip"></p>
+                            </li>
+                            <li>
+                                <label>联系人</label>
+                                <input type="text" class="normal_input" name="contact_man" id="contact_man" value="">
+                                <p class="errorTip" id="contact_man_tip"></p>
+                            </li>
+                            <li>
+                                <label>联系电话</label>
+                                <input type="text" class="normal_input" name="contact_phone" id="contact_phone" value="">
+                                <p class="errorTip" id="contact_phone_tip"></p>
+                            </li>
+                            <li>
+                                <label>电子邮箱</label>
+                                <input type="text" class="normal_input" name="contact_mail" id="contact_mail" value="">
+                                <p class="errorTip" id="contact_mail_tip"></p>
+                            </li>
+                            <li>
+                                <label>选择行业</label>
+                                <select class="gray_select" name="industry" id="industry">
+                                    <option value='0'>请选择</option>
+                                    <option value='1'>装备制造</option>
+                                    <option value='2'>电子信息</option>
+                                    <option value='3'>互联网</option>
+                                    <option value='4'>物联网</option>
+                                    <option value='5'>纺织服装</option>
+                                    <option value='6'>皮革</option>
+                                    <option value='7'>化纤</option>
+                                    <option value='8'>新能源</option>
+                                    <option value='9'>新材料</option>
+                                    <option value='10'>节能环保</option>
+                                    <option value='11'>生物医药</option>
+                                    <option value='12'>现代服务业</option>
+                                    <option value='13'>金融业</option>
+                                    <option value='99'>其他</option>
+                                </select>
+                                <p class="errorTip" id="industry_tip"></p>
+                            </li>
+                            <li>
+                                <label>企业简介</label>
+                                <textarea placeholder="简要介绍下你的企业，100-2000字" rows="5" cols="33" name="enterprise_info" id="enterprise_info"></textarea>
+                                <p class="errorTip" id="enterprise_info_tip"></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--主要指标-->
+                    <div class="mainBar pt50 pl100 pr50 pb20 mb20">
+                        <h3 class="mb15">二、企业上年度主要指标</h3>
+                        <ul class="editList clearfix">
+                            <li>
+                                <label>年销售收入</label>
+                                <input type="text" class="normal_input research_calc" name="annual_sales" id="annual_sales" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="annual_sales_tip"></p>
+                            </li>
+                            <li>
+                                <label>高新技术产品销售收入</label>
+                                <input type="text" class="normal_input" name="hightec_sales" id="hightec_sales" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="hightec_sales_tip"></p>
+                            </li>
+                            <li>
+                                <label>年利润总额</label>
+                                <input type="text" class="normal_input" name="annual_profit" id="annual_profit" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="annual_profit_tip"></p>
+                            </li>
+                            <li>
+                                <label>研发经费投入</label>
+                                <input type="text" class="normal_input research_calc" name="research_input" id="research_input" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="research_input_tip"></p>
+                            </li>
+                            <li>
+                                <label>研发经费/年销售收入</label>
+                                <input type="text" class="normal_input" disabled="disabled" name="research_rate" id="research_rate" value="">
+                                <span>%</span>
+                                <p class="errorTip" id="research_input_tip">(不可填，根据相关数据自动计算)</p>
+                                <input type="hidden" name="research_rate_post" id="research_rate_post" value="">
+                            </li>
+                            <li>
+                                <label>净资产</label>
+                                <input type="text" class="normal_input" name="net_asset" id="net_asset" value="">
+                                <span>(万元)</span>
+                                <p class="errorTip" id="net_asset_tip"></p>
+                            </li>
+                            <li>
+                                <label>资产负债率</label>
+                                <input type="text" class="normal_input" name="asset_debt_ratio" id="debt_ratio" value="">
+                                <span>%</span>
+                                <p class="errorTip" id="debt_ratio_tip"></p>
+                            </li>
+                            <li>
+                                <label>员工总数</label>
+                                <input type="text" class="normal_input college_rate_calc" name="total_employees_num" id="employees_num" value="">
+                                <p class="errorTip" id="employees_num_tip"></p>
+                            </li>
+                            <li>
+                                <label>大专以上科技人员数</label>
+                                <input type="text" class="normal_input college_rate_calc" name="above_college_num" id="college_num" value="">
+                                <p class="errorTip" id="college_num_tip"></p>
+                            </li>
+                            <li>
+                                <label>大专人数/总人数</label>
+                                <input type="text" class="normal_input" disabled="disabled" name="college_rate" id="college_rate" value="">
+                                <span>%</span>
+                                <p class="errorTip" id="college_num_tip">(不可填，根据相关数据自动计算)</p>
+                                <input type="hidden" name="college_rate_post" id="college_rate_post" value="">
+                            </li>
+                            <li>
+                                <label>直接从事研发人员数</label>
+                                <input type="text" class="normal_input research_rate_calc" name="research_num" id="research_num" value="">
+                                <p class="errorTip" id="research_num_tip"></p>
+                            </li>
+                            <li>
+                                <label>研发人数/总人数</label>
+                                <input type="text" class="normal_input research_rate_calc" disabled="disabled" name="research_num_rate" id="research_num_rate" value="">
+                                <span>%</span>
+                                <p class="errorTip" id="research_num_tip">(不可填，根据相关数据自动计算)</p>
+                                <input type="hidden" name="research_num_rate_post" id="research_num_rate_post" value="">
+                            </li>
+                        </ul>
+                    </div>
+                    <!--企业特性-->
+                    <div class="mainBar pt50 pl100 pr50 pb20 mb20">
+                        <h3 class="mb15">三、企业特性
+                                    </h3>
+                        <div class="moreSelect clearfix mb20">
+                            <label id="type_label">企业类型<span>(可多选)</span></label>
+                            <input type="hidden" name="enterprise_type" id="enterprise_type" value="">
+                            <div class="moreSelectContent">
+                                <label><i id="enterprise_type_1" data-value="1"></i>国家高新技术企业</label>
+                                <label><i id="enterprise_type_3" data-value="3"></i>浙江省科技型中小企业</label>
+                                <label><i id="enterprise_type_4" data-value="4"></i>嘉兴市专利示范企业</label>
+                                <label><i id="enterprise_type_5" data-value="5"></i>孵化器入驻企业</label>
+                                <label><i id="enterprise_type_6" data-value="6"></i>领军人才企业</label>
+                                <label><i id="enterprise_type_7" data-value="7"></i>其他</label>
+                            </div>
+                        </div>
+                        <ul class="editList clearfix ">
+                            <li id="incubator_show" style="display: none">
+                                <label>所在孵化器</label>
+                                <select class="gray_select select1" id="incubator" name="incubator" onchange="qt();">
+                                    <option value='' selected='selected'>请选择</option>
+                                    <option value='嘉兴科技创业服务中心'>嘉兴科技创业服务中心</option>
+                                    <option value='嘉兴市南湖科技创业服务中心'>嘉兴市南湖科技创业服务中心</option>
+                                    <option value='浙江秀洲慧谷科技创业中心'>浙江秀洲慧谷科技创业中心</option>
+                                    <option value='海宁科技创业服务中心'>海宁科技创业服务中心</option>
+                                    <option value='桐乡市科技创业服务中心'>桐乡市科技创业服务中心</option>
+                                    <option value='嘉善科技创业服务中心'>嘉善科技创业服务中心</option>
+                                    <option value='海盐县科技创业服务中心'>海盐县科技创业服务中心</option>
+                                    <option value='平湖市科技创业孵化中心'>平湖市科技创业孵化中心</option>
+                                    <option value='嘉兴天盈科技发展有限公司'>嘉兴天盈科技发展有限公司</option>
+                                    <option value='浙江清华长三角研究院科技企业孵化器'>浙江清华长三角研究院科技企业孵化器</option>
+                                    <option value='桐乡市濮院设计创意孵化器'>桐乡市濮院设计创意孵化器</option>
+                                    <option value='嘉兴市南湖创业投资有限公司'>嘉兴市南湖创业投资有限公司</option>
+                                    <option value='嘉兴港区科技创业服务中心'>嘉兴港区科技创业服务中心</option>
+                                    <option value='嘉兴国际创意文化产业园'>嘉兴国际创意文化产业园</option>
+                                    <option value='嘉兴颐高广场'>嘉兴颐高广场</option>
+                                    <option value='嘉兴亚太孵化园'>嘉兴亚太孵化园</option>
+                                    <option value='中国节能嘉兴产业园'>中国节能嘉兴产业园</option>
+                                    <option value='嘉兴创新园'>嘉兴创新园</option>
+                                    <option value='嘉兴市杭州湾新经济园'>嘉兴市杭州湾新经济园</option>
+                                    <option value='嘉兴学院创业孵化中心'>嘉兴学院创业孵化中心</option>
+                                    <option value='博尔玛创新园'>博尔玛创新园</option>
+                                    <option value='嘉兴光伏科创园'>嘉兴光伏科创园</option>
+                                    <option value='嘉善科文科技园'>嘉善科文科技园</option>
+                                    <option value='归谷孵化器'>归谷孵化器</option>
+                                    <option value='海宁高新区科创中心'>海宁高新区科创中心</option>
+                                    <option value='海宁工程大科技园'>海宁工程大科技园</option>
+                                    <option value='同浙科技园'>同浙科技园</option>
+                                    <option value='向上·嘉兴互联网+创业空间'>向上·嘉兴互联网+创业空间</option>
+                                    <option value='北斗创客家'>北斗创客家</option>
+                                    <option value='贝壳咖啡创客空间'>贝壳咖啡创客空间</option>
+                                    <option value='零•一智慧谷'>零•一智慧谷</option>
+                                    <option value='创客公社'>创客公社</option>
+                                    <option value='UP+THINK 众创空间'>UP+THINK 众创空间</option>
+                                    <option value='胜因谷众创空间'>胜因谷众创空间</option>
+                                    <option value='苏河汇'>苏河汇</option>
+                                    <option value='塘巢创客空间'>塘巢创客空间</option>
+                                    <option value='当湖智创空间'>当湖智创空间</option>
+                                    <option value='中科创星•众创空间'>中科创星•众创空间</option>
+                                    <option value='嘉兴学院大学生创业实践园'>嘉兴学院大学生创业实践园</option>
+                                    <option value='青创中心·众创空间'>青创中心·众创空间</option>
+                                    <option value='易思•同创IDEA+THINK众创空间'>易思•同创IDEA+THINK众创空间</option>
+                                    <option value='智客众创空间'>智客众创空间</option>
+                                    <option value='新梦想众创空间'>新梦想众创空间</option>
+                                    <option value='CIFC乌镇普众创客空间'>CIFC乌镇普众创客空间</option>
+                                    <option value='星尚创客空间'>星尚创客空间</option>
+                                    <option value='云创空间'>云创空间</option>
+                                    <option value='智汇港众创空间'>智汇港众创空间</option>
+                                    <option value='蜂巢空间'>蜂巢空间</option>
+                                    <option value='机器人众创空间'>机器人众创空间</option>
+                                    <option value='顺丰·丰觅创客中心'>顺丰·丰觅创客中心</option>
+                                    <option value='梦创基地'>梦创基地</option>
+                                    <option value='多德福众创空间'>多德福众创空间</option>
+                                    <option value='百汇创谷'>百汇创谷</option>
+                                    <option value='北智汇善·众创空间'>北智汇善·众创空间</option>
+                                    <option value='凤岐茶社乌镇创客空间'>凤岐茶社乌镇创客空间</option>
+                                    <option value='中国·乌镇互联网产业园众创空间'>中国·乌镇互联网产业园众创空间</option>
+                                    <option value='楼友会·嘉兴众创空间'>楼友会·嘉兴众创空间</option>
+                                    <option value='游戏工厂'>游戏工厂</option>
+                                    <option value='创客邦'>创客邦</option>
+                                    <option value="其它">找不到?</option>
+                                </select>
+                                <p class="errorTip" id="incubator_tip"></p>
+                            </li>
+                            <li id="qita_li" style="display:none">
+                                <label>填写所在孵化器</label>
+                                <input class="normal_input" type="text" name="qita" id="qita" value="">
+                                <p class="errorTip" id="qita_tip"></p>
+                            </li>
+                            <li class="attach hide">
+                                <label><strong>企业类型附件</strong></label>
+                                <p class="gray">*请上传能够证明您的企业拥有本类资质的附件，支持JPG/png/PDF等格式</p>
+                                <div class="new">
+                                </div>
+                                <div class="fileboxTmpl hide">
+                                    <div class="box">
+                                        <label class="title"></label>
+                                        <div class="uploadBtn mt5">
+                                            <label>上传</label>
+                                            <input type="file" name="mypic" />
+                                        </div>
+                                        <input type="hidden" value="">
+                                        <a href="javascript:void(0);" target="_blank" class="uploaded_file">当前附件：无</a>
+                                        <p class="errorTip"></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label class="t19 tech_label">主要产品及技术领域</label>
+                                <textarea class="product_text" name="product_tech_desc" id="product_tech"></textarea>
+                                <p class="errorTip" id="product_tech_tip"></p>
+                            </li>
+                            <li>
+                                <label>企业拥有自主知识产权数量</label>
+                                <input class="normal_input" name="equity_num" id="equity_num" type="text" value="" />
+                                <p class="errorTip" id="equity_num_tip"></p>
+                            </li>
+                            <li>
+                                <label class="t19">企业规模</label>
+                                <input type="hidden" name="scale_value" id="scale_value" value="">
+                                <div class="moreSelectContent">
+                                    <label>
+                                        <i id="scale_1" data-value="1" class="canot_select"></i>微型企业
+                                    </label>
+                                    <label>
+                                        <i id="scale_2" data-value="2" class="canot_select"></i>小型企业
+                                    </label>
+                                    <label>
+                                        <i id="scale_3" data-value="3" class="canot_select"></i>中型企业
+                                    </label>
+                                    <label>
+                                        <i id="scale_4" data-value="4" class="canot_select"></i>大型企业
+                                    </label>
+                                    <p class="errorTip" id="college_num_tip">(不可选，根据“年销售收入”自动判断)</p>
+                                </div>
+                            </li>
+                            <li>
+                                <label>核心管理人员职业经历</label>
+                                <div class="moreSelectContent2">
+                                    <a class="exper_add_btn">添加经历</a>
+                                    <div class="clear"></div>
+                                    <ul class="exper_conts">
+                                        <li>
+                                            <label>姓名：</label>霍加思</li>
+                                        <li>
+                                            <label>职位：</label>董事总经理</li>
+                                        <li>
+                                            <label>经历：</label>
+                                            <p>曾在部属研究所、央企、跨国公司工作十多年，精通机械、消费品、服务业运营管理及投资，丰富的市场营销及团队管理经验。
+                                            </p>
+                                        </li>
+                                        <div class="exper_btns">
+                                            <a class="exper_btns_a exper_btns1">编辑</a>
+                                            <a class="exper_btns_a exper_btns2">删除</a>
+                                        </div>
+                                    </ul>
+                                    <ul class="exper_conts">
+                                        <li>
+                                            <label>姓名：</label>霍加思</li>
+                                        <li>
+                                            <label>职位：</label>董事总经理</li>
+                                        <li>
+                                            <label>经历：</label>
+                                            <p>曾在部属研究所、央企、跨国公司工作十多年，精通机械、消费品、服务
+                                            </p>
+                                        </li>
+                                        <div class="exper_btns">
+                                            <a class="exper_btns_a exper_btns1">编辑</a>
+                                            <a class="exper_btns_a exper_btns2">删除</a>
+                                        </div>
+                                    </ul>
+                                    <!-- <div class="exper_conts">
+                                        <ul class="exper_cont_details">
+                                            <li>
+                                                <label>姓名：</label>霍加思</li>
+                                            <li>
+                                                <label>职位：</label>董事总经理</li>
+                                            <li>
+                                                <label>经历：</label><p>曾在部属研究所、央企、跨国公司工作十多年，精通机械、消费品、服务业运营管理及投资，丰富的市场营销及团队管理经验。<p></li>
+                                        </ul>
+                                        <ul class="exper_btns">
+                                            <li>编辑</li>
+                                            <li>删除</li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                                <!-- <input class="normal_input" name="equity_num" id="equity_num" type="text" value="" />
+                                <p class="errorTip" id="equity_num_tip"></p> -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!--附件上传-->
+                    <div class="mainBar pt50 pl100 pr50 pb20 mb20">
+                        <h3 class="mb15">四、附件上传</h3>
+                        <div class="editTip">*需分别上传一个财年的资产负债表、利润及利润分配表以及现金流量表三类文件需按照标准格式上传（具体见范例）</div>
+                        <ul class="editList clearfix mt40">
+                            <li>
+                                <label>1.资产负债表</label>
+                                <div class="uploadBtn mt5">
+                                    <label for="fileupload1">选择文件</label>
+                                    <input type="file" name="mypic" id="fileupload1" />
+                                </div>
+                                <input id="files1" name="files1" type="hidden" value="">
+                                <a href="http://jxkjjrfw.easyrong.test2/uploadfile/yirongtong/excel/fuzhai.xls" target="_blank" class="downloadExample">下载范例</a>
+                                <a id="dq1" href="#" target="_blank" class="uploaded_file">当前附件：无</a>
+                                <p class="errorTip" id="upload_tip1"></p>
+                            </li>
+                            <li>
+                                <label>2.利润及利润分配表</label>
+                                <div class="uploadBtn mt5">
+                                    <label for="fileupload2">选择文件</label>
+                                    <input type="file" name="mypic" id="fileupload2" />
+                                </div>
+                                <input id="files2" name="files2" type="hidden" value="">
+                                <a href="http://jxkjjrfw.easyrong.test2/uploadfile/yirongtong/excel/lirun.xls" target="_blank" class="downloadExample">下载范例</a>
+                                <a id="dq2" href="#" target="_blank" class="uploaded_file">当前附件：无</a>
+                                <p class="errorTip" id="upload_tip2"></p>
+                            </li>
+                            <li>
+                                <label>3.现金流量表</label>
+                                <div class="uploadBtn mt5">
+                                    <label for="fileupload3">选择文件</label>
+                                    <input type="file" name="mypic" id="fileupload3" />
+                                </div>
+                                <input id="files3" name="files3" type="hidden" value="">
+                                <a href="http://jxkjjrfw.easyrong.test2/uploadfile/yirongtong/excel/cash.xls" target="_blank" class="downloadExample">下载范例</a>
+                                <a id="dq3" href="#" target="_blank" class="uploaded_file">当前附件：无</a>
+                                <p class="errorTip" id="upload_tip3"></p>
+                            </li>
+                        </ul>
+                        <div class="editTip">*请务必上传真实数据！</div>
+                    </div>
+                    <!-- 融资信息  -->
+                    <div class="mainBar pt50 pl100 pr50 pb20 mb20">
+                        <h3 class="mb15">五、融资信息</h3>
+                        <div class="moreSelect clearfix mb20">
+                            <label style="width:112px">是否有金融需求</label>
+                            <div class="financeContent">
+                                <label><i id="finance_radio_1" data-value="1"></i>有</label>
+                                <label><i id="finance_radio_2" data-value="2"></i>无</label>
+                            </div>
+                            <div class="finance_method notshow">
+                                <label>金融支持方式</label>
+                                <input type="hidden" name="finance_type" id="finance_type" value="">
+                                <div class="moreSelectContent3 bottom_bor">
+                                    <div class="finance_cont finance_cont1">
+                                        <label class="finance_l_title">资金支持方式</label>
+                                        <div class="clear"></div>
+                                        <label><i id="finance_type_1" data-value="1"></i>科技贷</label>
+                                        <label><i id="finance_type_2" data-value="2"></i>其他银行贷款</label>
+                                        <label><i id="finance_type_3" data-value="3"></i>小贷</label>
+                                        <label><i id="finance_type_4" data-value="4"></i>融资租赁</label>
+                                        <label><i id="finance_type_5" data-value="5"></i>担保</label>
+                                        <div class="other">
+                                            <label><i id="finance_type_6" data-value="6"></i>其他</label>
+                                            <input type="text" name="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="finance_cont finance_cont2">
+                                        <label class="finance_l_title">其他支持方式</label>
+                                        <div class="clear"></div>
+                                        <label><i id="finance_type_7" data-value="7"></i>股权融资</label>
+                                        <label><i id="finance_type_8" data-value="8"></i>挂牌上市</label>
+                                        <label><i id="finance_type_9" data-value="9"></i>并购服务</label>
+                                        <div class="other">
+                                            <label><i id="finance_type_10" data-value="10"></i>其他</label>
+                                            <input type="text" name="" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="editList clearfix finance_method2 notshow">
+                            <li>
+                                <label>融资金额</label>
+                                <input type="text" class="normal_input research_calc" name="research_input" id="" value="">
+                                <span>万元</span>
+                                <p class="errorTip" id=""></p>
+                            </li>
+                            <li>
+                                <label>融资期限</label>
+                                <input type="text" class="normal_input" name="research_rate" id="" value="">
+                                <span>月</span>
+                            </li>
+                            <li>
+                                <label>选择银行</label>
+                                <select class="gray_select" name="industry" id="">
+                                    <option value="0">请选择银行</option>
+                                    <option value="1">建设银行</option>
+                                    <option value="2">嘉兴银行</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+            <!--提交按钮-->
+            <p class="promise"><i class="choiceBtn"></i>本公司承诺，对以上填报的数据真实性负责</p>
+            <a href="javascript:void();" class="submitBtn" id="submitBtn">提交</a>
+            <input type="hidden" value="add" name="do" id="sub_type">
+            </form>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="cover"></div>
+    <div class="tips small">
+        <div class="tipsContent small">
+            <a href="javascript:void(0)">X</a>
+            <img src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/images/e.png" height="38" width="42" alt="">
+            <h3>温馨提示</h3>
+            <p></p>
+        </div>
+    </div>
+    <script src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    </div>
+    <link href="http://jxkjjrfw.easyrong.test2/theme/red_theme/yironghe/css/zi-footer.css" rel="stylesheet">
+    <div class="zi-footer po">
+        <div class="zi-footer-content">
+            <ul class="ft-about">
+                <li><a href="/yrh/home/about" target="_blank">关于我们</a></li>
+                <li><a href="/common/feedback" target="_blank">意见反馈</a></li>
+                <li><a href="/yrh/home/knowledge" target="_blank">知识库</a></li>
+            </ul>
+            <dl class="friend-link">
+                <dt>友情链接：</dt>
+                <dd>
+                    <a href="http://www.easyrong.com" target="_blank">一融网 </a>
+                    <a href="http://www.jxkjjrfw.com" target="_blank">嘉兴科技金融</a>
+                    <a href="http://www.wxjrfw.com" target="_blank">无锡金融</a>
+                    <a href="http://www.yqrzyzt.com" target="_blank">延庆融资一站通</a>
+                    <a href="http://www.ypjrg.com" target="_blank">杨浦金融港</a>
+                    <a href="http://www.hzkjjrfw.com" target="_blank">湖州科技金融</a>
+                    <a href="http://www.cskjjr.com" target="_blank">常熟科技金融</a>
+                    <a href="http://www.myjrfwpt.com" target="_blank">密云金融</a>
+                    <a href="http://www.jsqyjrfw.com" target="_blank">金山科技金融</a>
+                    <a href="http://www.hzkjyr.com" target="_blank">杭州科技一融</a>
+                    <a href="http://www.zjgzhjr.com" target="_blank">张家港智汇金融</a>
+                    <a href="http://www.bjkjyr.com" target="_blank">北京科技一融服务平台</a>
+                    <a href="http://www.jajrfw.com" target="_blank">静安金融 </a>
+                    <a href="http://www.zskjjr.com" target="_blank">舟山科技金融</a>
+                    <a href="http://www.jskjyr.com" target="_blank">江苏科技一融</a>
+                    <a href="http://www.csxwjr.com" target="_blank">长沙小微金融  </a>
+                    <a href="http://www.wzkjjrfw.com" target="_blank">温州科技金融</a>
+                    <a href="http://www.sxkjjr.com" target="_blank">绍兴市科技金融</a>
+                    <a href="http://www.czjrg.com" target="_blank">常州金融港</a>
+                    <a href="http://www.hbkjjr.com" target="_blank">湖北科技一融</a>
+                    <a href="http://www.lcjrfw.com" target="_blank">鹿城金融</a>
+                    <a href="http://www.tzkjjr.com" target="_blank">台州科技金融</a>
+                    <a href="http://www.hfkjjr.com" target="_blank">合肥科技金融 </a>
+                    <a href="http://www.cdkjjr.com" target="_blank">成都科技金融</a>
+                    <a href="http://www.ohkjjrg.com" target="_blank">瓯海科技金融港</a>
+                    <a href="http://www.jyjrg.com" target="_blank">江阴金融</a>
+                    <a href="http://www.nckjjr.com" target="_blank">南昌科技金融</a>
+                    <a href="http://www.gzkjjr.com" target="_blank">广州科技金融</a>
+                    <a href="http://www.qdkjyr.com" target="_blank">青岛科技一融服务平台</a>
+                    <a href="http://www.tzrzyzt.com" target="_blank">通州融资一站通</a>
+                </dd>
+            </dl>
+            <div class="zi-footer-bottom">
+                <p class="cp">©2017 一融网 版权所有
+                    <span>沪ICP备11015016号-46</span>
+                    <span style="display: none"><script src="http://s11.cnzz.com/stat.php?id=1257155010&web_id=1257155010" language="JavaScript"></script></span>
+                    <span id="cnzz_style"><script src="http://s11.cnzz.com/stat.php?id=1254941034&web_id=1254941034" language="JavaScript"></script></span>&nbsp;
+                </p>
+                <p class="police cp">
+                    <a style="color:#63656b;" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011002000294" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">沪公安网备 31011002000294号</a>
+                </p>
+                <div class="kefu">
+                    <p>客服电话（09:00~18:00）</p>
+                    <em>4006-520-060</em>
+                </div>
+            </div>
+        </div>
+        <div class="zi_code">
+            <img src="http://jxkjjrfw.easyrong.test2/uploadfile/yr/zpt/qr_code/20170220/file_1487579476.png">
+        </div>
+    </div>
+    <div class="dialog dialog_edit_add"> <a href="#" class="dclose">&nbsp;</a>
+        <div class="title">
+            <h3></h3>
+        </div>
+        
+            <div class="dcontent">
+                <div>
+                    <ul class="add_contents">
+                        <li></li>
+                        <li>
+                            <label>姓名：</label>
+                            <input type="text" class="pname" placeholder="10字以内">   
+                            <p class="errorTip notshow">请完成该项</p>                        
+                        </li>
+                        
+                        <li>
+                            <label>职位：</label>
+                            <input type="text" class="pjob" placeholder="10字以内"><p class="errorTip notshow">请完成该项</p>
+                        </li>
+                        
+                        <li>
+                            <label>经历：</label>
+                            <textarea class="pexperience" placeholder="请输入职业经历，10-200字"></textarea><p class="errorTip notshow" style="margin-left: 192px;">请完成该项</p>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="dokay2" id="new"></div>
+                </div>
+            </div>
+    </div>
+    <script>
+    var site_url = "http://jxkjjrfw.easyrong.test2/";
+    </script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/yirongtong/js/edit.js"></script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/member/js/datepicker.min.js"></script>
+    <script type="text/javascript" src="http://jxkjjrfw.easyrong.test2/theme/red_theme/member/js/ajaxfileupload.js"></script>
+    <script src="http://jxkjjrfw.easyrong.test2/theme/red_theme/public/js/meiqia.js"></script>
+    <!-- <script src="http://www.easyrong.com/theme/red_theme/yirongtong/js/easy.js"></script> -->
+    <script src="js/easy.js"></script>
+    <script src="js/mjs.js"></script>
+</body>
+
+</html>

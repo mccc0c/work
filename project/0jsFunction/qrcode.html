@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>qrcode</title>
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.qrcode.js"></script>
+<script>
+$('body').append('<div class="qr1"></div>')
+$(".qr1").qrcode({
+	render: "canvas",//canvas,table
+	width: 220, 
+	height:220,
+	text: window.location.href
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160712
+ */
+
+ * {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+}
+.main {
+	width: 100%;
+}
+ .daoshi_basic {
+ 	width: 100%;
+ 	background: #fff;
+ 	position: initial;
+ }
+ /*导师详情*/
+ .img_head {
+ 	/* margin: 0 auto; */
+ 	top: 0px;
+ 	bottom: 0px;
+ 	left: 0px;
+ 	right: 0px;
+ 	overflow-x: hidden;
+ 	width: 100%;
+ 	position: absolute;
+ }
+.img_head img {
+	width: 100%;
+	display: block;
+}
+
+/*为了实现流式布局*/
+
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 399px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+}

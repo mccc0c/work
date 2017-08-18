@@ -1,0 +1,250 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160612
+ */
+ * {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+}
+ .wenzds_basic {
+ 	width: 100%;
+ 	background: #fff;
+
+ }
+ .img_head {
+ 	width: 100%;
+ 	max-height: 35%;
+ 	margin-bottom: 10px;
+ }
+.img_head img {	
+	width: 100%;
+	max-height: 35%;
+	display: block;
+}
+
+div.fuwulc img {
+	width: 100%;
+	display: block;
+}
+.basic_fuwujg {
+	background: #fff;
+	height: 50px;
+	line-height: 47px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	margin-bottom: 10px;
+
+}
+.fuwujg {
+	font-size: 16px;
+	color: #333333;
+}
+.fuwujg1 {
+	color: #fc5656;
+	font-size: 15px;
+}
+.fuwujg2{
+	color: #fc5656;
+	font-size: 23px;
+}
+.basic_fuwuxs {
+	background: #fff;
+	height: 100px;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	margin-bottom: 10px;
+	padding-left: 15px;
+}
+.head_fuwuxs {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dddddd;
+	font-size: 16px;
+	color: #333333;
+}
+.content_fuwuxs {
+	height: 50px;
+	line-height: 50px;
+	font-size: 13px;
+	color: #888888;
+}
+.basic_menzhenkxlb {
+	background: #fff;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+.head_menzhenkxlb {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dddddd;
+	font-size: 16px;
+	color: #333333;
+}
+.buju_menzhenkxlb {
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	height: 25px;
+	line-height: 25px;
+	width: 100%;
+}
+
+.buju_menzhenkxlb div{
+	-moz-box-flex:1;
+	-webkit-box-flex: 1;
+	box-flex:1;
+	box:1;
+	width: 33%;
+	font-size: 13px;
+	color: #888888;
+	background: url("../../images/activity/selected_icon.png") no-repeat;
+	background-size: 23px 23px;
+	padding-left: 28px;
+}
+.top_menzhenkxlb {
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+.bottom_menzhenkxlb {
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+.basic_wenzhends {
+	background: #fff;
+	padding-left: 15px;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	margin-bottom: 10px;
+
+}
+.head_wenzhends {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dddddd;
+	font-size: 16px;
+	color: #333333;
+
+}
+.content_wenzhends {
+	padding-bottom: 15px;
+	padding-top: 15px;
+	padding-right: 15px;
+	font-size: 13px;
+	color: #888888;
+}
+.basic_daoshily {
+	background: #fff;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+.head_daoshily {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	color: #333333;
+}
+.div.content_daoshily {
+	text-align: center;
+}
+div.content_daoshily img {
+	width: 22.32%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+}
+.basic_fuwulc {
+	background: #fff;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+
+}
+.head_fuwulc {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	color: #333333;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 359px){
+	div.content_daoshily img {
+	width: 22.75%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+@media only screen and (min-width:360px) and (max-width: 374px){
+	div.content_daoshily img {
+	width: 22.65%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+@media only screen and (min-width:375px) and (max-width: 399px){
+	div.content_daoshily img {
+	width: 22.75%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:411px) and (max-device-width:413px){
+	div.content_daoshily img {
+	width: 22.96%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:414px) and (max-device-width:434px) {
+	div.content_daoshily img {
+	width: 22.98%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+	div.content_daoshily img {
+	width: 23.09%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+	div.content_daoshily img {
+	width: 23.8%;
+	margin: 1px;
+	border: 1px solid #dddddd;
+	}
+
+}

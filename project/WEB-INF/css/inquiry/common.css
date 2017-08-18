@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160420
+ */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+}
+.spread_line {
+	border-top:1px solid #ddd ;
+	border-bottom:1px solid #ddd ;
+}
+.spread_line_buttom {
+	padding-bottom: 10px;
+	border-bottom:1px solid #ddd ;
+}
+.common_content {
+	padding: 4px 14px 0px 0;
+}
+.common_content1 {
+	padding: 9px 14px 9px 0;
+}

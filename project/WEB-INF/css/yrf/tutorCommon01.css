@@ -1,0 +1,65 @@
+@charset "UTF-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+}
+a {
+	/* text-decoration 属性规定添加到文本的修饰。 */
+	text-decoration: none;
+}
+.main {
+	width: 100%;
+	background: #f1f1f1;
+	padding-bottom: 0px;
+	overflow: hidden;
+}
+.common_label {
+	background: #fff;
+	padding-left: 15px;
+	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	margin-bottom: 10px;
+}
+/*2. 定义使用的有单元格边界*/
+.spread_line_left {
+	border-left: 1px solid #ddd;
+}
+.spread_line_right {
+	border-right: 1px solid #ddd;
+}
+.spread_line_top {
+	border-top: 1px solid #dddddd;
+}
+.spread_line_buttom {
+	border-bottom:1px solid #ddd ;
+}
+.common_label1 {
+	background: #fff;
+	padding-left: 15px;
+	margin-bottom:10px;
+	border-bottom: 1px solid #ddd;
+}
+/*投资偏好*/
+.common_label .title{
+	padding: 15px 0;
+	font-size: 1.225em;
+	color: #333;
+	font-weight: 600;
+	border-bottom: 1px solid #ddd;
+}
+.common_content {
+	padding: 15px 15px 0 0;
+}
+.common_content1 {
+	height: 44px;
+	line-height: 44px;
+}
+
+ul,ol{
+	list-style:none;
+}

@@ -1,0 +1,69 @@
+/*信息填写*/
+body{font-family:"微软雅黑";}
+.moreSelectContent2{float:left;width:822px;}
+.editList .moreSelectContent2 a{width:148px;line-height:45px;display:block;color:#fff;background:#3e9fff url(../images/m_03.png) no-repeat center left;background-position:16px;text-align:center;text-indent:20px;font-size:18px;border-radius:5px;cursor:pointer;}
+.moreSelectContent2 .exper_conts{border:1px solid #ddd;overflow:hidden;padding-top:15px;float:left;width:379px;margin-top:20px;font-size:14px;margin-right:30px;}
+.moreSelectContent2 .exper_conts li{line-height:38px;margin-bottom:0;}
+.moreSelectContent2 .exper_conts label{width:69px;}
+.moreSelectContent2 .exper_conts p{display:block;float:left;width:266px;line-height:23px;min-height:113px;padding-top:6px;}
+.moreSelectContent2 .exper_conts .exper_btns{margin-top:10px;padding:7px;border-top:1px solid #ddd;width:100%;background:#f6f6f6;overflow:hidden;}
+.moreSelectContent2 .exper_conts .exper_btns_a{width:186px;color:#333;font-size:16px;cursor:pointer;}
+.moreSelectContent2 .exper_conts .exper_btns1{border-right:1px solid #ddd;background:url(../images/m_01.png) no-repeat center;background-position:45px;border-radius:0;}
+.moreSelectContent2 .exper_conts .exper_btns2{background:url(../images/m_02.png) no-repeat center;background-position:45px;}
+
+/*添加经历弹框*/
+.dialog_edit_add{background-color:#f4f4f4;}
+.dialog_edit_add .title{border-bottom:1px solid #ddd;width:90%;margin:0 auto;margin-top:30px;}
+.dialog_edit_add .title h3{border-bottom:3px solid #419be9;width:30%;margin:0 auto;padding-bottom:4px;font-size:14px;font-weight:bold;text-align:center;}
+.dialog_edit_add .dcontent{font-size:13px;padding:30px 0 0 0;}
+.dialog_edit_add .dcontent >div{width:85%;margin:0 auto;font-size:16px;color:#333;}
+.dialog_edit_add .add_contents{width:100%;}
+.dialog_edit_add .add_contents li{width:100%;min-height:50px;text-align:left;line-height:35px;}
+.dialog_edit_add .add_contents li label{width:13%;display:block;float:left;}
+.dialog_edit_add .add_contents li input,.dialog_edit_add .add_contents li textarea{display:block;float:left;background:#fff;line-height:33px;font-size:14px;}
+.dialog_edit_add .add_contents li input{width:48%;height:33px;text-indent:10px;}
+.dialog_edit_add .add_contents li textarea{width:78%;height:110px;line-height:20px;padding:15px 10px;}
+.dialog_edit_add{border:5px solid rgba(0,0,0,0.6);}
+.dokay2{margin:30px auto;display:block;background:#419be9;width:137px;height:45px;line-height:45px;text-align:center;color:#fff;font-size:18px;border-radius:5px;cursor:pointer;}
+.dokay2:hover{color:#fff;}
+.dialog_edit_add .errorTip{color:#ff1717;font-size:15px;line-height:38px;float:left;margin-left:15px;}
+.moreSelect .financeContent{float:left;width:700px;}
+.moreSelect .financeContent label{width:90px;text-align:left;text-indent:9px;cursor:pointer;}
+.moreSelect .financeContent i{width:18px;height:38px;background:url(../images/m_06.png) no-repeat center;float:left;}
+.moreSelectContent3{float:left;width:700px;}
+.moreSelectContent3 .finance_cont{width:100%;}
+.moreSelectContent3 .finance_cont i{width:16px;height:38px;background:url(../images/m_09.png) no-repeat center;float:left;}
+.moreSelectContent3 .finance_cont label{width:123px;text-align:left;text-indent:6px;cursor:pointer;}
+.moreSelectContent3 .finance_cont .finance_l_title{display:block;font-weight:bold;font-size:16px;width:135px;text-indent:0px;}
+.bottom_bor{padding-bottom:20px;border:1px solid #ddd;margin-bottom:20px;padding-left:20px;margin-top:14px;}
+.finance_cont .other{float:left;}
+.finance_cont .other label{width:55px;}
+.finance_cont .other input{height:38px;width:98px;    line-height: 38px;
+    text-align: left;}
+.moreSelect .financeContent .radioselected{background:url(../images/m_07.png) no-repeat center;}
+.notshow{display:none;}
+.moreSelect .moreSelectContent3 .financechecked{background:url(../images/m_08.png) no-repeat center;}
+/*科技贷产品详情*/
+.wrapper2{background:#fff;}
+.wrapper3{background:#f5f9fc;padding-bottom:62px;}
+.top_back{width:100%;height:320px;position:relative;background:url(../images/m_15.jpg) no-repeat center;}
+.top_back>img{width:1200px;margin:0 auto;}
+.introBox2{width:1149px;border:1px solid #ddd;padding:45px 0 45px 50px;background:#fff;border-bottom:none;}
+.show{display:block;}
+.showTip{color:#333333;font-size:18px;width:100%;line-height:68px;text-align:center;margin-bottom:50px;}
+.banklist .nav{width:100%;height:80px;display:block;padding-top:60px;padding-bottom: 10px;}
+.banklist .nav ul li{height:58px;float:left;border:1px solid #ccc;margin-right:40px;position:relative;background:#fff;cursor:pointer;}
+.banklist .nav ul li i{width:36px;height:58px;float:left;margin-left:20px;}
+.banklist .nav ul li span{line-height:58px;font-size:18px;padding-left:10px;color:#666;margin-right:20px;}
+.banklist .nav ul li:first-child i{background:url(../images/m_17.png) no-repeat center;}
+.banklist .nav ul li:first-child+li >i{background:url(../images/m_18.png) no-repeat center;}
+.banklist .nav ul li:first-child+li+li>i{background:url(../images/m_19.png) no-repeat center;}
+.banklist .content ul li{display:block;width:100%;}
+.banklist .nav ul .current{border:2px solid #73a1f4;}
+.banklist .nav ul .current span{color:#333;}
+.downarrow{display:none;background:url(../images/m_20.png) no-repeat center;width:100%;height:16px;position:absolute;bottom:-10px;}
+.banklist .nav ul .current .downarrow{display:block;}
+.introContent_m p{font-size:16px;}
+
+.dialog .dclose {    background: url(../images/close.png) 0 0 no-repeat;    width: 35px; height: 25px;}
+.dokay{margin:30px auto;display:block;background:#419be9;width:137px;height:45px;line-height:45px;text-align:center;color:#fff;font-size:18px;border-radius:5px;cursor:pointer;}

@@ -1,0 +1,489 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160413
+ */
+ .daoshi_basic {
+ 	width: 100%;
+ 	max-height: 26%;
+ 	background: url(../../images/yrf/detail_bg.png);
+ 	background-size: 100%,100%;
+ 	position: relative;
+ 	margin-bottom: 10px;
+ 	padding-bottom: 11px;
+ }
+ /*导师详情*/
+ .img_head {
+ 	width: 100px;
+ 	height: 100px;
+ 	border: 1px solid #9aa0c3;
+ 	padding: 5px;
+ 	border-radius: 55px;
+ 	position: absolute;
+ 	top: 32%;
+ 	left: 50%;
+	margin-top: -55px;
+	margin-left: -55px;	
+ }
+.img_head img {
+	/* 这里的设置宽度为100%后，那么图片正好放置在img_head 设置的类中，技巧 */
+	width: 100%;
+	display: block;
+	/* margin-bottom: 20px; */
+	border-radius: 55px;
+	width: 100px;
+	height: 100px;
+}
+/* 因为字体如果没有控制时是相对整个daoshi_basic，所以用padding-top 可以设置字体的上下位置，技巧，ansl */
+
+.head_message{
+	padding-top: 55%;
+}
+.head_message h3{
+	font-size: 1.0em;
+	font-weight: 600;
+	line-height: 24px;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 5px;
+}
+.head_message p{
+	font-size: 0.8em;
+	line-height: 24px;
+	color: #fff;
+	text-align: center;
+ 	left: 50%;
+}
+/* bottom: 0; 和 position: absolute; 这两个组合就可以把图片设定到图片最下面的位置 ansl 技巧 */
+.basic_buttom {
+	width: 100%;
+	height: 20px;
+	position: relative;
+	left: 0px;
+	bottom: 0px;
+	/* 这一句代码是ie自带滤镜的渐变效果，渐变开始的颜色是#ffffff，结束的颜色是#ECE9D8，gradientType=0表示纵向淅变，如果把它改成1就是横向渐变~~ */
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#60718e, endColorstr=#74829a);/*IE<9>*/
+	/* 下面这三行就是为了实现在不同浏览器下整个页面的流式布局 */
+	display:-moz-box;
+    display:-webkit-box;
+    display:box;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+/* 此部分为上海已约关注显示的格式 */
+/* 1. 先定基本公共格式，比如字体大小，颜色等等 */
+.basic_content {
+	font-size: 0.9em;
+	/* height: 20px; */
+	line-height: 22px;
+	color: #fff;
+}
+.basic_content1 {
+	font-size: 0.9em;
+	height: 20px;
+	line-height: 20px;
+	color: #fff;
+	text-align: right;
+	padding-right:10px;
+}
+/*3. 定义如果显示三个模块，他们具体怎样区分，用到了box-flex属性。box-flex 属性规定框的子元素是否可伸缩其尺寸。-moz-box-flex:1.0; Firefox 
+/*-webkit-box-flex:1.0;  Safari 和 Chrome */
+/*暂定显示已约和和关注的的宽度是上海的宽度的两倍，所以定义了 两个类basic_content1 和basic_content2 */
+.basic_content2{
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+}
+/*定义图片的格式，因为地图的图片，太大所以要单独在重新设置宽度*/
+/*no-repeat 表示背景图像不平铺 另外还有几个其他值：repeat:平铺 repeat-x:横向平铺 repeat-y:纵向平铺*/
+.basic_content i.map_icon{
+	background: url('../../images/yrf/map_icon.png') no-repeat;
+	/*auto就会变成就是不会让图像变形的，会自动调整，一般是会设置多少箱像素的，*/
+	background-size: 100% auto;
+	width: 13px;
+	margin-top: 2px;
+}
+.yue_icon{
+	background: url('../../images/yrf/yue_icon.png') no-repeat;
+	background-size: 100% auto;
+}
+.focus_icon{
+	background: url('../../images/yrf/focus_icon.png') no-repeat;
+	background-size: 100% auto;
+}
+/*定义图片i的显示方式 这个一定要定义，否则图片无法显示,这里用到了display: inline-block;简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现
+。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。技巧，ansl*/
+.basic_content i {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-right: 5px;
+	margin-left: 10px;
+	margin-top: 2px;
+}
+.basic_content1 i {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+
+}
+/*行业*/
+.hangye{
+	display:-moz-box;
+    display:-webkit-box;
+    display:box; 
+    padding-bottom: 15px;
+    
+}
+.hangye label{
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	display: block;
+	font-size: 1em;
+	line-height: 24px;
+	text-align: center;
+}
+
+.shouqufy {
+	border-top: 1px solid #ddd;
+}
+
+.shouqufy p{
+	position: relative;
+	font-size: 1.0em;
+	line-height: 44px;
+	width: 100%;
+	height: 44px;
+	background: #fff;
+	margin-bottom: 0px;
+	text-align: left;
+	padding-left: 15px;
+}
+/*显示红色字体*/
+.fontcolor{
+	font-size: 18px;
+	color: #fc5656;
+}
+.fontcolor1{
+	font-size: 13px;
+	color: #fc5656;
+}
+.fontsize{
+	font-size: 0.85em;
+	color: #888888;
+}
+.common_label .title1{
+	/* padding: 8px 0; */
+	font-size: 1.0em;
+	border-bottom: 1px solid #dddddd;
+	height: 44px;
+	line-height: 44px;
+}
+b {
+	color: #333333;
+	font-size: 16px;
+}
+/*为了实现流式布局*/
+.hangye_content{
+	-moz-box-flex:8;
+    -webkit-box-flex:8;
+    box-flex:8;
+}
+.hangye_content span{
+	display: inline-block;
+	background: #5aa3ee;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 9px;
+	font-size: 13px;
+	color: #fff;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 3px;
+}
+.hangye_content p{
+	display: inline-block;
+	line-height: 24px;
+	text-align:left;
+	text-align: justify;
+}
+.hangye label {
+	padding-right: 5px;
+	display: inline-block;
+}
+/*问诊案例格式*/
+.case_list li{
+	border-left:1px solid #ddd;
+	padding:0 5px 15px 12px;
+	position: relative;
+}
+.case_list li i{
+	display: block;
+	width: 5px;
+	height: 5px;
+	border:1px solid #fc5656;
+	border-radius: 3px;
+	background: #fff;
+	position: absolute;
+	top: 0px;
+	left: -4px;
+}
+.case_list li .time{
+	display: block;
+	font-size: 0.9em;
+	color: #999;
+	margin-bottom: 13px;
+	display: block;
+	margin-top: -3px;
+	float: left;
+}
+.case_list li .case{
+	clear: both;
+	padding: 15px;
+	background: #f1f1f1;
+	border-radius: 5px;
+}
+.case_list li .case b{
+	font-size: 1em;
+	color: #333;
+	display: block;
+	margin-bottom: 5px;
+}
+.case_list li .case p{
+	font-size: 0.9em;
+	color: #888888;
+	line-height: 24px;
+}
+div.basic_mid {
+	background: #fff;
+	padding-left: 15px;
+	margin-bottom: 10px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+}
+div.bais_mid_one p{
+	height: 44px;
+	line-height: 44px;
+	border-bottom: 1px solid #ddd;
+
+}
+div.bais_mid_two {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 24px;
+	line-height: 24px;
+	display:-moz-box;
+    display:-webkit-box;
+    display:-ms-box;
+    display:box; 
+}
+div.mid_content_one {
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	-ms-box-flex:1;
+	max-width: 22%;
+}
+div.mid_content_two {
+	-moz-box-flex:4;
+	-webkit-box-flex: 5;
+	box-flex:4;
+	-ms-box-flex:4;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-ms-box;
+	display:box;
+	line-height: 23px;
+}
+div.mid_content_two p{
+	/*-moz-box-flex:1;*/
+	/* -webkit-box-flex:1; */
+	/*box-flex:1;
+	-ms-box-flex:1;*/
+	font-size: 12px;
+	color: #fff;
+	background: #5aa3ee;
+	text-align: center;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-right: 5px;
+	border-radius: 10px;
+	/* display: inline-block; */
+	min-width: 21%;
+}
+textarea {
+	outline: none;
+	width: 100%;
+	color: #888;
+	border: none;
+	font-size: 13px;
+	text-align: justify;
+	resize:none;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+	.head_message{
+		padding-top: 45%;
+	}
+	.basic_content i.focus_icon{
+		margin-top: 1px;
+	}
+	.basic_content i.yue_icon{
+		margin-top: 1px;
+	}
+	.img_head {
+		top:30%;
+	}
+	.hangye label {
+		padding-right: 5px;
+		display: inline-block;
+	}
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 8px;
+		font-size: 10px;
+		color: #fff;
+		padding-left: 1.5px;
+		padding-right: 1.5px;
+		margin-right: 0px;
+	}
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 359px){
+	.head_message {
+		padding-top: 45%;
+	}
+	.basic_content{
+		margin-left:13px;
+	}
+	.hangye label {
+		padding-right: 5px;
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 9px;
+		font-size: 10px;
+		color: #fff;
+		padding-left: 3px;
+		padding-right: 3px;
+		margin-right: 3px;
+	}
+
+}
+@media only screen and (min-width:360px) and (max-width: 374px){
+	.head_message {
+		padding-top: 45%;
+	}
+	.hangye label {
+		padding-right: 10px;
+		display: inline-block;
+
+	}
+
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 9px;
+		font-size: 13px;
+		color: #fff;
+		padding-left: 4px;
+		padding-right: 4px;
+		margin-right: 0px;
+	}
+}
+@media only screen and (min-width:375px) and (max-width: 399px){
+	.head_message {
+		padding-top: 45%;
+	}
+	.hangye label {
+		padding-right: 5px;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 9px;
+		font-size: 13px;
+		color: #fff;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin-right: 0px;
+	}
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+	.head_message{
+		padding-top: 45%;
+	}
+	
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+	.head_message {
+		padding-top: 38%;
+	}
+	.hangye label {
+		padding-right: 5px;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 9px;
+		font-size: 13px;
+		color: #fff;
+		padding-left: 8px;
+		padding-right: 8px;
+		margin-right: 2px;
+	}
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+	.head_message {
+		padding-top: 38%;
+	}
+	.hangye label {
+		padding-right: 5px;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.hangye_content span{
+		display: inline-block;
+		background: #5aa3ee;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 9px;
+		font-size: 13px;
+		color: #fff;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-right: 5px;
+	}
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+	.head_message {
+		padding-top: 22%;
+	}
+}

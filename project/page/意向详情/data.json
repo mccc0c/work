@@ -1,0 +1,45 @@
+{
+  "base": {
+    "total_price": 129,
+    "discount_price": 23,
+    "real_pay_price": 100
+  },
+  "edit": [
+    {
+      "detail_id": 1,
+      "order_id": 15,
+      "product_id": 11,
+      "product_name": "商品名称1",
+      "product_sale_price": 100,
+      "product_sale_number": 11,
+      "singel_total_price": 1100
+    },
+    {
+      "detail_id": 2,
+      "order_id": 15,
+      "product_id": 11,
+      "product_name": "商品名称12",
+      "product_sale_price": 102,
+      "product_sale_number": 11,
+      "singel_total_price": 1100
+    },
+    {
+      "detail_id": 3,
+      "order_id": 15,
+      "product_id": 11,
+      "product_name": "商品名称13",
+      "product_sale_price": 103,
+      "product_sale_number": 113,
+      "singel_total_price": 11003
+    }
+  ],
+  "add": {
+    "order_id": 15,
+    "product_id": 11,
+    "product_name": "商品名称1",
+    "product_sale_price": 100,
+    "product_sale_number": 11,
+    "singel_total_price": 1100
+  },
+  "del": "1,2,3"
+}

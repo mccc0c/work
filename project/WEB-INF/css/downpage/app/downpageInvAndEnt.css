@@ -1,0 +1,109 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160418
+ */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:"微软雅黑",tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+}
+.head_images img {
+	width: 100%;
+	max-height: 35%;
+	display: block;
+}
+h3 {
+	font-size: 22px;
+	color: #333333;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+.content_yirong p{
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: 15px;
+	color: #333333;
+	text-align: justify;
+	margin-bottom: 10px;
+}
+.content_images {
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+}
+.flex_images_one{
+	-moz-box-flex:1;
+	-webkit-box-flex: 1;
+	box-flex:1;
+	box:1;
+	padding-left: 15px;
+}
+.flex_images_two{
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	box:1;
+	padding-right: 15px;
+	text-align: right;
+}
+.content_images div img {
+	height: 42px;
+	max-width: 95%;
+	border-radius: 5px;
+	width:95%;
+}
+.basic_content_one {
+	padding-bottom: 5px;
+	background: #fff;
+}
+.basic_content_two {
+	padding-bottom: 15px;
+	background: #fff;
+}
+.fontstyle_one{
+	font-size: 18px;
+	color: rgb(0,155,255);
+}
+.fontstyle_two{
+	font-size: 18px;
+	color: rgb(156,197,35);
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 399px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+}

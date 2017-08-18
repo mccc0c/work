@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../images/highlight/styles/monokai-sublime.css">
+<link href="../css/q.css" rel="stylesheet" type="text/css" />
+<link href="../css/api.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="doc">
+  <h1>Validate</h1>
+  <p>Form表单验证</p>
+  <!--<h2>Options</h2>
+<pre><code class="javascript"></code></pre>-->
+  <h2>Javascript</h2>
+  <pre><code class="javascript">$.validator.setDefaults({
+  submitHandler: function() {
+    alert("提交成功!");
+  }
+});
+
+$(function() {
+  $("#form1").validate({
+    rules: {
+      password: {
+        required: true,
+        minlength: 5
+      },
+      confirm_password: {
+        required: true,
+        minlength: 5,
+        equalTo: "#password"
+      },
+      agree: "required"
+    },
+    messages: {
+      name: '请输入姓名',
+      email: '请输入Email',
+      comment: '请输入评论'
+    },
+    onfocusout: false,
+    invalidHandler: function(form, validator) {
+      var errors = validator.numberOfInvalids();
+      if (errors) {
+        alert(validator.errorList[0].message);
+        validator.errorList[0].element.focus();
+      }
+    },
+    errorPlacement: function(error, element) {}
+  });
+  //errorPlacement: Override error placement to not show error messages beside elements //
+  $(document).on('click', '#submit', function() {
+    $("#form1").valid();
+  });
+
+  $("#form2").validate({});
+
+  $("#form3").validate({
+    errorLabelContainer: $("#form3 .myerror")
+  });
+
+  $("#form4").validate({});
+});</code></pre>
+  <h2>Html</h2>
+  <pre><code class="xml">&lt;form class="myform" id="form1" method="post" action=""&gt;
+  &lt;p&gt;
+    &lt;label for="cname"&gt;Name (required, at least 2 characters)&lt;/label&gt;
+    &lt;input id="cname" name="name" minlength="2" type="text" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="cemail"&gt;E-Mail (required)&lt;/label&gt;
+    &lt;input id="cemail" type="email" name="email" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input id="password" name="password" type="password"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="confirm_password"&gt;Confirm password&lt;/label&gt;
+    &lt;input id="confirm_password" name="confirm_password" type="password"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="curl"&gt;URL (optional)&lt;/label&gt;
+    &lt;input id="curl" type="url" name="url"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="ccomment"&gt;Your comment (required)&lt;/label&gt;
+    &lt;textarea id="ccomment" name="comment" required&gt;&lt;/textarea&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="agree"&gt;Please agree to our policy&lt;/label&gt;
+    &lt;input type="checkbox" class="checkbox" id="agree" name="agree"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="agree"&gt;&lt;/label&gt;
+    &lt;input class="btn" id="submit" type="button" value="Submit"&gt;
+  &lt;/p&gt;
+&lt;/form&gt;
+
+&lt;form class="myform" id="form2" method="post" action="" style="margin-top:50px"&gt;
+  &lt;p&gt;
+    &lt;label for="cname"&gt;Name&lt;/label&gt;
+    &lt;input id="cname2" name="name" type="text" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="agree"&gt;&lt;/label&gt;
+    &lt;input class="btn" id="submit2" type="submit" value="Submit"&gt;
+  &lt;/p&gt;
+&lt;/form&gt;
+
+&lt;form class="myform" id="form3" method="post" action="" style="margin-top:50px"&gt;
+  &lt;p&gt;
+    &lt;label for="cname"&gt;Name&lt;/label&gt;
+    &lt;input id="cname3" name="name" type="text" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="agree"&gt;&lt;/label&gt;
+    &lt;input class="btn" id="submit3" type="submit" value="Submit"&gt;
+  &lt;/p&gt;
+  &lt;div class="myerror"&gt;&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;form class="myform" id="form4" method="post" action="" style="margin-top:50px"&gt;
+  &lt;p&gt;
+    &lt;label for="cname"&gt;Name&lt;/label&gt;
+    &lt;input id="cname4" name="name" type="text" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="agree"&gt;&lt;/label&gt;
+    &lt;input class="btn" id="submit4" type="submit" value="Submit"&gt;
+  &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<h2>Css</h2>
+  <pre><code class="css">.myform { font-size: 14px; }
+.myform p { margin-bottom: 10px; }
+.myform label { width: 170px; line-height: 30px; display: inline-block; text-align: right; vertical-align: top; margin-right: 10px; }
+.myform input, .myform textarea { height: 30px; line-height: 30px; width: 250px; }
+.myform input[type='checkbox'] { width: auto; height: auto }
+.myform textarea { height: 120px; }
+input.btn { background: #00adee; width: 140px; height: 40px; line-height: 40px; font-size: 18px; color: #fff; text-align: center; border-radius: 4px; cursor: pointer; border: none; outline: none; }
+.myform label.error { margin-left: 145px; color: red; clear:both; display: block}
+#form4.myform label.error { color:gray; display: inline-block; text-align: left; margin-left: 10px;}
+#agree { margin-top:10px;}</code></pre>
+<h2>Example</h2>
+<iframe name="main" src="../validate.html" frameborder="0" scrolling="auto" width="100%" height="500"></iframe>
+</div>
+<script src="../js/jquery.js"></script> 
+<script src="../images/highlight/highlight.pack.js"></script> 
+<script src="../js/clipboard.js"></script>
+<script src="../js/api.js"></script>
+</body>
+</html>

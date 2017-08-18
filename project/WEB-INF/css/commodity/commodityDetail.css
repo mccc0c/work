@@ -1,0 +1,716 @@
+@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160413
+ */
+ a {
+	text-decoration: none;
+}
+body,html{
+	height: 100%;
+	font-family: tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1 !important;
+}
+.main {
+	width: 100%;
+	background: #f1f1f1;
+	padding-bottom: 0px;
+	word-wrap:break-word;
+	overflow: hidden;
+}
+/*2. 定义使用的有单元格边界*/ 
+.spread_line_left {
+	border-left: 1px solid #ddd;
+}
+.spread_line_right {
+	border-right: 1px solid #ddd;
+}
+.spread_line_top {
+	border-top: 1px solid #ddd;;
+}
+.spread_line_buttom {
+	border-bottom:1px solid #ddd ;
+}
+.common_label .title{
+	padding: 15px 0;
+	font-size: 1.225em;
+	color: #333;
+	font-weight: 600;
+	border-bottom: 1px solid #ddd;
+}
+
+.qyxq_basic p {
+	color: #EA3F3F;
+	width: 100%;
+	text-align: center;
+	background-color: rgb(236, 189, 212);
+	line-height: 35px;
+	height: 35px;
+	font-size: 15px;
+}
+
+/*头部图片*/
+.img_head img {
+	width: 100%;
+	max-height: 35%;
+	display: block;
+}
+.shouqufy {
+	background: #fff;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+.shouqufy h4{
+	font-size: 15px;
+}
+.shouqufy p{
+	font-size: 10px;
+	color: rgba(101, 96, 96, 0.66);
+	margin-top: 6px;
+}
+
+
+.title1  h3{
+	display: inline-block;
+	margin-left: 5%;
+	margin-right: 5%; 
+	width: 35%;
+	padding: 10px 0px;
+	font-size: 15px;
+	
+}
+.common_label2{
+	background:#fff;
+	margin-bottom: 50px;
+
+}
+.common_label2 .title1{
+	font-size: 1.0em;
+	border-bottom: 1px solid rgba(221, 221, 221, 0.52);
+	text-align: center;
+	color: rgba(0, 0, 0, 0.63);
+}
+.common_decription {
+	padding: 10px;
+}
+.fontsize{
+	font-size: 12px;
+	color: rgba(101, 96, 96, 0.58);
+	line-height: 17px;
+	letter-spacing: 0.5px;
+}
+
+b {
+	color: rgba(25, 25, 27, 0.7);
+	font-size: 12px;
+}
+.tap_color{
+	border-bottom: 2px solid rgba(255, 0, 0, 0.64); 
+	color: rgba(255, 0, 0, 0.64);
+}
+#changjwt_decri {
+	display: none;
+}
+.mustbug_qyxq {
+	width: 100%;
+	background: rgba(255, 0, 0, 0.64);
+	height: 45px;
+	line-height: 45px;
+	font-size: 20px;
+	color: #fff;
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	padding-left: 15px;
+	POSITION: fixed;
+    BOTTOM: 0;
+}
+.mustbug_icon{
+	background:url('../../images/commodity/mustbug_icon.png') no-repeat right center;
+	background-size: 30px;
+	margin-right: 5px;
+}
+.nobug_qyxq {
+	width: 100%;
+	background: #fff;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	display: none;
+	border-top: 1px solid rgba(99, 98, 96, 0.33);
+}
+.common_box {
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+
+}
+.common_box_one{
+	-moz-box-flex:1;
+	-webkit-box-flex: 1;
+	box-flex:1;
+	box:1;
+}
+.common_box_two{
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	box:1;
+	text-align: right;
+}
+.common_box_four{
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	box:1;
+	text-align: right;
+	margin-top: 10px;
+	height: 30px;
+	line-height: 30px;
+
+}
+.common_box_five{
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	box:1;
+
+}
+.jump_icon {
+	background:url('../../images/commodity/jump_icon.png') no-repeat right center;
+	padding-right: 20px;
+	background-size: 10px;
+}
+.shouqufy2 {
+	background: #fff;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	font-size: 13px;
+}
+.basic_jishuqi {
+	border-radius: 5px;
+}
+.jishuqi_xq {
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	margin-right: -2px;
+	margin-left: -2px;
+}
+.jishuqi_xq1 {
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	outline: none;
+	margin-right: -2px;
+	margin-left: -2px;
+	border-top: 1px solid rgba(0, 0, 0, 0.43);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.43);
+}
+.basic_wenda {
+	min-height: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: url('../../images/commodity/tiwen2_yrb_icon.png') no-repeat left center;
+	background-position-x: 46px;
+	background-position-y:7px;
+	background-size: 10px;
+}
+/*此标准是ap6plus*/
+.basic_wenda1 {
+	text-align: right;
+	background: url('../../images/commodity/huidai2_yrb_icon.png') no-repeat left center;
+	background-position-x: 88%;
+	background-position-y: 19px;
+	background-size: 10px;
+	
+}
+.tiwen1_yrb {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	background: rgb(133, 158, 193);
+	color: #fff;
+	text-align: center;
+	border-radius: 35px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 15px;
+}
+.tiwen2_yrb {
+	display: inline-block;
+	width: 70%;
+	min-height: 12px;
+	border-radius: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: rgb(133, 158, 193);
+	color: #fff;
+}
+.tiwen1_icon_yrb{
+	display: inline-block;
+	width: 5%;
+	min-height: 12px;
+	/* background: beige; */
+	border-radius: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: url('../../images/commodity/tiwen2_yrb_icon.png') no-repeat left center;
+}
+.huida1_yrb {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	float: right;
+	background: #E5EBF3;
+	color: #fff;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 35px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: rgba(0, 0, 0, 0.88);
+	font-size: 15px;
+}
+.huida2_yrb {
+	display: inline-block;
+	width: 75%;
+	min-height: 12px;
+	background: #E5EBF3;
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	color: rgba(0, 0, 0, 0.88);
+}
+
+/*增加止灰面板*/
+.cover{
+	background: rgba(0, 0, 0, 0.38);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: none;
+}
+.basic_peixunkc {
+	position: fixed;
+	z-index: 1010;
+	width: 100%;
+	max-height: 82%;
+	background: rgba(239, 239, 243, 0.83);
+	bottom: 0px;
+	display: none;
+	overflow: scroll;
+}
+.peix_header {
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	border-bottom: 1px solid #CAC6C6;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background: #fff;
+	font-weight: bold;
+}
+.peix_select {
+	margin-bottom: 7px;
+	background: #fff;
+}
+.peix_select div{
+	margin-left: 15px;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(144, 132, 132, 0.38);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/*课程培训的背景信息*/
+.bg_peix_select {
+	color: red;
+	background:url('../../images/commodity/selected_icon.png') no-repeat right center;
+	background-position-x: 98%;
+}
+
+.basedibu_tyb {
+	overflow: hidden;
+}
+.select_style_yrb {
+	color: rgba(160, 158, 158, 0.68);
+}
+.spread_right_yrb {
+	border: 1px solid rgba(0, 0, 0, 0.43);
+			border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius:; /* Safari */
+			border-top-left-radius: 5px;
+	-webkit-border-top-left-radius:; /* Safari */
+}
+.spread_left_yrb {
+	border: 1px solid rgba(0, 0, 0, 0.43);
+			border-top-right-radius: 5px;
+	-webkit-border-top-right-radius:; /* Safari */
+			border-bottom-right-radius: 5px;
+	-webkit-border-bottom-right-radius:; /* Safari */
+	margin-right: 5px;
+}
+.shoufujin {
+	color: red;
+	font-size: 15px;
+}
+.fuwujiage {
+	color: black;
+	font-size: 15px;
+}
+.cityselected_yes {
+	color: black;
+}
+.location_no {
+	text-align: center;
+	display: inline-block;
+	width: 18%;
+	background: #E6B375;
+	border-radius: 5px;
+}
+.location_yes {
+	text-align: center;
+	display: inline-block;
+	width: 18%;
+	background: #E6B375;
+	border-radius: 5px;
+}
+.location-center {
+	text-align: center;
+	display: inline-block;
+	width: 60%;
+	font-size: 20px;
+}
+/*必输项格式*/
+.bishuxiangstyle {
+	background: #fff;
+	left: 25%;
+	right: 25%;
+	top: 25%;
+	bottom: 58%;
+	position: fixed;
+	z-index: 1010;
+	border-radius: 10px;
+	display: none;
+	overflow: auto;
+	color: red;
+	text-align: center;
+}
+.head_bishuxiangstyle {
+	color: rgba(0, 0, 0, 0.74);
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: right;
+}
+.head_bishuxiangstyle span {
+	background: rgba(255, 0, 0, 0.48);
+    padding-left: 6px;
+	padding-right: 6px;
+	border-radius: 20px;
+
+}
+
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body,html{
+	height: 100%;
+	font-family: tahoma,Arial,"Microsoft YaHei","SimHei";
+}
+
+ul,ol{
+	list-style:none;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+.wrapper{
+	width: 100%;
+	background: #f1f1f1;
+	padding-bottom: 10px;
+	font-family: tahoma,Arial,"Microsoft YaHei","SimHei";
+}
+
+.common_label{
+	background:#fff;
+	margin-bottom: 10px;
+	border-top:1px solid #dddddd;
+	border-bottom: 1px solid #ddd;
+	padding: 15px;
+}
+
+.common_label .title{
+	border-bottom:1px solid #ddd;
+	padding: 15px 0;
+	font-size: 1.225em;
+	color: #333;
+	font-weight: 600;
+}
+.common_content{
+	padding: 15px 15px 15px 0;
+}
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+.new_common{
+	padding: 0;
+}
+
+.common_new{
+	padding: 0 15px;
+}
+
+.common_label article p{
+	margin-top: 15px;
+	font-size: 0.9em;
+	line-height: 24px;
+	color: #999;
+}
+
+.header{
+	background: #fff;
+	font-size: 1.3em;
+	color: #000000;
+	text-align: center;
+	line-height:2.5em;
+	position: relative;
+	width: 100%;
+	z-index: 1000;
+}
+.header .return{
+	position: absolute;
+	font-size: 1em;
+	color: #fc5656;
+	display: block;
+	top: 0;
+	left: 15px;
+
+}
+.header_other{
+	background: rgba(255,255,255,0.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/*底部导航*/
+.nav{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid #ddd;
+	background: #f9f9f9;
+	height: 50px;
+	display:-moz-box;
+    display:-webkit-box;
+    display:box;
+}
+.nav a{
+	display: block;
+	-moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+    height: 50px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777777;
+    line-height: 75px;
+    position: relative;
+}
+.nav a i{
+	display: block;
+	height: 22px;
+	width: 24px;
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -10px;
+}
+.erong_icon{
+	background: url('../../images/commodity/erong_icon.png') no-repeat;
+	background-size: auto 100%;
+}
+.find_icon{
+	background: url('../../images/commodity/find_icon.png') no-repeat;
+	background-size: auto 100%;
+}
+.assisnt_icon{
+	background: url('../../images/commodity/assisnt_icon.png') no-repeat;
+	background-size: auto 100%;
+}
+.member_icon{
+	background: url('../../images/commodity/member_icon.png') no-repeat;
+	background-size: auto 100%;
+}
+
+
+
+
+.pt0{
+	padding-top: 0;
+}
+
+.mb10{
+	margin-bottom: 10px;
+}
+.lh25{
+	line-height: 25px;
+}
+.lh30{
+	line-height: 30px;
+}
+.lh50{
+	line-height: 50px;
+}
+.mt10{
+	margin-top: 10px;
+}
+.ml15{
+	margin-left: 15px;
+}
+.mr5{
+	margin-right: 5px;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+	.basic_wenda1 {
+		background-position-x: 84%;
+
+	}
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 359px){
+
+}
+@media only screen and (min-width:360px) and (max-width: 374px){
+	.basic_wenda1 {
+		background-position-x: 86%;
+	}
+	.peix_header {
+	height: 40px;
+	line-height: 35px;
+	font-size: 18px;
+	}
+	.peix_select div{
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	}
+}
+@media only screen and (min-width:375px) and (max-width: 399px){
+ 	.basic_wenda1 {
+		background-position-x: 87%;
+
+	}
+	.peix_header {
+	height: 40px;
+	line-height: 35px;
+	font-size: 18px;
+	}
+	.peix_select div{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	}
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+	.peix_header {
+	height: 40px;
+	line-height: 35px;
+	font-size: 18px;
+	}
+	.peix_select div{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	}
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+	.basic_wenda1 {
+		background-position-x: 88.5%;
+	}
+	.peix_header {
+	height: 40px;
+	line-height: 35px;
+	font-size: 18px;
+	}
+	.peix_select div{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	}
+} 
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+ 	.basic_wenda1 {
+		background-position-x: 94%;
+
+	}
+	.peix_header {
+	height: 40px;
+	line-height: 35px;
+	font-size: 18px;
+	}
+	.peix_select div{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	}
+} 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AngularJS</title>
+	
+</head>
+<body>
+<div ng-app="app1" ng-controller="appCtrl">
+	<p>name:<input type="text" ng-model="name" ng-init="names=['mcc','mxx','MXX']"></p>
+	<h1 >hello {{name}}</h1>
+	<!-- <span ng-bind="name"></span> -->
+	<ul>
+		<li ng-repeat="x in names">{{x}}</li>
+	</ul>
+</div>
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script>
+	var app = angular.module('app1',[]);
+	app.controller('appCtrl',function($scope){
+		$scope.name = 'mcc';
+		/*$scope.text = 'oh';*/
+		/*$scope.names = ['mcc','mxx','MXX'];*/
+	});
+</script>
+</body>
+</html>

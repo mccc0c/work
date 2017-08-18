@@ -1,0 +1,103 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20161117
+ */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+	overflow: hidden;
+}
+div.baisc_style {
+	width: 100%;
+	height: 60px;
+	display: block;
+	
+}
+/*创业者*/
+.entrepreneurs{
+	background: url('../../images/downplugin/entrepreneurs_icon.png') no-repeat;
+	background-size: 100% 100%;
+}
+/*投资者*/
+.investor {
+	background: url('../../images/downplugin/investor_icon.png') no-repeat;
+	background-size: 100% 100%;
+}
+.basic_tap {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	line-height: 40px;
+	padding-top: 10px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+}
+.basic_tap_left {
+	-moz-box-flex:3;
+	-webkit-box-flex:3;
+	box-flex:3;
+	width: 75%;
+}
+.basic_tap_right {
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	width: 25%;
+	color: transparent;
+	display: block;
+}
+.margin_flex {
+	margin-bottom: 10px;
+}
+a{
+	-webkit-tap-highlight-color:transparent;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+	div.baisc_style {
+		height: 50px;
+	}
+	.basic_tap {
+		line-height: 30px;
+	}
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 399px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+	div.baisc_style {
+		height: 120px;
+	}
+	.basic_tap {
+		line-height: 100px;
+	}
+}

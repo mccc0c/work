@@ -1,0 +1,106 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20160418
+ */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #f1f1f1;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+}
+.basic_content{
+	width: 100%;
+	background-size: 100%;
+	height: 120px;
+	position: fixed;
+	z-index: 1010;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+}
+article {
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size: 0.9em;
+	color: #888;
+	}
+div.basic_content img {
+	width: 100%;
+	height: 120px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	position: absolute;
+	opacity: 0.8;
+}
+div.baisc_close {
+	position: absolute;
+	top: 0px;
+}
+.tap_content {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	right: 10px;
+	bottom: 40px;
+}
+.tap_content div {
+	text-align: center;
+}
+.tapcontent_icon {
+	height: 40px;
+	line-height: 36px;
+	color: #fff;
+	width: 100px;
+	border: 2px solid #fff;
+	font-size: 20px;
+	border-radius: 40px;
+	box-sizing: border-box;
+	position: absolute;
+}
+a {
+	text-decoration: none;
+}
+div.baisc_close  img {
+	width: 35px;
+	height: 40px;
+	top: 0px;
+	position: absolute;
+}
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 374px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:375px) and (max-width: 409px){
+
+}
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>头条详情</title>
+    <link href="../../css/news/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="clear"></div>
+    <div class="particle adetail">
+        <div class="p15">
+            <h1>手机支付渗透生活:周围人都用小商贩称不用“吃亏”</h1>
+            <span class="info_data">2017-06-07 14:03</span>
+            <div class="clear"></div>
+            <div class="adetailinfo">
+                <p>近日，一篇“中国移动(微博)支付震惊日本网友”的文章引起网友热议。中新网在实地调查中也发现，中国的移动支付（也叫手机支付）渗透率确实很高，有小商贩甚至坦言，不支持移动支付连生意都会受到影响。那中国的移动支付为什么这么强？使用时在安全方面应该注意哪些事项呢？</p>
+                <img src="http://img.easyrong.dev/2017/yun/images/temp/15.jpg">
+                <p>在北京某所高校门口，每当夜色降临，几十家小商贩就开着电动三轮车聚拢于此，麻辣烫、扬州炒饭、铁板鱿鱼、热干面等，各色小吃一应俱全，种类不一。但是有一点相同，都支持支付宝和微信的扫码支付，塑封的二维码都贴在摊子的显眼位置。</p>
+                <p>“用现金的人很少了，八成以上的顾客都是扫码支付。”某出售热干面的小商贩对中新网说，来这儿吃东西的人大部分使用的都是微信支付。</p>
+                <p>至于为什么非要支持扫码支付？该商贩说：“周围商家都在用，你不用生意就会受到影响，因为有些人不带现金，你不支持扫码支付顾客就走了。况且用起来也很简单，把收款的二维码打印下来就行，不费事儿。”</p>
+                <p>中新网了解到，目前身上不带现金成为了很多人的新习惯，在这种情况下，不能提供移动支付服务已经成为商户的短板。</p>
+            </div>
+            <div class="yunline yunline2"></div>
+        </div>
+        <div class="blank1"></div>
+        <div class="pl15">
+            <div class="title">评论（26）</div>
+            <div class="commentlist ">
+                <ul>
+                    <li>
+                        <div class="info pr15"><span class="author"><img src="http://img.easyrong.dev/2017/yun/images/temp/default.png">柳如溪杂言<span class="tag tag1">投资人</span></span>
+                            <span class="touchgood"><i class="goodicon"></i>18</span>
+                        </div>
+                        <p class="normal pr15">非常感谢诸老师的开导和建议。 此次交流的最大收获是学习了考虑事情的方法，如何做出客观理性的选择。</p>
+                        <span class="date pr15">25分钟前</span>
+                    </li>
+                    <li>
+                        <div class="info pr15"><span class="author"><img src="http://img.easyrong.dev/2017/yun/images/temp/default.png">柳如溪杂言<span class="tag tag2">企业</span></span><span class="touchgood"><i class="goodicon"></i>18</span>
+                        </div>
+                        <p class="normal pr15">作者文章是写得非常清晰的</p>
+                        <span class="date pr15">25分钟前</span>
+                    </li>
+                    <li>
+                        <div class="info pr15"><span class="author"><img src="http://img.easyrong.dev/2017/yun/images/temp/default.png">柳如溪杂言<span class="tag tag3">债权机构</span></span><span class="touchgood"><i class="goodicon"></i>18</span>
+                        </div>
+                        <p class="normal pr15">作者文章是写得非常清晰的</p>
+                        <span class="date pr15">25分钟前</span>
+                    </li>
+                    <li>
+                        <div class="info pr15"><span class="author"><img src="http://img.easyrong.dev/2017/yun/images/temp/default.png">柳如溪杂言<span class="tag tag4">园区</span></span><span class="touchgood"><i class="goodicon"></i>18</span>
+                        </div>
+                        <p class="normal pr15">作者文章是写得非常清晰的</p>
+                        <span class="date pr15">1天前</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .dialog_good{position:fixed;left:50%;top:50%;display:block;width:100px;height:100px;background:#fff;border-radius:10px;display:none;margin-left:-50px;margin-top:-50px;}
+    .dialog_good img{margin:10px auto;}
+    .dialog_good p{width:100px;line-height:15px;text-align:center;}
+    </style>
+     <div class="dialog_good">
+        <img src="../../images/yytt/okay.png">
+        <p></p>
+    </div> 
+
+    <!-- <div class="blank2"></div> -->
+    <script src="../../js/news/jquery.js"></script>
+    <script src="../../js/news/js.js"></script>
+    <script>
+        $('.goodicon').click(function() {
+            $(this).toggleClass("touched");
+            if($(this).hasClass('touched')){
+                $('.dialog_good p').html('关注成功');
+                $('.dialog_good').fadeIn(1000);
+                $('.dialog_good').fadeOut(1000);                
+            }else{
+                $('.dialog_good p').html('取消关注成功');
+                $('.dialog_good').fadeIn(1000);
+                $('.dialog_good').fadeOut(1000);
+            }            
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.basic_dialog {
+	display: none;
+}
+.floatingLayer {
+	position: fixed;
+	bottom: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1000;
+	background:rgba(0,0,0,.6);
+}
+.baisc_points {
+	position: fixed;
+	top: 45%;
+	z-index: 1010;
+	text-align: center;
+	background: #fff;
+	width: 80%;
+	left: 10%;
+	border-radius: 5px;
+}
+div.points_content {
+	padding: 10px 15px;
+	color: #888;
+	font-size: 14px;
+	line-height: 24px;
+}
+div.points_button {
+	line-height: 44px;
+	border-top: 1px solid #ddd;
+	color: #0bb20c;
+	font-size: 16px;
+}
+div.points_button:active {
+	color: #0bb10c;
+	background: rgba(221, 221, 221, 0.57);
+}

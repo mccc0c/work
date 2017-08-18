@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>validate</title>
+</head>
+<style>
+input{-webkit-appearance:none;}
+ul,li,ol{list-style:none;list-style-type:none;}
+body,div,ul,li,p,span,h1,h2,h3,h4,h5,h6,img,form,table,tr,td,dl,dt,dd,input,select{margin:0;padding:0;}
+.clear{margin:0;padding:0;width:0;height:0;line-height:0;font-size:0;list-style:none;list-style-type:none;clear:both;zoom:1;}
+
+.myform{width:100%}
+.myform ul li{width:100%;line-height:20px;margin-bottom:10px;overflow:hidden;text-align:center;}
+.myform label{width:35%;line-height:40px;font-size:16px;text-align:right;display:inline-block;float:left;}
+.myform input{width:62%;height:40px;line-height:40px;text-align:left;text-indent:4px;display:inline-block;}
+.myform textarea{width:62%;height:100px;line-height:40px;text-align:left;display:inline-block;}
+/*.myform .error:not(input){width:100%;text-align:center;display:inline-block;line-height: 20px;margin-bottom: 10px;}
+.myform textarea.error{width: 62%;}
+.myform .error{color:red;}
+input.error,textarea.error,.myform input[type="checkbox"].error +label:after{
+border:1px solid red;}*/
+
+.myerror span{color:red;display:block;}
+.focuserror{border:1px solid red;}
+.myform .btn{width:140px;height:40px;line-height:40px;background:#00adee;text-align:center;margin:0 auto;color:#fff;font-size:20px;border:none;}
+.myform .agree{width:66%;line-height:30px;text-align:right;float:none;margin:0 auto;}
+.myform input[type=checkbox]{display:none;}
+.myform input[type="checkbox"]+label:after{    /*content: "¹3";*/
+content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-left:10px;display:inline-block;font-size:0;text-align:center;line-height:24px;vertical-align:middle;transition:color ease .3s;}
+.myform input[type="checkbox"]:checked+label:after{font-size:14px;}
+</style>
+
+<body>
+    <div class="form1">
+        <form class="myform" id="form1" method="post" action="">
+            <ul>
+                <li>
+                    <label for="cname">Name</label>
+                    <input id="cname" name="name" minlength="2" type="text" required>
+                </li>
+                <!--<li>
+                    <label for="phone">phone</label>
+                    <input id="cphone" name="phone" type="text" required>
+                </li>
+                <li>
+                    <label for="file">image</label>
+                    <input id="file" name="file" type="file" required>
+                </li>
+                <li>
+                    <label for="cemail">E-Mail</label>
+                    <input id="cemail" type="email" name="email" required>
+                </li>
+                <li>
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password">
+                </li>
+                <li>
+                    <label for="confirm_password">Confirm password</label>
+                    <input id="confirm_password" name="confirm_password" type="password">
+                </li>
+                <li>
+                    <label for="curl">URL</label>
+                    <input id="curl" type="url" name="url">
+                </li>
+                <li>
+                    <label for="ccomment">Your comment</label>
+                    <textarea id="ccomment" name="comment" required></textarea>
+                </li> -->
+                <li>
+                    <input type="checkbox" class="checkbox" id="agree" name="agree">
+                    <label for="agree" class="agree">Please agree to our policy</label>
+                </li>
+                <li>
+                    <label for="ccomment">price</label>
+                    <input id="price" name="price" required minNumber></input>
+                </li>
+                <li>
+                    <!-- <label for="agree"></label> -->
+                    <div class="myerror"><span></span></div>
+                    <input class="btn" id="submit" type="button" value="Submit">
+                </li>
+            </ul>
+        </form>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script>
+    /*$.validator.setDefaults({
+            submitHandler: function() {
+                    alert("提交成功!");
+                }
+        });*/
+    /*自定义验证*/
+    /* addMethod 的第一个参数,就是添加的验证方法的名子,这时是af
+     * addMethod 的第三个参数,就是自定义的错误提示,这里的提示为:”必须是一个字母,且a-f”
+     * addMethod 的第二个参数,是一个函数,这个比较重要,决定了用这个验证方法时的写法，
+        第一个：value ，是当前验证的元素的值。
+        第二个： element  是当前被验证的元素。
+        第三个：是传入的参数，例如:min:5这个参数为5
+     */
+
+    /*验证只针对于name属性，且name属性相同时，只验证第一个*/
+    /*$.validator.addMethod(“af”,function(value,element,params){ 
+        if(value.length>1){ 
+            return false; 
+        } 
+        if(value>=params[0] && value<=params[1]){ 
+            return true; 
+        }else{ 
+            return false; 
+        } 
+    },”必须是一个字母,且a-f”);*/
+    /*自定义验证：小数点最多输入两位*/
+    jQuery.validator.addMethod("minNumber", function(value, element) {
+        var returnVal = true;
+        inputZ = value;
+        var ArrMen = inputZ.split("."); //截取字符串
+        if (ArrMen.length == 2) {
+            if (ArrMen[1].length > 2) { //判断小数点后面的字符串长度
+                returnVal = false;
+                return false;
+            }
+        }
+        return returnVal;
+    }, "小数点后最多为两位"); //验证错误信息
+    /*自定义验证，优惠值小于总计金额*/
+    /*jQuery.validator.addMethod("lessTotal",function(value, element){
+            var returnVal =true;
+            var obj = $(".rig-bot_wrapp ul").children(".total_price").clone();
+            obj.find(':nth-child(n)').remove();       
+            var deathline = obj.html().replace(/￥/g, '').trim();
+            
+
+            if(parseFloat(value)>parseFloat(deathline)){
+                returnVal = false;
+            }
+            
+            return returnVal;
+        },"请输入正确的优惠值");*/
+
+    /****************************************************/
+    //随机数组
+    /*$rand_arr = [];
+    for (var i = 0; i < 20; i++) {
+        $rand_arr.push(i + 1);
+    }*/
+    /*增加*/
+    /*$(document).on('click', '.add2', function() {
+
+        var a = $('.addedTmpl .mb').html();
+        var num = $rand_arr[0];
+
+        $('.new').append(a);
+        $('.new tr:last .addinput0').attr('name', 'addinput[' + num + '][0]');
+        $('.new tr:last .addinput1').attr('name', 'addinput[' + num + '][1]').rules("add", { minNumber:true,min:0});
+        $('.new tr:last .addinput2').attr('name', 'addinput[' + num + '][2]').rules("add", { min:1 ,digits:true,messages:{digits:"输入正整数"}});
+        $rand_arr.shift();
+        prod_autocomplete();
+    });*/
+    /****************************************************/
+
+    $(function() {
+        var validate1 = $("#form1").validate({
+            //如果为true，当表单得到焦点时，移除在该表单上的errorClass并隐藏所有错误消息。避免与focusInvalid一起使用。
+            focusCleanup: true,
+            /*errorLabelContainer: $("#form1 .myerror>span"),*/
+            /*onfocusout: function(element) {
+              $(element).valid();
+            },
+            onkeyup: function(element) {
+              $(element).valid();
+            },*/
+            rules: {
+
+                phone: {
+                    isPhone: true
+                },
+                file: {
+                    fileType: {
+                        types: ["jpg", "jpeg", "png"]
+                    },
+                    maxFileSize: {
+                        "unit": "MB",
+                        "size": 1
+                    }
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
+                },
+                agree: "required"
+            },
+            messages: {
+                name: { minlength: '姓名至少两个字符串' },
+                phone: '请输入正确的手机号',
+                email: '请输入正确的Email',
+                comment: '请输入评论'
+            },
+            //ignore:当进行表单验证时，过滤掉选择器所选择的表单。用了jQuery not方法（ not() ）。类型为submit和reset的表单总是被忽略的。 
+            ignore: "not:hidden",
+            onfocusout: function(element, event) {
+                $element = $(element);
+                if ($element.is(':input') && !$element.is(':password')) {
+                    $element.val($.trim($element.val()));
+                }
+            },
+            //invalidHandler:当未通过验证的表单提交时，可以在该回调函数中处理一些事情。该回调函数有两个参数：第一个为一个事件对象，第二个为验证器（validator） 
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    /*alert(validator.errorList[0].message);*/
+                    $('.myerror span').html(validator.errorList[0].message);
+                    $('.myerror').show();
+                    $(validator.errorList[0].element).focus(); /*光标显示在第一个出错的地方*/
+                }
+            },
+            errorPlacement: function(error, element) {
+                /*console.log($(element));*/
+                /*$(element).parents('li').append(error);*/
+                /*error.insertAfter(element); */ //错误代码放置在元素后面
+            },
+            //submitHandler:当表单通过验证，提交表单。回调函数有个默认参数form 
+            submitHandler: function() {
+                /*alert("提交成功!");*/
+            },
+            //
+            onkeyup: function(element) {
+                var errors = validate1.numberOfInvalids();
+                /*$(validator1.errorList[0].element).removeClass('focuserror');*/
+                if (errors && validate1.errorList[0] && $(validate1.errorList[0].element).valid()) {
+                    $('.myerror').hide();
+
+                };
+            },
+            //highlight:将未通过验证的表单元素设置高亮。 
+            /* highlight: function(element, errorClass) {
+                 $(element).fadeOut(function() {
+                     $(element).fadeIn()
+                 })
+             }*/
+        });
+        //errorPlacement: Override error placement to not show error messages beside elements //
+        $(document).on('click', '#submit', function() {
+            if (!$("#form1").valid()) {
+                return;
+            };
+            alert('success');
+        });
+    });
+    </script>
+</body>
+
+</html>

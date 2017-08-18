@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>Template</title>
+<link href="css/q.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<ul id="result"></ul>
+<script src="js/jquery.js"></script> 
+<script src="js/qjs.js"></script> 
+<script>
+var playlist;
+$(function() {
+	$.ajax({
+		url: 'images/songs.json',
+		type: 'get',
+		dataType: 'json',
+		success: function(r) {
+			playlist = r;
+			$('#result').tmpl('tmpl', playlist);
+		}
+	})
+});
+</script>
+<script type="text/html" id="tmpl">
+<% for ( var i = 0; i < playlist.length; i++ ) { %>
+	<li><%=playlist[i].title%><br><span><%=playlist[i].singer%></span></li>
+  <% } %>
+</script>
+</body>
+</html>

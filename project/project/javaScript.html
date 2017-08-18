@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Professional javascript for web developer</title>
+    <script type="text/javascript">
+    	var a;
+    	function Site() {
+    		
+    	}
+    	var o = new Site();
+    	console.log(Site.prototype.isPrototypeOf(o));//true
+    	console.log(typeof null);//object
+    	console.log(typeof a);//undefined
+       console.log(null == undefined);
+       console.log(0.1+0.2);
+    </script>
+
+</head>
+<body>
+<div class="table">
+	<input type="text" name="" readonly="true" value="1">
+  <input type="text" name="" readonly="true" value="2">
+  <input type="text" name="" readonly="true" value="3">
+</div>
+ 
+  <a class="editbtn">编辑</a>
+  <script src="js/jquery.js"></script>
+  <script>
+  $(function(){
+    $(document).on('click', '.editbtn', function() {
+      $('.table input').each(function(){
+        $(this).attr('readonly',false);
+      })
+    });
+  })
+  </script>
+</body>
+</html>
