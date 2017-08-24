@@ -1,38 +1,370 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Professional javascript for web developer</title>
-    <script type="text/javascript">
-    	var a;
-    	function Site() {
-    		
-    	}
-    	var o = new Site();
-    	console.log(Site.prototype.isPrototypeOf(o));//true
-    	console.log(typeof null);//object
-    	console.log(typeof a);//undefined
-       console.log(null == undefined);
-       console.log(0.1+0.2);
-    </script>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Professional javascript for web developer</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    input {
+        border: none;
+        -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; appearance: none;
+    }
+
+    .has_border {
+        border: 1px solid #000;
+    }
+    .editbtn{width: 100%;line-height: 40px;text-align: center;cursor: pointer;display: block;}
+    .send{width: 100%;height: 40px;border: 1px solid #ccc;display: block;line-height: 20PX;text-align: center;border-radius: 5px;font-size: 14px;}
+    .last{border: 1px solid #ddd;}
+    </style>
 </head>
+
 <body>
-<div class="table">
-	<input type="text" name="" readonly="true" value="1">
-  <input type="text" name="" readonly="true" value="2">
-  <input type="text" name="" readonly="true" value="3">
-</div>
- 
-  <a class="editbtn">编辑</a>
-  <script src="js/jquery.js"></script>
-  <script>
-  $(function(){
-    $(document).on('click', '.editbtn', function() {
-      $('.table input').each(function(){
-        $(this).attr('readonly',false);
-      })
-    });
-  })
-  </script>
+    <form class="table">
+        <input type="text" name="" readonly value="1">
+        <input type="text" name="" readonly value="2">
+        <input type="text" name="" readonly value="3">
+    </form>
+    <a class="editbtn">编辑</a>
+    <div class="somenode">   
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <input type="button" name="" class="send" value="click">
+    </div>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+    (function() {
+        /*工厂模式*/
+        function CreatePerson(name, age, job) {
+            var o = new Object();
+
+            o.name = name;
+            o.age = age;
+            o.job = job;
+            o.sayName = function() {
+                console.log('My name is ' + this.name);
+            }
+            return o;
+
+        }
+        /*构造函数*/
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = function() {
+                console.log('My name is ' + this.name);
+            };
+        }
+        /*工厂模式*/
+        var person1 = CreatePerson('mcc1', 23, 'programmer');
+        person1.sayName();
+        var person2 = CreatePerson('mxx2', 23, 'programmer');
+        person2.sayName();
+        /*构造函数
+        缺点：每次都要重新生成通用的函数，不是同一个function的实例，
+        若是将方法放在全局中，破坏封装性，全局变量只被某个变量调用不好叫全局变量*/
+        var person3 = new Person('mcc3', 23, 'programmer');
+        person3.sayName();
+        var person3 = new Person('mcc4', 23, 'programmer');
+        person3.sayName();
+        /*原型函数*/
+        function Person4() {}
+        Person4.prototype.name = 'mcc4';
+        Person4.prototype.age = 23;
+        Person4.prototype.job = 'programmer';
+        Person4.prototype.sayName = function() {
+            console.log('My name is ' + this.name);
+        };
+        Person4.prototype.friends = ['a', 'b', 'c'];
+        var person4 = new Person4();
+        person4.sayName();
+        person4.friends.push('d');
+        var person4_1 = new Person4();
+        person4_1.name = 'mcc5';
+        person4_1.sayName();
+        /*原型模式缺点，共享引用类型的属性*/
+        console.log(person4_1.friends);
+
+        /*组合模式*/
+        function Person5(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.friends = ['a', 'b', 'c'];
+
+        }
+        Person5.prototype.sayName = function() {
+            console.log('My name is ' + this.name);
+        }
+        Person5.prototype.tellFriends = function() {
+            console.log('My friends are ' + this.friends);
+        }
+
+        var person5 = new Person5('mcc5', 23, 'programmer');
+        person5.sayName();
+        person5.friends.push('d');
+        var person5_1 = new Person5('mcc5_1', 23, 'programmer');
+        person5_1.name = 'mcc5';
+        person5_1.tellFriends();
+        /*寄生型函数模式*/
+        function SpecialArray() {
+            var values = new Array();
+            values.push.apply(values, arguments);
+            values.toPipedString = function() {
+                return this.join('|');
+            }
+            return values;
+        }
+        var colors = SpecialArray('red', 'green', 'yellow');
+        console.log(colors.toPipedString());
+        /*原型链 组合式继承*/
+        function SuperType(name) {
+            this.name = name;
+            this.colors = ['red', 'blue'];
+        };
+        SuperType.prototype.getName = function() {
+            console.log(this.name);
+        };
+        SuperType.prototype.getColors = function() {
+            return this.colors.join('|');
+        };
+
+        function subType(name, age) {
+            SuperType.call(this, name);
+            this.age = age;
+        };
+        subType.prototype = new SuperType();
+        /*subType.prototype.constructor = subType;*/
+        subType.prototype.getAge = function() {
+            console.log(this.age);
+        };
+        var subtype = new subType('sub1', 23);
+        subtype.colors.push('blue');
+        console.log(subtype.getColors());
+        var subtype1 = new subType('sub2', 29);
+        subtype1.getName();
+        console.log(subtype1.getColors());
+        subtype1.getAge();
+        console.log(subType.prototype.isPrototypeOf(subtype1)); //true
+        console.log(SuperType.prototype.isPrototypeOf(subtype1)); //true
+        console.log(subtype1 instanceof subType); //true
+        /*原型式继承*/
+        function object(o) {
+            function F() {};
+            F.prototype = o;
+            return new F();
+        }
+        var person = {
+            name: 'mccc',
+            age: 23,
+            colors: ['red', 'black'],
+            sayName: function() { console.log(this.name); },
+            sayAge: function() { console.log(this.age); },
+            sayColors: function() { console.log(this.colors); }
+        }
+        var createperson = object(person);
+        createperson.colors.push('green');
+        createperson.sayColors();
+        var createperson2 = object(person);
+        createperson2.sayColors(); //共用colors属性
+        /*寄生式继承*/
+        function createAnother(o) {
+            var clone = object(o);
+            clone.sayHi = function() { console.log('hi'); } //函数复用率低
+            return clone;
+        }
+        var anotherPerson = createAnother(person);
+        anotherPerson.sayHi();
+        /*寄生型组合继承*/
+        function inheritPrototype(subType, SuperType) {}
+        /*var s = 0.0056;
+        console.log(s.toFixed(2));*/
+        function count() {
+            var arr = new Array();
+            for (var i = 0; i < 10; i++) {
+                arr[i] = function(num) {
+                    return num;
+                }(i)
+            }
+            return arr;
+        }
+        var s = count();
+        console.log(s[2]);
+    })();
+
+    (function() {
+        //私有模块
+        //私有变量
+
+        function getEle(option) {
+            var node = document.getElementsByTagName(option['el']);
+            return node;
+        }
+        MyObject = function(option) {
+            var option = option || {};
+            this.option = option;
+        };
+
+        MyObject.prototype.setColors = function() {
+            var option = this.option;
+            if (option) {
+                var node = getEle(option);
+                console.log(node);
+                var colors = option['colors'];
+
+                for (var i = 0; i < node.length; i++) {
+                    node[i].style.color = colors[i];
+                }
+            }
+
+            return false;
+        };
+        //深度克隆参数
+        MyObject.prototype.cloneOption = function(option) {
+
+            var o;
+            if (typeof option == 'object') {
+                if (option == null) { //空对象
+                    o = null
+                } else {
+                    if (option instanceof Array) { //数组
+                        o = [];
+                        for (var i = 0; i < option.length; i++) {
+                            o.push(arguments.callee(option[i]));
+                        }
+                    } else { //对象
+                        o = {};
+                        for (var j in option) {
+                            o[j] = arguments.callee(option[j]);
+                        }
+                    }
+                }
+            } else { //基本数据类型
+                o = option;
+            }
+            return o;
+        };
+    })();
+
+    var MakePerson = (function(window) {
+        var Person = function(name) { //不是构造函数，而是一个工厂
+            return new Person.fn.init(name);
+        };
+        Person.fn = Person.prototype = {
+            constructor: Person,
+            init: function(name) { //init作为构造函数，
+                this.name = name;
+                this.sayName = function() {
+                    console.log(this.name);
+                };
+            },
+            sayHi: function() {
+                console.log(this.name + ":Hi");
+            }
+
+        };
+        Person.fn.init.prototype = Person.fn; //init的原型函数是Person的原型函数
+        return Person;
+    })();
+    var makeperson = MakePerson('NOnew');
+    /*console.log(p1);*/
+    makeperson.sayHi();
+
+
+    /*if(navigator.userAgent.match(/(iphone|ipod|Android|ios)/i)){
+        alert('iphoe');
+    }else{
+        console.log('pc')
+    }*/
+
+    window.onload = function() {
+        var option = { el: 'input', colors: ['red', 'blue', 'black'], good: { colors: ['blue'], title: null } };
+        var s = new MyObject(option);
+        s.setColors();
+        var cloneoption = s.cloneOption(option);
+        option.el = 'input2';
+        console.log(cloneoption);
+
+        var leftPos = (typeof window.screenLeft == 'number') ? window.screenLeft : window.screenX;
+        var topPos = (typeof window.screenTop == 'number') ? window.screenTop : window.screenY;
+        console.log(leftPos + "-" + topPos);
+
+        (function(){
+            var sendNode = document.querySelector('.send');
+            var num = 30;
+            var s=null;
+            function countTime(obj) {
+                if(num == 0){
+                    obj.removeAttribute('disabled');
+                    obj.value='click';
+                    num = 60;
+                    return false;
+                }else{
+                    obj.setAttribute('disabled',true);
+                    obj.value=num;
+                    num--;
+                }
+                setTimeout(function(){
+                    countTime(obj);
+                },1000);
+               
+            }
+            sendNode.onclick = function() { 
+            //验证按钮disabled 
+
+            //验证号码
+
+            //发送请求
+
+            //         
+                countTime(this);            
+            }
+        })();
+
+        var somenode = document.querySelector('.somenode'),
+        someli = somenode.getElementsByTagName("ul")[0],
+        len = someli.length;
+        var li = document.createElement('li');
+        var litext = document.createTextNode('4');
+        li.appendChild(litext);
+        someli.appendChild(li);
+
+    };
+
+    (function() {
+        /*singleton */
+        var singleton = function() {
+            var privateVarible = 10;
+            return {
+                publicProperty: true,
+                method: function() {
+                    privateVarible++;
+                    console.log();
+                    console.log(privateVarible);
+                    return false;
+                }
+            };
+        }(); //singleton是一个字面量对象，含有一个属性和方法，方法可以改变私有属性privateVarible
+        singleton.method();
+    })();
+    
+    </script>
+    <script>
+    $(function() {
+        $(document).on('click', '.editbtn', function() {
+            $('.table input').each(function() {
+                $(this).attr('readonly', false);
+                $(this).addClass('has_border');
+            })
+        });
+    })
+    </script>
 </body>
+
 </html>

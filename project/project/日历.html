@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title></title>
+    <style>
+    /*.calendar{
+    	width: 300px;
+    } */
+
+    .calendar .today {
+        background: rgb(233, 104, 107);
+        border-radius: 50%;
+    }
+
+    .calendar .preMonth {
+        display: inline-block;
+        float: left;
+        cursor: pointer;
+    }
+
+    .calendar .nextMonth {
+        display: inline-block;
+        float: right;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="calendarWrapper"></div>
+    <script>
+    (function() {
+
+        function Calendar(calendar) {
+            this.calendar = calendar;
+            this.year = this.calendar.getFullYear();
+            this.month = this.calendar.getMonth();
+            this.day = this.calendar.getDate();
+            this.firstDay = new Date(this.year, this.month, 1);
+            this.dayOfWeek = this.firstDay.getDay();
+            this.dayPerMonth = new Array(31, 28 + this.isLeap(this.year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+            this.tr_num = Math.ceil((this.dayOfWeek + this.dayPerMonth[this.month]) / 7);
+            this.default = {
+                nowYear: new Date().getFullYear(),
+                nowDay: new Date().getDate(),
+                nowMonth: new Date().getMonth()
+            }
+        };
+        Calendar.prototype.isLeap = function(year) {
+            return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 == 0 ? 1 : 0)) : 0;
+        };
+        Calendar.prototype.createAllDay = function(dayOfWeek, dayPerMonth) {
+            var str = "";
+            var nowYear = this.default.nowYear,
+                nowDay = this.default.nowDay,
+                nowMonth = this.default.nowMonth;
+            for (var i = 0; i < this.tr_num; i++) {
+                str = str + "<tr>";
+                for (var j = 0; j < 7; j++) {
+                    var index = i * 7 + j;
+                    var data = index - dayOfWeek + 1;
+                    if (data > dayPerMonth[this.year]) { /*console.log(data)*/ }
+                    (data <= 0 || data > dayPerMonth[this.month]) ? data = '&nbsp': data = index - dayOfWeek + 1;
+
+                    (this.year == nowYear && this.month == nowMonth && data == nowDay) ? str = str + '<td class="today">' + data + '</td>': str = str + '<td>' + data + '</td>';
+                }
+                str = str + "</tr>";
+            }
+            return str;
+        };
+        Calendar.prototype.init = function() {
+            var str = this.createAllDay(this.dayOfWeek, this.dayPerMonth);
+            var str2 = '<table class="calendar"><caption><span class="preMonth"><</span><span class="data"></span><span class="nextMonth">></span></caption><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody class="content"></tbody></table>';
+            document.querySelector('.calendarWrapper').innerHTML = str2;
+            document.querySelector('.calendar .content').innerHTML = str;
+
+            document.querySelector('.calendar .data').innerHTML = this.year + '年' + (this.month + 1) + '月';
+            document.querySelector('.nextMonth').onclick = function() {
+                calendar.nextMonth();
+            };
+            document.querySelector('.preMonth').onclick = function() {
+                calendar.preMonth();
+            }
+        };
+        Calendar.prototype.nextMonth = function() {
+            this.month++;
+            if (this.month < 12) {
+                this.firstDay = new Date(this.year, this.month, 1);
+                this.dayOfWeek = this.firstDay.getDay();
+
+            } else {
+                this.month = 0;
+                this.year++;
+                this.calendar = new Date(this.year, this.month, 1);
+                this.day = this.calendar.getDate();
+                this.firstDay = new Date(this.year, this.month, 1);
+                this.dayOfWeek = this.firstDay.getDay();
+                this.dayPerMonth = new Array(31, 28 + this.isLeap(this.year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                this.tr_num = Math.ceil((this.dayOfWeek + this.dayPerMonth[this.month]) / 7);
+            }
+            var str = this.createAllDay(this.dayOfWeek, this.dayPerMonth);
+            document.querySelector('.calendar .content').innerHTML = str;
+            document.querySelector('.calendar .data').innerHTML = this.year + '年' + (this.month + 1) + '月';
+
+        };
+        Calendar.prototype.preMonth = function() {
+            this.month--;
+            if (this.month >= 0) {
+                this.firstDay = new Date(this.year, this.month, 1);
+                this.dayOfWeek = this.firstDay.getDay();
+
+            } else {
+                this.month = 11;
+                this.year--;
+                this.calendar = new Date(this.year, this.month, 1);
+                this.day = this.calendar.getDate();
+                this.firstDay = new Date(this.year, this.month, 1);
+                this.dayOfWeek = this.firstDay.getDay();
+                this.dayPerMonth = new Array(31, 28 + this.isLeap(this.year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                this.tr_num = Math.ceil((this.dayOfWeek + this.dayPerMonth[this.month]) / 7);
+            }
+            var str = this.createAllDay(this.dayOfWeek, this.dayPerMonth);
+            document.querySelector('.calendar .content').innerHTML = str;
+            document.querySelector('.calendar .data').innerHTML = this.year + '年' + (this.month + 1) + '月';
+
+        };
+
+        var today = new Date(),
+            calendar = new Calendar(today);
+        calendar.init();
+        console.log(calendar.month);
+
+
+
+
+    })();
+    </script>
+    <script>
+    /*function isLeap(year) {
+                                return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 == 0 ? 1 : 0)) : 0;
+                            }
+
+                            function createAllDay(dayOfWeek, dayPerMonth) {
+                                var str = "";
+                                for (var i = 0; i < tr_num; i++) {
+                                    str = str + "<tr>";
+                                    for (var j = 0; j < 7; j++) {
+                                        var index = i * 7 + j;
+                                        var data = index - dayOfWeek + 1;
+                                        if (data > dayPerMonth[year]) { console.log(data) }
+                                        (data <= 0 || data > dayPerMonth[month]) ? data = '&nbsp': data = index - dayOfWeek + 1;
+                                        data == day ? str = str + '<td class="today">' + data + '</td>' : str = str + '<td>' + data + '</td>';
+                                    }
+                                    str = str + "</tr>";
+                                }
+                                document.querySelector('.calendar .content').innerHTML = str;
+                            }
+                            function todayMonth(){
+
+                            }
+                            var today = new Date(),
+                                year = today.getFullYear(),
+                                month = today.getMonth(),
+                                day = today.getDate(),
+                                firstDay = new Date(year, month, 1),
+                                dayOfWeek = firstDay.getDay(),
+                                dayPerMonth = new Array(31, 28 + isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
+                                tr_num = Math.ceil((dayOfWeek + dayPerMonth[month]) / 7);
+                    createAllDay(dayOfWeek, dayPerMonth);
+                            document.querySelector('.calendar .year').innerHTML = year;*/
+    </script>
+</body>
+
+</html>
