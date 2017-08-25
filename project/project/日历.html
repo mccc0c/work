@@ -26,6 +26,12 @@
         float: right;
         cursor: pointer;
     }
+    .calendar .thismonth{
+        color: #000;
+    }
+    .calendar .nothismonth{
+        color: #ddd;
+    }
     </style>
 </head>
 
@@ -63,9 +69,28 @@
                     var index = i * 7 + j;
                     var data = index - dayOfWeek + 1;
                     if (data > dayPerMonth[this.year]) { /*console.log(data)*/ }
-                    (data <= 0 || data > dayPerMonth[this.month]) ? data = '&nbsp': data = index - dayOfWeek + 1;
+                    /*(data <= 0 || data > dayPerMonth[this.month]) ? data = '&nbsp': data = index - dayOfWeek + 1;*/
+                    if(data<=0){
+                        if(this.month-1>=0){
+                            data = dayPerMonth[this.month-1]+data;
+                        }else{
+                            data = 31+data;
+                        }
+                        
+                        str = str + '<td class="nothismonth">' + data + '</td>';
+                    }else if(data>0 && data<=dayPerMonth[this.month]){
+                        data = data;
+                        if(this.year == nowYear && this.month == nowMonth && data == nowDay){
+                            str = str + '<td class="thismonth today">' + data + '</td>';
+                        }else{
+                            str = str + '<td class="thismonth">' + data + '</td>';
+                        }
+                    }else{
+                        data = data-dayPerMonth[this.month];
+                        str = str + '<td class="nothismonth">' + data + '</td>';
+                    }
 
-                    (this.year == nowYear && this.month == nowMonth && data == nowDay) ? str = str + '<td class="today">' + data + '</td>': str = str + '<td>' + data + '</td>';
+                    /*(this.year == nowYear && this.month == nowMonth && data == nowDay) ? str = str + '<td class="today">' + data + '</td>': str = str + '<td>' + data + '</td>';*/
                 }
                 str = str + "</tr>";
             }
