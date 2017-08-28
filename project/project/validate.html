@@ -36,11 +36,11 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
     <div class="form1">
         <form class="myform" id="form1" method="post" action="">
             <ul>
-                <li>
+                <!--<li>
                     <label for="cname">Name</label>
                     <input id="cname" name="name" minlength="2" type="text" required>
                 </li>
-                <!--<li>
+                <li>
                     <label for="phone">phone</label>
                     <input id="cphone" name="phone" type="text" required>
                 </li>
@@ -68,14 +68,15 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
                     <label for="ccomment">Your comment</label>
                     <textarea id="ccomment" name="comment" required></textarea>
                 </li> -->
-                <li>
+                <!-- <li>
                     <input type="checkbox" class="checkbox" id="agree" name="agree">
                     <label for="agree" class="agree">Please agree to our policy</label>
-                </li>
+                </li> -->
                 <li>
                     <label for="ccomment">price</label>
                     <input id="price" name="price" required minNumber></input>
                 </li>
+
                 <li>
                     <!-- <label for="agree"></label> -->
                     <div class="myerror"><span></span></div>
@@ -174,7 +175,7 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
             },*/
             rules: {
 
-                phone: {
+                /*phone: {
                     isPhone: true
                 },
                 file: {
@@ -195,13 +196,20 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
                     minlength: 5,
                     equalTo: "#password"
                 },
-                agree: "required"
+                agree: "required"*/
+                price:{
+                    required:true,
+                    number:true,
+                    minNumber:true
+
+
+                }
             },
             messages: {
-                name: { minlength: '姓名至少两个字符串' },
+                /*name: { minlength: '姓名至少两个字符串' },
                 phone: '请输入正确的手机号',
                 email: '请输入正确的Email',
-                comment: '请输入评论'
+                comment: '请输入评论'*/
             },
             //ignore:当进行表单验证时，过滤掉选择器所选择的表单。用了jQuery not方法（ not() ）。类型为submit和reset的表单总是被忽略的。 
             ignore: "not:hidden",

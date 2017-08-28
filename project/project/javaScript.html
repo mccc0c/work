@@ -6,18 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Professional javascript for web developer</title>
     <style>
-    *{margin: 0;padding: 0;}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
     input {
         border: none;
-        -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
     }
 
     .has_border {
         border: 1px solid #000;
     }
-    .editbtn{width: 100%;line-height: 40px;text-align: center;cursor: pointer;display: block;}
-    .send{width: 100%;height: 40px;border: 1px solid #ccc;display: block;line-height: 20PX;text-align: center;border-radius: 5px;font-size: 14px;}
-    .last{border: 1px solid #ddd;}
+
+    .editbtn {
+        width: 100%;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+    }
+
+    .send {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ccc;
+        display: block;
+        line-height: 20PX;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .last {
+        border: 1px solid #ddd;
+    }
     </style>
 </head>
 
@@ -28,13 +55,61 @@
         <input type="text" name="" readonly value="3">
     </form>
     <a class="editbtn">编辑</a>
-    <div class="somenode">   
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-    </ul>
-    <input type="button" name="" class="send" value="click">
+    <div class="somenode">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <input type="button" name="" class="send" value="click">
+    </div>
+    <div class="search">
+        <input type="text" name="makeupCo" id="makeupCo" class="makeinp" placeholder="查询" />
+        <!-- <div class="arealistbox">
+            <div class="arealist">
+                <h3>安徽</h3>
+                <ul>
+                    <li><a href="#">合肥中小企业金融服务平台</a></li>
+                </ul>
+            </div>
+            <div class="arealist">
+                <h3>上海</h3>
+                <ul>
+                    <li><a href="#">杨浦金融港</a></li>
+                    <li><a href="#">金山中小企业服务平台</a></li>
+                    <li><a href="#">静安金融服务平台</a></li>
+                </ul>
+            </div>
+            <div class="arealist">
+                <h3>北京</h3>
+                <ul>
+                    <li><a href="#">北京科技一融服务平台</a></li>
+                    <li><a href="#">延庆融资一站通</a></li>
+                    <li><a href="#">密云金融服务平台</a></li>
+                    <li><a href="#">通州融资一站通</a></li>
+                </ul>
+            </div>
+            <div class="arealist">
+                <h3>广州</h3>
+                <ul>
+                    <li><a href="#">广州科技一融服务平台</a></li>
+                </ul>
+            </div>
+            <div class="arealist">
+                <h3>安徽</h3>
+                <ul>
+                    <li><a href="#">合肥中小企业金融服务平台</a></li>
+                </ul>
+            </div>
+            <div class="arealist">
+                <h3>上海</h3>
+                <ul>
+                    <li><a href="#">杨浦金融港</a></li>
+                    <li><a href="#">金山中小企业服务平台</a></li>
+                    <li><a href="#">静安金融服务平台</a></li>
+                </ul>
+            </div>
+        </div> -->
     </div>
     <script src="js/jquery.js"></script>
     <script type="text/javascript">
@@ -276,13 +351,6 @@
     /*console.log(p1);*/
     makeperson.sayHi();
 
-
-    /*if(navigator.userAgent.match(/(iphone|ipod|Android|ios)/i)){
-        alert('iphoe');
-    }else{
-        console.log('pc')
-    }*/
-
     window.onload = function() {
         var option = { el: 'input', colors: ['red', 'blue', 'black'], good: { colors: ['blue'], title: null } };
         var s = new MyObject(option);
@@ -295,45 +363,48 @@
         var topPos = (typeof window.screenTop == 'number') ? window.screenTop : window.screenY;
         console.log(leftPos + "-" + topPos);
 
-        (function(){
+        (function() {
             var sendNode = document.querySelector('.send');
             var num = 30;
-            var s=null;
+            var s = null;
+
             function countTime(obj) {
-                if(num == 0){
+                if (num == 0) {
                     obj.removeAttribute('disabled');
-                    obj.value='click';
+                    obj.value = 'click';
                     num = 60;
                     return false;
-                }else{
-                    obj.setAttribute('disabled',true);
-                    obj.value=num;
+                } else {
+                    obj.setAttribute('disabled', true);
+                    obj.value = num;
                     num--;
                 }
-                setTimeout(function(){
+                setTimeout(function() {
                     countTime(obj);
-                },1000);
-               
+                }, 1000);
+
             }
-            sendNode.onclick = function() { 
-            //验证按钮disabled 
+            sendNode.onclick = function() {
+                //验证按钮disabled 
 
-            //验证号码
+                //验证号码
 
-            //发送请求
+                //发送请求
 
-            //         
-                countTime(this);            
+                //         
+                countTime(this);
             }
         })();
 
         var somenode = document.querySelector('.somenode'),
-        someli = somenode.getElementsByTagName("ul")[0],
-        len = someli.length;
+            someli = somenode.getElementsByTagName("ul")[0],
+            len = someli.length;
         var li = document.createElement('li');
         var litext = document.createTextNode('4');
         li.appendChild(litext);
         someli.appendChild(li);
+
+        document.body.scrollByLines(5);
 
     };
 
@@ -353,7 +424,6 @@
         }(); //singleton是一个字面量对象，含有一个属性和方法，方法可以改变私有属性privateVarible
         singleton.method();
     })();
-    
     </script>
     <script>
     $(function() {

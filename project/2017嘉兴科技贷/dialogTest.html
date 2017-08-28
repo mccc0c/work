@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/min/base.min.css">
+    <link rel="stylesheet" type="text/css" href="css/min/easy.min.css">
+</head>
+
+<body>
+    <a class="approval_nopass">查看</a>
+    <div class="dialog dialog_nopass"> <a href="#" class="dclose">&nbsp;</a>
+        <div class="dcontent">
+            <ul>
+                <h4 style="text-align:center">企业的资质申请尚未通过，暂无法操作</h4>
+            </ul>
+        </div>
+        <div class="dbtn" style="padding-top: 15px;"><a class="dokay" style="margin: 0;">确定</a> </div>
+    </div>
+    <script src="./js/min/jquery.min.js"></script>
+    <script src="./js/min/easy.min.js"></script>
+    <script>
+    var dialog_nopass = $('.dialog_nopass').modal({
+        width: '500px',
+        onOk: function() { console.log("s"); }
+    });
+
+
+    $(document).on('click', '.approval_nopass', function() {
+        dialog_nopass.open();
+    });
+
+    /* $(document).on('click', '.nopass', function() {
+         dialog_nopass.close();
+     });*/
+    </script>
+</body>
+
+</html>
