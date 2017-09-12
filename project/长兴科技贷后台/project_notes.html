@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>项目库</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/base.css" rel="stylesheet" >
+
+    <link href="css/style.css" rel="stylesheet">
+    <!-- 添加mystyle.css -->
+    <link href="css/mystyle.css" rel="stylesheet">
+    <link href="css/media.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(window).load(function() {
+            var h = $(this).height();
+            var H = $('.head-bar').height() + $('.main-bar').height();
+            if (h < H) {
+                $('.left-nav').height(H);
+            } else {
+                $('.left-nav').height(h);
+            }
+        });
+        $('.search input[type=text]').focus(function() {
+            if (this.value == this.defaultValue) {
+                this.value = "";
+            }
+        }).blur(function() {
+            if (this.value == "") {
+                this.value = this.defaultValue;
+            }
+        });
+        //未读，已读点击
+        $(".button-box a").click(function() {
+            $(this).addClass('duon').siblings().removeClass('duon');
+        });
+
+    })
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--左侧-->
+        <div class="left-nav">
+            <div class="head-img"> <img src="images/head-img.png" height="128" width="128" alt="">
+                <p>欢迎您：137***2129</p>
+            </div>
+            <ul>
+                <li> <a href="#">首页</a> </li>
+                <li> <a href="#">载体发布</a> </li>
+                <li> <a href="#">企业库</a> </li>
+                <li> <a href="#" class="cur">项目库<i class="hot"></i></a> </li>
+                <li> <a href="#">统计池</a> </li>
+            </ul>
+        </div>
+        <!--头部-->
+        <div class="head-bar">
+            <div class="yuanqu"> 同济科技园 </div>
+            <a href="javascript:void(0)" class="quit">退出登录</a>
+            <!-- 添加消息 -->
+            <div class="info">
+                <img src="./images/info.png">
+                <i class="on">1</i>
+            </div>
+        </div>
+        <div class="button-box">
+            <a href="#" class="info_button weidu duon">未读
+                <i class="weiduon"></i></a><a class="info_button yidu" href="#">已读</a>
+        </div>
+        <!--中间内容-->
+        <div class="main-bar">
+            <div class="library-box">
+                <!--筛选-->
+                <div class="clear"></div>
+                <div class="article3">
+                    <div class="box">
+                        <ul>
+                            <li>
+                                <i></i>
+                                <p>航空植保无人机及数据服务 <span class="pass">已通过</span> <span class="gray1">你的查看bp请求</span> <span class="date">2017-04-2210:39:22</span> <a href="#">立即查看</a></p>
+                            </li>
+                            <li>
+                                <i></i>
+                                <p>航空植保无人机及数据服务 <span class="unpass">已通过</span> <span class="gray1">你的查看bp请求</span> <span class="date">2017-04-2210:39:22</span> <a href="#">立即查看</a></p>
+                            </li>
+                            <li>
+                                <i class="on"></i>
+                                <p>航空植保无人机及数据服务 <span class="pass">已通过</span> <span class="gray1">你的查看bp请求</span> <span class="date">2017-04-2210:39:22</span> <a href="#">立即查看</a></p>
+                            </li>
+                            <li>
+                                <i class="on"></i>
+                                <p>航空植保无人机及数据服务 <span class="pass">已通过</span> <span class="gray1">你的查看bp请求</span> <span class="date">2017-04-2210:39:22</span> <a href="#">立即查看</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="page"> <a href="javascript:void(0)" class="prev">上一页</a> <a href="javascript:void(0)" class="cur">1</a> <a href="javascript:void(0)">2</a> <a href="javascript:void(0)">3</a> <a href="javascript:void(0)">4</a> <a href="javascript:void(0)">5</a> <span>...</span> <a href="javascript:void(0)">100</a> <a href="javascript:void(0)" class="next">下一页</a> <span>共100页  到第</span>
+                    <input name="" type="text" />
+                    <span>页</span> <a href="javascript:void(0)">确定</a> </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

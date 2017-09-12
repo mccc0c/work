@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-12 15:16:28
+ * @version $Id$
+ */
+
+
+.welcome{
+	height: 190px;
+	float: left;
+	width: 87%;
+	background: #d3d3d5
+}
+.welcome img{
+	float: left;
+	margin: 0 45px 0 50px;
+}
+.welcome p{
+	font-size: 24px;
+	color: #66584c;
+	margin: 50px 0 0 0;
+}
+.welcome h3{
+	font-size: 50px;
+	color: #66584c
+}
+
+
+/*待办事项*/
+.daiban{
+	float: left;
+	width: 41%;
+	height: 442px;
+	background: #FFF;
+	border:1px solid #dddddd;
+	padding: 26px 0 0 0;
+	margin-left: 40px;
+}
+.daiban-title{
+	height: 39px;
+	float: left;
+	font-size: 36px;
+	color: #222222;
+	line-height: 39px;
+	background: url('../styImg/daiban-icon.jpg') no-repeat;
+	padding-left: 40px;
+	margin-left: 50px;
+	margin-bottom: 30px;
+}
+.daiban-title em{
+	display: inline-block;
+	height: 26px;
+	border-radius: 13px;
+	background: #ff3d10;
+	font-size: 20px;
+	color: #fff;
+	line-height: 26px;
+	padding: 0 15px;
+	font-style: normal;
+}
+
+.daiban-page{
+	height: 34px;
+	float: right;
+	margin-right: 50px;
+	margin-top: 2px;
+}
+.daiban-page a{
+	display: block;
+	float: left;
+	width: 32px;
+	height: 32px;
+	border:1px solid #dddddd;
+	
+}
+.daiban-page a.daiban-left{
+	background: #fff url('../styImg/daiban-left.png') center center no-repeat
+}
+.daiban-page a.daiban-next{
+	background: #fff url('../styImg/daiban-next.png') center center no-repeat
+}
+.daiban-page span{
+	display: block;
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	font-size: 20px;
+	color: #333;
+	margin: 0 10px;
+}
+
+.daiban ul{
+	clear: both;
+	border-top: 1px solid #dddddd;
+	margin: 0 50px;
+}
+.daiban ul li{
+	height: 68px;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	background: url('../styImg/cycle.png') left center no-repeat;
+	padding-left: 20px;
+}
+.daiban ul li p{
+	float: left;
+	width: 75%;
+	line-height: 68px;
+	color: #333;
+}
+.daiban ul li span{
+	float: right;
+	width: 25%;
+	display: block;
+	line-height: 68px;
+	color: #999;
+	text-align: right;
+}
+.daiban ul li:last-child{
+	border-bottom: none
+}
+
+.other-number{
+	float: left;
+	width: 18.75%;
+	height: 442px;
+	padding:26px 0 0 0;
+	background: #fff;
+	margin-left: 45px;
+	border:1px solid #ddd;
+	text-align: center;
+}
+.other-number img{
+	margin-bottom: 35px;
+}
+.other-number h3{
+	font-size: 36px;
+	color: #333;
+	font-weight: normal;
+	margin-bottom: 40px;
+}
+.other-number p{
+	font-size: 36px;
+	color: #333;
+}
+.other-number p span{
+	font-size: 48px;
+	color: #ff4800
+}

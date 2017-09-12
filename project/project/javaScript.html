@@ -49,6 +49,7 @@
 </head>
 
 <body>
+    <p>filter</p>
     <form class="table">
         <input type="text" name="" readonly value="1">
         <input type="text" name="" readonly value="2">
@@ -114,7 +115,7 @@
     <script src="js/jquery.js"></script>
     <script type="text/javascript">
     (function() {
-        /*工厂模式*/
+        // 工厂模式
         function CreatePerson(name, age, job) {
             var o = new Object();
 
@@ -127,7 +128,7 @@
             return o;
 
         }
-        /*构造函数*/
+        // 构造函数
         function Person(name, age, job) {
             this.name = name;
             this.age = age;
@@ -136,19 +137,19 @@
                 console.log('My name is ' + this.name);
             };
         }
-        /*工厂模式*/
+        // 工厂模式
         var person1 = CreatePerson('mcc1', 23, 'programmer');
         person1.sayName();
         var person2 = CreatePerson('mxx2', 23, 'programmer');
         person2.sayName();
-        /*构造函数
-        缺点：每次都要重新生成通用的函数，不是同一个function的实例，
-        若是将方法放在全局中，破坏封装性，全局变量只被某个变量调用不好叫全局变量*/
+        // 构造函数
+        // 缺点：每次都要重新生成通用的函数，不是同一个function的实例，
+        // 若是将方法放在全局中，破坏封装性，全局变量只被某个变量调用不好叫全局变量
         var person3 = new Person('mcc3', 23, 'programmer');
         person3.sayName();
         var person3 = new Person('mcc4', 23, 'programmer');
         person3.sayName();
-        /*原型函数*/
+        // 原型函数
         function Person4() {}
         Person4.prototype.name = 'mcc4';
         Person4.prototype.age = 23;
@@ -163,10 +164,10 @@
         var person4_1 = new Person4();
         person4_1.name = 'mcc5';
         person4_1.sayName();
-        /*原型模式缺点，共享引用类型的属性*/
+        // 原型模式缺点，共享引用类型的属性
         console.log(person4_1.friends);
 
-        /*组合模式*/
+        // 组合模式
         function Person5(name, age, job) {
             this.name = name;
             this.age = age;
@@ -187,7 +188,7 @@
         var person5_1 = new Person5('mcc5_1', 23, 'programmer');
         person5_1.name = 'mcc5';
         person5_1.tellFriends();
-        /*寄生型函数模式*/
+        // 寄生型函数模式
         function SpecialArray() {
             var values = new Array();
             values.push.apply(values, arguments);
@@ -198,7 +199,7 @@
         }
         var colors = SpecialArray('red', 'green', 'yellow');
         console.log(colors.toPipedString());
-        /*原型链 组合式继承*/
+        // 原型链 组合式继承
         function SuperType(name) {
             this.name = name;
             this.colors = ['red', 'blue'];
@@ -215,7 +216,7 @@
             this.age = age;
         };
         subType.prototype = new SuperType();
-        /*subType.prototype.constructor = subType;*/
+        // subType.prototype.constructor = subType;
         subType.prototype.getAge = function() {
             console.log(this.age);
         };
@@ -229,7 +230,7 @@
         console.log(subType.prototype.isPrototypeOf(subtype1)); //true
         console.log(SuperType.prototype.isPrototypeOf(subtype1)); //true
         console.log(subtype1 instanceof subType); //true
-        /*原型式继承*/
+        // 原型式继承
         function object(o) {
             function F() {};
             F.prototype = o;
@@ -248,7 +249,7 @@
         createperson.sayColors();
         var createperson2 = object(person);
         createperson2.sayColors(); //共用colors属性
-        /*寄生式继承*/
+        // 寄生式继承
         function createAnother(o) {
             var clone = object(o);
             clone.sayHi = function() { console.log('hi'); } //函数复用率低
@@ -256,7 +257,7 @@
         }
         var anotherPerson = createAnother(person);
         anotherPerson.sayHi();
-        /*寄生型组合继承*/
+        // 寄生型组合继承
         function inheritPrototype(subType, SuperType) {}
         /*var s = 0.0056;
         console.log(s.toFixed(2));*/
@@ -290,7 +291,7 @@
             var option = this.option;
             if (option) {
                 var node = getEle(option);
-                console.log(node);
+                /*console.log(node);*/
                 var colors = option['colors'];
 
                 for (var i = 0; i < node.length; i++) {
@@ -348,8 +349,16 @@
         return Person;
     })();
     var makeperson = MakePerson('NOnew');
-    /*console.log(p1);*/
+    // console.log(p1);
     makeperson.sayHi();
+    // ie8返回(2,2),其他浏览器返回(0,0)
+    function getBoundingClientRect(element) {
+        var rect = element.getBoundingClientRect();
+        return rect;
+    }
+    var bodyRect = getBoundingClientRect(document.querySelector('body'));
+    console.log(bodyRect);
+    // bottom: 172, constructor: ClientRect {...}, height: 172, left: 0, right: 1335, top: 0, width: 1335
 
     window.onload = function() {
         var option = { el: 'input', colors: ['red', 'blue', 'black'], good: { colors: ['blue'], title: null } };
@@ -357,11 +366,11 @@
         s.setColors();
         var cloneoption = s.cloneOption(option);
         option.el = 'input2';
-        console.log(cloneoption);
+        /*console.log(cloneoption);*/
 
         var leftPos = (typeof window.screenLeft == 'number') ? window.screenLeft : window.screenX;
         var topPos = (typeof window.screenTop == 'number') ? window.screenTop : window.screenY;
-        console.log(leftPos + "-" + topPos);
+        /*console.log(leftPos + "-" + topPos);*/
 
         (function() {
             var sendNode = document.querySelector('.send');
@@ -404,7 +413,7 @@
         li.appendChild(litext);
         someli.appendChild(li);
 
-        document.body.scrollByLines(5);
+        // document.body.scrollByLines(5);
 
     };
 
@@ -424,6 +433,76 @@
         }(); //singleton是一个字面量对象，含有一个属性和方法，方法可以改变私有属性privateVarible
         singleton.method();
     })();
+    (function() {
+        var filter = {
+            acceptNode: function(node) {
+                return node.tagName.toLowerCase() == 'li' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+            }
+        };
+
+        var nodeFilter = document.querySelector('.somenode'),
+            iterator = document.createNodeIterator(nodeFilter, NodeFilter.SHOW_ELEMENT, filter, false),
+            nodeIteratorArr = [],
+            nodeTreeWalkerArr = [],
+            node = iterator.nextNode();
+        while (node !== null) {
+            nodeIteratorArr.push(node.tagName);
+            node = iterator.nextNode();
+        }
+        console.log("1:" + nodeIteratorArr); //["LI", "LI", "LI"]
+        var walker = document.createTreeWalker(nodeFilter, NodeFilter.SHOW_ELEMENT, null, false);
+        var node2 = walker.nextNode();
+        while (node2 !== null) {
+            /*node2 = walker.nextNode();*/
+            nodeTreeWalkerArr.push(node2.tagName);
+            node2 = walker.nextSibling();
+        }
+        console.log("2:" + nodeTreeWalkerArr);
+
+        var range = document.createRange(),
+            range1 = document.createRange(),
+            table = document.querySelector('.table'),
+            rangeShow = range.selectNode(table);
+        //     var rangewalker = document.createTreeWalker(rangeShow,NodeFilter.SHOW_ELEMENT,null,false);
+        //     var rangeNode = rangewalker.nextNode(),
+        //     rangeArr = [];
+        // while(rangeNode !== null){
+        //     // node2 = walker.nextNode();
+        //     rangeArr.push(rangeNode.tagName);
+        //     rangeNode = walker.nextNode();
+        // }
+        console.log("range.selectNode:" + rangeShow);
+
+    })();
+    (function() {
+        function helloWorld(ready) {
+            return new Promise(function(resolve, reject) {
+                if (ready) {
+                    resolve('success');
+                } else {
+                    reject('no success');
+                }
+            });
+        }
+
+        helloWorld(false).then(function(message) {
+            console.log(message);
+        }, function(error) {
+            console.log(error);
+        }).then(function() { console.log("success2"); });
+
+        var p1 = new Promise(function(resolve) {
+            setTimeout(function() { resolve('hello'); }, 3000);
+        });
+        var p2 = new Promise(function(resolve) {
+            setTimeout(function() { resolve('hello again'); }, 1000)
+        });
+        Promise.all([p1, p2]).then(function(message) {
+            console.log(message)
+        });
+    })();
+
+    
     </script>
     <script>
     $(function() {

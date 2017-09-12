@@ -61,6 +61,8 @@
                 function close() {
                     dialog.fadeOut("fast");
                     modalbg.fadeOut("fast");
+                   /* dialog.remove();
+                    modalbg.remove();*/
                     if (set.overflow == false) {
                         setTimeout(function() {
                             $("body").css({ "overflow": "auto", "padding-right": "0px" })

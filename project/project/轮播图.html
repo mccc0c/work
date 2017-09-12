@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.carouselfig {
+    width: 290px;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+    /*cursor: pointer;*/
+    margin: 0 auto;
+}
+
+.carouselfig .list_wrapper {
+    position: absolute;
+    top: 0;
+    width: 1500px;
+    left: 0px;
+}
+
+.carouselfig .list {
+    float: left;
+}
+
+.carouselfig .list img {
+    display: block;
+    width: 100%;
+}
+
+.carouselfig .prev,
+.carouselfig .next {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 3;
+    top: 80px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+
+    filter:alpha(opacity=80);
+    line-height: 30px;
+    text-align: center;
+    display: none;
+}
+/*.carouselfig:hover .prev, .carouselfig:hover .next{
+	display: block;
+}*/
+.carouselfig .prev {
+    left: 10px;
+}
+
+.carouselfig .next {
+    right: 10px;
+}
+
+.carouselfig .radius {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    bottom: 5px;
+}
+
+.carouselfig .radius li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 5px;
+    bottom: 0;
+    left: 0;
+}
+
+.carouselfig .radius .on {
+    background: blue;
+}
+</style>
+
+<body>
+    <div class="carouselfig">
+        <div class="list_wrapper">
+            <div class="list"><img src="./images/2.jpg"></div>
+            <div class="list"><img src="./images/3.jpg"></div>
+            <div class="list"><img src="./images/4.jpg"></div>
+            <div class="list"><img src="./images/5.jpg"></div>
+        </div>
+    </div>
+        <script src="js/jquery.js"></script>
+        <script>
+        (function() {
+        	// 创建通用节点
+        	var ul = document.createElement('ul'),
+        	prevnode = document.createElement('div'),
+        	nextnode = document.createElement('div'),
+        		singleList = document.querySelectorAll('.carouselfig .list'),
+                listLen = singleList.length;
+                ul.className = 'radius',
+                carouselfig = document.querySelector('.carouselfig'),
+                li = "";
+                for(var i = 0; i<listLen; i++){
+                	if(i == 0){
+                		li = li+'<li class="on"></li>';
+                	}
+                	else{
+                		li = li+'<li></li>';
+                	}
+                	
+                }
+                ul.innerHTML = li;
+                carouselfig.appendChild(ul);
+                prevnode.innerHTML = '<';
+                prevnode.className = 'prev';
+                carouselfig.appendChild(prevnode);
+                nextnode.innerHTML = '>';
+                nextnode.className = 'next';
+                carouselfig.appendChild(nextnode);
+			
+            var list = document.querySelector('.carouselfig  .list_wrapper'),
+                prev = document.querySelector('.carouselfig .prev'),
+                next = document.querySelector('.carouselfig .next'),
+                carouselfig = document.querySelector('.carouselfig'),
+                radius = document.querySelectorAll('.carouselfig .radius li'),
+                index = 1,
+                s = null,
+                
+                listwidth =  singleList[0].clientWidth;
+
+            list.style.left = 0 + 'px';
+            prev.onclick = function() {
+                index = index - 1;
+                if (index < 1) {
+                    index = listLen;
+                }
+                animate(listwidth);
+                radiusstyle();
+            }
+            next.onclick = function() {
+                index = index + 1;
+                if (index > listLen) {
+                    index = 1;
+                }
+                animate(-listwidth);
+                radiusstyle();
+
+            }
+
+            function radiusstyle() {
+                for (var i = 0; i < radius.length; i++) {
+                    if (radius[i].className == "on") {
+                        radius[i].className = '';
+
+                    }
+                }
+                radius[index - 1].className = 'on';
+            }
+
+            function animate(offset) {
+                var newLeft = parseInt(list.style.left) + offset;
+                var bound = (listLen-1)*listwidth;
+                list.style.left = newLeft + 'px';
+                if (newLeft < -1*bound) {
+                    list.style.left = 0 + 'px';
+                }
+                if (newLeft > 0) {
+                    list.style.left = -1*bound + 'px';
+                }
+
+            }
+
+            
+
+            function play() {
+                s = setInterval(function() {
+                    next.onclick();
+                }, 1500);
+            };
+
+            function stop() {
+            	clearInterval(s);
+            };
+           /* carouselfig.onmouseover = stop;
+            carouselfig.onmouseout = play;*/
+            for (var i = 0; i < radius.length; i++) {
+                (function(i) {
+                    radius[i].onclick = function() {
+                       	var checkdiff = index - i-1;
+                       	var offset = checkdiff*listwidth;
+                       	index = i+1;
+                       	animate(offset);
+                       	radiusstyle();
+                    }
+                })(i);
+
+            }
+            play();
+
+        }())
+        </script>
+</body>
+
+</html>

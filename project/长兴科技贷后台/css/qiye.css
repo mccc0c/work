@@ -1,0 +1,368 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-16 14:18:47
+ * @version $Id$
+ */
+
+
+.library-box{
+	width: 95%;
+	float: left;
+	margin: 0 2.5%;
+}
+
+.screen{
+	overflow: hidden;
+	font-size: 18px;
+	color: #333;
+	margin-bottom: 15px;
+	position: relative;
+}
+.screen dl{
+	width: 88%;
+}
+.screen dt{
+	float: left;
+	width: 100px;
+	line-height: 26px;
+	text-align: right;
+}
+.screen dd{
+	float: left;
+	width: 80%;
+}
+.screen dd a{
+	color: #333;
+	line-height: 26px;
+	margin: 0 15px 15px 15px;
+	display: inline-block;
+}
+.screen dd a.cur{
+	color: #4479cf
+}
+
+.search-area{
+	height: 40px;
+	margin-bottom: 40px;
+}
+
+.search{
+	float: left;
+	height: 40px;
+	width: 320px;
+}
+.search input[type=text]{
+	float: left;
+	width: 208px;
+	height: 38px;
+	border:1px solid #ddd;
+	background: #e4eaf0;
+	padding: 0 10px;
+	line-height: 38px;
+	font-size: 16px;
+	color: #939dae;
+	outline: none;
+}
+
+.search-btn{
+	float: left;
+	width: 90px;
+	height: 40px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background: #315787;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+}
+
+.exploer-btn{
+	float: left;
+	display: block;
+	width: 102px;
+	height: 40px;
+	background: #399bff;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	margin-left: 40px;
+}
+
+.table{
+	width: 100%;
+	border: 1px solid #ddd;
+	border-bottom: 0;
+	clear: both;
+}
+
+.table th{
+	background: #e8ecf3;
+	font-size: 18px;
+	color: #333;
+	height: 60px;
+	border-top: 1px solid #fff;
+	border-bottom:1px solid #ddd;
+	font-weight: normal;
+	padding: 0 15px;
+	text-align: left;
+}
+.table td{
+	border-bottom: 1px solid #ddd;
+	padding: 10px 15px;
+	line-height: 24px;
+	background: #fff;
+	font-size: 16px;
+	color: #333333
+}
+.table td a{
+	color: #4479cf;
+	margin-right: 15px;
+}
+
+.table td span{
+	color: #ff4800
+}
+
+.show-more{
+	display: block;
+	font-size: 18px;
+	color: #4479cf;
+	background: url('../styImg/down-arrow.png') right center no-repeat;
+	padding-right: 20px;
+	line-height: 26px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.up-more{
+	background: url('../styImg/up-arrow.png') right center no-repeat;
+}
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+.fl dl{
+	width: 600px;
+}
+.fl dl dd{
+	width: 500px;
+}
+
+/*统计池*/
+.account{
+	margin-bottom: 45px;
+	font-size: 36px;
+	color: #222222;
+	line-height: 40px;
+	overflow: hidden;
+}
+.account p{
+	float: left;
+}
+.account p b{
+	color: #ff4800;
+	font-size: 48px;
+}
+
+
+/*企业详情*/
+.detail-top{
+	background: #fff;
+	border:1px solid #dddddd;
+	position: relative;
+	padding: 20px 0 20px 30px;
+	text-align: center
+}
+
+.detail-top ul{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.detail-top ul li{
+	float: left;
+	width: 21%;
+	height: 44px;
+	line-height: 44px;
+	padding-left: 4%;
+	text-align: left;
+}
+.name-icon{
+	background: url('../styImg/name-icon.png') no-repeat;
+}
+.people-icon{
+	background: url('../styImg/people-icon.png') no-repeat;
+}
+.manage-icon{
+	background: url('../styImg/manage-icon.png') no-repeat;
+}
+.phone-icon{
+	background: url('../styImg/phone-icon.png') no-repeat;
+}
+.position-icon{
+	background: url('../styImg/position-icon.png') no-repeat;
+}
+.mail-icon{
+	background: url('../styImg/mail-icon.png') no-repeat;
+}
+.money-icon{
+	background: url('../styImg/money-icon.png') no-repeat;
+}
+.gongshang-icon{
+	background: url('../styImg/gongshang-icon.png') no-repeat;
+}
+
+.save-btn{
+	display: inline-block;
+	width: 135px;
+	height: 38px;
+	font-size: 20px;
+	color: #fff;
+	border-radius: 10px;
+	background: #ff4800;
+	text-align: center;
+	line-height: 38px;
+	margin: 0 15px;
+}
+.cancel-btn{
+	display: inline-block;
+	width: 135px;
+	height: 38px;
+	font-size: 20px;
+	color: #fff;
+	border-radius: 10px;
+	background: #315787;
+	text-align: center;
+	line-height: 38px;
+	margin: 0 15px;
+}
+.graduation-btn{
+	display: inline-block;
+	width: 135px;
+	height: 38px;
+	font-size: 20px;
+	color: #fff;
+	border-radius: 10px;
+	background: #399bff;
+	text-align: center;
+	line-height: 38px;
+	margin: 0 15px;
+}
+.fu-icon{
+	display: block;
+	width: 123px;
+	height: 120px;
+	background: url('../styImg/fu-icon.png') no-repeat;
+	position: absolute;
+	right: 95px;
+	top: -20px;
+}
+
+
+/*分页*/
+.page{
+	height: 30px;
+	margin: 50px 0;
+	text-align: center;
+}
+.page a{
+	display: inline-block;
+	height: 28px;
+	border:1px solid #ddd;
+	font-size: 12px;
+	color: #666;
+	padding: 0 10px;
+	line-height: 28px;
+	background: #fff;
+}
+.page a.cur, .page a:hover{
+	border:1px solid #ee6f15;
+	color: #ee6f15
+}
+.page span{
+	display: inline-block;
+	line-height: 28px;
+	font-size: 12px;
+	color: #999999;
+	margin: 0 5px;
+}
+.page input[type=text]{
+	border:1px solid #ddd;
+	height: 28px;
+	width: 40px;
+	font-size: 12px;
+	color: #999;
+	text-align: center;
+	line-height: 28px;
+	background: #fff;
+	outline: none;
+}
+
+.bottom-bar{
+	margin: 40px auto;
+}
+
+.tabarea .tabhd{
+	border:1px solid #ddd;
+	height:60px;
+	background: #fff;
+}
+
+.tabarea .tabhd ul{
+	height: 60px;
+}
+
+.tabarea .tabhd ul li{
+	float: left;
+	width: 17%;
+	height: 60px;
+	border-right: 1px solid #ddd;
+}
+.tabarea .tabhd ul li a{
+	display: block;
+	height: 57px;
+	border-top: 3px solid #fff;
+	text-align: center;
+	line-height: 57px;
+	font-size: 18px;
+	color: #333;
+}
+.tabarea .tabhd ul li.cur a{
+	border-top: 3px solid #ff4800;
+	color: #ff4800;
+}
+.tabarea .tabbd .item{
+	
+}
+
+.detail-box{
+	padding: 2.5%;
+	border:1px solid #ddd;
+	border-top: 0;
+	background: #fff;
+}
+.tabarea .tabbd .item table{
+	width: 100%;
+	font-size: 16px;
+	color: #333;
+}
+.tabarea .tabbd .item table th{
+	height: 44px;
+	line-height: 44px;
+	background: #e8ecf3;
+	text-align: center;
+}
+.tabarea .tabbd .item table td{
+	text-align: center;
+	line-height: 24px;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}

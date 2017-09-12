@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>长兴科技企业信息管理平台成果总结</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="css/datepicker.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mystyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--左侧-->
+        <div class="left-nav">
+            <div class="head-img"> <img src="images/head-img.png" height="128" width="128" alt="">
+                <p>欢迎您：137***2129</p>
+            </div>
+            <ul>
+                <dl class="accordion">
+                    <dt><i class="icon1"></i> 资质</dt>
+                    <dd> <a>待入库企业</a> <a>已入库企业</a> <a>被退回企业</a> </dd>
+                    <dt><i class="icon2"></i> 补贴</dt>
+                    <dd> <a>待补贴企业</a> <a>补贴成功企业</a> <a>被退回企业</a> </dd>
+                    <dt><i class="icon3"></i> 贷款</dt>
+                    <dd> <a>待审批企业</a> <a>已放款企业</a> <a>被退回企业</a> </dd>
+                    <dt class="on"><i class="icon4"></i> 数据</dt>
+                    <dd style="display: block"> <a class="choose">数据统计</a> </dd>
+                </dl>
+            </ul>
+        </div>
+        <!--头部-->
+        <div class="head-bar">
+            <div class="yuanqu"> 长兴科技企业信息管理平台 </div>
+            <div id="version-icon"></div>
+            <a href="javascript:void(0)" class="quit">退出登录</a>
+            <div class="server">
+                <a href="#"></a>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="main-bar">
+            <div class="library-box"> </div>
+        </div>
+        <div class="dialog dialog_return"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>退回原因</h3>
+            </div>
+            <div class="dcontent"><img src="images/14.png">
+                <h4>退回原因</h4>
+                <p class="gray6">2017-06-06 科技局反馈意见：上传资料有误，请修改</p>
+            </div>
+            <div class="dbtn"><a class="dokay" style="margin: 0">确定</a> </div>
+        </div>
+        <div class="dialog dialog_apply"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>企业贷款信息填写 </h3>
+            </div>
+            <div class="dcontent">
+                <form class="form form_apply">
+                    <ul>
+                        <li>
+                            <label>贷款企业名称：</label>
+                            长兴电子科技股份有限公司 </li>
+                        <li>
+                            <label>期望贷款金额：</label>
+                            500万 </li>
+                        <li>
+                            <label>期望贷款周期：</label>
+                            12个月 </li>
+                        <li>
+                            <label>贷款合同号：</label>
+                            <input name="" type="text" placeholder="请输入合同编号" />
+                        </li>
+                        <li>
+                            <label>实际放款金额：</label>
+                            <input name="" type="text" placeholder="请输入金额" />
+                        </li>
+                        <li>
+                            <label>贷款开始时间：</label>
+                            <input name="" type="text" class="datepicker" />
+                        </li>
+                        <li>
+                            <label>贷款结束时间：</label>
+                            <input name="" type="text" class="datepicker" />
+                        </li>
+                        <li>
+                            <label>贷款周期：</label>
+                            <input name="" type="text" /> 天 </li>
+                        <li>
+                            <label>贷款利率：</label>
+                            <input name="" type="text" /> % </li>
+                        <li>
+                            <label>基准利率：</label>
+                            <input name="" type="text" /> % </li>
+                        <li>
+                            <label>受理银行：</label>
+                            长兴农商银行 </li>
+                        <li>
+                            <label>银行网点：</label>
+                            <select>
+                                <option>请选择</option>
+                                <option value="1">1</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>预计政府贴息：</label>
+                            <input name="" type="text" placeholder="自动计算" /> % </li>
+                        <li>
+                            <label>预计贴息金额：</label>
+                            <input name="" type="text" placeholder="自动计算" /> 万
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="dbtn"><a class="dokay">确定</a><a class="dcancle">取消</a> </div>
+                </form>
+            </div>
+        </div>
+        <div class="dialog dialog_reason"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>通过原因</h3>
+            </div>
+            <div class="dcontent">
+                <form class="form form_reason">
+                    <ul>
+                        <li>
+                            <label>退回原因</label>
+                        </li>
+                        <li>
+                            <textarea placeholder="请输入方案名称5~50字以内的原因"></textarea>
+                        </li>
+                    </ul>
+                    <div class="dbtn" style="padding-top: 15px;"><a class="dokay" style="margin: 0;">确定通过</a> </div>
+                </form>
+            </div>
+        </div>
+        <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>客户服务</h3>
+            </div>
+            <div class="dcontent">
+                <form class="form form_reason">
+                    <ul>
+                        <li>
+                            <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                        </li>
+                        <li>
+                            <textarea placeholder="请输入您的意见和建议（100字以内）" cols="100"></textarea>
+                        </li>
+                    </ul>
+                    <div class="dbtn" style="padding-top: 15px;"><a class="dokay" style="margin: 0;">确定通过</a> </div>
+                </form>
+            </div>
+        </div>
+        <div class="dialog dialog_detail"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>审核明细</h3>
+            </div>
+            <div class="dcontent">
+                <div class="dcwrapper">
+                    <ul>
+                        <li>
+                            <label>科技局：</label>审核通过 2017-06-06</li>
+                        <li>
+                            <label>原因：</label>无 </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dialog dialog_examineinfo"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>科技局审批信息</h3>
+            </div>
+            <div class="dcontent">
+                <div class="dcwrapper">
+                    <ul>
+                        <li>
+                            <label>企业名称：</label>长兴xxxx有限公司</li>
+                        <li>
+                            <label>企业法人：</label>朱先生 </li>
+                        <li>
+                            <label>企业地址：</label>长兴县萨克斯镇1588号</li>
+                        <li>
+                            <label>企业注册时期：</label>2011-5-6 </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dialog dialog_success">
+            <div class="dcontent"><img src="images/15.png">
+                <h4>提交成功</h4>
+                <p class="gray6">您的反馈已提交成功，感谢您对我们产品的支持！</p>
+            </div>
+            <div class="dbtn"><a class="dokay" style="margin: 0">确定</a> </div>
+        </div>
+        <div class="dialog dialog_applyinfo"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>补贴申请信息 </h3>
+            </div>
+            <div class="dcontent">
+                <div class="tex1">
+                    <label>企业名称：</label>长兴电子科技股份有限公司</div>
+                <div class="mtb">
+                    <ul>
+                        <li>
+                            <label>贷款合同金额：</label>500万</li>
+                        <li>
+                            <label>贷款利率：</label>4.6%</li>
+                        <li>
+                            <label>贷款开始时间：</label>2017-6-6</li>
+                        <li>
+                            <label>基准利率：</label>3.82%</li>
+                        <li>
+                            <label>贷款结束时间：</label>2018-8-8</li>
+                        <li>
+                            <label>受理银行：</label>长兴农商行</li>
+                        <li></li>
+                        <li>
+                            <label>银行网点：</label>红星桥农商行</li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="mtb">
+                    <ul>
+                        <li>
+                            <label>还款开始时间：</label>2017-6-6</li>
+                        <li>
+                            <label>还款状态：</label>按期还款</li>
+                        <li>
+                            <label>还款结束时间：</label>2018-8-8</li>
+                        <li>
+                            <label>贷款周期：</label> 365天</li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="mtb2">
+                    <ul>
+                        <li>
+                            <label>政府贴息：</label>0.82 %（自动计算）</li>
+                        <li>
+                            <label>贴息金额：</label>41233 元（自动计算）</li>
+                    </ul>
+                </div>
+                <div class="mtb2">
+                    <ul>
+                        <li>
+                            <label style="float: left;margin-right:5px;line-height: 38px;">还款凭证：</label>
+                            <a class="adownload"></a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <!-- <div class="dbtn"><a class="dokay">确定</a><a class="dcancle">取消</a> </div> -->
+            </div>
+        </div>
+        <div class="dialog dialog_examineinfo2"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>科技局审批信息</h3>
+            </div>
+            <div class="dcontent">
+                <div class="exam2">
+                    <ul class="left-top">
+                        <li><span>上海打不死科技股份有限公司</span>申请长兴县科技贷款，长兴县科技局已审批。</li>
+                        <li>
+                            <label>申请企业类型：</label>千人计划企业</li>
+                        <li>
+                            <label>法人代表：</label>稳步境</li>
+                        <li>
+                            <label>贷款开始时间：</label>2017-12-21</li>
+                    </ul>
+                    <ul class="right-bottom">
+                        <li> 长兴县科技局已同意</li>
+                        <li>审批通过时间：2017-08-16</li>
+                        <li>落款人：吴彦祖</li>
+                    </ul>
+                </div>
+                <div class="dbtn" style="padding-top: 15px;"><a class="dokay" style="margin: 0;width: auto;padding: 0 10px 0 10px;">保存为Word并下载</a> </div>
+            </div>
+        </div>
+        <!-- 退回原因 -->
+        <div class="dialog dialog_retract"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>退回原因</h3>
+            </div>
+            <div class="dcontent">
+                <form class="form form_reason">
+                    <ul>
+                        <li>
+                            <label>请填写退回原因</label>
+                        </li>
+                        <li>
+                            <textarea class="retract_con" placeholder="请输入5~50字以内的原因"></textarea>
+                        </li>
+                    </ul>
+                    <div class="dbtn" style="padding-top: 15px;"><a class="dokay" style="margin: 0;">确定退回</a> </div>
+                    <div class="fast_return">
+                        <a class="fast_return_btn">使用快捷键回复</a>
+                        <div class="return_cont">
+                            <a href="#" class="dclose2">&nbsp;</a>
+                            <label>使用快捷回复</label>
+                            <ul class="return_list" id="results">
+                                <!--  <li>你的财务状况不符合标准，故无法通过。
+                                    <div class="editingshow displayoff">
+                                        <i class="delcont"></i><img src="./images/22.png"><i class="editcont"></i>
+                                    </div>
+                                </li>
+                                <li>你的高新技术产业产值不符合标准，故无法通过。
+                                    <div class="editingshow displayoff">
+                                        <i class="delcont"></i><img src="./images/22.png"><i class="editcont"></i>
+                                    </div>
+                                </li>
+                                <li>你的资产负债率不符合标准，故无法通过。你的资产负债率不符合标准，故无法通过。
+                                    <div class="editingshow displayoff">
+                                        <i class="delcont"></i><img src="./images/22.png"><i class="editcont"></i>
+                                    </div>
+                                </li>
+                                <li>你的资产负债率不符合标准，故无法通过。你的资产负债率不符合标准，故无法通过。你的资产负债率不符合标准，故无法通过。你的资产负债率不符合标准，故无法通过。
+                                    <div class="editingshow displayoff">
+                                        <i class="delcont"></i><img src="./images/22.png"><i class="editcont"></i>
+                                    </div>
+                                </li> -->
+                            </ul>
+                            <a class="add_btn">新增</a><a class="edit_btn">编辑</a><a class="ok_btn">确定使用</a>
+                        </div>
+                    </div>
+                    <div class="editDialog">
+                        <a href="#" class="dclose3">&nbsp;</a>
+                        <ul>
+                            <li>
+                                <label class="editDialogTitle">添加快捷回复</label>
+                            </li>
+                            <li>
+                                <textarea placeholder="请输入方案名称5~50字以内的原因" class="add_conts"></textarea>
+                            </li>
+                        </ul>
+                        <div class="dbtn" style="padding-top: 15px;"><a class="doedit" style="margin: 0;">确定添加</a> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/easy.js"></script>
+        <script src="js/echarts.common.min.js"></script>
+        <script src="js/datepicker.js"></script>
+        <script src="js/common.js"></script>
+        <script>
+        $(function() {
+            $('.datepicker').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeYear: true,
+                changeMonth: true
+            });
+            var dialog_return = $('.dialog_return').modal({
+                width: '500px',
+                onOk: function() {} //点击确定按钮后执行
+            });
+            //dialog_return.open(); //退回原因弹窗显示
+
+            var dialog_apply = $('.dialog_apply').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_apply.open();
+
+            //退回原因
+            var dialog_reason = $('.dialog_reason').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_reason.open();
+
+            //客户服务
+            var dialog_service = $('.dialog_service').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_service.open();
+
+            //审核明细
+            var dialog_detail = $('.dialog_detail').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_detail.open();
+
+            //科技局审批信息
+            var dialog_examineinfo = $('.dialog_examineinfo').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_examineinfo.open();
+
+            //提交成功
+            var dialog_success = $('.dialog_success').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_success.open();
+
+            //补贴申请信息
+            var dialog_applyinfo = $('.dialog_applyinfo').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_applyinfo.open();
+
+            //科技局审批信息2
+            var dialog_examineinfo2 = $('.dialog_examineinfo2').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            //dialog_examineinfo2.open();
+
+            //退回原因
+            var dialog_retract = $('.dialog_retract').modal({
+                width: '500px',
+                onOk: function() {}
+            });
+            dialog_retract.open();
+            
+        })
+        </script>
+        <script src="js/myjs.js"></script>
+        <script type="text/html" id="tmpl">
+            <% for ( var i = 0; i < replaylist.length; i++ ) { %>
+                <li data-id='<%=i%>'><%=replaylist[i]%><div class="editingshow displayoff"><i class="delcont"></i><i class="break"></i><i class="editcont"></i></div>
+                </li>
+                <% } %>
+        </script>
+</body>
+
+</html>
