@@ -1196,7 +1196,35 @@
                 }
 
             });
-        }
+        },
+        scrolllineDouble: function(options) {
+            var defaults = {vertical:true};
+            var set = $.extend({}, defaults, options);
+            return this.each(function() {
+                var $t = $(this),
+                marginTop = $t.find("ul li").height();
+
+                function autoScroll() {
+                    $t.find("ul:first").animate({
+                        marginTop: marginTop
+                    }, 500, function() {
+                        $(this).css({
+                            marginTop: "0px"
+                        }).find("li:first").appendTo(this);
+                    });
+                };
+                var myar = setInterval(function() {
+                    autoScroll();
+                }, 1000)
+                $t.hover(function() {
+                    clearInterval(myar);
+                }, function() {
+                    myar = setInterval(function() {
+                        autoScroll();
+                    }, 1000)
+                });
+            });
+        },
     });
 })(jQuery);
 if (typeof console == "undefined" || typeof console.log == "undefined") var console = {

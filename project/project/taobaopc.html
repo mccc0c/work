@@ -90,12 +90,45 @@
         </a>
     </div>
     <div class="triangleup"><span></span></div>
+    <div class="tab">
+        <div class="nav">
+            <ul class="clearfix">
+                <li class="current">nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav5</li>
+            </ul>
+        </div>
+        <div class="content">
+            <ul>
+                <li style="display:block">content1</li>
+                <li>content2</li>
+                <li>content3</li>
+                <li>content4</li>
+                <li>content5</li>
+            </ul>
+        </div>
+    </div>
     <script src="js/jquery.js"></script>
+    <script src="js/easy.js"></script>
     <script>
-        $('.tabhead ul li').click(function(){
+    $(function() {
+        $('.tabhead ul li').click(function() {
             $(this).addClass('on');
             $(this).siblings('li').removeClass('on');
-        })
+        });
+        $('.tab').tab({
+            event: 'click',
+            auto: false,
+            before: function() {
+                console.log('before');
+            },
+            after: function() {
+                console.log('after');
+            }
+        });
+    });
     </script>
 </body>
 

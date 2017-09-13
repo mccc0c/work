@@ -58,14 +58,49 @@ $(function() {
                 }));*/
 
     $(document).on('click', '.choose li', function() {
+        var ind = $(this).index();
         if (!$(this).is('.on')) {
-            $(this).addClass('on');
+            $(this).addClass('on');            
         } else {
             $(this).removeClass('on');
+            if(ind!="0"){
+                $(this).parent('ul').find('li').eq(0).removeClass('on');
+            }
         }
 
     });
+    /*function checkAll(e){
+        var choose = $(e).parent('ul li:gt(0)');
+        choose.each(function(){
+            if(0)
+        })
 
+
+
+    }*/
+  //区域全选
+  $("#district_all").click(function(){
+    var a = $(this).attr("class");
+    if (a == 'on')
+    {
+      $.each($(this).siblings("li"), function(i, n){
+          $(this).removeClass("on");
+      });
+    }
+    else
+    {
+      $.each($(this).siblings("li"), function(i, n){
+          $(this).addClass("on");
+      });
+      
+    }
+  });
+
+ /* $(document).on('click','.choose li:gt(0)',function(){
+    if(!$(this).is('on')){
+      $(this).parent('ul').find('li:first').removeClass('on');    
+    }
+  })*/
     $(document).on('click', '.chbtn .title', function() {
         var t = $(this).parents('td');
         if (!t.is('.on')) {
@@ -85,6 +120,7 @@ $(function() {
 
 
     });
+
 
 });
 jQuery.extend(jQuery.fn.dataTableExt.oSort, {
