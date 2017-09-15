@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+    .inputfile{display: inline-block;width: 100px;height: 75px;border:1px solid #ccc;position: relative;}
+    	.inputfile input{height:75px;opacity: 0; position: absolute;filter: alpha(opacity=55);
+  top: 0;
+  right: 0;}
+  .pic img{float: left;width: 100px;}
+   
+    </style>
+</head>
+
+<body>
+    <div class="uploadpic">
+        <p>upload pic</p>
+        <div class="pic"></div>
+        <span class="inputfile"><input type="file" name="" multiple="multiple"></span>
+        <progress id="progress" value="0" max="100">
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+    $(function(){
+    	var load = 0;
+    	$('.inputfile input').change(function(){
+    		/*console.log($(this)[0]);*/
+
+    		$($(this)[0].files).each(function(){
+    			var file = $(this),total = file[0].size;
+    			console.log(file[0].size);
+    			var reader = new FileReader();
+    			reader.onload = function(e){
+    				var img = $('<img />');
+    				img.attr('src',e.target.result);
+    				$('.uploadpic .pic').append(img);
+    			}
+    			reader.readAsDataURL(file[0]);
+    			reader.onprogress= function(e){
+    				var progress = $('#progress');
+    				load = load+e.loaded;
+    				console.log(e.loaded);
+    				progress.value = (load/total)*100;
+    			}
+    			
+
+    			
+    		})
+    		
+    	})
+    })
+    </script>
+</body>
+
+</html>
