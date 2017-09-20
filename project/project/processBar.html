@@ -29,22 +29,26 @@
 
     		$($(this)[0].files).each(function(){
     			var file = $(this),total = file[0].size;
-    			console.log(file[0].size);
+    			/*console.log(file[0].size);*/
     			var reader = new FileReader();
+    			reader.readAsDataURL(file[0]);
     			reader.onload = function(e){
     				var img = $('<img />');
     				img.attr('src',e.target.result);
     				$('.uploadpic .pic').append(img);
     			}
-    			reader.readAsDataURL(file[0]);
+    			
     			reader.onprogress= function(e){
     				var progress = $('#progress');
-    				load = load+e.loaded;
-    				console.log(e.loaded);
-    				progress.value = (load/total)*100;
+    				
+    				console.log("onprogress");
+    				progress.value = 0.4*100;
     			}
-    			
-
+    			reader.onloadstart= function(e){
+    				
+    				console.log("onloadstart");
+    				
+    			}
     			
     		})
     		

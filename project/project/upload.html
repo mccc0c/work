@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .upload {
+        width: 318px;
+        border: 2px dashed #e9e9e9;
+        position: relative;
+        cursor: pointer;
+        height: 118px;
+    }
+
+    .upload input {
+        width: 318px;
+        height: 118px;
+        position: absolute;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        z-index: 3;
+        cursor: pointer;
+    }
+
+    .upload_after,
+    .uploading,
+    .upload_before {
+        position: absolute;
+        width: 318px;
+        height: 118px;
+        line-height: 118px;
+        text-align: center;
+    }
+
+    .uploading,
+    .upload_after {
+        display: none;
+    }
+
+    .tip {
+        display: none;
+        color: red;
+        
+    }
+    .bar{
+    	background-color: #209deb;
+	    width: 0%;
+	    height: 10px;
+	    border-radius: 4px;
+    }
+    .progress{
+    	    position: absolute;
+    top: 86px;
+    width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <form id="signup" action="" method="post">
+        <div class="upload">
+            <input type="file" id="uploadFile" onchange="fileChange(this)">
+            <input id="file" name="file" type="hidden" value="">
+            <div class="upload_before">upload_before</div>
+            <div class="uploading">uploading
+                <div class="progress">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="upload_after">upload_after</div>
+            
+        </div>
+        <p class="tip"></p>
+    </form>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.form.min.js"></script>
+    <script src="js/upload.js"></script>
+    
+</body>
+
+</html>
