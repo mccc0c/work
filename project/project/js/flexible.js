@@ -47,6 +47,7 @@
 ! function(N, M) {
     function setBodyFontSize() {
         var width = docEl.getBoundingClientRect().width; //获取html宽度
+        console.log(width);
         width / dpr > 540 && (width = 540 * dpr);
         var rem = width / 10;
         docEl.style.fontSize = rem + "px", flexible.rem = N.rem = rem;
@@ -60,6 +61,14 @@
         flexible = M.flexible || (M.flexible = {});
 
     // 判断head中是否设置了viewport，如果有设置，按照已有viewport 设置缩放比；判断head中是否设置了viewport，如果有设置，按照已有viewport 设置缩放比；
+    /*if (metaEl) {
+        console.warn('将根据已有的meta标签来设置缩放比例');
+        var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+        if (match) {
+            scale = parseFloat(match[1]);
+            dpr = parseInt(1 / scale);
+        }
+    }*/
     if (metaEl) {
         console.warn("将根据已有的meta标签来设置缩放比例");
         var match = metaEl.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
@@ -84,7 +93,8 @@
             isAndroid = (!!win.match(/android/gi), !!win.match(/iphone/gi)),
             isIPhone = isAndroid && !!win.match(/OS 9_3/),
             devicePixelRatio = N.devicePixelRatio;
-        dpr = isAndroid && !isIPhone ? devicePixelRatio >= 3 && (!dpr || dpr >= 3) ? 3 : devicePixelRatio >= 2 && (!dpr || dpr >= 2) ? 2 : 1 : 1, scale = 1 / dpr // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案其他设备下，仍旧使用1倍的方案
+        dpr = isAndroid && !isIPhone ? devicePixelRatio >= 3 && (!dpr || dpr >= 3) ? 3 : devicePixelRatio >= 2 && (!dpr || dpr >= 2) ? 2 : 1 : 1, 
+        scale = 1 / dpr // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案其他设备下，仍旧使用1倍的方案
 
         /*if (isIPhone) {
             // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案

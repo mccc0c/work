@@ -2,9 +2,52 @@
 <html>
 <head>
 <meta charset="utf-8">
+<!-- <meta name="viewport" content="initial-scale=1.0"> -->
 	<title>可伸缩适配</title>
+	<script src="js/flexible.js"></script>
+	<style>
+	*{padding:0;margin:0;}
+		.view{height:100%;overflow:hidden; }
+		body > .view[name='index']{background: #fff;}
+		.scrollview{overflow: hidden;position: relative;}
+	body[data-dpr="1"] >.view .header{height:25px; }
+	body[data-dpr="2"] >.view .header{height:50px; }
+	body[data-dpr="3"] >.view .header{height:75px; }
+	.header{top: 0;left: 0;background: #FE5400;padding:16px;top: 0;left: 0; }
+	.box{border: 1px solid #ccc;width: 9.973rem;margin: 0 auto;height: 3rem;margin-top: -1px;}
+	.scrollview{position: relative;}
+	.footer{bottom: 0;left: 0;background: #FE5400;padding:16px;top: 0;left: 0;}
+	body[data-dpr="1"] >.view .footer{height:25px; }
+	body[data-dpr="2"] >.view .footer{height:50px; }
+	body[data-dpr="3"] >.view .footer{height:75px; }
+	</style>
 </head>
 <body>
-<script src="js/flexible.js"></script>
+<div class="view" name="index">
+	<div class="header"></div>
+	<div class="scrollview">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<div class="footer"></div>
+</div>
+
+<script>
+	!function(w){
+		var body = w.document.querySelector('body'),
+		doc = w.document,
+        docEl = doc.documentElement,
+		dpr = doc.querySelector('html').getAttribute('data-dpr');
+		doc.querySelector('body').setAttribute('data-dpr',dpr);
+
+	}(window)
+</script>
 </body>
 </html>

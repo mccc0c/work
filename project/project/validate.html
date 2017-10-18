@@ -6,81 +6,258 @@
     <title>validate</title>
 </head>
 <style>
-input{-webkit-appearance:none;}
-ul,li,ol{list-style:none;list-style-type:none;}
-body,div,ul,li,p,span,h1,h2,h3,h4,h5,h6,img,form,table,tr,td,dl,dt,dd,input,select{margin:0;padding:0;}
-.clear{margin:0;padding:0;width:0;height:0;line-height:0;font-size:0;list-style:none;list-style-type:none;clear:both;zoom:1;}
+.left_text {
+    width: 70%;
+    float: left;
+}
 
-.myform{width:100%}
-.myform ul li{width:100%;line-height:20px;margin-bottom:10px;overflow:hidden;text-align:center;}
-.myform label{width:35%;line-height:40px;font-size:16px;text-align:right;display:inline-block;float:left;}
-.myform input{width:62%;height:40px;line-height:40px;text-align:left;text-indent:4px;display:inline-block;}
-.myform textarea{width:62%;height:100px;line-height:40px;text-align:left;display:inline-block;}
+.left_text table thead td {
+    vertical-align: top;
+    line-height: 30px;
+}
+
+input {
+    -webkit-appearance: none;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+    list-style-type: none;
+}
+
+body,
+div,
+ul,
+li,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+form,
+table,
+tr,
+td,
+dl,
+dt,
+dd,
+input,
+select {
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.clear {
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    list-style: none;
+    list-style-type: none;
+    clear: both;
+    zoom: 1;
+}
+
+.form1 {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.myform {
+    width: 100%
+}
+
+.myform ul li {
+    width: 100%;
+    line-height: 20px;
+    margin-bottom: 24px;
+    text-align: center;
+    position: relative;
+}
+
+.myform span {
+    width: 35%;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.myform input {
+    width: 62%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    text-indent: 4px;
+    display: inline-block;
+}
+
+.myform textarea {
+    width: 60%;
+    height: 100px;
+    line-height: 40px;
+    text-align: left;
+    display: inline-block;
+}
+
+
+
+
+
+
+
 /*.myform .error:not(input){width:100%;text-align:center;display:inline-block;line-height: 20px;margin-bottom: 10px;}
 .myform textarea.error{width: 62%;}
 .myform .error{color:red;}
 input.error,textarea.error,.myform input[type="checkbox"].error +label:after{
 border:1px solid red;}*/
 
-.myerror span{color:red;display:block;}
-.focuserror{border:1px solid red;}
-.myform .btn{width:140px;height:40px;line-height:40px;background:#00adee;text-align:center;margin:0 auto;color:#fff;font-size:20px;border:none;}
-.myform .agree{width:66%;line-height:30px;text-align:right;float:none;margin:0 auto;}
-.myform input[type=checkbox]{display:none;}
-.myform input[type="checkbox"]+label:after{    /*content: "¹3";*/
-content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-left:10px;display:inline-block;font-size:0;text-align:center;line-height:24px;vertical-align:middle;transition:color ease .3s;}
-.myform input[type="checkbox"]:checked+label:after{font-size:14px;}
+.myerror span {
+    color: red;
+    display: block;
+}
+
+.focuserror {
+    border: 1px solid red;
+}
+
+.myform .btn {
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    background: #00adee;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+}
+
+.myform .agree {
+    width: 66%;
+    line-height: 30px;
+    text-align: right;
+    float: none;
+    margin: 0 auto;
+}
+
+.myform .agree:before {
+    content: "\26AB";
+    color: #ddd;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 0;
+    text-align: center;
+    line-height: 24px;
+    vertical-align: middle;
+    transition: color ease .3s;
+}
+
+.myform input[type="checkbox"]:checked+label:before {
+    font-size: 14px;
+}
+
+.myform p.msg {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    font-size: 13px;
+    color: red;
+}
+
+.myform p.msg:before {
+    position: absolute;
+    content: '!';
+    border-radius: 100%;
+    background-color: red;
+    color: #fff;
+    top: 2px;
+    left: -15px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+}
+
+#agree-error {
+    top: 8px;
+    left: 89%;
+}
 </style>
 
 <body>
     <div class="form1">
         <form class="myform" id="form1" method="post" action="">
             <ul>
-                <!--<li>
-                    <label for="cname">Name</label>
+                <li>
+                    <span for="cname">Name</span>
                     <input id="cname" name="name" minlength="2" type="text" required>
                 </li>
                 <li>
-                    <label for="phone">phone</label>
-                    <input id="cphone" name="phone" type="text" required>
+                    <span for="phone">phone</span>
+                    <input id="cphone" name="phone" type="text">
                 </li>
-                <li>
-                    <label for="file">image</label>
+                <!-- <li>
+                    <span for="file">image</span>
                     <input id="file" name="file" type="file" required>
                 </li>
                 <li>
-                    <label for="cemail">E-Mail</label>
+                    <span for="cemail">E-Mail</span>
                     <input id="cemail" type="email" name="email" required>
-                </li>
+                </li>-->
                 <li>
-                    <label for="password">Password</label>
+                    <span for="password">Password</span>
                     <input id="password" name="password" type="password">
                 </li>
                 <li>
-                    <label for="confirm_password">Confirm password</label>
+                    <span for="confirm_password">Confirm password</span>
                     <input id="confirm_password" name="confirm_password" type="password">
                 </li>
                 <li>
-                    <label for="curl">URL</label>
+                    <span for="curl">URL</span>
                     <input id="curl" type="url" name="url">
                 </li>
                 <li>
-                    <label for="ccomment">Your comment</label>
-                    <textarea id="ccomment" name="comment" required></textarea>
-                </li> -->
-                <!-- <li>
-                    <input type="checkbox" class="checkbox" id="agree" name="agree">
-                    <label for="agree" class="agree">Please agree to our policy</label>
-                </li> -->
-                <li>
-                    <label for="ccomment">price</label>
-                    <input id="price" name="price" required minNumber></input>
+                    <span for="ccomment">Your comment</span>
+                    <textarea id="ccomment" name="comment"></textarea>
                 </li>
-
                 <li>
-                    <!-- <label for="agree"></label> -->
-                    <div class="myerror"><span></span></div>
-                    <input class="btn" id="submit" type="button" value="Submit">
+                    <span for="total">total</span>
+                    <input id="total" type="number" name="total">
+                </li>
+                <li>
+                    <span for="part">part</span>
+                    <input id="part" type="number" name="part"></input>
+                </li>
+                <li>
+                    <span for="ccomment">price</span>
+                    <input id="price" name="price"></input>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox" id="agree" name="agree" style="display: none;">
+                    <label for="agree" class="agree">Please agree to our policy</label>
+                </li>
+                <!-- <label for="agree"></label> -->
+                <!-- <div class="myerror"><span></span></div> -->
+                <input class="btn" id="submit" type="button" value="Submit">
                 </li>
             </ul>
         </form>
@@ -89,10 +266,10 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
     <script src="js/jquery.validate.js"></script>
     <script>
     /*$.validator.setDefaults({
-            submitHandler: function() {
-                    alert("提交成功!");
-                }
-        });*/
+                                    submitHandler: function() {
+                                            alert("提交成功!");
+                                        }
+                                });*/
     /*自定义验证*/
     /* addMethod 的第一个参数,就是添加的验证方法的名子,这时是af
      * addMethod 的第三个参数,就是自定义的错误提示,这里的提示为:”必须是一个字母,且a-f”
@@ -103,19 +280,44 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
      */
 
     /*验证只针对于name属性，且name属性相同时，只验证第一个*/
-    /*$.validator.addMethod(“af”,function(value,element,params){ 
-        if(value.length>1){ 
-            return false; 
-        } 
-        if(value>=params[0] && value<=params[1]){ 
-            return true; 
-        }else{ 
-            return false; 
-        } 
-    },”必须是一个字母,且a-f”);*/
-    /*自定义验证：小数点最多输入两位*/
+    $.validator.addMethod('af', function(value, element, params) {
+        if (value.length > 1) {
+            return false;
+        }
+        if (value >= params[0] && value <= params[1]) {
+            return true;
+        } else {
+            return false;
+        }
+    }, '必须是一个字母, 且a - f');
+    //验证正整数
+    jQuery.validator.addMethod("posinteger", function(value, element) {
+
+        var tel = /^[+]{0,1}(\d+)$/g;
+
+        return this.optional(element) || (tel.test(value));
+
+    }, "请输入正整数");
+    /*验证输入的是非负数，带小数点，可验证价格*/
+    jQuery.validator.addMethod("integer", function(value, element) {
+
+        var integer = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/g;
+
+        return this.optional(element) || (integer.test(value));
+
+    }, "请输入非负数");
+    /*验证输入数字是1-12*/
+    jQuery.validator.addMethod("month", function(value, element) {
+
+        var tel = /^([1-9]|1[0-2])$/g;
+
+        return this.optional(element) || (tel.test(value));
+
+    }, "1-12月份");
+
+    /*自定义验证：价格：小数点最多输入两位*/
     jQuery.validator.addMethod("minNumber", function(value, element) {
-        var returnVal = true;
+        /*var returnVal = true;
         inputZ = value;
         var ArrMen = inputZ.split("."); //截取字符串
         if (ArrMen.length == 2) {
@@ -124,8 +326,26 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
                 return false;
             }
         }
-        return returnVal;
+        return returnVal;*/
+        var price = /^\d*\.{0,1}\d{0,2}$/g;
+
+        return this.optional(element) || (price.test(value));
+
     }, "小数点后最多为两位"); //验证错误信息
+
+    /*验证两个输入吗，其中一个输入小于另一个输入,eg:输入优惠金额要小于总金额*/
+    jQuery.validator.addMethod("lessTotal", function(value, element) {
+        var returnVal = true;
+        var total = $('input[name="total"]').val(),
+            diff = total - value;
+        if (diff < 0) {
+            /*console.log(diff)*/
+            returnVal = false;
+        }
+        /*console.log(returnVal);*/
+        return this.optional(element) || returnVal;
+    }, "小于总人数");
+
     /*自定义验证，优惠值小于总计金额*/
     /*jQuery.validator.addMethod("lessTotal",function(value, element){
             var returnVal =true;
@@ -163,30 +383,35 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
     /****************************************************/
 
     $(function() {
+
         var validate1 = $("#form1").validate({
             //如果为true，当表单得到焦点时，移除在该表单上的errorClass并隐藏所有错误消息。避免与focusInvalid一起使用。
-            focusCleanup: true,
-            /*errorLabelContainer: $("#form1 .myerror>span"),*/
-            /*onfocusout: function(element) {
-              $(element).valid();
-            },
+            //focusCleanup: true,
+            //错误消息统一存放的容器
+            //errorLabelContainer: $("#form1 .myerror>span"),
+            errorElement: "p",
+            errorClass: "msg",
             onkeyup: function(element) {
-              $(element).valid();
-            },*/
+                $(element).valid();
+            },
             rules: {
 
-                /*phone: {
+                phone: {
+                    required: true,
                     isPhone: true
-                },
-                file: {
-                    fileType: {
-                        types: ["jpg", "jpeg", "png"]
-                    },
-                    maxFileSize: {
-                        "unit": "MB",
-                        "size": 1
-                    }
-                },
+                }
+                /*,
+                                file: {
+                                    fileType: {
+                                        types: ["jpg", "jpeg", "png"]
+                                    },
+                                    maxFileSize: {
+                                        "unit": "MB",
+                                        "size": 1
+                                    }
+                                }*/
+                ,
+                agree: { required: true },
                 password: {
                     required: true,
                     minlength: 5
@@ -196,56 +421,82 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
                     minlength: 5,
                     equalTo: "#password"
                 },
-                agree: "required"*/
-                price:{
-                    required:true,
-                    number:true,
-                    minNumber:true
-
-
-                }
+                price: {
+                    required: true,
+                    number: true,
+                    minNumber: true
+                },
+                total: {
+                    required: true,
+                    min: 1
+                },
+                part: { lessTotal: true },
+                comment: { minlength: 10, maxlength: 200 }
             },
             messages: {
                 /*name: { minlength: '姓名至少两个字符串' },
                 phone: '请输入正确的手机号',
                 email: '请输入正确的Email',
                 comment: '请输入评论'*/
+                agree: { required: "请勾选" },
+
             },
             //ignore:当进行表单验证时，过滤掉选择器所选择的表单。用了jQuery not方法（ not() ）。类型为submit和reset的表单总是被忽略的。 
             ignore: "not:hidden",
-            onfocusout: function(element, event) {
-                $element = $(element);
-                if ($element.is(':input') && !$element.is(':password')) {
-                    $element.val($.trim($element.val()));
-                }
-            },
+
             //invalidHandler:当未通过验证的表单提交时，可以在该回调函数中处理一些事情。该回调函数有两个参数：第一个为一个事件对象，第二个为验证器（validator） 
             invalidHandler: function(form, validator) {
                 var errors = validator.numberOfInvalids();
                 if (errors) {
                     /*alert(validator.errorList[0].message);*/
-                    $('.myerror span').html(validator.errorList[0].message);
-                    $('.myerror').show();
-                    $(validator.errorList[0].element).focus(); /*光标显示在第一个出错的地方*/
+                    /*$('.myerror span').html(validator.errorList[0].message);
+                    $('.myerror').show();*/
+                    //$(validator.errorList[0].element).focus();//光标显示在第一个出错的地方
+                    //验证出错时滚动到初始错误处，用于页面过长
+                    var li = $(validator.errorList[0].element).parent('li');
+                    /*console.log(li.html());*/
+                    $('html,body').animate({
+                        scrollTop: (li.offset().top - 84) + 'px'
+                    }, 100);
                 }
             },
+            //errorPlacement: Override error placement to not show error messages beside elements 
             errorPlacement: function(error, element) {
                 /*console.log($(element));*/
                 /*$(element).parents('li').append(error);*/
-                /*error.insertAfter(element); */ //错误代码放置在元素后面
+                error.insertAfter(element); //错误代码放置在元素后面
+                //只显示第一个错误信息
+                /*var el = $(validator.errorList[0].element);
+                var li = el.closest('li');
+                li.find('.msg').css("visibility", "visible");*/
             },
             //submitHandler:当表单通过验证，提交表单。回调函数有个默认参数form 
             submitHandler: function() {
                 /*alert("提交成功!");*/
             },
-            //
-            onkeyup: function(element) {
-                var errors = validate1.numberOfInvalids();
-                /*$(validator1.errorList[0].element).removeClass('focuserror');*/
+            //失去交时执行
+            onfocusout: function(element, event) {
+                var $element = $(element);
+                if ($element.is(':input') && !$element.is(':password')) {
+                    $element.val($.trim($element.val()));
+                }
+
+                var el = $(element),
+                    msg = el.parent("li").find('.msg'),
+                    errors = validate1.numberOfInvalids();;
+                el.valid();
                 if (errors && validate1.errorList[0] && $(validate1.errorList[0].element).valid()) {
+                    msg.css('display', 'none');
+                };
+            },
+            //键盘输入时执行
+            onkeyup: function(element) {
+
+                /*$(validate1.errorList[0].element).removeClass('focuserror');*/
+                /*if (errors && validate1.errorList[0] && $(validate1.errorList[0].element).valid()) {
                     $('.myerror').hide();
 
-                };
+                };*/
             },
             //highlight:将未通过验证的表单元素设置高亮。 
             /* highlight: function(element, errorClass) {
@@ -254,12 +505,16 @@ content:"\26AB";color:#000;width:24px;height:24px;border:1px solid #ccc;margin-l
                  })
              }*/
         });
-        //errorPlacement: Override error placement to not show error messages beside elements //
+
         $(document).on('click', '#submit', function() {
             if (!$("#form1").valid()) {
                 return;
             };
             alert('success');
+        });
+        $(document).on('keyup', 'input[name="comment"]', function() {
+            var length = $(this).val().length;
+            console.log(length);
         });
     });
     </script>
