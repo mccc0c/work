@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>进度条</title>
+	<style>
+	.process {
+		border: 1px solid #eee;
+		width: 0;
+		height: 10px;
+		background: #ddd;
+		position: relative;
+	}
+
+	.processNum {
+		position: absolute;
+		right: -3px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="process hor">
+		<p class="processNum"></p>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+	$.fn.animateProcess = function(progress, callback) {
+		return this.each(function() {
+			$(this).animate({ width: progress }, {
+				duration: 1000,
+				easing: 'swing',
+				step: function(now, fx) {
+					/*console.log("返回的CSS属性是：" + fx.prop);
+					console.log("属性初始值：" + fx.start);
+					console.log("属性结束值：" + fx.end);
+					console.log("属性当前值：" + fx.now);*/
+					$('p').text(Math.ceil(fx.now) + "%");
+				},
+				complete: function(scope, i, elem) {
+					if (callback) {
+						callback.call(this, i, elem);
+					}
+
+				}
+			});
+		})
+	}
+	$("div").animateProcess(60, function() {
+		setTimeout(function() {
+			$('div').animateProcess(80, function() {
+				setTimeout(function(){
+					$("div").animateProcess(100,function(){
+						console.log("success");
+					},600)
+				},1000)
+			})
+		}, 600)
+	});
+	</script>
+</body>
+
+</html>

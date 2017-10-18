@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>解析动画进度条</title>
+	<style>
+	.analy_title{margin-top:176px;color:#333333;font-size:24px;line-height:30px;text-align:center;margin-bottom:30px}
+	.analyprogress{width:561px;height:36px;background:#e8e8e8;border-radius:36px;margin:0 auto;z-index:3;}
+	.analybar{width:10%;position:relative;height:36px;background:#3e9fff;border-radius:36px;}
+	.analyprogress i{position:absolute;top:38px;right:-3px;color:#3e9fff;display:block;width:20px;height:20px;font-size:20px;}
+	.sub_analytitle{font-size:16px;color:#333;line-height:20px;text-align:center;margin-top:50px;}
+	</style>
+</head>
+
+<body>
+	<div class="mainBar h568 mb100 hide" id="progress">
+		<!-- <div class="analy_title">数据解析中…</div> -->
+		<div class="analyprogress">
+			<div class="analybar"><i class="value">10%</i></div>
+		</div>
+		<!-- <div class="sub_analytitle">*本平台承诺会对你上传的信息进行保密</div> -->
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+	$.fn.animateProgress = function(progress, callback) {
+		return this.each(function() {
+			$(this).animate({
+				width: progress + '%'
+			}, {
+				duration: 3000,
+				// swing or linear
+				easing: 'swing',
+				// this gets called every step of the animation, and updates the label
+				step: function(progress) {
+					var labelEl = $('.analybar', this);
+					if (Math.ceil(progress) == 100) {
+						setTimeout(function() {
+							labelEl.fadeOut();
+						}, 1000);
+						$('.analybar .value').text('100%');
+					} else {
+						$('.analybar .value').text(Math.ceil(progress) + '%');
+					}
+				},
+				complete: function(scope, i, elem) {
+					if (callback) {
+						callback.call(this, i, elem);
+					};
+				}
+			});
+		});
+	};
+	$(function() {
+		$('#progress .analybar').animateProgress(60, function() {
+			setTimeout(function() {
+				$('#progress .analybar').animateProgress(80, function() {
+					setTimeout(function() {
+						$('#progress .analybar').animateProgress(100, function() {
+							/*window.location.href = url;*/
+						});
+					}, 1000);
+				});
+			}, 1000);
+		});
+	})
+	</script>
+</body>
+
+</html>
