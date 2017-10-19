@@ -6,201 +6,34 @@
     <title>validate</title>
 </head>
 <style>
-.left_text {
-    width: 70%;
-    float: left;
-}
+    .left_text{width:70%;float:left;}
+    .left_text table thead td{vertical-align:top;line-height:30px;}
+    input{-webkit-appearance:none;}
+    ul,li,ol{list-style:none;list-style-type:none;}
+    body,div,ul,li,p,span,h1,h2,h3,h4,h5,h6,img,form,table,tr,td,dl,dt,dd,input,select{margin:0;padding:0;}
+    .hide{display:none;}
+    .clear{margin:0;padding:0;width:0;height:0;line-height:0;font-size:0;list-style:none;list-style-type:none;clear:both;zoom:1;}
+    .form1{width:400px;margin:0 auto;}
+    .myform{width:100%}
+    .myform ul li{width:100%;line-height:20px;margin-bottom:24px;text-align:center;position:relative;}
+    .myform span{width:35%;line-height:40px;font-size:16px;text-align:right;display:inline-block;vertical-align:top;}
+    .myform input{width:62%;height:40px;line-height:40px;text-align:left;text-indent:4px;display:inline-block;}
+    .myform textarea{width:60%;height:100px;line-height:40px;text-align:left;display:inline-block;}
 
-.left_text table thead td {
-    vertical-align: top;
-    line-height: 30px;
-}
-
-input {
-    -webkit-appearance: none;
-}
-
-ul,
-li,
-ol {
-    list-style: none;
-    list-style-type: none;
-}
-
-body,
-div,
-ul,
-li,
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-img,
-form,
-table,
-tr,
-td,
-dl,
-dt,
-dd,
-input,
-select {
-    margin: 0;
-    padding: 0;
-}
-
-.hide {
-    display: none;
-}
-
-.clear {
-    margin: 0;
-    padding: 0;
-    width: 0;
-    height: 0;
-    line-height: 0;
-    font-size: 0;
-    list-style: none;
-    list-style-type: none;
-    clear: both;
-    zoom: 1;
-}
-
-.form1 {
-    width: 400px;
-    margin: 0 auto;
-}
-
-.myform {
-    width: 100%
-}
-
-.myform ul li {
-    width: 100%;
-    line-height: 20px;
-    margin-bottom: 24px;
-    text-align: center;
-    position: relative;
-}
-
-.myform span {
-    width: 35%;
-    line-height: 40px;
-    font-size: 16px;
-    text-align: right;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.myform input {
-    width: 62%;
-    height: 40px;
-    line-height: 40px;
-    text-align: left;
-    text-indent: 4px;
-    display: inline-block;
-}
-
-.myform textarea {
-    width: 60%;
-    height: 100px;
-    line-height: 40px;
-    text-align: left;
-    display: inline-block;
-}
-
-
-
-
-
-
-
-/*.myform .error:not(input){width:100%;text-align:center;display:inline-block;line-height: 20px;margin-bottom: 10px;}
-.myform textarea.error{width: 62%;}
-.myform .error{color:red;}
-input.error,textarea.error,.myform input[type="checkbox"].error +label:after{
-border:1px solid red;}*/
-
-.myerror span {
-    color: red;
-    display: block;
-}
-
-.focuserror {
-    border: 1px solid red;
-}
-
-.myform .btn {
-    width: 140px;
-    height: 40px;
-    line-height: 40px;
-    background: #00adee;
-    text-align: center;
-    margin: 0 auto;
-    color: #fff;
-    font-size: 20px;
-    border: none;
-}
-
-.myform .agree {
-    width: 66%;
-    line-height: 30px;
-    text-align: right;
-    float: none;
-    margin: 0 auto;
-}
-
-.myform .agree:before {
-    content: "\26AB";
-    color: #ddd;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-    display: inline-block;
-    font-size: 0;
-    text-align: center;
-    line-height: 24px;
-    vertical-align: middle;
-    transition: color ease .3s;
-}
-
-.myform input[type="checkbox"]:checked+label:before {
-    font-size: 14px;
-}
-
-.myform p.msg {
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    font-size: 13px;
-    color: red;
-}
-
-.myform p.msg:before {
-    position: absolute;
-    content: '!';
-    border-radius: 100%;
-    background-color: red;
-    color: #fff;
-    top: 2px;
-    left: -15px;
-    width: 14px;
-    height: 14px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 14px;
-}
-
-#agree-error {
-    top: 8px;
-    left: 89%;
-}
+    /*.myform .error:not(input){width:100%;text-align:center;display:inline-block;line-height: 20px;margin-bottom: 10px;}
+    .myform textarea.error{width: 62%;}
+    .myform .error{color:red;}
+    input.error,textarea.error,.myform input[type="checkbox"].error +label:after{
+    border:1px solid red;}*/
+    .myerror span{color:red;display:block;}
+    .focuserror{border:1px solid red;}
+    .myform .btn{width:140px;height:40px;line-height:40px;background:#00adee;text-align:center;margin:0 auto;color:#fff;font-size:20px;border:none;}
+    .myform .agree{width:66%;line-height:30px;text-align:right;float:none;margin:0 auto;}
+    .myform .agree:before{content:"\26AB";color:#ddd;width:24px;height:24px;border:1px solid #ccc;margin-right:10px;display:inline-block;font-size:0;text-align:center;line-height:24px;vertical-align:middle;transition:color ease .3s;}
+    .myform input[type="checkbox"]:checked+label:before{font-size:14px;}
+    .myform p.msg{position:absolute;bottom:-18px;left:50%;font-size:13px;color:red;}
+    .myform p.msg:before{position:absolute;content:'!';border-radius:100%;background-color:red;color:#fff;top:2px;left:-15px;width:14px;height:14px;text-align:center;font-size:12px;font-weight:bold;line-height:14px;}
+    #agree-error{top:8px;left:89%;}
 </style>
 
 <body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>左边栏自适应高度</title>
+	<style href="css/base.css"></style>
+	<style>
+	*{padding:0; margin:0;}
+	body, html{min-height:100%;}
+	.wrapper{overflow: hidden;position: relative;min-height: 100%}
+	.accordion dt {
+		cursor: pointer
+	}
+	.accordion dd {
+		display: none
+	}
+	.left{width: 200px;position: absolute;left: 0;top:0;bottom: 0;background: #ddd;}
+	.right{margin-left: 200px;background: #fff;}
+	.box{width: 90%;margin:0 auto;height: 400px;}
+
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="left">
+			<dl class="accordion">
+				<dt>title1</dt>
+				<dd>a</dd>
+				<dt>title2</dt>
+				<dd>S</dd>
+				<dt>title3</dt>
+				<dd>N</dd>
+			</dl>
+		</div>
+		<div class="right">
+			<div class="box"></div>
+			<div class="box"></div>
+			<!-- <div class="box"></div> -->
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/easy.js"></script>
+	<script>
+	$('.accordion').accordion({
+		event: 'click'
+	});
+	</script>
+</body>
+
+</html>
