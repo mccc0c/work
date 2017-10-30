@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧-->
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li><i class="icon1"></i>报表申报</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告</li>
+            </a>
+            <a href="#">
+                <li class="on"><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon4"></i>联系我们</li>
+            </a>
+            <a href="#">
+                <li><i class="icon5"></i>领军人才企业备案</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="mbox">
+            <div class="button-box">
+                <ul class="info_button">
+                    <li class="on first"><a href="#">已提交</a></li>
+                    <li class="last"><a href="#">草稿</a></li>
+                </ul>
+            </div>
+            <div class="searchbox">
+                <ul>
+                    <li>
+                        <label>所属月份</label>
+                        <select class="monthselect">
+                            <option>请选择</option>
+                            <option>2017年10月</option>
+                            <option>2017年11月</option>
+                            <option>2017年12月</option>
+                            <option>2017年13月</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="dateSelect">
+                            <label>提交时间：</label>
+                            <input type="text" class="dateinputselect update_from" id="start_time" value="" placeholder="请选择">
+                            <span>至</span>
+                            <input type="text" class="dateinputselect update_to" id="end_time" value="" placeholder="请选择">
+                        </div>
+                    </li>
+                    <li><div class="search_btn">查询</div></li>
+                </ul>
+            </div>
+            <div class="tablebox table_style">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr class="title">
+                            <td style="min-width:40px ">序号</td>
+                            <td>科技企业类型</td>
+                            <td style="min-width:80px ">所属月份</td>
+                            <td style="min-width:128px ">提交时间</td>
+                            <td style="min-width:128px ">操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>银行信贷及融资总量表</td>
+                            <td>2017年10月</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">查看报表</a><a href="#">重新上传</a></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>科技型小微企业</td>
+                            <td>2017年10月</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">查看报表</a><a href="#">重新上传</a></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>银行信贷及融资总量表</td>
+                            <td>2017年10月</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">查看报表</a><a href="#">重新上传</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/js.js"></script>   
+    <script>
+    </script>
+</body>
+
+</html>

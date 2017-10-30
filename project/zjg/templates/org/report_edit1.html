@@ -1,0 +1,534 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧-->
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li class="on"><i class="icon1"></i>报表申报</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告</li>
+            </a>
+            <a href="#">
+                <li><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon4"></i>联系我们</li>
+            </a>
+            <a href="#">
+                <li><i class="icon5"></i>领军人才企业备案</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+                </ul>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="top">
+            <div class="back2"><img src="../../static/images/back.png" width="26" height="26" alt="" />
+                <p>返回</p>
+            </div>
+            <div class="btns">
+                <a href="#" class="on">表1</a><a href="#">表2</a><a href="#" class="last">表3</a>
+            </div>
+        </div>
+        <div class="mbox nomargintop">
+            <div class="t1">
+                <h1>月融资总量统计表</h1></div>
+            <form class="myform Threeform" id="form1">
+                <div class="topLine">
+                    <ul>
+                        <li>
+                            <label>所在银行：</label>
+                            <input name="title" type="text" placeholder="请输入" required>
+                            <p class="msg">请输入所在银行</p>
+                        </li>
+                        <li>
+                            <label>填表人：</label>
+                            <input name="address" type="text" placeholder="请输入" required>
+                            <p class="msg">请输入填表人</p>
+                        </li>
+                        <li style="width:auto">申报月份：2017年10月17日</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="noteimg"><img src="../../static/images/form1_note.png" width="50" height="50" alt="" /></div>
+                    <div class="text">1、银团贷款：此项只填由本行牵头的异地银行在我市投放的贷款数额，具体内容须在备注中说明。
+                        <br> 2、此表于每月2日前报送，如遇节假日，则节后第一个工作日报送。
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="cbox" style="margin-top: 30px;">
+                    <div class="blueUnit">（单位：亿元）</div>
+                    <ul>
+                        <li>
+                            <h2>本外币存款</h2>
+                            <label>票据融资</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="piao_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="piao_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="piao_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <h2>表外业务</h2>
+                            <label>银行承兑汇票</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="bank_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="bank_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="bank_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>信用证</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="trust_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="trust_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="trust_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>开出备用信用证</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="bei_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="bei_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="bei_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>保函</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="bao_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="bao_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="bao_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>海外代付</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="abroad_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="abroad_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="abroad_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>其他</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="other_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="other_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="other_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><li>
+                            <h2>直接融资</h2>
+                            <label>短期融资券</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="short_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="short_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="short_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>中期票据</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="middle_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="middle_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="middle_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>代理发行债券</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="dai_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="dai_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="dai_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>其他</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="other2_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="other2_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="other2_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </li>
+                        <li style="border: none; padding: 0">
+                            <h2>其他融资方式</h2>
+                            <label>信贷资产转让</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="xin_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="xin_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="xin_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>银行团贷<br>
+（填写注意事项见顶部备注）</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="tuan_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="tuan_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="tuan_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>租赁</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="rent_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="rent_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="rent_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>信托</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>余额</label>
+                                        <input name="trust2_m1" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写余额</p>
+                                    </li>
+                                    <li>
+                                        <label>比年初增加</label>
+                                        <input name="trust2_m2" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比年初增加</p>
+                                    </li>
+                                    <li>
+                                        <label>比上月增加</label>
+                                        <input name="trust2_m3" type="number" placeholder="请填写" required>
+                                        <p class="msg">请填写比上月增加</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="btns"><div class="saveBtn">保存</div><div class="submitBtn">提交</div></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/js.js"></script>   
+    <script>
+    $(function() {
+        $(document).on('click', '#form1 .submitBtn', function() {
+            if (!$("#form1").valid()) {
+                return;
+            };
+        });
+
+        var validator = $("#form1").validate({
+            rules: {
+                mobile: {
+                    isPhone: true
+                }
+            },
+            ignore: "not:hidden",
+            onfocusout: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            onkeyup: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            errorPlacement: function(error, element) {
+                var el = $(validator.errorList[0].element);
+                var li = el.parent('li');
+                element.removeClass('error');
+                el.addClass('error');
+                li.children('.msg').css("visibility", "visible");
+            },
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    $('.msg').css("visibility", "hidden");
+                    var el = $(validator.errorList[0].element);
+                    var li = el.parent('li');
+                    $('.mcontent').animate({
+                        scrollTop: ((li[0].offsetTop) - 80) + 'px'
+                    }, 100);
+                }
+            }
+
+        });
+        //企业类型选择
+        $('.moreSelectContent>label,.myotherbox>label').on('click', function() {
+            var $I = $(this).children('i');
+            var other = $('.moreSelectContent label i[data-value=7]');
+            var itemValue = $I.attr("data-value");
+            if ($I.hasClass("canot_select")) {
+                return false;
+            }
+            if ($I.hasClass('selectCur')) {
+                $I.removeClass('selectCur');
+                $(this).next('.box').remove();
+                if (!$I.is('.common')) {
+                    $('.myotherbox').hide();
+                }
+            } else {
+                $('#enterprise_type_tip').hide();
+                $I.addClass('selectCur');
+                if (itemValue == 7) {
+                    $('.moreSelectContent label').each(function() {
+                        var item = $(this).children("i");
+                        var id = item.attr("id");
+                        if (id == 'scale_1' || id == 'scale_2' || id == 'scale_3') {} else {
+                            if (item.attr("data-value") != 7) {
+                                $(this).children("i").removeClass("selectCur");
+                                $('.moreSelectContent .box').remove();
+                                $('.myotherbox').show();
+                            }
+                        }
+                    });
+                } else {
+                    if (!$I.is('.common')) {
+                        other.removeClass("selectCur");
+                        $('.myotherbox').hide();
+                    }
+                    var a = $('.fileboxTmpl').html();
+                    var sorder = 'f' + itemValue;
+                    $(this).after(a);
+                    var b = $(this).next('.box');
+                    b.find('input[type="file"]').attr('id', 'fileupload' + sorder);
+                    b.find('input[type="hidden"]').attr('id', 'files' + sorder);
+                    b.find('input[type="hidden"]').attr('name', 'files' + sorder);
+                    b.find('label').attr('for', 'fileupload' + sorder);
+                    b.find('a').attr('id', 'dq' + sorder);
+                    b.find('p').attr('id', 'upload_tip' + sorder);
+                };
+            }
+        });
+
+    });
+    </script>
+</body>
+
+</html>

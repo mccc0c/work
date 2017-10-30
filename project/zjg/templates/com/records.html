@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧-->
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li class="on"><i class="icon5"></i>港城合伙人备案</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告</li>
+            </a>
+            <a href="#">
+                <li><i class="icon4"></i>联系我们</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="mbox">
+            <div class="t1">
+                <h1>“港城合伙人”入会申请表</h1></div>
+            <div class="cbox">
+                <div class="infoshow">本单位自愿申请加入“港城合伙人”，遵守管理办法，在享受会员权利的同时履行会员义务。 请加入“港城合伙人”QQ群：431887301</div>
+                <form class="myform specialmsg" id="recordform">
+                    <ul>
+                        <li>
+                            <label>填表人姓名</label>
+                            <input name="recordsname" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入姓名</p>
+                        </li>
+                        <li>
+                            <label>企业名称</label>
+                            <input name="recordscompany" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入企业地址</p>
+                        </li>
+                        <li>
+                            <label>通讯地址</label>
+                            <input name="recordsaddress" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入通讯地址</p>
+                        </li>
+                        <li>
+                            <label>邮政编码</label>
+                            <input name="recordscode" type="text" placeholder="请填写" required >
+                            <p class="msg">请输入邮政编码</p>
+                        </li>
+                        <li>
+                            <label>网址</label>
+                            <input name="recordsurl" type="url" placeholder="请填写" required>
+                            <p class="msg">请输入网址</p>
+                        </li>
+                        <li>
+                            <label>企业性质</label>
+                            <div class="choose box_overflow">
+                                <ul>
+                                    <li><i></i> <span>国有企业</span></li>
+                                    <li> <i></i> <span>集体企业</span> </li>
+                                    <li> <i></i> <span>私营企业</span> </li>
+                                    <li> <i></i> <span>外商独资</span> </li>
+                                    <li> <i></i> <span>中外合作</span> </li>
+                                    <li> <i></i> <span>中外合资</span> </li>
+                                    <li> <i></i> <span>其他类型</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="recordcompanytype" required>
+                            <p class="msg msg_style">请选择企业性质</p>
+                        </li>
+                        <li>
+                            <label>行业类别</label>
+                            <div class="choose box_overflow">
+                                <ul>
+                                    <li><i></i> <span>装备制造</span></li>
+                                    <li> <i></i> <span>冶金</span> </li>
+                                    <li> <i></i> <span>纺织</span> </li>
+                                    <li> <i></i> <span>化工</span> </li>
+                                    <li> <i></i> <span>服装业</span> </li>
+                                    <li> <i></i> <span>新能源</span> </li>
+                                    <li> <i></i> <span>新材料</span> </li>
+                                    <li> <i></i> <span>生物医药</span> </li>
+                                    <li> <i></i> <span>电子信息</span> </li>
+                                    <li> <i></i> <span>其他</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="recordindustrytype" required>
+                            <p class="msg msg_style">请选择行业类别</p>
+                        </li>
+                        <li>
+                            <label>企业情况</label>
+                            <div class="choose box_overflow">
+                                <ul>
+                                    <li> <i></i> <span>上市企业</span> </li>
+                                    <li> <i></i> <span>新三板挂牌企业</span> </li>
+                                    <li> <i></i> <span>高新技术企业</span> </li>
+                                    <li> <i></i> <span>市领军人才企业</span> </li>
+                                    <li> <i></i> <span>其他</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="recordcompanysitu" required>
+                            <p class="msg msg_style">请选择企业情况</p>
+                        </li>
+                       
+                        
+                        <li>
+                            <label>经营概况</label>
+                            <div class="box2 specialmsg">
+                                <ul>
+                                    <li>
+                                        <label>主要生产经营业务</label>
+                                        <textarea name="recordbusiness" type="text" placeholder="请填写" required></textarea> 
+                                        <p class="msg msg_style">请输入主要生产经营业务</p>
+                                    </li>
+                                    <li>
+                                        <label>总资产</label>
+                                        <input name="recordtotal" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入总资产</p>
+                                    </li>
+                                    <li>
+                                        <label>销售收入</label>
+                                        <input name="recordincome" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入销售收入</p>
+                                    </li>
+                                    <li>
+                                        <label>员工数</label>
+                                        <input name="recordstaff" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入员工数</p>
+                                    </li>
+                                    <li>
+                                        <label>实现利税</label>
+                                        <input name="recordsharp" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入实现利税</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                    <div class="submitBtn">提交</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/js.js"></script>   
+    <script>
+    $(function() {
+        
+        $(document).on('click', '.choose li', function() {
+            var t = $(this);
+            var p = t.parents('li');
+            var v = p.find('input');
+            var i = t.index();
+            t.addClass('on').siblings().removeClass('on');
+            v.val(i);
+            p.find('.msg').css("visibility", "hidden");
+        });
+        /*$(document).on('click', '#addHolder', function() {
+            var a = $('.holderTmpl').html();
+            $('.newAddHolder').append(a);
+            var n = $('.newAddHolder .holderbox:last');
+            var i = $('.newAddHolder .holderbox:last').index();
+            n.find('.holderName').attr('name', 'holderName' + i);
+            n.find('.holderAmmount').attr('name', 'holderAmmount' + i);
+            n.find('.holderType').attr('name', 'holderType' + i);
+            n.find('.holderPercent').attr('name', 'holderPercent' + i);
+        });*/
+        $(document).on('click', '#recordform .submitBtn', function() {
+            if (!$("#recordform").valid()) {
+                return;
+            };
+        });
+
+        var validator = $("#recordform").validate({
+            rules: {
+                recordscode:{
+                    isZipCode:true
+                }
+            },
+            ignore: "not:hidden",
+            onfocusout: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            onkeyup: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            errorPlacement: function(error, element) {
+                var el = $(validator.errorList[0].element);
+                var li = el.parent('li');
+                element.removeClass('error');
+                el.addClass('error');
+                li.children('.msg').css("visibility", "visible");
+            },
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    $('.msg').css("visibility", "hidden");
+                    var el = $(validator.errorList[0].element);
+                    var li = el.parent('li');
+                    $('.mcontent').animate({
+                        scrollTop: ((li[0].offsetTop) - 80) + 'px'
+                    }, 100);
+                }
+            }
+
+        });
+        //企业类型选择
+        $('.moreSelectContent>label,.myotherbox>label').on('click', function() {
+            var $I = $(this).children('i');
+            var other = $('.moreSelectContent label i[data-value=7]');
+            var itemValue = $I.attr("data-value");
+            if ($I.hasClass("canot_select")) {
+                return false;
+            }
+            if ($I.hasClass('selectCur')) {
+                $I.removeClass('selectCur');
+                $(this).next('.box').remove();
+                if (!$I.is('.common')) {
+                    $('.myotherbox').hide();
+                }
+            } else {
+                $('#enterprise_type_tip').hide();
+                $I.addClass('selectCur');
+                if (itemValue == 7) {
+                    $('.moreSelectContent label').each(function() {
+                        var item = $(this).children("i");
+                        var id = item.attr("id");
+                        if (id == 'scale_1' || id == 'scale_2' || id == 'scale_3') {} else {
+                            if (item.attr("data-value") != 7) {
+                                $(this).children("i").removeClass("selectCur");
+                                $('.moreSelectContent .box').remove();
+                                $('.myotherbox').show();
+                            }
+                        }
+                    });
+                } else {
+                    if (!$I.is('.common')) {
+                        other.removeClass("selectCur");
+                        $('.myotherbox').hide();
+                    }
+                    var a = $('.fileboxTmpl').html();
+                    var sorder = 'f' + itemValue;
+                    $(this).after(a);
+                    var b = $(this).next('.box');
+                    b.find('input[type="file"]').attr('id', 'fileupload' + sorder);
+                    b.find('input[type="hidden"]').attr('id', 'files' + sorder);
+                    b.find('input[type="hidden"]').attr('name', 'files' + sorder);
+                    b.find('label').attr('for', 'fileupload' + sorder);
+                    b.find('a').attr('id', 'dq' + sorder);
+                    b.find('p').attr('id', 'upload_tip' + sorder);
+                };
+            }
+        });
+
+    });
+    </script>
+</body>
+
+</html>

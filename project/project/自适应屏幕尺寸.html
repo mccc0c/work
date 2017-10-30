@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>self-adaption</title>
+</head>
+
+<style>
+body, html{padding: 0;margin: 0;}
+.wrapper{width: 1200px;height: 30px;margin:0 auto;background: #ddd;}
+@media screen and (max-width:1200px) {
+	.wrapper {
+		width: 900px;
+	}
+}
+
+</style>
+
+<body>
+	<div class="wrapper"></div>
+	<script src="js/jquery.js"></script>
+	<script>
+	//标题自适应
+	function placeholderPic() {
+		var w = $('body').width();
+		if (w > 1536) {
+			$('body').removeClass('less1024');
+			$('body').removeClass('less1536');
+		} else if (w <= 1536 && w >= 1200) {
+			$('body').addClass('less1536');
+			$('body').removeClass('less1024');
+		} else {
+			$('body').addClass('less1024');
+			$('body').removeClass('less1536');
+		}
+	}
+
+	placeholderPic();
+	window.onresize = function() {
+		placeholderPic();
+	}
+	</script>
+</body>
+
+</html>

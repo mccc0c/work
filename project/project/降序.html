@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="z">逆序</div>
+	<div class="n">正序</div>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<script src="js/jquery.js"></script>
+	<script>
+	var ul = $("ul");
+	var arr = ul.children("li").get();
+	
+	var store = arr.slice(0);
+	arr.sort(function(a, b) {
+		console.log(a.innerHTML+"-"+b.innerHTML);
+		return -a.innerHTML.localeCompare(b.innerHTML);
+	});
+	//排序
+	$(document).on("click",'.z',function(){
+	ul.append(arr);
+	})
+	
+	//恢复
+	$(document).on("click",'.n',function(){
+		ul.append(store);
+	})
+	
+	</script>
+</body>
+
+</html>

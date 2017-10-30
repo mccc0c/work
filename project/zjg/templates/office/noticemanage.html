@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧-->
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon6"></i>数据统计</li>
+            </a>
+            <a href="#">
+                <li class="on"><i class="icon2"></i>公告管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon1"></i>报表信息</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            </li>
+                        </ul>
+                        <div class="msg">请输入内容</div>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="mbox">
+            <div class="searchbox">
+                <ul>
+                    <li>
+                        <label>标题：</label>
+                        <input type="text" name="searchtitle" class="search_input" id="searchtitle" placeholder="请选择">
+                    </li>
+                    <li>
+                        <div class="dateSelect">
+                            <label>提交时间：</label>
+                            <input type="text" class="dateinputselect update_from" id="loan_start_time" value="" placeholder="请选择">
+                            <span>至</span>
+                            <input type="text" class="dateinputselect update_to" id="loan_end_time" value="" placeholder="请选择">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="search_btn">查询</div>
+                    </li>
+                </ul>
+                <div class="newNotice">新建公告</div>
+            </div>
+            <div class="tablebox table_style">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr class="title">
+                            <td>序号</td>
+                            <td>标题</td>
+                            <td>公告内容</td>
+                            <td>查看数</td>
+                            <td>创建时间</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>银行信贷及融资总量表</td>
+                            <td>内容</td>
+                            <td>1</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">取消置顶</a><a href="#">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>银行信贷及融资总量表</td>
+                            <td>内容2</td>
+                            <td>12</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">置顶</a><a href="#">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>科技型小微企业</td>
+                            <td>内容3</td>
+                            <td>13</td>
+                            <td>2017-10-25 16:20</td>
+                            <td><a href="#">置顶</a><a href="#">删除</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="dialog dialog_addNotice"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>新建公告 </h3>
+            </div>
+            <div class="dcontent">
+                <form class="form" id="form_addNotice">
+                    <ul>
+                        <li>
+                            <label>标题:</label>
+                            <input name="pname" type="text" placeholder="请输入公告标题" required />
+                        </li>
+                        <li>
+                            <label style="vertical-align: top;">公告内容：</label><textarea placeholder="请输入公告内容"></textarea>
+                        </li>
+                        <li>
+                            <label style="vertical-align: top">附件上传：</label>
+                            <div class="upload">
+                                <input type="file" name="mypic" id="uploadfile" onchange="fileChange(this,'license');">
+                                <input id="file" name="business_licence" type="hidden" value="<?= $business_licence ?>" required>
+                                <div class="upload_before">
+                                    <img src="../../static/images/upload.png">
+                                    <div class="upload_describe">
+                                        <div class="title">选择文件</div>
+                                        <div class="subtitle">添加你需要上传的文件</div>
+                                        <div class="subtitle" style="font-size: 11px">(格式仅限图片或pdf类型，大小20M)</div>
+                                    </div>
+                                </div>
+                                <div class="uploading hide">
+                                    <img src="../../static/images/file_ing.png">
+                                    <div class="upload_describe">
+                                        <div class="title">上传中</div>
+                                        <div class="progress">
+                                            <div class="bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="upload_after hide">
+                                    <img src="../../static/images/file_finsh.png">
+                                    <div class="upload_describe">
+                                        <div class="title">上传成功</div>
+                                        <div class="subtitle">重新上传附件<i></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="msg bizimg">请上传营业执照</p>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="myerror" style="margin: 0;"><span></span></div>
+                    <div class="dbtn"><a class="dokay2">确定添加</a></div>
+                </form>
+            </div>
+        </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/js.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/jquery.form.min.js"></script>
+    <script src="../../static/js/ajaxfileupload.js"></script>
+    <script>
+    $(function(){
+        var m1 = $('.newNotice').modal({
+                dialog: '.dialog_addNotice',
+                width: '620px',
+                height: '620px',
+                onOk: function() {}
+            });
+        //m1.open();
+        var isIE = /msie/i.test(navigator.userAgent) && !window.opera;
+
+// 有上传进度条的上传文件
+function fileChange(target, type) {
+    var fileSize = 0;
+    var filepath = target.value;
+    // 文件上传类型
+    var filetypes, filemaxsize;
+    switch (type) {
+        case 'license': // 营业执照
+            filetypes = [".jpg", ".JPG", ".jpeg", ".JPEG", ".pdf", ".PDF", ".png", "PNG"];
+            filemaxsize = 1024 * 20; //20M
+            break;
+        default:
+            filetypes = [".rar", ".RAR", ".zip", ".ZIP"];
+            filemaxsize = 1024 * 20; //20M
+    }
+
+    if (filepath) {
+        var isnext = false;
+        var fileend = filepath.substring(filepath.lastIndexOf("."));
+        // var fileend = filepath.substr(-4,4);
+        if (filetypes && filetypes.length > 0) {
+            for (var i = 0; i < filetypes.length; i++) {
+                if (filetypes[i] == fileend) {
+                    isnext = true;
+                    break;
+                }
+            }
+        }
+        if (!isnext) {
+            $(".filetypeBox p").text("不接受此文件类型！");
+            filetypeBox.open();
+            target.value = "";
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+    if (isIE && !target.files) {
+        var filePath = target.value;
+        var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+        if (!fileSystem.FileExists(filePath)) {
+            $(".filetypeBox p").text("附件不存在，请重新输入！");
+            return false;
+        }
+        var file = fileSystem.GetFile(filePath);
+        fileSize = file.Size;
+    } else {
+        fileSize = target.files[0].size;
+    }
+
+    var size = fileSize / 1024;
+    if (size > filemaxsize) {
+        alert("附件大小不能大于" + filemaxsize / 1024 + "M！");
+        target.value = "";
+        return false;
+    }
+    if (size <= 0) {
+        alert("附件大小不能为0M！");
+        target.value = "";
+        return false;
+    }
+    ajax_upload('uploadfile', type);
+}
+
+function ajax_upload(file_element_id, type) {
+    $('#form_addNotice').ajaxSubmit({
+        type: 'post',
+        url: '/yrtong/yangpu/ajax_upload_files/' + type,
+        data: {},
+        secureuri: false,
+        fileElementId: file_element_id,
+        dataType: 'json',
+        beforeSend: function() {
+            $('.bar').width(0)
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            $('.upload_before').hide();
+            $('.uploading').show();
+            $('.bar').width(percentVal)
+        },
+        success: function(data) {
+            // var data = eval('('+data+')');
+            $("#file").val(data.pic);
+            $(".upload").next('.msg').css("visibility", "hidden");
+            $('.upload_after').show();
+            $('.upload_before,.uploading').hide();
+        },
+        error: function() {
+            $("#file").val('');
+            $(".upload").siblings("p").text('上传失败').css("visibility", "visible");
+            $('.upload_after,.uploading').hide();
+            $('.upload_before').show();
+        },
+        complete: function(r) {},
+        resetForm: false,
+        clearForm: false
+    });
+}
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧-->
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li class="on"><i class="icon6"></i>数据统计</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon1"></i>报表信息</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="mbox">
+            <div class="button-box">
+                <ul class="info_button">
+                    <li class="on first"><a href="#">概览</a></li>
+                    <li class="last"><a href="#">单项统计</a></li>
+                </ul>
+                <div class="cont-3">
+                    <p>统计周期：</p>
+                    <p class="timevalue">2017-01-01至2017-07-06</p>
+                    <input type="button" class="form-control changedatebtn" id="date-range" value="更改">
+                </div>
+            </div>
+            <div class="cbox">
+                <div class="tab_box">
+                    <div class="tab">
+                        <div class="nav">
+                            <ul>
+                                <li class="current" data-value="1">
+                                    银行
+                                </li>
+                                <li data-value="2">
+                                    保险公司
+                                </li>
+                                <li data-value="3">
+                                    担保公司
+                                </li>
+                                <li data-value="4">
+                                    典当公司
+                                </li>
+                                <li data-value="5">
+                                    融资租赁公司
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li style="display:block">
+                                    <!-- <div>银行C</div> -->
+                                    <div class="titlebox">
+                                        <h3>本外币贷款</h3>
+                                    </div>
+                                    <div class="chartbox">
+                                        <ul class="chartcontent">
+                                            <li>
+                                                <div class="charttitle"><span>银行业金融机构贷款余额柱形图</span></div>
+                                                <div class="datachart1 chartstyle"></div>
+                                            </li>
+                                            <li>
+                                                <div class="charttitle "><span>本年新增贷款柱形图</span></div>
+                                                <div class="datachart2 chartstyle"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- <div>保险公司C</div> -->
+                                    <div class="titlebox">
+                                        <h3>本外币贷款</h3>
+                                    </div>
+                                    <div class="chartbox">
+                                        <ul class="chartcontent">
+                                            <li>
+                                                <div class="charttitle"><span>保险公司业金融机构贷款余额柱形图</span></div>
+                                                <div class="datachart3 chartstyle"></div>
+                                            </li>
+                                            <li>
+                                                <div class="charttitle "><span>本年新增贷款柱形图</span></div>
+                                                <div class="datachart4 chartstyle"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- <div>担保公司C</div> -->
+                                    <div class="titlebox">
+                                        <h3>本外币贷款</h3>
+                                    </div>
+                                    <div class="chartbox">
+                                        <ul class="chartcontent">
+                                            <li>
+                                                <div class="charttitle"><span>担保公司业金融机构贷款余额柱形图</span></div>
+                                                <div class="datachart5 chartstyle"></div>
+                                            </li>
+                                            <li>
+                                                <div class="charttitle "><span>本年新增贷款柱形图</span></div>
+                                                <div class="datachart6 chartstyle"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- <div>典当公司C</div> -->
+                                    <div class="titlebox">
+                                        <h3>本外币贷款</h3>
+                                    </div>
+                                    <div class="chartbox">
+                                        <ul class="chartcontent">
+                                            <li>
+                                                <div class="charttitle"><span>典当公司业金融机构贷款余额柱形图</span></div>
+                                                <div class="datachart7 chartstyle"></div>
+                                            </li>
+                                            <li>
+                                                <div class="charttitle "><span>本年新增贷款柱形图</span></div>
+                                                <div class="datachart8 chartstyle"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- <div>融资租赁公司c</div> -->
+                                    <div class="titlebox">
+                                        <h3>本外币贷款</h3>
+                                    </div>
+                                    <div class="chartbox">
+                                        <ul class="chartcontent">
+                                            <li>
+                                                <div class="charttitle"><span>融资租赁公司业金融机构贷款余额柱形图</span></div>
+                                                <div class="datachart9 chartstyle"></div>
+                                            </li>
+                                            <li>
+                                                <div class="charttitle "><span>本年新增贷款柱形图</span></div>
+                                                <div class="datachart10 chartstyle"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/moment.min.js"></script>
+    <script src="../../static/js/jquery.daterangepicker.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/echarts.js"></script>
+    <script src="../../static/js/js.js"></script>
+    <script>
+    var searchdata = function(url, index) {
+        var data1class = ".datachart1",
+            data2class = ".datachart2";
+        if (index == 1) {
+            data1class = ".datachart1";
+            data2class = ".datachart2";
+        } else if (index == 2) {
+            data1class = ".datachart3";
+            data2class = ".datachart4";
+        } else if (index == 3) {
+            data1class = ".datachart5";
+            data2class = ".datachart6";
+        } else if (index == 4) {
+            data1class = ".datachart7";
+            data2class = ".datachart8";
+        } else if (index == 5) {
+            data1class = ".datachart9";
+            data2class = ".datachart10";
+        }
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            success: function(r) {
+                r.data1.class = data1class;
+                r.data2.class = data2class;
+                chart(r.data1, r.data2);
+            }
+        })
+    };
+    var node = [];
+    /*var data1 = {
+            'class': '.datachart1',
+            'legend': ['余额', '比年初增加', '比上月增加'],
+            'xname': ['银行A', '银行B', '银行C', '银行D', '银行E'],
+            'data': [
+                [30, 22, 11, 21, 21],
+                [11, 10, 10, 10, 7],
+                [1, 2, 3, 5, 5]
+            ]
+        },
+        data2 = { 'class': '.datachart2', 'xname': ['银行A', '银行B', '银行C', '银行D', '银行E'], 'data': [30, 22, 11, 21, 21] };*/
+
+    var chart = function(setOption1, setOption2) {
+        writeChart(setOption1, setOption2)
+
+        function writeChart(setOption1, setOption2) {
+            showdatachart1(setOption1.class, setOption1.legend[0], setOption1.legend[1], setOption1.legend[2], setOption1.xname, setOption1.data[0], setOption1.data[1], setOption1.data[2]);
+            showdatachart2(setOption2.class, setOption2.xname, setOption2.data);
+        }
+
+        function showdatachart1(e, n1, n2, n3, x, v1, v2, v3) {
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    textStyle: {
+                        color: '#333',
+                        fontSize: 14
+                    },
+                    selectedMode: false,
+                    left: 'center',
+                    bottom: 10,
+                    itemWidth: 18,
+                    itemHeight: 18,
+                    itemGap: 20,
+                    data: [{
+                        name: n1,
+                        icon: 'rect'
+                    }, {
+                        name: n2,
+                        icon: 'rect'
+                    }, {
+                        name: n3,
+                        icon: 'rect'
+                    }]
+                },
+                color: ['#ffb74f', '#00aeff', '#6985fe'],
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    top: '10%',
+                    containLabel: true,
+                    borderColor: '#000'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: x,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#767e8d'
+                        }
+                    }
+
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '（单位:亿元）',
+                    nameTextStyle: {
+                        fontSize: 14
+                    },
+                    nameGap: 30,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            fontSize: 14
+                        }
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#767e8d'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: ['#efefef']
+                        }
+                    }
+                },
+                series: [{
+                    name: n1,
+                    type: 'bar',
+                    /*stack: '总量',*/
+                    barWidth: 20,
+                    itemStyle: {
+                        emphasis: {
+                            shadowColor: 'red'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#767e8d'
+                            }
+                        }
+                    },
+                    data: v1
+                }, {
+                    name: n2,
+                    type: 'bar',
+                    barWidth: 20,
+                    /*stack: '总量',*/
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#767e8d'
+                            }
+                        }
+                    },
+                    data: v2
+                }, {
+                    name: n3,
+                    type: 'bar',
+                    barWidth: 20,
+                    /*stack: '总量',*/
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#767e8d'
+                            }
+                        }
+                    },
+                    /*label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: 16
+                            },
+                            formatter: function(a) {
+                                return a.value + v2[a.dataIndex] + v1[a.dataIndex]
+                            }
+                        }
+                    },*/
+                    data: v3
+                }]
+            };
+            echarts.init($(e)[0]).setOption(option);
+            node.push(echarts.init($(e)[0]));
+        }
+
+        function showdatachart2(e, x, v1) {
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                /*legend: {
+                    textStyle: {
+                        color: '#333',
+                        fontSize: 14
+                    },
+                    selectedMode: false,
+                    left: 'center',
+                    bottom: 10,
+                    itemWidth: 18,
+                    itemHeight: 18,
+                    itemGap: 20,
+                    data: [{
+                        name: n1,
+                        icon: 'rect'
+                    }, {
+                        name: n2,
+                        icon: 'rect'
+                    }, {
+                        name: n3,
+                        icon: 'rect'
+                    }]
+                },*/
+                color: ['#00aeff'],
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    top: '10%',
+                    containLabel: true,
+                    borderColor: '#000'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: x,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#767e8d'
+                        }
+                    }
+
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '（单位：亿元）',
+                    nameTextStyle: {
+                        fontSize: 14
+                    },
+                    nameGap: 30,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            fontSize: 14
+                        }
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#767e8d'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: ['#efefef']
+                        }
+                    }
+                },
+                series: [{
+
+                    type: 'bar',
+                    /*stack: '总量',*/
+                    barWidth: 40,
+                    itemStyle: {
+                        emphasis: {
+                            shadowColor: 'red'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#767e8d'
+                            }
+                        }
+                    },
+                    data: v1
+                }]
+            };
+            echarts.init($(e)[0]).setOption(option);
+            node.push(echarts.init($(e)[0]));
+        }
+    };
+    //初始化银行
+    searchdata('./bank1.json', 1);
+    $(function() {
+        function chartresize(node){
+            $.each(node, function(index, value) {
+                $(this).resize();
+            })
+        }
+        chartresize(node);
+        //echarts自适应
+        window.onresize = function() {
+            chartresize(node)
+        };
+        //切换
+        $('.tab').tab({
+            event: 'click',
+            auto: false,
+            after: function() {
+                var index = $('.nav li.current').attr('data-value');
+                searchdata('./bank2.json', index);
+                chartresize(node);
+            }
+        });
+
+        //日历
+        $('#date-range').dateRangePicker({
+            format: 'YYYY-MM-DD',
+            endDate: new Date(),
+            showShortcuts: false,
+            separator: '至',
+            getValue: function() {
+                return this.innerHTML;
+            },
+            setValue: function(s) {
+                $('.cont-3 .timevalue').text(s);
+            }
+
+        });
+
+    })
+    </script>
+</body>
+
+</html>

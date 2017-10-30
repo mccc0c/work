@@ -1,0 +1,18 @@
+.mbox{min-height:100px;background:#fff;margin-left:240px;padding-bottom:30px;overflow:hidden;}
+.moreSelectContent{padding:0px 35px 20px 30px;background:#fff;}
+.moreSelectContent .reportContent{float:left;width:84%;}
+.moreSelectContent .reportbutton{float:right;    /* position: absolute; */right:23px;    /* top: 0; */color:#fff;display:block;width:138px;border-radius:5px;background:#3e9fff;font-size:20px;line-height:50px;text-align:center;}
+.moreSelectContent .reportContent label{  
+width:12.5%;text-align:left;text-indent:7px;cursor:pointer;float:left;height:38px;display:block;line-height:38px;font-size:14px;}
+.moreSelectContent  .reportContent i{width:16px;height:38px;background:url(../../images/select.png) no-repeat center;float:left;}
+.moreSelectContent .reportContent .reportchecked{background:url(../../images/selected.png) no-repeat center;}
+.buttons_div{height:40px;margin-bottom:45px;}
+.buttons_div a{display:block;width:140px;height:40px;float:left;background:#fff;font-size:18px;color:#333;border:1px solid #ddd;border-radius:5px;line-height:40px;text-align:center;margin-right:10px;cursor:pointer;}
+.buttons_div a:hover{color:#3e9fff;border:1px solid #3e9fff;}
+.mtablebox{padding:10px 10px  0px 10px;}
+.mtable{border:none;}
+.mtable .title td,.mtable td{text-align:center;}
+.mtable tbody tr{padding:0 10px;border-top:1px solid #ddd;}
+.moreSelectContent .reportContent .dontcheck{color: #ddd; cursor: default;}
+.moreSelectContent .reportContent .dontcheck >i{background:url(../../images/selected.png) no-repeat center;}
+/*.mbox{min-width: 960px;}*/

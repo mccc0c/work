@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../../static/css/datepicker.css" rel="stylesheet">
+    <link href="../../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="left-nav">
+        <div class="head-img"> <img src="../../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li ><i class="icon1"></i>报表申报</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告</li>
+            </a>
+            <a href="#">
+                <li><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon4"></i>联系我们</li>
+            </a>
+            <a href="#">
+                <li class="on"><i class="icon5"></i>领军人才企业备案</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+				</ul>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="mbox">
+            <div class="t1">
+                <h1>领军人才企业政策性投融资区镇审核备案表</h1></div>
+            <div class="cbox">
+                <form class="myform" id="talentform">
+                    <ul>
+                        <li>
+                            <label>企业名称</label>
+                            <input name="title" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入企业名称</p>
+                        </li>
+                        <li>
+                            <label>企业地址</label>
+                            <input name="address" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入企业地址</p>
+                        </li>
+                        <li>
+                            <label>成立时间</label>
+                            <input name="date1" id="openDate" type="text" readonly placeholder="点此选择注册时间" required>
+                            <p class="msg">请输入成立时间</p>
+                        </li>
+                        <li>
+                            <label>注册资本</label>
+                            <input name="capital" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                            <p class="msg">请输入注册资本</p>
+                        </li>
+                        <li>
+                            <label>人才姓名</label>
+                            <input name="talent" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入人才姓名</p>
+                        </li>
+                        <li>
+                            <label>担任职务</label>
+                            <input name="position" type="text" placeholder="请填写" required>
+                            <p class="msg">请输入担任职务</p>
+                        </li>
+                        <li>
+                            <label>是否全职</label>
+                            <div class="choose">
+                                <ul>
+                                    <li><i></i> <span>是</span></li>
+                                    <li> <i></i> <span>否</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="fulltime" required>
+                            <p class="msg">请选择是否全职</p>
+                        </li>
+                        <li>
+                            <label>联系电话</label>
+                            <input name="tel" type="number" placeholder="请填写" required>
+                            <p class="msg">请输入联系电话</p>
+                        </li>
+                        <li>
+                            <label>手机号</label>
+                            <input name="mobile" type="number" placeholder="请填写" required>
+                            <p class="msg">请输入正确的手机号</p>
+                        </li>
+                        <li>
+                            <label>资助等次</label>
+                            <div class="choose">
+                                <ul>
+                                    <li><i></i> <span>重点</span></li>
+                                    <li> <i></i> <span>优先</span> </li>
+                                    <li> <i></i> <span>一般</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="level" required>
+                            <p class="msg">请选择资助等次</p>
+                        </li>
+                        <li>
+                            <label>实收资本</label>
+                            <input name="capitalReal" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                            <p class="msg">请输入实收资本</p>
+                        </li>
+                        <li>
+                            <label>累计销售/纳税</label>
+                            <input name="sale" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                            <p class="msg">请输入累计销售/纳税</p>
+                        </li>
+                        <li>
+                            <label>资助阶段</label>
+                            <div class="choose">
+                                <ul>
+                                    <li><i></i> <span>已获首笔资助</span></li>
+                                    <li> <i></i> <span>通过中期评估</span> </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="status" required>
+                            <p class="msg">请选择资助阶段</p>
+                        </li>
+                        <li>
+                            <label>累计现金投入</label>
+                            <input name="total" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                            <p class="msg">请输入累计现金投入</p>
+                            <div class="box1">
+                                <ul>
+                                    <li>
+                                        <label>设备仪器</label>
+                                        <input name="device" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入设备仪器投入</p>
+                                    </li>
+                                    <li>
+                                        <label>土地及土建</label>
+                                        <input name="land" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入土地及土建投入</p>
+                                    </li>
+                                    <li>
+                                        <label>配套流动资金</label>
+                                        <input name="cash" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入配套流动资金投入</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <label>员工构成</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>现有员工总数</label>
+                                        <input name="employeeTotal" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入现有员工总数</p>
+                                    </li>
+                                    <li>
+                                        <label>缴纳社保员工人员</label>
+                                        <input name="shebao" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入缴纳社保员工人数</p>
+                                    </li>
+                                    <li>
+                                        <label>技术研发岗位人员</label>
+                                        <input name="tech" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入技术研发岗位人数</p>
+                                    </li>
+                                    <li>
+                                        <label>本科</label>
+                                        <input name="benke" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入本科人数</p>
+                                    </li>
+                                    <li>
+                                        <label>硕士以上</label>
+                                        <input name="shuoshi" type="number" placeholder="请填写" required> <span class="unit">人</span>
+                                        <p class="msg">请输入硕士人数</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <label>主要股东构成</label>
+                            <div class="addbtn" id="addHolder">新增股东</div>
+                            <div class="box1 holderbox">
+                                <ul>
+                                    <li>
+                                        <label>股东名称</label>
+                                        <input name="holderName" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入股东名称</p>
+                                    </li>
+                                    <li>
+                                        <label>出资额</label>
+                                        <input name="holderAmmount" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入出资额</p>
+                                    </li>
+                                    <li>
+                                        <label>出资方式</label>
+                                        <input name="holderType" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入出资方式</p>
+                                    </li>
+                                    <li>
+                                        <label>持股占比</label>
+                                        <input name="holderPercent" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入持股占比</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="newAddHolder"></div>
+                            <div class="holderTmpl hide">
+                                <div class="box1 holderbox">
+                                    <ul>
+                                        <li>
+                                            <label>股东名称</label>
+                                            <input name="holderName" class="holderName" type="number" placeholder="请填写"> <span class="unit">万元</span>
+                                            <p class="msg">请输入股东名称</p>
+                                        </li>
+                                        <li>
+                                            <label>出资额</label>
+                                            <input name="holderAmmount" class="holderAmmount" type="number" placeholder="请填写"> <span class="unit">万元</span>
+                                            <p class="msg">请输入出资额</p>
+                                        </li>
+                                        <li>
+                                            <label>出资方式</label>
+                                            <input name="holderType" class="holderType" type="number" placeholder="请填写"> <span class="unit">万元</span>
+                                            <p class="msg">请输入出资方式</p>
+                                        </li>
+                                        <li>
+                                            <label>持股占比</label>
+                                            <input name="holderPercent" class="holderPercent" type="number" placeholder="请填写"> <span class="unit">万元</span>
+                                            <p class="msg">请输入持股占比</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <label>企业筹资情况</label>
+                            <div class="box2">
+                                <ul>
+                                    <li>
+                                        <label>人才团队自有资金</label>
+                                        <input name="ownMoney" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入人才团队自有资金</p>
+                                    </li>
+                                    <li>
+                                        <label>占比</label>
+                                        <input name="ownPercent" type="number" placeholder="请填写" required> <span class="unit">%</span>
+                                        <p class="msg">请输入占比</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box2 box3">
+                                <ul>
+                                    <li>
+                                        <label>社会股权投资资金</label>
+                                        <input name="socialMoney" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入社会股权投资资金</p>
+                                    </li>
+                                    <li>
+                                        <label>来源</label>
+                                        <input name="socialSource" type="text" placeholder="请填写" required> <span class="unit"></span>
+                                        <p class="msg">请输入来源</p>
+                                    </li>
+                                    <li>
+                                        <label>占比</label>
+                                        <input name="socialPercent" type="number" placeholder="请填写" required> <span class="unit">%</span>
+                                        <p class="msg">请输入占比</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box2 box3">
+                                <ul>
+                                    <li>
+                                        <label>其他方式筹集融资</label>
+                                        <input name="otherMoney" type="number" placeholder="请填写" required> <span class="unit">万元</span>
+                                        <p class="msg">请输入其他方式筹集融资</p>
+                                    </li>
+                                    <li>
+                                        <label>来源</label>
+                                        <input name="otherSource" type="text" placeholder="请填写" required> <span class="unit"></span>
+                                        <p class="msg">请输入来源</p>
+                                    </li>
+                                    <li>
+                                        <label>占比</label>
+                                        <input name="otherPercent" type="number" placeholder="请填写" required> <span class="unit">%</span>
+                                        <p class="msg">请输入占比</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="submitBtn">提交</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/easy.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/jquery.validate.js"></script>
+    <script src="../../static/js/datepicker.js"></script>
+    <script src="../../static/js/js.js"></script>   
+    <script>
+    $(function() {
+        $('#openDate').datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeYear: true,
+            changeMonth: true,
+            onSelect: function(dateText, inst) {
+                $(this).removeClass('error').next('.msg').css("visibility", "hidden");
+            }
+        });
+        $(document).on('click', '.choose li', function() {
+            var t = $(this);
+            var p = t.parents('li');
+            var v = p.find('input');
+            var i = t.index();
+            t.addClass('on').siblings().removeClass('on');
+            v.val(i);
+            p.find('.msg').css("visibility", "hidden");
+        });
+        $(document).on('click', '#addHolder', function() {
+            var a = $('.holderTmpl').html();
+            $('.newAddHolder').append(a);
+            var n = $('.newAddHolder .holderbox:last');
+            var i = $('.newAddHolder .holderbox:last').index();
+            n.find('.holderName').attr('name', 'holderName' + i);
+            n.find('.holderAmmount').attr('name', 'holderAmmount' + i);
+            n.find('.holderType').attr('name', 'holderType' + i);
+            n.find('.holderPercent').attr('name', 'holderPercent' + i);
+        });
+        $(document).on('click', '#talentform .submitBtn', function() {
+            if (!$("#talentform").valid()) {
+                return;
+            };
+        });
+
+        var validator = $("#talentform").validate({
+            rules: {
+                mobile: {
+                    isPhone: true
+                }
+            },
+            ignore: "not:hidden",
+            onfocusout: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            onkeyup: function(element) {
+                var el = $(element),
+                    li = el.parent('li');
+                el.valid();
+                if (validator.errorList.length == 0) {
+                    li.children('.msg').css("visibility", "hidden");
+                }
+            },
+            errorPlacement: function(error, element) {
+                var el = $(validator.errorList[0].element);
+                var li = el.parent('li');
+                element.removeClass('error');
+                el.addClass('error');
+                li.children('.msg').css("visibility", "visible");
+            },
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    $('.msg').css("visibility", "hidden");
+                    var el = $(validator.errorList[0].element);
+                    var li = el.parent('li');
+                    $('.mcontent').animate({
+                        scrollTop: ((li[0].offsetTop) - 80) + 'px'
+                    }, 100);
+                }
+            }
+        });
+
+    });
+    </script>
+</body>
+
+</html>

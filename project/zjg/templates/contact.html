@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>张家港市金融机构在线申报系统</title>
+    <link href="../static/css/datepicker.css" rel="stylesheet">
+    <link href="../static/css/easy.css" rel="stylesheet" type="text/css" />
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="left-nav">
+        <div class="head-img"> <img src="../static/images/head.jpg" height="122" width="122" alt="">
+            <p>欢迎您：137***2129</p>
+            <a class="member">会员中心</a>
+        </div>
+        <ul>
+            <a href="#">
+                <li><i class="icon1"></i>报表申报</li>
+            </a>
+            <a href="#">
+                <li><i class="icon2"></i>公告</li>
+            </a>
+            <a href="#">
+                <li><i class="icon3"></i>申报管理</li>
+            </a>
+            <a href="#">
+                <li><i class="icon4"></i>联系我们</li>
+            </a>
+            <a href="#">
+                <li><i class="icon5"></i>领军人才企业备案</li>
+            </a>
+        </ul>
+    </div>
+    <div class="mcontent">
+        <div class="header">
+            <div class="title"> 张家港市金融机构在线申报系统<img style="display: inline-block" src="../static/images/changxing-icon.png" width="70" height="27" alt="" /></div>
+            <div class="rnav">
+                <ul>
+                    <li class="quit"><a href="javascript:void(0)">退出登录</a></li>
+                    <li class="contact"><a href="#">通讯录</a><i></i></li>
+                    <li class="service"><a href="javascript:void(0)">客户服务</a><i></i></li>
+            </div>
+            <div class="dialog dialog_service"> <a href="#" class="dclose">&nbsp;</a>
+                <div class="title">
+                    <h3>客户服务</h3>
+                </div>
+                <div class="dcontent">
+                    <form class="form form_reason" id="serviceform">
+                        <ul>
+                            <li>
+                                <label>您好！请将您的意见、需求、建议或投诉内容告诉我们。我们的服务专员会尽快跟您联系。如您的问题比较紧急，请致电服务热线：400-6520-060</label>
+                            </li>
+                            <li>
+                                <textarea id="server_content" placeholder="请输入您的意见和建议（100字以内）" cols="100" required maxlength="100"></textarea>
+                            <div class="msg">请输入内容</div>
+                            </li>
+                        </ul>
+                        <div class="dbtn"><a class="dokay_pass" style="margin: 0;">确定通过</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="sbox">
+            <form class="form form_addPeopleSearch">
+                <ul>
+                    <li class="odd">
+                        <label>姓名：</label>
+                        <input type="text" name="">
+                    </li>
+                    <li>
+                        <label>角色类型：</label>
+                        <select name="role">
+                            <option>请选择</option>
+                            <option>金融办</option>
+                            <option>金融机构</option>
+                            <option>企业</option>
+                        </select>
+                    </li>
+                    <div class="clear"></div>
+                    <li class="odd">
+                        <label>部门名称：</label>
+                        <select name="role" class="">
+                            <option>请选择</option>
+                            <option>1</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="dateSelect">
+                            <label>创建时间：</label>
+                            <input type="text" class="datepicker update_from" id="start_time" value="" placeholder="请选择">
+                            <span>至</span>
+                            <input type="text" class="datepicker update_to" id="end_time" value="" placeholder="请选择">
+                        </div>
+                    </li>
+                </ul>
+                <div class="sbtn">查询</div>
+            </form>
+        </div>
+        <div class="clear"></div>
+        <div class="main-bar">
+            <div class="library-box">
+                <div class="article2">
+                    <div class="buttons_div">
+                        <a href="#" class="addPeople" id="addPeo">新增联系人</a>
+                    </div>
+                    <div class="tablebox">
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+                            <table class="table4 dataTable no-footer" width="100%" border="0" cellspacing="0" cellpadding="0" id="DataTables_Table_0" role="grid" style="width: 100%;text-align: center;">
+                                <thead>
+                                    <tr class="title table_thread" role="row">
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 125px;">序号</td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 125px;">角色类型</td>
+                                        <td class="chbtn chbtn1 sorting_disabled" rowspan="1" colspan="1" style="width: 237px;">
+                                            部门名称
+                                        </td>
+                                        <td class="chbtn chbtn2 sorting_disabled" rowspan="1" colspan="1" style="width: 164px;">姓名
+                                        </td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 340px;">职位</td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 162px;">手机号</td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 237px;">创建时间</td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 237px;">添加人</td>
+                                        <td class="sorting_disabled" rowspan="1" colspan="1" style="width: 237px;">操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr role="row">
+                                        <td>1</td>
+                                        <td>金融办</td>
+                                        <td>科技局</td>
+                                        <td>王力宏</td>
+                                        <td>科技型小微企业</td>
+                                        <td>18821562458</td>
+                                        <td>2017-06-12 16:00</td>
+                                        <td>科技局</td>
+                                        <td class="table_btn"><a class="edit_people" href="javascript:void(0)">编辑</a>
+                                            <a href="javascript:void(0)">删除</a></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>2</td>
+                                        <td>金融机构</td>
+                                        <td>科技局</td>
+                                        <td>王力宏</td>
+                                        <td>科技型小微企业</td>
+                                        <td>18821562458</td>
+                                        <td>2017-06-12 16:00</td>
+                                        <td>科技局</td>
+                                        <td class="table_btn"><a class="edit_people" href="javascript:void(0)">编辑</a>
+                                            <a href="javascript:void(0)">删除</a></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>3</td>
+                                        <td>企业</td>
+                                        <td>科技局</td>
+                                        <td>王力宏</td>
+                                        <td>科技型小微企业</td>
+                                        <td>18821562458</td>
+                                        <td>2017-06-12 16:00</td>
+                                        <td>科技局</td>
+                                        <td class="table_btn"><a class="edit_people" href="javascript:void(0)">编辑</a>
+                                            <a href="javascript:void(0)">删除</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog dialog_addPeople"> <a href="#" class="dclose">&nbsp;</a>
+            <div class="title">
+                <h3>新增联系人 </h3>
+            </div>
+            <div class="dcontent">
+                <form class="form form_addPeople" id="form_addPeople">
+                    <ul>
+                        <li>
+                            <label>选择角色类型:</label>
+                            <label for="role1" class="radio_style selected">
+                                <input id="role1" type="radio" name="selectrole" checked class="hide">金融办</label>
+                            <label for="role2" class="radio_style">
+                                <input id="role2" type="radio" name="selectrole" class="hide">金融机构</label>
+                            <label for="role3" class="radio_style">
+                                <input id="role3" type="radio" name="selectrole" class="hide">企业</label>
+                        </li>
+                        <li>
+                            <label>部门名称:</label>
+                            <select name="prolename" id="proname">
+                                <option>请选择</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>姓名:</label>
+                            <input name="pname" type="text" placeholder="请输入联系人姓名" required />
+                        </li>
+                        <li>
+                            <label>职位:</label>
+                            <input name="pjob" type="text" placeholder="请输入联系人职位" required />
+                        </li>
+                        <li>
+                            <label>手机号:</label>
+                            <input id="pphone" name="pphone" type="text" placeholder="请输入联系人手机" required />
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="myerror" style="margin: 0;"><span></span></div>
+                    <div class="dbtn"><a class="dokay2">确定添加</a></div>
+                </form>
+            </div>
+        </div>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/easy.js"></script>
+        <script src="../static/js/jquery.validate.js"></script>
+        <script src="../static/js/datepicker.js"></script>
+        <script src="../static/js/js.js"></script>        
+        <script>
+        $(function() {
+            $('.datepicker').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeYear: true,
+                changeMonth: true,
+                onSelect: function() {
+                    if ($(this).hasClass('update_from')) {
+                        setTimeout(function() {
+                            $('.update_to').focus();
+                        }, 0);
+                    }
+                }
+            });
+            // 增加联系人弹窗
+            var m1 = $('#addPeo').modal({
+                dialog: '.dialog_addPeople',
+                width: '568px',
+                height: '380px',
+                onOk: function() {}
+            });
+
+            //编辑
+            $('.table_btn .edit_people').modal({
+                dialog: '.dialog_addPeople',
+                width: '568px',
+                height: '380px',
+                beforeOpen: function() {},
+                onOk: function() {}
+            });
+
+            //单选框
+            $('.form_addPeople .radio_style').click(function() {
+                $(this).addClass('selected');
+                $(this).siblings('.radio_style').removeClass('selected');
+            })
+            /*验证*/
+            var form_addPeople = $('#form_addPeople');
+            if (form_addPeople[0]) {
+                var validator = form_addPeople.validate({
+                    messages: {
+                        pname: '请输入联系人姓名',
+                        pjob: '请输入联系人职位',
+                        pphone: '请输入联系人手机'
+
+                    },
+                    ignore: "not:hidden",
+                    onfocusout: function(element, event) {
+                        $element = $(element);
+                        if ($element.is(':input') && !$element.is(':password')) {
+                            $element.val($.trim($element.val()));
+                        }
+                    },
+                    onkeyup: function(element) {
+                        var errors = validator.numberOfInvalids();
+                        if (errors && validator.errorList[0] && $(validator.errorList[0].element).valid()) {
+                            $('.myerror').hide();
+                        };
+                    },
+                    invalidHandler: function(form, validator) {
+                        var errors = validator.numberOfInvalids();
+                        if (errors) {
+                            $('.myerror span').html(validator.errorList[0].message);
+                            $('.myerror').show();
+                            validator.errorList[0].element.focus();
+                            return false;
+                        }
+                    },
+                    errorPlacement: function(error, element) {}
+                });
+                //errorPlacement: Override error placement to not show error messages beside elements //
+                //弹窗确认按钮
+                $(document).on('change', '#proname', function() {
+                    var value = $('#proname option:selected').val();
+                    if (value === "请选择") {
+                        $('.myerror').find('span').html('请选择部门名称');
+                        $('.myerror').show();
+                        $('#proname').focus();
+                    } else {
+                        $('.myerror').hide();
+                    }
+                });
+                $(document).on('click', '.dokay2', function() {
+                    if (!check_select()) {
+                        $('.myerror').find('span').html('请选择部门名称');
+                        $('.myerror').show();
+                        $('#proname').focus();
+                        return false;
+                    }
+                    if (form_addPeople.valid()) {
+                        if (!check_phone_num()) {
+                            $('.myerror').find('span').html('联系电话格式不正确');
+                            $('.myerror').show();
+                            $('#pphone').focus();
+                            return false;
+                        } else {
+                            $('.myerror').hide();
+                            console.log('ok');
+                            m1.close();
+                            /*$.ajax({
+                                type: 'post',
+                                url: '/saveDemand',
+                                data: form_addPeople.serialize(),
+                                dataType: 'json',
+                                success: function(data) {
+                                    if (data.status) {
+                                        $('.myerror').hide();
+                                        m1.close(); //form表单隐藏
+                                        setTimeout(function() {
+                                            m2.open(); //成功弹框显示
+                                        }, 200);
+                                        form_addPeople[0].reset();
+                                    } else {
+                                        $('.myerror span').html('提交失败，请重试！');
+                                        $('.myerror').show();
+                                        return false;
+                                    }
+                                },
+                                error: function(data){
+                                    var errors = data.responseText;
+                                    errors = eval('('+errors+')');
+                                    $('.myerror span').html(errors[0]);
+                                    $('.myerror').show();
+                                    return false;
+                                }
+                            });*/
+                        }
+                    }
+                });
+            }
+
+            function check_phone_num() {
+                var phone_reg = /^1[3578][0-9]{9}$/;
+                return phone_reg.test($('#pphone').val());
+            }
+            function check_select() {
+                var value = $('#proname option:selected').val();
+                if (value === "请选择") {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        });
+        </script>
+</body>
+
+</html>
