@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>倒计时60秒</title>
+    <style>
+    .checkReal {
+        width: 70px;
+        color: #3e9fff;
+        background: #e5f3ff;
+        border: 1px solid #8ac5f8;
+        cursor: pointer;
+    }
+
+    .btnclickon {
+        color: #666;
+        background: #eee;
+        border: 1px solid #ddd;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="checkReal">check</div>
+    <script src="js/jquery.js"></script>
+    <script src="js/easy.js"></script>
+    <script>
+    /*var pCount = getCookie('pCount');
+        if (pCount) {
+            $('.checkReal').addClass('btnclickon').css('visibility', 'visible');
+        } else {
+            $('.checkReal').css('visibility', 'visible');
+        }*/
+    $(function() {
+        var pCount = getCookie('pCount');
+        var cTimer;
+        var cFlag = true;
+        if (pCount) {
+            cFlag = false;
+            var pTime = getCookie('pTime');
+            var time2 = (new Date()).getTime();
+            var a = pCount - Math.floor((time2 - pTime) / 1000);
+            $('.checkReal').text("重新发送(" + a + ")");
+            counter(a);
+            if (a < 0) {
+                resetCounter();
+                $('.checkReal').removeClass('btnclickon');
+                $('.checkReal').closest('li').find('input[name="custName"]').removeClass("noinput");
+            };
+            /*var name = getCookie('companyInput');*/
+            /*get_enterprise_info(name)*/
+        };
+
+        function resetCounter() {
+            clearInterval(cTimer);
+            /*$('.sms').removeClass('on');*/
+            cFlag = true;
+            $('.checkReal').text("check");
+            /*$('#custName').attr("readonly", false);*/
+            removeCookie('pCount');
+            removeCookie('pTime');
+        };
+
+        function counter(a) {
+            /*$('#custName').attr("readonly", "readonly");*/
+            $('.checkReal').addClass('btnclickon');
+            /*$('.checkReal').closest('li').find('input[name="custName"]').addClass("noinput");*/
+            cTimer = setInterval(function() {
+                if (a > 0) {
+                    a--;
+                    $('.checkReal').text("重新发送(" + a + ")");
+                    setCookie('pCount', a);
+                    setCookie('pTime', (new Date()).getTime());
+                } else {
+                    resetCounter();
+                    $('.checkReal').removeClass('btnclickon');
+                    /*$('.checkReal').closest('li').find('input[name="custName"]').removeClass("noinput");*/
+                }
+            }, 1000);
+        };
+        /*var rcom = getCookie('companyInput');
+        if (rcom) {
+            $('#custName').val(rcom);
+        };*/
+        // 检查企业名称真实性
+        $('body').on('click', '.checkReal', function() {
+            if (!cFlag) {
+                return;
+            };
+            var a = getCookie('pCount') || 60;
+            counter(a);
+            /*setCookie('companyInput', name);*/
+            cFlag = false;
+
+        });
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>json字符串转换</title>
+	<style>
+	.checkReal {
+		width: 70px;
+		color: #3e9fff;
+		background: #e5f3ff;
+		border: 1px solid #8ac5f8;
+		cursor: pointer;
+	}
+
+	.clickwaiting {
+		color: #666;
+		background: #eee;
+		border: 1px solid #ddd;
+	}
+	</style>
+</head>
+
+<body>
+	<!-- onclick='getdata(t)' -->
+	<a class="check" >查看</a>
+	<script src="js/jquery.js"></script>
+	<script src="js/easy.js"></script>
+	<script>
+	var t = {
+		"info": "0,10,1",
+		"draw": 2,
+		"recordsTotal": 2,
+		"recordsFiltered": 2,
+		"data": [{
+			"info": "0,10,1",
+			"draw": 2,
+			"recordsTotal": 2,
+			"recordsFiltered": 2,
+			"data": "1"
+		}, {
+			"info": "0,10,1",
+			"draw": 2,
+			"recordsTotal": 2,
+			"recordsFiltered": 2,
+			"data": "2"
+		}]
+	};
+	$(document).on('click', '.check', function() {
+		$.ajax({
+			type: 'get',
+			url: './data/check.json',
+			success: function(result) {
+				var jsontostring = JSON.stringify(result),
+					stringtojson = JSON.parse(jsontostring);
+				console.log(jsontostring);
+				console.log(stringtojson.data[0]);
+			}
+		});
+		
+	})
+	/*function getdata(data){
+		console.log(data);
+	}*/
+	</script>
+</body>
+
+</html>

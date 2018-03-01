@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="date"></div>
+	<script src="./js/jquery.js"></script>
+	<script type="text/javascript">
+	//判断时间距离当前时间
+	function formatDate2(str) {
+		/*if (str && str.indexOf('-')) {
+		    var str = str.replace(/-/g, "/");
+		};*/
+		//console.log(str);
+		// if (!str) return '';
+		var date = new Date(str),
+			now = new Date(); //当前时间
+		var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); //今天凌晨
+		var time = today - date.getTime();
+		if (time <= 0) {
+			var hour = date.getHours(),
+				minute = date.getMinutes();
+			if (hour < 10) {
+				hour = "0" + hour;
+			}
+			if (minute < 10) {
+				minute = "0" + minute;
+			}
+			return hour + ":" + minute;
+
+		} else if (time > 0 && (time / 3600000) <= 24) {
+			return '昨天'
+		} else {
+			if (date.getFullYear()) {
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var date = date.getDate();
+				return year + "-" + month + "-" + date;
+			} else return ''
+		}
+	}
+	//时间戳格式转化  now是时间戳
+	function formatDate(now) {
+		var year = now.getFullYear();
+		var month = now.getMonth() + 1;
+		var date = now.getDate();
+		var hour = now.getHours();
+		var minute = now.getMinutes();
+		var second = now.getSeconds();
+		//year + "-" + month + "-" + date + " " + 
+		if (hour < 10) hour = '0' + hour;
+		if (minute < 10) minute = '0' + minute;
+		if (second < 10) second = '0' + second;
+		return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+	}
+
+	function formatDatexxx(str) {
+		/*if (str && str.indexOf('-')) {
+		    var str = str.replace(/-/g, "/");
+		};*/
+		//console.log(str);
+		if (!str) return '';
+		var date = new Date(str);
+		var time = (new Date()).getTime() - date.getTime();
+		if (time < 0) {
+			return ''
+		} else if ((time / 3600000) < 24) {
+			var hour = date.getHours(),
+				minute = date.getMinutes();
+			if (hour < 10) { hour = "0" + hour; }
+			if (minute < 10) { minute = "0" + minute; }
+			return hour + ":" + minute;
+		} else if ((time / 86400000) < 2) {
+			return '昨天'
+		} else {
+			if (date.getFullYear()) {
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var date = date.getDate();
+				return year + "-" + month + "-" + date;
+			} else return ''
+		}
+	}
+	//判断时间距离当前时间
+	function formatDate2(str) {
+		if (str && str.indexOf('-')) {
+			var str = str.replace(/-/g, "/");
+		};
+		//console.log(str);
+		if (!str) return '';
+		var date = new Date(str);
+		var time = (new Date()).getTime() - date.getTime();
+		if (time < 0) {
+			return ''
+		} else if ((time / 1000 < 30)) {
+			return '刚刚'
+		} else if (time / 1000 < 60) {
+			return parseInt((time / 1000)) + '秒前'
+		} else if ((time / 60000) < 60) {
+			return parseInt((time / 60000)) + '分钟前'
+		} else if ((time / 3600000) < 24) {
+			return parseInt(time / 3600000) + '小时前'
+		} else if ((time / 86400000) < 3) {
+			return parseInt(time / 86400000) + '天前'
+		} else {
+			if (date.getFullYear()) {
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var date = date.getDate();
+				return year + "-" + month + "-" + date;
+			} else return ''
+		}
+	}
+	//
+	function checkTime(startime, nowtime, endtime) {
+		if (nowtime > endtime) {
+			/*$('body').addClass('close').removeClass('open');
+			$('#btn_rewards').prop('id', "btn_isClose");
+			var textvalue = $('.btn_reward').text();
+			if (textvalue != "活动结束") {
+			    $('#btn_isClose').text('活动结束');
+			}*/
+			console.log('over');
+
+		} else if (nowtime < startime) {
+			/*var textvalue = $('.btn_reward').text();
+			if (textvalue != "暂未开启") {
+			    $('#btn_rewards').prop('id', "btn_isClose");
+			    $('body').addClass('close').removeClass('open');
+			    $('#btn_isClose').text('暂未开启');
+			}*/
+			console.log('no start');
+		} else {
+			/*var textvalue = $('.btn_reward').text();
+			if (textvalue != "虚拟投资") {
+			    $('body').addClass('open').removeClass('close');
+			    $('#btn_isClose').prop('id', "btn_rewards");
+			    $('#btn_rewards').text('虚拟投资');
+			}*/
+			console.log('start');
+		}
+	};
+	//new Date()，月份从0开始
+	var startime = new Date(2017, 10, 10, 15, 1),
+		nowtime = new Date(),
+		endtime = new Date(2017, 10, 11, 24, 0);
+	console.log(startime + " " + nowtime + " " + endtime);
+	console.log(formatDate(startime) + " " + formatDate(nowtime) + " " + formatDate(endtime));
+	checkTime(startime, nowtime, endtime);
+	setInterval(function() {
+		checkTime(startime, nowtime, endtime);
+		nowtime = nowtime + 1000;
+	}, 1000, nowtime);
+	var timeFormate = formatDate2('2017-11-27 09:59:00');
+	$('.date').html(timeFormate);
+	</script>
+</body>
+
+</html>

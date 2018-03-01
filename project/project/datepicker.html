@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="css/datepicker.css" rel="stylesheet">
+</head>
+<body>
+	<input id="loan_end_time" name="loan_end_time" type="text" class="datepicker2" required readonly="true" />
+	<input id="loan_end_time" name="loan_end_time" type="text" class="datepicker2" required readonly="true" />
+<script src="./js/jquery.js"></script>
+<script src="./js/datepicker.js"></script>
+<script>
+	function getDay(d, n) {
+            d = new Date(d);
+            d = +d + 1000 * 60 * 60 * 24 * n;
+            d = new Date(d);
+            return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        }
+	$(function(){
+		$('#loan_start_time').datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeYear: true,
+            changeMonth: true,
+            onSelect: function(dateText, inst) {
+                $(this).next('.msg').css("visibility", "hidden");
+                $("#loan_end_time").datepicker("option", "minDate", getDay(dateText, 1));
+                // getperiod('loan_start_time','loan_end_time','period');
+            }
+        });
+        $('#loan_end_time').datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeYear: true,
+            changeMonth: true,
+            onSelect: function(dateText, inst) {
+                $("#loan_start_time").datepicker("option", "maxDate", getDay(dateText, -1));
+                $(this).next('.msg').css("visibility", "hidden");
+                // getperiod('loan_start_time','loan_end_time','period');
+            }
+        });
+	})
+</script>
+</body>
+</html>

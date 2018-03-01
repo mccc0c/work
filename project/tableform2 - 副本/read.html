@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <link href="css/easy.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/handsontable.full.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="retitle"></h3>
+        <form id="posttable" class="form-inline">
+            <div class="tablebox table_style table-responsive">
+                <table class="table table-bordered" width="100%" border="1" cellspacing="0" cellpadding="0">
+                    <caption></caption>
+                    <tbody id="areaTable"></tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="btn btn-success submit">提交</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/easy.js"></script>
+    <script src="js/handsontable.full.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/jsread.js"></script>
+    <script type="text/html" id="areaTable_tmpl">
+        <%for ( var i = 0; i < getAreaTable.length; i++ ) { var e=getAreaTable[i];%>
+            <%if(i==0){%>
+                <tr class="title">
+                    <% }else{%>
+                        <tr>
+                            <% }%>
+                                <% for ( var j = 0; j < e.length; j++ ) { var e1=e[j];%>
+                                    <th>
+                                        <%if(e1.type=='input'){%>
+                                            <input type="text" name="<%=e1.content%>" required placeholder="请填写" />
+                                            <p class="msg">必填项</p>
+                                            <% }else{%>
+                                                <%=e1.content%>
+                                                    <% }%>
+                                    </th>
+                                    <% } %>
+                        </tr>
+                        <% } %>
+    </script>
+</body>
+
+</html>

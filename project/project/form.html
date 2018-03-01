@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<form id="form">
+		<ul>
+			<li>
+				<label>name</label>
+				<input name="name" type="number" placeholder="请填写">
+				<input name="bankId" type="hidden" value="1">
+			</li>
+			<li>
+				<label>age</label>
+				<input name="age" type="number" placeholder="请填写">
+			</li>
+			<li>
+				<label></label>
+			</li>
+			<li>
+				<select name="choose" id="c">
+					<option value="">请选择</option>
+					<option value="1">x</option>
+					<option value="2">g</option>
+				</select>
+			</li>
+			<li>
+				<label for="male">male</label>
+				<input type="radio" name="sex" value="1" id="male" style="display: none;">
+				<label for="female">female</label>
+				<input type="radio" name="sex" value="2" id="female" style="display: none;">
+			</li>
+		</ul>
+		<div class="submit">submit</div>
+	</form>
+	<script src="js/jquery.js"></script>
+	<script>
+	$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
+	$.fn.setForm = function(jsonValue) {
+		var obj = this;
+		$.each(jsonValue, function(name, ival) {
+			var $oinput = obj.find("input[name=" + name + "]");
+			if ($oinput.attr("type") == "radio" || $oinput.attr("type") == "checkbox") {
+				$oinput.each(function() {
+					if (Object.prototype.toString.apply(ival) == '[object Array]') { //是复选框，并且是数组  
+						for (var i = 0; i < ival.length; i++) {
+							if ($(this).val() == ival[i])
+								$(this).attr("checked", "checked");
+						}
+					} else {
+						if ($(this).val() == ival)
+							$(this).attr("checked", "checked");
+					}
+				});
+			} else if ($oinput.attr("type") == "textarea") { //多行文本框  
+				obj.find("[name=" + name + "]").html(ival);
+			} else {
+				obj.find("[name=" + name + "]").val(ival);
+			}
+		});
+	};
+	var getDate = { "name": "2", "bankId": "1", "age": "1", "choose": "1", "sex": "2" };
+	$(function() {
+		$('#form').setForm(getDate);
+		$(document).on('click', '.submit', function() {
+			var f = $('#form'),
+				fs = f.serialize(),
+				fsArray = f.serializeArray(),
+				fsO = f.serializeObject();
+			// console.log(fs); //name=1&bankId=1&age=1
+			// console.log(fsArray);
+			//Array[3]0: Objectname: "name"value: "1"__proto__: Object1: Objectname: "bankId"value: "1"__proto__: Object2: Objectname: "age"value: "1"__proto__: Objectlength: 3__proto__: Array[0]
+			console.log(fsO); //Object{name: "1", bankId: "1", age: "1"}
+			console.log(JSON.stringify(fsO));
+		});
+	})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="circle" style="width: 128px;height: 128px;"></div>
+	<div class="circle1" style="width: 128px;height: 128px;"></div>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/echarts.js"></script>
+	<script src="./js/jQueryRotate.js"></script>
+	<script>
+	$(function() {
+		chart(50, '.circle');
+		chart(100, '.circle1');
+		/*var angle = 0;
+		setInterval(function() {
+			angle += 3;
+			$(".circle").rotate(angle);
+		}, 50);*/
+		var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
+
+		function chart(val, elName) {
+			var status = "还款中",
+				colo = '#397be9';
+			if (val >= 0 && val < 100) {
+				colarr = [
+					[val / 100, '#397be9'],
+					[100 - val / 100, "#ddd"]
+				]
+			} else {
+				colarr = [
+					[val / 100, '#2caf60'],
+					[100 - val / 100, "#ddd"]
+				]
+				colo = '#2caf60';
+				status = "还款成功";
+			}
+
+			var option = {
+				tooltip: {
+					formatter: "{a} <br/>{b} : {c}%"
+				},
+				toolbox: {
+					show: false,
+					feature: {
+						mark: {
+							show: true
+						},
+						restore: {
+							show: true
+						},
+						saveAsImage: {
+							show: true
+						}
+					}
+				},
+				series: [{
+					name: '业务指标',
+					type: 'gauge',
+					startAngle: 200,
+					endAngle: -20,
+					center: ['50%', '70%'], // 默认全局居中
+					radius: 60,
+					animation:true,
+					axisLine: { // 坐标轴线
+						lineStyle: { // 属性lineStyle控制线条样式
+							width: 7,
+							color: colarr
+						}
+					},
+					splitLine: {
+						show: false
+					},
+					axisTick: { // 坐标轴小标记
+						show: false,
+						splitNumber: 10, // 每份split细分多少段
+						length: 9 // 属性length控制线长
+
+					},
+					axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+						formatter: function(v) {
+							switch (v + '') {
+								case '10':
+									return '';
+								case '50':
+									return '';
+								case '90':
+									return '';
+								default:
+									return '';
+							}
+						},
+						textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: '#fff',
+							fontSize: 0,
+							fontWeight: 'bolder'
+						}
+					},
+					pointer: {
+						show: false,
+						width: 10,
+						length: '100%',
+						color: []
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '15%'], // x, y，单位px
+						textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: colo,
+							fontSize: 14
+						}
+					},
+					detail: {
+						show: true,
+						backgroundColor: 'rgba(0,0,0,0)',
+						borderWidth: 0,
+						borderColor: '#ccc',
+						width: 100,
+						height: 40,
+						offsetCenter: [0, "-30%"], // x, y，单位px
+						formatter: '{value}%',
+						textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontSize: 24
+						}
+					},
+					data: [{
+						value: val,
+						name: status,
+					}]
+				}]
+			};
+			var myChart = echarts.init($(elName)[0]);
+			myChart.setOption(option, true);
+		}
+	})
+	</script>
+</body>
+
+</html>

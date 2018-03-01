@@ -867,3 +867,24 @@
     })
 })(jQuery);
 (function() { if (typeof console == "undefined" || typeof console.log == "undefined") { var console = { log: function() {} } } })();
+
+function setCookie(b, d, a) { var c = new Date();
+    c.setDate(c.getDate() + a);
+    document.cookie = b + "=" + d + "; expires=" + c; }
+
+function getCookie(c) {
+    var a = document.cookie.split("; ");
+    for (var d = 0; d < a.length; d++) { var b = a[d].split("="); if (b[0] == c) { return b[1]; } }
+    return "";
+}
+
+function removeCookie(a) { setCookie(a, 1, -1); }
+
+function urlArgs(str) {
+    var item = location.search.substring(1).split("&");
+    for (var i = 0; i < item.length; i++) {
+        var args = item[i].split("=");
+        if (args[0] == str) return args[1];
+    };
+    return "";
+};
