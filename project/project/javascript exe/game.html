@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<canvas id="can" width="400" height="400" style="background: Black"></canvas>
+	<script>
+	var sn = [42,41],
+		dz = 43,
+		fx = 1,
+		n, ctx = document.getElementById("can").getContext("2d");
+
+	function draw(t, c) {
+		ctx.fillStyle = c;
+		ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
+	}
+	document.onkeydown = function(e) {//移动位置
+		// console.log([-1, -20, 1, 20][(e || event).keyCode - 37]);
+		fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][(e || event).keyCode - 37] || fx) ? fx : n
+	};
+	//左：37 上：38 右：39 下：40
+	! function() {
+		console.log(sn);
+		sn.unshift(n = sn[0] + fx);//n代表蛇头
+		if (sn.indexOf(n, 1) > 0 || n < 0 || n > 399 || fx == 1 && n % 20 == 0 || fx == -1 && n % 20 == 19)//游戏失败情况
+			return alert("GAME OVER");
+		draw(n, "Lime");
+		if (n == dz) {//当蛇头与食物相遇，重新随机放置食物
+			while (sn.indexOf(dz = ~~(Math.random() * 400)) >= 0);//随机生成食物
+			draw(dz, "Yellow");
+		} else
+			draw(sn.pop(), "Black");//蛇移动一格，后面的一个方块变黑
+		setTimeout(arguments.callee, 130);
+	}();
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>面向对象设计</title>
+</head>
+
+<body>
+	
+	<script src="./js/js.js"></script>
+	<script>
+	var person={};
+	Object.defineProperty(person,'name',{
+		writable:false,//不可更改
+		value:'mxx'
+	});
+	Object.defineProperty(person,'id',{
+		enumerable:false,//不可枚举
+		value:1
+	});
+	// console.log(person.name);
+	person.name="x";//mxx
+	//构造函数
+	/*var person1 = new Person('m1',23,"电焊工"),
+	person2 = Person('m2',22,'粉刷匠');//参数都变成全局变量了，this只带的是windows
+	console.log(person1 instanceof Person);//true
+	console.log(person1 instanceof Object);//true
+	console.log(person2 instanceof Person);//false
+	console.log(person2 instanceof Object);//false
+	console.log(person1.sayName());//m1
+	// console.log(person2.sayName());//报错
+	console.log(sayName());//m2
+	console.log(name);//m2
+	console.log(age);//22
+	console.log(job);//粉刷匠*/
+	//构造函数
+	/*var person3 = new Object();
+	Person.call(person3,'m3',14,'职员');//将构造函数Person当函数来使用
+	console.log(person3 instanceof Object);//true
+	console.log(person3 instanceof Person);//false
+	console.log(person3.sayName());//m3*/
+	//原型模式
+	var keys = Object(PersonTo.prototype);
+	console.log(keys);//会出现constructor属性，因为重设够着函数会让constructor的[[Ennmerable]]属性变为true
+	</script>
+</body>
+
+</html>

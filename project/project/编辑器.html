@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form id="from">
+		<textarea id="editor_id" required name="editor_id"></textarea>
+		<div class="dokay">ok</div>
+		<div class="del">删除编辑器</div>
+	</form>
+	
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/kindeditor/kindeditor-all.js"></script>
+<script type="text/javascript">
+(function(){
+	var G = {};
+	G.kindeditor = function(id) {
+        KindEditor.ready(function(K) {
+            var itemstr = ['source', '|', 'undo', 'redo', '|', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'preview', 'fontname', 'fontsize', '|', 'formatblock', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'indent', 'outdent', 'insertorderedlist', 'insertunorderedlist', 'lineheight', '|', 'hr', 'image', 'link'];
+            // var imguploadpath = static_url + '/plugs/php/upload_json.php?imgpath=yirongadmin/news/';
+            var imguploadpath = "";
+            editor = KindEditor.create(id, {
+                newlineTag: 'p',//换行标签
+                allowImageUpload: true,
+                uploadJson: imguploadpath,
+                resizeType: 1,
+                items: itemstr,
+                width: "300px",
+                height: "155px",
+                afterCreate: function() { //kindeditor创建后，将编辑器的内容设置到原来的textarea控件里
+                    this.sync();
+                },
+                afterChange: function() { //编辑器内容发生变化后，将编辑器的内容设置到原来的textarea控件里
+                    this.sync();
+                },
+                afterBlur: function() { //编辑器聚焦后，将编辑器的内容设置到原来的textarea控件里
+                    this.sync();
+                }
+            });
+            G.editor = editor;
+        });
+    };
+    G.init = function(id) {
+        G.kindeditor(id);
+        /*G.cat_click();
+        G.checkplatforms();
+        G.form_button();*/
+    };
+    G.getHtml = function(){
+    	return G.editor.html();
+    };
+    G.init('#editor_id');
+    window.G = G;
+})(window);
+$(function() {
+	$(".dokay").click(function(){
+		if (!$("#from").valid()) {
+            return;
+        }
+        if(editor.isEmpty()){
+        	return false;
+        }
+		/*var editor = G.editor;*/
+		console.log(G.getHtml());
+
+	});
+	$(".del").click(function(){
+		G.editor.remove('textarea[name="editor_id"]');
+		/*var editor = G.editor;*/
+		console.log(G.getHtml());
+
+	});
+	
+});
+
+	
+</script>
+</body>
+</html>

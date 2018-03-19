@@ -1,0 +1,60 @@
+.tab .content .dcontent{height:335px;overflow-y:auto;}
+.tab1 .nav{overflow: inherit;}
+.formSty input[type="text"], .formSty input[type='number'], .formSty select{background: #fff;}
+.formSty label{width: 100px;vertical-align: top;}
+.formSty .msg{padding-left:106px }
+.formSty li{font-size: 13px;color: #333;}
+.radioArea{display: inline-block;width: 73%;}
+.radiostyle{margin-bottom: 5px;}
+.radiostyle li{display: inline-block;margin-right: 15px;}
+.radioArea li i{display: inline-block;width:18px; height: 18px;vertical-align: middle;margin-right: 10px;}
+.radiostyle i{background: url(../../images/m_06.png) no-repeat center;}
+.radiostyle li.on i{background: url(../../images/m_07.png) no-repeat center;}
+.hasmort{width: 100%;border: 1px solid #ddd;}
+.formSty .checkbox{display: inline-block;width: 80%;padding:10px 0;/*margin-bottom: 10px;*/}
+.formSty .checkarea>li{display:inline-block;margin-right:20px;cursor:pointer;margin-bottom: 5px!important;}
+.formSty .checkarea li span{display:inline-block;vertical-align:middle;}
+.formSty .checkarea li i{display:inline-block;width:16px;height:16px;background:url(../../images/notice03.png) no-repeat center;vertical-align:middle;margin-right:10px;}
+.formSty .checkarea li.on i{background:url(../../images/notice02.png) no-repeat center;}
+.moreStyle{display: block;border: 1px dashed #ddd;text-align: center;width: 146px;    margin: 10px 0;background: #fff;cursor: pointer;color: #333;font-size: 14px;}
+.moreStyle i{width: 12px;height: 12px;background: url(../../images/id03.png) no-repeat center;}
+.hasmort{padding: 10px;margin-bottom: 20px;}
+.hasmort label{    width: 60px;}
+.formSty .checkbox .otherDiv li{width: 48%;margin: 10px 0;display: inline-block;}
+.otherDiv input[type='text']{height: 20px;width: 95%;margin:0;}
+.otherDiv li{position: relative;margin-bottom: 10px!important}
+.otherDiv li:hover .delInput{display: block!important;}
+.formSty .checkbox .otherDiv .delInput{background: url(../../images/id01.png) no-repeat center;position: absolute;right: 0;display: none;top: 2px;z-index: 1}
+.otherDiv .msg{position: absolute;left: 0;bottom: -18px;margin: 0;padding: 0}
+.hasmort .msg{padding-left: 64px;}
+.checkbox .msg{padding-left: 0px;}
+.friInfo{background: #e7f0f9;color:#1981dc;font-size: 14px;padding: 10px 0; margin-bottom: 20px;}
+.friInfo i{display: inline-block;width: 18px;height: 18px;background: url(../../images/icon_blue_alert.png) no-repeat center;vertical-align: middle;margin-left: 10px;}
+.friInfo p{display: inline-block;}
+.crediaS li{color: #333;font-size: 16px;margin-bottom: 20px;}
+.crediaS label{display: inline-block;width: 150px;text-align: right;vertical-align:top;}
+.creditlist >li{padding: 10px;background: #fff;border: 1px solid #ddd;}
+.creid{overflow: hidden;}
+.creid label{display:inline-block;font-size:16px;border-left:2px solid #419be9;padding-left: 10px; text-align: left;    margin: 10px 0;color: #333;
+}
+.crebtnS{float: right;color:#1981dc;border:1px solid #ddd; border-radius: 5px;font-size:14px;padding:5px 10px;cursor: pointer;cursor: pointer; }
+.credetail li{margin-bottom: 5px;font-size: 14px;color: #333}
+.credetail label{color: #666666;width: 135px;}
+.creditlist .losted{background: #f4f4f4;color: #666666;}
+.losted .crebtnS{border: none;color: #333;}
+.losted .credetail li{color: #666}
+.moreCredit{width: 100%;padding: 10px 0;}
+.moreCredit i {display: inline-block;width: 16px; height: 16px;background: url(../../images/id02.png) no-repeat center;    vertical-align: middle;margin-right: 5px}
+.newCredit{font-size: 16px;color: #333;}
+.newCredit label{font-size: 16px;}
+.newCredit li{font-size: 16px;}
+.dialog_info img{display: block;margin:0 auto;}
+.dialog_info span{color: #333;font-size: 18px;display: block;text-align: center;margin:10px 0;font-weight: bold;}
+.dialog_info .dcontent {font-size: 16px;color: #666;}
+.dialog_info .dbtn a{width: 95px;height: 44px;}
+.credetail li{position: relative;    margin-bottom: 18px;}
+.credetail label.error{position: absolute;    color: red;
+    font-size: 12px;
+    text-align: left;
+    display: block;
+    padding-left: 140px;}

@@ -1,167 +1,343 @@
 (function($) {
     $.fn.extend({
         tab: function(options) {
-            var defaults = { event: "mouseenter", auto: false, duration: 3600, nav: ".nav", content: ".content", before: function() {}, after: function() {} };
+            var defaults = {
+                event: 'mouseenter',
+                auto: false,
+                showDuration: 0,
+                duration: 3600,
+                nav: '.nav',
+                content: '.content',
+                before: function() {},
+                after: function() {}
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
                 var timer, timer2;
-                var len = $t.find(">" + set.nav + " li").length;
+                var len = $t.find('>' + set.nav + ' li').length;
                 var index = 0;
                 if (set.auto) {
-                    $t.on("mouseenter", function() { clearInterval(timer) });
-                    $t.on("mouseleave", function() {
-                        timer = setInterval(function() {
-                            if (index >= len - 1) { index = -1 } index++;
-                            auto(index)
-                        }, set.duration)
-                    }).trigger("mouseleave");
-                    $t.find(">" + set.nav + " li").on(set.event, function() {
-                        index = $(this).index();
-                        timer2 = setTimeout(function() { auto(index) }, 120)
+                    $t.on('mouseenter', function() {
+                        clearInterval(timer);
                     });
-                    $t.find(">" + set.nav + " li").on("mouseleave", function() { clearInterval(timer2) })
+                    $t.on('mouseleave', function() {
+                        timer = setInterval(function() {
+                            if (index >= len - 1) {
+                                index = -1
+                            };
+                            index++;
+                            auto(index);
+                        }, set.duration);
+                    }).trigger("mouseleave");
+                    $t.find('>' + set.nav + ' li').on(set.event, function() {
+                        index = $(this).index();
+                        timer2 = setTimeout(function() {
+                            auto(index);
+                        }, 120);
+                    });
+                    $t.find('>' + set.nav + ' li').on('mouseleave', function() {
+                        clearInterval(timer2);
+                    });
                 } else {
-                    $t.find(">" + set.content + ">ul").each(function() { $(this).children("li:not(:first)").hide() });
-                    $t.find(">" + set.nav + " li").on(set.event, function() {
-                        set.before();
-                        $(this).addClass("current").siblings().removeClass("current");
+                    $t.find('>' + set.content + '>ul').each(function() {
+                        $(this).children('li:not(:first)').hide();
+                    });
+                    $t.find('>' + set.nav + ' li').on(set.event, function() {
+                        index = $(this).index();
+                        set.before(index, $t);
+                        if (set.stop) {
+                            return;
+                        };
+                        $(this).addClass('current').siblings().removeClass('current');
                         var index = $(this).index();
-                        $t.find(">" + set.content + ">ul>li").eq(index).show().siblings().hide();
-                        set.after();
-                        return false
-                    })
-                }
+                        $t.find('>' + set.content + '>ul>li').eq(index).show(set.showDuration, function() {
+                            set.after(index, $t);
+                        }).siblings().hide();
+                        return false;
+                    });
+                };
 
                 function auto(index) {
-                    $t.find(".nav li").eq(index).addClass("current").siblings().removeClass("current");
-                    $t.find(".content>ul>li").eq(index).show().siblings().hide();
-                    return false
+                    $t.find('.nav li').eq(index).addClass("current").siblings().removeClass("current");
+                    $t.find('.content>ul>li').eq(index).show().siblings().hide();
+                    return false;
                 }
-            })
+            });
         },
         tmpl: function(str, data) {
             (function() {
                 var cache = {};
-                this.tmpl = function tmpl(str, data) { var fn = !/\W/.test(str) ? cache[str] = cache[str] || tmpl(document.getElementById(str).innerHTML) : new Function("obj", "var p=[],print=function(){p.push.apply(p,arguments);};" + "with(obj){p.push('" + str.replace(/[\r\t\n]/g, " ").split("<%").join("\t").replace(/((^|%>)[^\t]*)'/g, "$1\r").replace(/\t=(.*?)%>/g, "',$1,'").split("\t").join("');").split("%>").join("p.push('").split("\r").join("\\'") + "');}return p.join('');"); return data ? fn(data) : fn }
+                this.tmpl = function tmpl(str, data) {
+                    var fn = !/\W/.test(str) ?
+                        cache[str] = cache[str] ||
+                        tmpl(document.getElementById(str).innerHTML) :
+                        new Function("obj",
+                            "var p=[],print=function(){p.push.apply(p,arguments);};" +
+                            "with(obj){p.push('" +
+                            str
+                            .replace(/[\r\t\n]/g, " ")
+                            .split("<%").join("\t")
+                            .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+                            .replace(/\t=(.*?)%>/g, "',$1,'")
+                            .split("\t").join("');")
+                            .split("%>").join("p.push('")
+                            .split("\r").join("\\'") + "');}return p.join('');");
+                    return data ? fn(data) : fn;
+                };
             })();
-            return this.each(function() { $(this).append(tmpl(str, data)) })
+            return this.each(function() {
+                $(this).append(tmpl(str, data));
+            });
         },
         modal: function(options) {
-            var defaults = { bgscroll: false, width: null, height: null, dragable: true, ani: true, bgclose: false, mobileDetect: true, myalert: false, alertCenter: true, hideDuration: 0, top: "50%", left: "50%", overflow: false, beforeOpen: function() {}, onOpen: function() {}, onClose: function() {}, onOk: function() {} };
+            var defaults = {
+                bgscroll: false,
+                width: null,
+                height: null,
+                dragable: false,
+                ani: true,
+                bgclose: false,
+                mobileDetect: true,
+                myalert: false,
+                alertCenter: true,
+                hideDuration: 0,
+                top: '50%',
+                left: '50%',
+                overflow: false,
+                beforeOpen: function() {},
+                onOpen: function() {},
+                onClose: function() {},
+                onOk: function() {}
+            };
             var set = $.extend({}, defaults, options);
-            var el = this;
-            return this.each(function() {
-                var $t = $(this);
-                var name = el.selector;
+            var $t = this;            
+            return (function() {
+                var current;
+                var name = $t.selector;
                 var dialog = set.dialog ? $(set.dialog) : $t;
-                var dialogname = set.dialog ? dialog.selector : el.selector;
+                var dialogname = set.dialog ? set.dialog : $t.selector;
                 var dHeight = dialog.height();
                 var dWidth = dialog.width();
                 var dragging = false;
                 var iX, iY;
-                var scrollbarW = window.innerWidth - $("body").width();
-                if (set.mobileDetect && $(this).isMobile()) { dialog.addClass("dmobile") }
-                if (!dialog.next(".modalbg")[0]) {
+                var scrollbarW = window.innerWidth - $('body').width();
+                $t.canopen=true;
+                if (set.mobileDetect && $t.isMobile()) {
+                    dialog.addClass('dmobile');
+                };
+                if (!dialog.next('.modalbg')[0]) {
                     dialog.after('<div class="modalbg"></div>');
-                    $(".modalbg").height($(document).height())
-                }
-                var modalbg = dialog.next(".modalbg");
-                if (!set.dragable) { dialog.find(".dtitle").css("cursor", "auto") }
-                if (set.ani) { dialog.addClass("dani") }
-                if (set.myalert) { dialog.addClass("dalert") }
-                if (set.alertCenter === false) { dialog.find(".dcontent").css("text-align", "left") } dialog.hide();
+                    $('.modalbg').height($(document).height());
+                };
+                var modalbg = dialog.next('.modalbg');
+                if (!set.dragable) {
+                    dialog.find('.dtitle').css('cursor', 'auto')
+                };
+                if (set.ani) {
+                    dialog.addClass('dani');
+                };
+                if (set.myalert) {
+                    dialog.addClass('dalert')
+                };
+                if (set.alertCenter === false) {
+                    dialog.find('.dcontent').css('text-align', 'left');
+                };
+                dialog.hide();
                 centerBox(dWidth, dHeight);
                 if (set.auto) {
                     dialog = $t;
                     dialog.fadeIn();
-                    modalbg.fadeIn()
-                }
-                if (set.width || set.height) { dialog.css({ "width": set.width, "height": set.height }); if (parseInt(set.height) > dialog.find(".dtitle").height() + dialog.find(".dcontent").height() + dialog.find(".dbtn").height()) { dialog.find(".dbtn").css("position", "absolute") } } $(document).on("click", name, function(e) {
-                    e.stopPropagation();
-                    set.beforeOpen($(this));
-                    open();
-                    set.onOpen($(this))
+                    modalbg.fadeIn();
+                };
+                if (set.width || set.height) {
+                    dialog.css({
+                        'width': set.width,
+                        'height': set.height
+                    });
+                };
+                if (set.dialog) {
+                    $(document).on('click', name, function(e) {
+                        current = $(this);
+                        e.stopPropagation();
+                        set.beforeOpen(current);
+                        if ($t.canopen) {
+                            open()
+                        };
+                        set.onOpen(current);
+                    });
+                } else {
+                    current = true;
+                };
+                $(document).on('click', dialogname + ' .dclose', function() {
+                    if (!current) {
+                        return;
+                    };
+                    close();
+                    set.onClose();
+                    current = null;
+                    return false;
+                });
+                $(document).on('click', dialogname + ' .dcancle', function() {
+                    if (!current) {
+                        return;
+                    };
+                    close();
+                    set.onClose();
+                    current = null;
+                    return false;
+                });
+                $(document).on('click', dialogname + ' .dokay', function() {
+                    if (!current) {
+                        return;
+                    };
+                    close();
+                    set.onOk(current, $(this).parents(dialogname));
+                    current = null;
+                    return false;
+                });
+                $(document).on('mousedown', dialogname + ' .dtitle', function(e) {
+                    if (set.dragable) {
+                        dragging = true;
+                    };
+
+                    iX = e.clientX - parseInt(dialog.css('left'));
+                    iY = e.clientY - parseInt(dialog.css('top'));
+                    return false;
+                });
+                modalbg.on('click', function() {
+                    if (set.bgclose) {
+                        close();
+                        set.onClose();
+                    };
+                    return false;
                 });
 
-                function centerBox(dWidth, dHeight) { dialog.css({ "left": set.left, "top": set.top, "margin-left": -dWidth / 2 + "px", "margin-top": -dHeight / 2 + "px" }); if (set.left !== "50%") { dialog.css({ "margin-left": "0px" }) } else { if (set.top !== "50%") { dialog.css({ "margin-top": "0px" }) } } }
+                function centerBox(dWidth, dHeight) {
+                    dialog.css({
+                        "left": set.left,
+                        "top": set.top,
+                        "margin-left": -dWidth / 2 + "px",
+                        "margin-top": -dHeight / 2 + "px"
+                    });
+                    if (set.left !== '50%') {
+                        dialog.css({
+                            "margin-left": "0px"
+                        });
+                    } else if (set.top !== '50%') {
+                        dialog.css({
+                            "margin-top": "0px"
+                        });
+                    }
+                };
 
                 function open() {
                     dHeight = dialog.height();
                     dWidth = dialog.width();
                     centerBox(dWidth, dHeight);
-                    if (set.bgscroll) { $("body").css({ "overflow": "auto" }) } else { $("body").css({ "overflow": "hidden" }) } $("body").css({ "padding-right": scrollbarW + "px" });
+                    if (set.bgscroll) {
+                        $('body').css({
+                            'overflow': 'auto'
+                        })
+                    } else {
+                        $('body').css({
+                            'overflow': 'hidden'
+                        })
+                    };
+                    $('body').css({
+                        'padding-right': scrollbarW + 'px'
+                    });
                     dialog.fadeIn();
                     modalbg.fadeIn(0);
                     if (set.hideDuration !== 0) {
-                        dialog.find(".dtitle,.dbtn").hide();
-                        dialog.addClass("dalert");
+                        dialog.find('.dtitle,.dbtn').hide();
+                        dialog.addClass('dalert');
                         setTimeout(function() {
                             close();
-                            set.onClose()
+                            set.onClose();
                         }, set.hideDuration)
-                    }
-                }
+                    };
+                };
 
                 function close() {
                     dialog.fadeOut("fast");
                     modalbg.fadeOut("fast");
                     if (set.overflow == false) {
                         setTimeout(function() {
-                            $("body").css({ "overflow": "auto", "padding-right": "0px" })
-                        }, 200)
+                            $('body').css({
+                                'overflow': 'auto',
+                                'padding-right': '0px'
+                            });
+                        }, 200);
                     }
-                }
-                modalbg.on("click", function() {
-                    if (set.bgclose) {
-                        close();
-                        set.onClose()
+                };
+                $(document).mousemove(function(e) {
+                    if (dragging) {
+                        var e = e || window.event;
+                        var l = e.clientX - iX;
+                        var t = e.clientY - iY;
+                        var left = dialog.width() / 2;
+                        var top = dialog.height() / 2;
+                        var w = document.documentElement.clientWidth - left;
+                        var h = document.documentElement.clientHeight - top;
+                        if (l < left) {
+                            l = left
+                        } else if (l > w) {
+                            l = w
+                        };
+                        if (t < top) {
+                            t = top
+                        } else if (t > h) {
+                            t = h
+                        };
+                        dialog.css({
+                            "left": l + "px",
+                            "top": t + "px"
+                        });
+                        return false;
                     }
                 });
-                $(document).on("click", dialogname + " .dclose", function() {
-                    close();
-                    set.onClose();
-                    return false
+                $(document).mouseup(function(e) {
+                    dragging = false;
                 });
-                $(document).on("click", dialogname + " .dcancle", function() {
-                    close();
-                    set.onClose();
-                    return false
+                $(window).resize(function() {
+                    dHeight = dialog.height();
+                    dWidth = dialog.width();
+                    centerBox(dWidth, dHeight);
                 });
-                $(document).on("click", dialogname + " .dokay", function() {
-                    close();
-                    set.onOk();
-                    return false
-                });
-                $(document).on("mousedown", dialogname + ".dtitle", function(e) {
-                    if (set.dragable) { dragging = true } iX = e.clientX - parseInt(dialog.css("left"));
-                    iY = e.clientY - parseInt(dialog.css("top"));
-                    return false
-                });
-                $(document).mousemove(function(e) { if (dragging) { var e = e || window.event; var l = e.clientX - iX; var t = e.clientY - iY; var left = dialog.width() / 2; var top = dialog.height() / 2; var w = document.documentElement.clientWidth - left; var h = document.documentElement.clientHeight - top; if (l < left) { l = left } else { if (l > w) { l = w } } if (t < top) { t = top } else { if (t > h) { t = h } } dialog.css({ "left": l + "px", "top": t + "px" }); return false } });
-                $(document).mouseup(function(e) { dragging = false });
-                el.open = function() {
+                $t.open = function() {
                     set.beforeOpen();
                     open();
-                    set.onOpen()
+                    set.onOpen();
                 };
-                el.close = function() {
+                $t.close = function() {
                     close();
-                    set.onClose()
-                }
-            })
+                    set.onClose();
+                };
+                return $t;
+            })();
         },
-        isMobile: function() { if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad|Opera/i.test(navigator.userAgent)) { return true } },
+        isMobile: function() {
+            if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad|Opera/i.test(navigator.userAgent)) {
+                return true;
+            };
+        },
         myalert: function(a) {
-            var d = '<div id="myalert" style="width:70%; background:#000; opacity:0.8; color:#fff; font-size:13px; min-height:20px; line-height:20px; padding:5px; text-align:center;position:absolute; top:40%; left:15%; z-index:100001; border-radius:5px; display:none">' + a + "</div>";
-            $("body").append(d);
-            $("#myalert").fadeIn();
-            setTimeout(function() { $("#myalert").fadeOut().remove() }, 3500)
+            var d = '<div id="myalert" style="width:70%; background:#000; opacity:0.8; color:#fff; font-size:13px; min-height:20px; line-height:20px; padding:5px; text-align:center;position:absolute; top:40%; left:15%; z-index:100001; border-radius:5px; display:none">' + a + '</div>';
+            $('body').append(d);
+            $('#myalert').fadeIn();
+            setTimeout(function() {
+                $('#myalert').fadeOut().remove();
+            }, 3500);
         },
         slider: function(options) {
-            var defaults = { num: 1, auto: false, loop: true };
+            var defaults = {
+                num: 1,
+                auto: false,
+                loop: true
+            };
             var set = $.extend({}, defaults, options);
-            return this.each(function() {
+            return (function() {
                 var $t = $(this);
                 var obj = $t;
                 var i = 1;
@@ -169,63 +345,87 @@
                 var liwidth = $(obj).find(".list li").outerWidth(true);
                 if (set.loop == true) {
                     var lis = slide.html();
-                    slide.append(lis)
-                }
+                    slide.append(lis);
+                };
                 var total = $(obj).find(".list li").length;
                 var display = Math.round($(obj).find(".list").outerWidth(true) / liwidth);
                 var page = Math.ceil((total - display) / set.num);
                 if (total <= display) {
-                    $(obj).find(".prev, .next").hide();
-                    $(obj).find(".list").addClass("lessimg")
+                    $(obj).find('.prev, .next').hide();
+                    $(obj).find('.list').addClass('lessimg');
                 }
-                if (set.loop == false) { $(obj).find(".prev").addClass("disabled") } $(obj).find(".next").click(function() {
-                    if (slide.is(":animated")) { slide.stop(true, true) }
+                if (set.loop == false) {
+                    $(obj).find('.prev').addClass('disabled');
+                }
+                $(obj).find('.next').click(function() {
+                    if (slide.is(':animated')) {
+                        slide.stop(true, true);
+                    };
                     if (set.loop) {
                         if (i >= page) {
                             var moved = total / 2 - display;
-                            slide.css("margin-left", -liwidth * moved * set.num);
+                            slide.css('margin-left', -liwidth * moved * set.num);
                             move(-1);
-                            i = moved + 2
+                            i = moved + 2;
                         } else {
                             move(-1);
-                            i++
+                            i++;
                         }
                     } else {
-                        if (i > page) { return } else {
+                        if (i > page) {
+                            return;
+                        } else {
                             $(obj).find(".prev").removeClass("disabled");
                             $(this).removeClass("disabled");
                             move(-1);
                             i++;
-                            if (i > page) { $(this).addClass("disabled") }
-                            return false
+                            if (i > page) {
+                                $(this).addClass("disabled");
+                            }
+                            return false;
                         }
                     }
                 });
-                $(obj).find(".prev").click(function() {
-                    if (slide.is(":animated")) { slide.stop(true, true) }
+                $(obj).find('.prev').click(function() {
+                    if (slide.is(':animated')) {
+                        slide.stop(true, true);
+                    };
                     if (set.loop) {
                         if (i == 1) {
-                            slide.css("margin-left", -liwidth * total / 2 * set.num);
+                            slide.css('margin-left', -liwidth * total / 2 * set.num);
                             move(1);
-                            i = total / 2
+                            i = total / 2;
                         } else {
                             move(1);
-                            i--
+                            i--;
                         }
                     } else {
-                        if (i == 1) { return } else {
+                        if (i == 1) {
+                            return;
+                        } else {
                             $(obj).find(".prev").removeClass("disabled");
                             $(this).removeClass("disabled");
                             move(1);
                             i--;
-                            if (i == 1) { $(this).addClass("disabled") }
-                            return false
+                            if (i == 1) {
+                                $(this).addClass("disabled");
+                            }
+                            return false;
                         }
                     }
                 });
 
-                function move(a) { slide.animate({ marginLeft: "+=" + liwidth * set.num * a }, 200) } setInterval(function() { if (set.auto) { $(obj).find(".next").trigger("click") } }, 4000)
-            })
+                function move(a) {
+                    slide.animate({
+                        marginLeft: "+=" + liwidth * set.num * a
+                    }, 200);
+                }
+                setInterval(function() {
+                    if (set.auto) {
+                        $(obj).find('.next').trigger('click');
+                    };
+                }, 4000);
+            })();
         },
         fixmenu: function(options) {
             var defaults = {};
@@ -233,60 +433,106 @@
             return this.each(function() {
                 var $t = $(this);
                 var fixmenuTop = $t[0] && $t.offset().top;
-                $(window).scroll(function() { if ($(this).scrollTop() > fixmenuTop) { $t.addClass("on").css({ position: "fixed", top: "0px" }) } else { $t.removeClass("on").css({ position: "absolute", top: fixmenuTop + "px" }) } })
-            })
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > fixmenuTop) {
+                        $t.addClass('on').css({
+                            position: "fixed",
+                            top: "0px"
+                        });
+                        //$('.fixblank').hide();
+                    } else {
+                        $t.removeClass('on').css({
+                            position: "absolute",
+                            top: fixmenuTop + 'px'
+                        });
+                        $('.fixblank').show();
+                    }
+                })
+            });
         },
         accordion: function(options) {
-            var defaults = { event: "mouseenter", showfirst: true, collapse: true, animate: true, duration: 300, nav: "dt", content: "dd", active: "on" };
+            var defaults = {
+                event: 'mouseenter',
+                showfirst: true,
+                showall: false,
+                collapse: true,
+                animate: true,
+                duration: 300,
+                nav: 'dt',
+                content: 'dd',
+                active: 'on'
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this),
                     nav = $t.find(set.nav),
+                    content = $t.find(set.content),
                     on = set.active;
-                if (set.showfirst) { nav.eq(0).addClass(on).next(set.content).show() } nav.on(set.event, function() {
-                    var n = $(this),
+                if (set.showfirst) {
+                    nav.eq(0).addClass(on).next(set.content).show();
+                };
+                if (set.showall) {
+                    nav.addClass(on);
+                    content.show();
+                };
+                $(document).on(set.event, nav, function(e) {
+                    var n = $(e.target),
                         c = n.next(set.content),
-                        ns = $(this).siblings(),
-                        cs = $(this).siblings().next(set.content);
+                        ns = n.siblings(),
+                        cs = n.siblings().next(set.content);
                     if (set.animate) {
-                        if (n.is("." + on)) {
-                            n.removeClass(on);
-                            c.slideUp()
+                        if (n.is('.' + on)) {
+                            c.slideUp();
+                            setTimeout(function() {
+                                n.removeClass(on);
+                            }, 400)
                         } else {
-                            n.addClass(on);
-                            c.slideDown()
-                        }
+                            c.slideDown();
+                            setTimeout(function() {
+                                n.addClass(on);
+                            }, 400)
+                        };
                         if (set.collapse) {
-                            ns.removeClass(on);
-                            cs.slideUp()
-                        }
+                            cs.slideUp();
+                            setTimeout(function() {
+                                ns.removeClass(on);
+                            }, 400)
+                        };
                     } else {
-                        if (n.is("." + on)) {
+                        if (n.is('.' + on)) {
                             n.removeClass(on);
-                            c.hide()
+                            c.hide();
                         } else {
                             n.addClass(on);
-                            c.show()
-                        }
+                            c.show();
+                        };
                         if (set.collapse) {
                             ns.removeClass(on);
-                            cs.hide()
-                        }
-                    }
-                })
-            })
+                            cs.hide();
+                        };
+                    };
+                });
+            });
         },
         dropdown: function(options) {
-            var defaults = { event: "mouseenter" };
+            var defaults = {
+                event: 'mouseenter'
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                $t.find("ul li:has(ul)").on(set.event, function() { $(this).children("ul").stop(true, true).slideDown(400) });
-                $t.find("ul li:has(ul)").on("mouseleave", function() { $(this).children("ul").stop(true, true).slideUp("fast") })
-            })
+                $t.find('ul li:has(ul)').on(set.event, function() {
+                    $(this).children("ul").stop(true, true).slideDown(400);
+                });
+                $t.find('ul li:has(ul)').on('mouseleave', function() {
+                    $(this).children("ul").stop(true, true).slideUp("fast");
+                });
+            });
         },
         slide123: function(options) {
-            var defaults = { duration: 3600 };
+            var defaults = {
+                duration: 3600
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
@@ -294,68 +540,115 @@
                 var len = $t.find(".num li").length;
                 var width = $t.find(".content li").width();
                 var index = 0;
-                $t.hover(function() { clearInterval(timer) }, function() {
+                $t.hover(function() {
+                    clearInterval(timer);
+                }, function() {
                     timer = setInterval(function() {
-                        if (index >= len - 1) { index = -1 } index++;
-                        auto(index)
-                    }, set.duration)
+                        if (index >= len - 1) {
+                            index = -1
+                        };
+                        index++;
+                        auto(index);
+                    }, set.duration);
                 }).trigger("mouseleave");
+
                 $t.find(".num li").mouseover(function() {
                     index = $(".slide123 .num li").index(this);
-                    setTimeout(function() { auto(index) }, 200)
+                    setTimeout(function() {
+                        auto(index);
+                    }, 200);
                 });
 
                 function auto(index) {
                     $t.find(".num li").removeClass("on").eq(index).addClass("on");
-                    $t.find(".content ul").stop().animate({ "left": -width * index }, 500)
+                    $t.find(".content ul").stop().animate({
+                        "left": -width * index
+                    }, 500);
                 }
-            })
+            });
         },
         scrollone: function(options) {
-            var defaults = { duration: 3600 };
+            var defaults = {
+                duration: 3600
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                var height = $t.find("li").height();
+                var height = $t.find('li').height();
                 $t.each(function() {
                     var b = $(this);
                     setInterval(function() {
                         var c = b.find("li:last-child");
                         b.find("li:last-child").remove();
-                        b.find("ul").prepend(c.css({ height: 0 }));
-                        c.animate({ height: height + "px" })
+                        b.find("ul").prepend(c.css({
+                            height: 0
+                        }));
+                        c.animate({
+                            height: height + "px"
+                        })
                     }, set.duration)
-                })
-            })
+                });
+            });
         },
-        sidemenu: function(options) {
-            var defaults = { event: "mouseenter" };
+        scrollline: function(options) {
+            var defaults = {
+                duration: 3600
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                var width = $t.find(".content").width();
-                $t.on(set.event, function() { $(this).animate({ "right": 0 }, "fast") });
-                $t.on("mouseleave", function() { $(this).animate({ "right": -width + "px" }, "fast") })
-            })
+                var height = -$t.find('li').height();
+
+                function autoScroll() {
+                    $t.find("ul:first").animate({
+                        marginTop: height + "px"
+                    }, 500, function() {
+                        $(this).css({
+                            marginTop: "0px"
+                        }).find("li:first").appendTo(this);
+                    });
+                };
+                var timer = setInterval(function() {
+                    autoScroll();
+                }, set.duration)
+                $t.hover(function() {
+                    clearInterval(timer);
+                }, function() {
+                    timer = setInterval(function() {
+                        autoScroll();
+                    }, set.duration)
+                });
+            });
+        },
+        sidemenu: function(options) {
+            var defaults = {
+                event: 'mouseenter'
+            };
+            var set = $.extend({}, defaults, options);
+            return this.each(function() {
+                var $t = $(this);
+                var width = $t.find('.content').width();
+                $t.on(set.event, function() {
+                    $(this).animate({
+                        'right': 0
+                    }, 'fast');
+                });
+                $t.on('mouseleave', function() {
+                    $(this).animate({
+                        'right': -width + 'px'
+                    }, 'fast');
+                });
+            });
         },
         wordsleft: function(options) {
             var defaults = {};
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                $(document).keyup(function() { $t.text(110 - $(set.textarea).val().length) })
-            })
-        },
-        scrollline: function(options) {
-            var defaults = {};
-            var set = $.extend({}, defaults, options);
-            return this.each(function() {
-                var $t = $(this);
-
-                function autoScroll() { $t.find("ul:first").animate({ marginTop: "-25px" }, 500, function() { $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this) }) }
-                var myar = setInterval(function() { autoScroll() }, 1000);
-                $t.hover(function() { clearInterval(myar) }, function() { myar = setInterval(function() { autoScroll() }, 1000) })
-            })
+                $(document).keyup(function() {
+                    $t.text(110 - $(set.textarea).val().length);
+                });
+            });
         },
         inout: function(options) {
             var defaults = {};
@@ -366,23 +659,33 @@
                 var len = $t.find(".num li").length;
                 var index = 0;
                 $t.find(".content li").first().show();
-                $t.hover(function() { clearInterval(timer) }, function() {
+                $t.hover(function() {
+                    clearInterval(timer);
+                }, function() {
                     timer = setInterval(function() {
-                        if (index >= len - 1) { index = -1 } index++;
-                        auto(index)
-                    }, 3600)
+                        if (index >= len - 1) {
+                            index = -1
+                        };
+                        index++;
+                        auto(index);
+                    }, 3600);
                 }).trigger("mouseleave");
+
                 $t.find(".num li").hover(function() {
                     index = $t.find(".num li").index(this);
-                    timer2 = setTimeout(function() { auto(index) }, 120)
-                }, function() { clearTimeout(timer2) });
+                    timer2 = setTimeout(function() {
+                        auto(index);
+                    }, 120);
+                }, function() {
+                    clearTimeout(timer2);
+                });
 
                 function auto(index) {
                     $t.find(".num li").eq(index).addClass("on").siblings().removeClass("on");
                     $t.find(".content li").eq(index).fadeIn("200").siblings().fadeOut("200");
-                    return false
+                    return false;
                 }
-            })
+            });
         },
         delayshow: function(options) {
             var defaults = {};
@@ -393,10 +696,12 @@
                     var index = $t.find(".nav li").index(this);
                     timer = setTimeout(function() {
                         $t.find(".nav li").removeClass("current").eq(index).addClass("current");
-                        $t.find(".content li").hide().eq(index).show()
-                    }, 200)
-                }, function() { clearTimeout(timer) })
-            })
+                        $t.find(".content li").hide().eq(index).show();
+                    }, 200);
+                }, function() {
+                    clearTimeout(timer);
+                });
+            });
         },
         tip: function(options) {
             var defaults = {};
@@ -406,72 +711,115 @@
                 $t.click(function(event) {
                     event.stopPropagation();
                     var offset = $(event.target).offset();
-                    $(set.target).css({ top: offset.top + $(event.target).height() + "px", left: offset.left });
-                    $(set.target).toggle("slow")
+                    $(set.target).css({
+                        top: offset.top + $(event.target).height() + "px",
+                        left: offset.left
+                    });
+                    $(set.target).toggle('slow');
                 });
                 $(document).click(function() {
-                    $(set.target).slideUp("slow")
+                    $(set.target).slideUp('slow')
                 });
-                $(set.target).click(function(event) { $(this).fadeOut(1000) })
-            })
+                $(set.target).click(function(event) {
+                    $(this).fadeOut(1000)
+                });
+            });
         },
         zoom: function(options) {
-            var settings = { xzoom: 400, yzoom: 400, offset: 10, position: "right", lens: 1, preload: 1 };
-            if (options) { $.extend(settings, options) }
-            var noalt = "";
+            var settings = {
+                xzoom: 400,
+                yzoom: 400,
+                offset: 10,
+                position: "right",
+                lens: 1,
+                preload: 1
+            };
+            if (options) {
+                $.extend(settings, options);
+            }
+            var noalt = '';
             $(this).hover(function() {
                 var imageLeft = $(this).offset().left;
                 var imageTop = $(this).offset().top;
-                var imageWidth = $(this).children("img").get(0).offsetWidth;
-                var imageHeight = $(this).children("img").get(0).offsetHeight;
+                var imageWidth = $(this).children('img').get(0).offsetWidth;
+                var imageHeight = $(this).children('img').get(0).offsetHeight;
                 noalt = $(this).children("img").attr("alt");
                 var bigimage = $(this).children("img").attr("src");
-                $(this).children("img").attr("alt", "");
+                $(this).children("img").attr("alt", '');
                 if ($("div.zoomdiv").get().length == 0) {
                     $(this).after("<div class='zoomdiv'><img class='bigimg' src='../images/" + bigimage + "'/></div>");
-                    $(this).append("<div class='jqZoomPup'>?</div>")
+                    $(this).append("<div class='jqZoomPup'> </div>");
                 }
-                if (settings.position == "right") { if (imageLeft + imageWidth + settings.offset + settings.xzoom > screen.width) { leftpos = imageLeft - settings.offset - settings.xzoom } else { leftpos = imageLeft + imageWidth + settings.offset } } else { leftpos = imageLeft - settings.xzoom - settings.offset; if (leftpos < 0) { leftpos = imageLeft + imageWidth + settings.offset } } $("div.zoomdiv").css({ top: imageTop, left: leftpos });
+                if (settings.position == "right") {
+                    if (imageLeft + imageWidth + settings.offset + settings.xzoom > screen.width) {
+                        leftpos = imageLeft - settings.offset - settings.xzoom;
+                    } else {
+                        leftpos = imageLeft + imageWidth + settings.offset;
+                    }
+                } else {
+                    leftpos = imageLeft - settings.xzoom - settings.offset;
+                    if (leftpos < 0) {
+                        leftpos = imageLeft + imageWidth + settings.offset;
+                    }
+                }
+                $("div.zoomdiv").css({
+                    top: imageTop,
+                    left: leftpos
+                });
                 $("div.zoomdiv").width(settings.xzoom);
                 $("div.zoomdiv").height(settings.yzoom);
                 $("div.zoomdiv").show();
-                if (!settings.lens) { $(this).css("cursor", "crosshair") } $(document.body).mousemove(function(e) {
+                if (!settings.lens) {
+                    $(this).css('cursor', 'crosshair');
+                }
+                $(document.body).mousemove(function(e) {
                     mouse = new MouseEvent(e);
                     var bigwidth = $(".bigimg").get(0).offsetWidth;
                     var bigheight = $(".bigimg").get(0).offsetHeight;
-                    var scaley = "x";
-                    var scalex = "y";
+                    var scaley = 'x';
+                    var scalex = 'y';
                     if (isNaN(scalex) | isNaN(scaley)) {
                         var scalex = (bigwidth / imageWidth);
                         var scaley = (bigheight / imageHeight);
                         $("div.jqZoomPup").width((settings.xzoom) / (scalex * 1));
                         $("div.jqZoomPup").height((settings.yzoom) / (scaley * 1));
-                        if (settings.lens) { $("div.jqZoomPup").css("visibility", "visible") }
+                        if (settings.lens) {
+                            $("div.jqZoomPup").css('visibility', 'visible');
+                        }
                     }
                     xpos = mouse.x - $("div.jqZoomPup").width() / 2 - imageLeft;
                     ypos = mouse.y - $("div.jqZoomPup").height() / 2 - imageTop;
                     if (settings.lens) {
                         xpos = (mouse.x - $("div.jqZoomPup").width() / 2 < imageLeft) ? 0 : (mouse.x + $("div.jqZoomPup").width() / 2 > imageWidth + imageLeft) ? (imageWidth - $("div.jqZoomPup").width() - 2) : xpos;
-                        ypos = (mouse.y - $("div.jqZoomPup").height() / 2 < imageTop) ? 0 : (mouse.y + $("div.jqZoomPup").height() / 2 > imageHeight + imageTop) ? (imageHeight - $("div.jqZoomPup").height() - 2) : ypos
+                        ypos = (mouse.y - $("div.jqZoomPup").height() / 2 < imageTop) ? 0 : (mouse.y + $("div.jqZoomPup").height() / 2 > imageHeight + imageTop) ? (imageHeight - $("div.jqZoomPup").height() - 2) : ypos;
                     }
-                    if (settings.lens) { $("div.jqZoomPup").css({ top: ypos, left: xpos }) } scrolly = ypos;
+                    if (settings.lens) {
+                        $("div.jqZoomPup").css({
+                            top: ypos,
+                            left: xpos
+                        });
+                    }
+                    scrolly = ypos;
                     $("div.zoomdiv").get(0).scrollTop = scrolly * scaley;
                     scrollx = xpos;
-                    $("div.zoomdiv").get(0).scrollLeft = (scrollx) * scalex
-                })
+                    $("div.zoomdiv").get(0).scrollLeft = (scrollx) * scalex;
+                });
             }, function() {
                 $(this).children("img").attr("alt", noalt);
                 $(document.body).unbind("mousemove");
-                if (settings.lens) { $("div.jqZoomPup").remove() } $("div.zoomdiv").remove()
+                if (settings.lens) {
+                    $("div.jqZoomPup").remove();
+                }
+                $("div.zoomdiv").remove();
             });
             count = 0;
             if (settings.preload) {
-                $("body").append("<div style='display:none;' class='jqPreload" + count + "'></div>");
+                $('body').append("<div style='display:none;' class='jqPreload" + count + "'></div>");
                 $(this).each(function() {
                     var imagetopreload = $(this).children("img").attr("src");
-                    var content = jQuery("div.jqPreload" + count + "").html();
-                    jQuery("div.jqPreload" + count + "").html(content + '<img src="' + imagetopreload + '">')
-                })
+                    var content = jQuery('div.jqPreload' + count + '').html();
+                    jQuery('div.jqPreload' + count + '').html(content + '<img src=\"' + imagetopreload + '\">');
+                });
             }
         },
         check: function(options) {
@@ -479,20 +827,34 @@
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                $("[name=items]:checkbox").click(function() {
+                $('[name=items]:checkbox').click(function() {
                     var flag = true;
-                    $("[name=items]:checkbox").each(function() { if (!this.checked) { flag = false } });
-                    $("#checkall").prop("checked", flag)
-                });
-                $("#checkall").click(function() { $("[name=items]:checkbox").prop("checked", this.checked) });
-                $("#uncheckall").click(function() { $("[name=items]:checkbox").prop("checked", false) });
-                $("#fan").click(function() { $("[name=items]:checkbox").each(function() { this.checked = !this.checked }) });
-                $("#submit").click(function() {
-                    var str = "??????\r\n";
-                    $("[name=items]:checkbox:checked").each(function() { str += $(this).val() + "\r\n" });
-                    alert(str)
+                    $('[name=items]:checkbox').each(function() {
+                        if (!this.checked) {
+                            flag = false;
+                        }
+                    });
+                    $('#checkall').prop('checked', flag);
                 })
-            })
+                $('#checkall').click(function() {
+                    $('[name=items]:checkbox').prop('checked', this.checked);
+                })
+                $('#uncheckall').click(function() {
+                    $('[name=items]:checkbox').prop('checked', false);
+                })
+                $('#fan').click(function() {
+                    $('[name=items]:checkbox').each(function() {
+                        this.checked = !this.checked;
+                    })
+                })
+                $('#submit').click(function() {
+                    var str = '你选中的是：\r\n';
+                    $('[name=items]:checkbox:checked').each(function() {
+                        str += $(this).val() + '\r\n';
+                    });
+                    alert(str);
+                })
+            });
         },
         scrollto: function(options) {
             var defaults = {};
@@ -500,30 +862,44 @@
             return this.each(function() {
                 var $t = $(this);
                 $(function() {
-                    $(window).scroll(function() { if ($(window).scrollTop() > 700) { $(".anchor").show() } else { $(".anchor").hide() } });
-                    $(".anchor").click(function() { $("html, body").animate({ scrollTop: 0 }, 240) })
+                    $(window).scroll(function() {
+                        if ($(window).scrollTop() > 700) {
+                            $('.anchor').show();
+                        } else {
+                            $('.anchor').hide();
+                        }
+                    })
+                    $('.anchor').click(function() {
+                        $('html, body').animate({
+                            scrollTop: 0 //$('.content').offset().top
+                        }, 240);
+                    })
                 });
+
                 jQuery.scrollto = function(scrolldom, scrolltime) {
                     $(scrolldom).click(function() {
                         var scrolltodom = $(this).data("scroll");
                         $(this).addClass("thisscroll").siblings().removeClass("thisscroll");
-                        $("html,body").animate({ scrollTop: $(scrolltodom).offset().top }, scrolltime);
-                        return false
-                    })
+                        $('html,body').animate({
+                            scrollTop: $(scrolltodom).offset().top
+                        }, scrolltime);
+                        return false;
+                    });
                 };
-                $.scrollto("#scrollnav a", 600)
-            })
+                $.scrollto("#scrollnav a", 600);
+            });
         },
         scrollbar: function(options) {
             var defaults = {};
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
-                var oDiv = $t.find(".bar1")[0];
-                var oDiv2 = $t.find(".bar2")[0];
-                var oDiv3 = $t.find(".bar3")[0];
-                var oParent = $t.find(".bar0")[0];
+                var oDiv = $t.find('.bar1')[0];
+                var oDiv2 = $t.find('.bar2')[0];
+                var oDiv3 = $t.find('.bar3')[0];
+                var oParent = $t.find('.bar0')[0];
                 var disY = 0;
+
                 oDiv.onmousedown = function(ev) {
                     var oEvent = ev || event;
                     disY = oEvent.clientY - oDiv.offsetTop;
@@ -534,23 +910,32 @@
                         if ($(oDiv3).height() > $(oDiv2).height()) {
                             var oEvent = ev || event;
                             var t = oEvent.clientY - disY;
-                            var h = oParent.offsetHeight - oDiv.offsetHeight;
-                            if (t < 0) { t = 0 } else { if (t > h) { t = h } } oDiv.style.top = t + "px";
+                            var h = oParent.offsetHeight - oDiv.offsetHeight
+                            if (t < 0) {
+                                t = 0
+                            } else if (t > h) {
+                                t = h
+                            };
+                            oDiv.style.top = t + 'px'
                             var scale = t / h;
-                            oDiv3.style.top = -scale * (oDiv3.offsetHeight - oDiv2.offsetHeight) + "px"
+                            oDiv3.style.top = -scale * (oDiv3.offsetHeight - oDiv2.offsetHeight) + 'px'
                         }
                     }
 
                     function mouseUp() {
                         this.onmousemove = null;
-                        this.onmouseup = null
-                    }
-                    return false
-                }
-            })
+                        this.onmouseup = null;
+                    };
+                    return false;
+                };
+            });
         },
         waterfall: function(options) {
-            var defaults = { scrollBox: null, moreHeight: 0, callback: function() {} };
+            var defaults = {
+                scrollBox: null,
+                moreHeight: 0,
+                callback: function() {}
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
@@ -560,15 +945,21 @@
                     if ($t.scrollTop() >= height - $t.height()) {
                         if (flag) {
                             set.callback();
-                            flag = false
-                        }
-                        setTimeout(function() { flag = true }, 1200)
+                            flag = false;
+                        };
+                        setTimeout(function() {
+                            flag = true;
+                        }, 1200);
                     }
                 })
-            })
+            });
         },
         scratch: function(options) {
-            var defaults = { image: false, percent: 0.85, radius: 30 };
+            var defaults = {
+                image: false,
+                percent: 0.85,
+                radius: 30
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
@@ -586,14 +977,14 @@
                     img.src = set.image;
                     img.onload = function() {
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        box0.addClass("on");
+                        box0.addClass('on');
                         tapClip()
-                    }
+                    };
                 } else {
                     ctx.fillStyle = "#999";
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    box0.addClass("on");
-                    tapClip()
+                    box0.addClass('on');
+                    tapClip();
                 }
 
                 function tapClip() {
@@ -611,7 +1002,7 @@
                         x1 = hastouch ? e.targetTouches[0].pageX - box.offsetLeft : e.clientX - box.offsetLeft;
                         y1 = hastouch ? e.targetTouches[0].pageY - box.offsetTop : e.clientY - box.offsetTop;
                         ctx.save();
-                        ctx.beginPath();
+                        ctx.beginPath()
                         ctx.arc(x1, y1, 1, 0, 2 * Math.PI);
                         ctx.fill();
                         ctx.restore();
@@ -621,17 +1012,24 @@
                             timeout = setTimeout(function() {
                                 var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                                 var dd = 0;
-                                for (var x = 0; x < imgData.width; x += jiange) { for (var y = 0; y < imgData.height; y += jiange) { var i = (y * imgData.width + x) * 4; if (imgData.data[i + 3] > 0) { dd++ } } }
+                                for (var x = 0; x < imgData.width; x += jiange) {
+                                    for (var y = 0; y < imgData.height; y += jiange) {
+                                        var i = (y * imgData.width + x) * 4;
+                                        if (imgData.data[i + 3] > 0) {
+                                            dd++
+                                        }
+                                    }
+                                }
                                 if (dd / (imgData.width * imgData.height / (jiange * jiange)) < set.percent) {
                                     canvas.className = "removeimg";
-                                    box.style.display = "block"
+                                    box.style.display = 'block';
                                 }
                             }, totimes)
                         });
 
                         function tapmoveHandler(e) {
-                            clearTimeout(timeout);
-                            e.preventDefault();
+                            clearTimeout(timeout)
+                            e.preventDefault()
                             x2 = hastouch ? e.targetTouches[0].pageX - box.offsetLeft : e.clientX - box.offsetLeft;
                             y2 = hastouch ? e.targetTouches[0].pageY - box.offsetTop : e.clientY - box.offsetTop;
                             ctx.save();
@@ -640,20 +1038,28 @@
                             ctx.stroke();
                             ctx.restore();
                             x1 = x2;
-                            y1 = y2
+                            y1 = y2;
                         }
                     })
                 }
-            })
+            });
         },
         shake: function(options) {
-            var defaults = { threshold: 1500, waiting: 1500, timeout: 2000, music: "images/shake.mp3", shaked: function() {} };
+            var defaults = {
+                threshold: 1500,
+                waiting: 1500,
+                timeout: 2000,
+                music: 'images/shake.mp3',
+                shaked: function() {}
+            };
             var set = $.extend({}, defaults, options);
             return this.each(function() {
                 var $t = $(this);
                 var flag = true;
                 var timer;
-                if (window.DeviceMotionEvent) { window.addEventListener("devicemotion", deviceMotionHandler, false) }
+                if (window.DeviceMotionEvent) {
+                    window.addEventListener('devicemotion', deviceMotionHandler, false);
+                }
                 var SHAKE_THRESHOLD = set.threshold;
                 var lastUpdate = 0;
                 var x, y, z, last_x, last_y, last_z;
@@ -670,221 +1076,143 @@
                         var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
                         if (speed > SHAKE_THRESHOLD) {
                             if (set.music) {
-                                $("body").append('<audio src="../images/' + set.music + '"></audio>');
-                                $("audio")[0].play()
-                            }
+                                $('body').append('<audio src="../images/' + set.music + '"></audio>');
+                                $('audio')[0].play();
+                            };
                             clearTimeout(timer);
                             setTimeout(function() {
                                 if (flag) {
                                     set.shaked();
-                                    flag = false
-                                }
+                                    flag = false;
+                                };
                             }, set.waiting);
-                            timer = setTimeout(function() { flag = true }, set.timeout)
-                        }
+                            timer = setTimeout(function() {
+                                flag = true;
+                            }, set.timeout);
+                        };
                         last_x = x;
                         last_y = y;
-                        last_z = z
-                    }
+                        last_z = z;
+                    };
                 }
-            })
+            });
         },
-        demo: function(options) { var defaults = {}; var set = $.extend({}, defaults, options); return this.each(function() { var $t = $(this) }) },
-        loadmore: function(options) {
-            var defaults = {
-                loading: '',
-                next: function() {}
-            };
+        demo: function(options) {
+            var defaults = {};
             var set = $.extend({}, defaults, options);
-            var start,
-                end,
-                length,
-                isLock = false, //是否锁定整个操作
-                isCanDo = false, //是否移动滑块
-                isTouchPad = (/hp-tablet/gi).test(navigator.appVersion),
-                hasTouch = 'ontouchstart' in window && !isTouchPad;
-            /*var obj = document.querySelector(option.container);*/
-            /*var loading = obj.firstElementChild;*/
-            /*var offset = loading.clientHeight;*/
-
             return this.each(function() {
                 var $t = $(this);
-
-                var loadingNode = $t.find(set.loading);
-                var loadingOffset = loadingNode.height();
-                var objparent = $t.parent()[0];
-
-                var fn = {
-                    //移动容器
-                    translate: function(diff) {
-                        $t.css('transform', 'translate3d(0,' + diff + 'px,0)');
-                        $t.css('webkitTransform', 'translate3d(0,' + diff + 'px,0)');
-                    },
-                    //设置效果时间
-                    setTransition: function(time) {
-
-                        $t.css('transition', 'all ' + time + 's');
-                        $t.css('webkitTransition', 'all ' + time + 's');
-
-                    },
-                    //返回到初始位置
-                    back: function() {
-                        fn.translate(0 - loadingOffset);
-                        //标识操作完成
-                        isLock = false;
-                    }
-                    /*,
-                                        addEvent: function(element, event_name, event_fn) {
-                                            if (element.addEventListener) {
-                                                element.addEventListener(event_name, event_fn, false);
-                                            } else if (element.attachEvent) {
-                                                element.attachEvent('on' + event_name, event_fn);
-                                            } else {
-                                                element['on' + event_name] = event_fn;
-                                            }
-                                        }*/
-                };
-                fn.translate(0 - loadingOffset);
-                // fn.addEvent($t, 'touchstart', start);
-                // fn.addEvent($t, 'touchmove', move);
-                // fn.addEvent($t, 'touchend', end);
-                // fn.addEvent($t, 'mousedown', start)
-                // fn.addEvent($t, 'mousemove', move)
-                // fn.addEvent($t, 'mouseup', end)
-                $t.on('touchstart', start);
-                $t.on('touchmove', move);
-                $t.on('touchend', end);
-                $t.on('mousedown', start);
-                $t.on('mousemove', move);
-                $t.on('mouseup', end);
-                //滑动开始
-                function start(e) {
-                    if (objparent.scrollTop <= 0 && !isLock) {
-                        var even = typeof event == "undefined" ? e : event;
-                        //标识操作进行中
-                        isLock = true;
-                        isCanDo = true;
-                        //保存当前鼠标Y坐标
-                        start = hasTouch ? even.touches[0].pageY : even.pageY;
-                        /*console.log(start);*/
-                        //消除滑块动画时间
-                        fn.setTransition(0);
-                        loadingNode.innerHTML = '下拉刷新数据';
-                    }
-                    return false;
-                };
-                //滑动中
-                function move(e) {
-                    if (objparent.scrollTop <= 0 && isCanDo) {
-                        var even = typeof event == "undefined" ? e : event;
-                        //保存当前鼠标Y坐标
-                        end = hasTouch ? even.touches[0].pageY : even.pageY;
-                        /*console.log(end);*/
-                        if (start < end) {
-                            even.preventDefault();
-                            //消除滑块动画时间
-                            fn.setTransition(0);
-                            //移动滑块
-                            if ((end - start - loadingOffset) / 2 <= 150) {
-                                length = (end - start - loadingOffset) / 2;
-                                fn.translate(length);
-                            } else {
-                                length += 0.3;
-                                fn.translate(length);
-                            }
-                        }
-                    }
-                };
-                //滑动结束
-                function end(e) {
-                    if (isCanDo) {
-                        isCanDo = false;
-
-                        //判断滑动距离是否大于等于指定值
-                        if (end - start >= loadingOffset) {
-                            console.log('1');
-                            //设置滑块回弹时间
-                            fn.setTransition(1);
-                            //保留提示部分
-                            fn.translate(0);
-                            //执行回调函数
-                            loadingNode.html('正在刷新数据');
-                            if (typeof set.next == "function") {
-                                set.next.call(fn, e);
-                            }
-                            /*setTimeout(function() {
-                                fn.back.call();
-                            }, 2000);*/
-                        } else {
-                            //返回初始状态
-                            fn.back();
-                        }
-                    }
-                }
-
-            });
-        },
-        scrolllineDouble: function(options) {
-            var defaults = { vertical: true };
-            var set = $.extend({}, defaults, options);
-            return this.each(function() {
-                var $t = $(this),
-                    marginTop = -1 * $t.find("ul li").height(),
-                    marginLeft = -1*$t.find("ul li").width();
-
-                function autoScroll() {
-                    if (set.vertical) {
-                        $t.find("ul:first").animate({
-                            marginTop: marginTop
-                        }, 500, function() {
-                            $(this).css({
-                                marginTop: "0px"
-                            }).find("li:first").appendTo(this);
-                        });
-                    }else{
-                        $t.find("ul:first").animate({
-                            marginLeft: marginLeft
-                        }, 1500, function() {
-                            $(this).css({
-                                marginLeft: "0px"
-                            }).find("li:first").appendTo(this);
-                        });
-                    }
-
-                };
-                var myar = setInterval(function() {
-                    autoScroll();
-                }, 1000)
-                $t.hover(function() {
-                    clearInterval(myar);
-                }, function() {
-                    myar = setInterval(function() {
-                        autoScroll();
-                    }, 1000)
-                });
             });
         }
-    })
+    });
 })(jQuery);
-(function() { if (typeof console == "undefined" || typeof console.log == "undefined") { var console = { log: function() {} } } })();
+if (typeof console == "undefined" || typeof console.log == "undefined") var console = {
+    log: function() {}
+};
 
-function setCookie(b, d, a) { var c = new Date();
-    c.setDate(c.getDate() + a);
-    document.cookie = b + "=" + d + "; expires=" + c; }
+function setCookie(name, value, iDay) {
+    var oDate = new Date();
+    oDate.setDate(oDate.getDate() + iDay);
+    document.cookie = name + '=' + value + '; expires=' + oDate;
+};
 
-function getCookie(c) {
-    var a = document.cookie.split("; ");
-    for (var d = 0; d < a.length; d++) { var b = a[d].split("="); if (b[0] == c) { return b[1]; } }
-    return "";
-}
+function getCookie(name) {
+    var arr = document.cookie.split('; ');
+    for (var i = 0; i < arr.length; i++) {
+        var arr2 = arr[i].split('=');
+        if (arr2[0] == name) {
+            return arr2[1];
+        }
+    }
+    return '';
+};
 
-function removeCookie(a) { setCookie(a, 1, -1); }
+function removeCookie(name) {
+    setCookie(name, '', -1);
+};
 
 function urlArgs(str) {
     var item = location.search.substring(1).split("&");
     for (var i = 0; i < item.length; i++) {
         var args = item[i].split("=");
-        if (args[0] == str) return args[1];
+        if (args[0] == str) return decodeURI(args[1]);
     };
     return "";
 };
+
+function imgLoder(imgs, callback) {
+    var loadedCount = 0;
+    $.each(imgs, function(index, val) {
+        var img = new Image();
+        img.src = val;
+        img.onload = function() {
+            loadedCount++;
+            if (loadedCount == imgs.length) {
+                callback();
+            }
+        };
+    })
+};
+
+function lsset(key, value) {
+    var curTime = new Date().getTime();
+    localStorage.setItem(key, JSON.stringify({
+        data: value,
+        time: curTime
+    }));
+}
+
+function lsget(key, exp) {
+    var data = localStorage.getItem(key);
+    if (!data) {
+        return null;
+    };
+    try {
+        JSON.parse(data) && JSON.parse(data).data && JSON.parse(data).time
+    } catch (e) {
+        return null;
+    };
+    var dataObj = JSON.parse(data);
+    if (new Date().getTime() - dataObj.time > exp) {
+        return null;
+    } else {
+        try {
+            JSON.parse(dataObj.data)
+        } catch (e) {
+            return dataObj.data
+        };
+        var dataObjDatatoJson = JSON.parse(dataObj.data)
+        return dataObjDatatoJson;
+    }
+}
+
+function deepCopy(obj) {
+    if (typeof obj != 'object') {
+        return obj;
+    }
+    var newobj = {};
+    for (var attr in obj) {
+        newobj[attr] = deepCopy(obj[attr]);
+    }
+    return newobj;
+}
+Array.prototype.min = function() {
+    var min = this[0];
+    var len = this.length;
+    for (var i = 1; i < len; i++) {
+        if (this[i] < min) {
+            min = this[i];
+        }
+    }
+    return min;
+}
+Array.prototype.max = function() {
+    var max = this[0];
+    var len = this.length;
+    for (var i = 1; i < len; i++) {
+        if (this[i] > max) {
+            max = this[i];
+        }
+    }
+    return max;
+}

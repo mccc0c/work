@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<!-- <table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>身高</th>
+			</tr>
+		</thead>
+		<tbody class="list">
+			<tr>
+				<th>郭建民</th>
+				<th>20</th>
+				<th>1.88</th>
+			</tr>
+			<tr>
+				<th>小明</th>
+				<th>30</th>
+				<th>1.60</th>
+			</tr>
+			<tr>
+				<th>艾薇</th>
+				<th>10</th>
+				<th>1.45</th>
+			</tr>
+		</tbody>
+	</table> -->
+	<script src="./js/js.js"></script>
+	<script>
+	var arr = [0, 1, 5, 15, 10];
+	var data = [{ name: "Nachary", age: 30 }, { name: "Zicholas", age: 29 }, { name: '郭建民', age: 28 }, { name: '小明', age: 11 }];
+	/*var arrSort = arr.sort();
+	console.log(arrSort);//[0, 1, 10, 15, 5]
+	var arrCom = arr.sort(compare);	
+	console.log(arrCom);//[0, 1, 5, 10, 15]
+	console.log(arr);//[0, 1, 5, 10, 15],sort()会改变原来的数组*/
+	data.sort(compareWithName('name'));
+	console.log(data);
+	/*arr.sort(compareWithName());
+	console.log(arr);
+	arr.sort();
+	console.log(arr);
+	var s = new Object();
+	console.log(s.toString());*/
+	</script>
+</body>
+
+</html>

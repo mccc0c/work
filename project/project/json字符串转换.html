@@ -23,7 +23,13 @@
 
 <body>
 	<!-- onclick='getdata(t)' -->
-	<a class="check" >查看</a>
+	<a class="check">查看</a>
+	<div class="html" style="display: none;"><img src="./images/01.jpg"></div>
+	<div class="htmlshow"></div>
+	<!-- <form class="sss" id="ss">
+		<input type="text" name="o1" class="ii" value="22" disabled="">
+		<input type="text" name="o2" class="ii" value="12" disabled="true">
+	</form> -->
 	<script src="js/jquery.js"></script>
 	<script src="js/easy.js"></script>
 	<script>
@@ -37,7 +43,8 @@
 			"draw": 2,
 			"recordsTotal": 2,
 			"recordsFiltered": 2,
-			"data": "1"
+			"data": "1",
+			"content": "<body class=\"ke-content\">sdasdfasdf<br>​asdasdas</body>"
 		}, {
 			"info": "0,10,1",
 			"draw": 2,
@@ -46,19 +53,28 @@
 			"data": "2"
 		}]
 	};
-	$(document).on('click', '.check', function() {
-		$.ajax({
-			type: 'get',
-			url: './data/check.json',
-			success: function(result) {
-				var jsontostring = JSON.stringify(result),
-					stringtojson = JSON.parse(jsontostring);
-				console.log(jsontostring);
-				console.log(stringtojson.data[0]);
-			}
+	$(function() {
+		var html = $('.html').html(),
+			json = {};
+		json.content = encodeURI(html);
+		console.log(json);
+		$(document).on('click', '.check', function() {
+			/*$.ajax({
+				type: 'get',
+				url: './data/check.json',
+				success: function(result) {
+					var jsontostring = JSON.stringify(result),
+						stringtojson = JSON.parse(jsontostring);
+					console.log(jsontostring);
+					console.log(stringtojson.data[0]);
+				}
+			});*/
+			$('.htmlshow').html(decodeURI(json.content));
+			/*var s = $('#sss').serialize();
+			console.log($('input:not([disabled])'));*/
 		});
-		
-	})
+	});
+
 	/*function getdata(data){
 		console.log(data);
 	}*/
