@@ -12,7 +12,19 @@
 	<script src="./js/echarts.js"></script>
 	<script src="./js/jQueryRotate.js"></script>
 	<script>
+	var node = [];	
 	$(function() {
+		function chartresize(node) {
+            $.each(node, function(index, value) {
+                $(this).resize();
+            })
+        }
+
+        chartresize(node);
+        //echarts自适应
+        window.onresize = function() {
+            chartresize(node);
+        };
 		chart(50, '.circle');
 		chart(100, '.circle1');
 		/*var angle = 0;
@@ -134,6 +146,7 @@
 			};
 			var myChart = echarts.init($(elName)[0]);
 			myChart.setOption(option, true);
+			node.push(myChart);
 		}
 	})
 	</script>

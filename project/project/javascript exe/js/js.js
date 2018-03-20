@@ -119,7 +119,9 @@ SuperType.prototype.saySuperFlag = function() {
 };
 
 function SubType() {
+	this.subcolor = ['red','blue'];
 	this.subFlag = false;
+	SuperType.call(this);
 }
 SubType.prototype = new SuperType();
 /*SubType.prototype = {};*/

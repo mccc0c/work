@@ -29,4 +29,10 @@
 	<year>2003</year>
 	<price>49.99</price>
 </book>
+<book category="web" cover="paperback">
+	<title>啊啊啊</title>
+	<author>一样一样</author>
+	<year>2003</year>
+	<price>39.95</price>
+</book>
 </bookstore>

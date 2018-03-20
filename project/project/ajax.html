@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title></title>
 </head>
+
 <body>
 	<button id="book_list">显示书单</button>
 	<div id="myDiv"></div>
-	<script src="js/ajax.js" charset="UTF-8"></script>
+	<!-- <script src="js/ajax.js"></script> -->
+	<script src="./js/jquery.js"></script>
+	<script>
+	/*;(function($) {
+				var ajax = $.ajax;
+				// 用于存储ajax的请求
+				var ajaxState = {};
+				var kinhomAjax = function() {
+					var args = Array.prototype.slice.call(arguments, 0);
+					// url data 一致，
+					// 应该将 url取出，data按键值排序，后将值拼接在一起，进行sha1得到的值作为指纹
+					// 累先用 url作为指纹吧
+					var hash = typeof args[0] === 'string' ? args[0] : args[0].url;
+					if (typeof ajaxState[hash] !== 'undefined') {
+						if (ajaxState[hash] > 3) {
+							alert('请不要重复提交，请求正在处理中');
+						}
+						++ajaxState[hash];
+						return $.Deferred();
+					}
+					ajaxState[hash] = 1;
+					var def = ajax.apply($, args);
+					def.done(function() {
+						delete ajaxState[hash];
+					});
+					return def;
+				};
+				$.ajax = kinhomAjax;
+			})(jQuery);*/
+	$(function() {
+		var flag = false;
+		/*jquery 1.5.0版本以上，有Deferred对象*/
+		$(document).on('click', '#book_list', function() {
+			if(flag){return;}
+			flag = true;
+			/*$.ajax({
+				type: 'get',
+				url: './data/book.json',
+				success: function(r) {
+					var s = "";
+					for (var i = 0; i < r.length; i++) {
+						s += '<div><span class="id">' + r[i].id + '、</span><span class="content">' + r[i].content + '</span></div>';
+					}
+					$('#myDiv').html(s);
+				}
+			});*/
+			/*$.ajax("./data/book.json")
+			.done(function(r) {
+				var s = "";
+				for (var i = 0; i < r.length; i++) {
+					s += '<div><span class="id">' + r[i].id + '、</span><span class="content">' + r[i].content + '</span></div>';
+				}
+				$('#myDiv').html(s);
+			})
+			.fail(function() { alert("出错啦！"); })
+			.done(function(){
+				alert('第二个函数');
+			});*/
+			
+			var wait = function(dtd) {
+				var dtd = $.Deferred();
+				var task = function(){
+					$.ajax({url:"./data/book.json",timeout: 3300});
+					dtd.resolve();//dtd.resolve()
+				};
+				setTimeout(task,3000);
+				
+				return dtd.promise();
+			};
+			$.when(wait())//$.ajax("./data/book.json"),$.ajax("book.json")			
+			.done(function(r) {
+				flag = false;
+				console.log(r);
+				var s = "书单";
+				/*for (var i = 0; i < r[0].length; i++) {
+					s += '<div><span class="id">' + r[0][i].id + '、</span><span class="content">' + r[0][i].content + '</span></div>';
+				}*/
+				$('#myDiv').html(s);
+			})
+			.fail(function() { flag = false;alert("出错"); })
+			.always(function(r){console.log(r);flag = false;alert("超时");});
+			return false;
+		});
+
+	});
+	</script>
 </body>
+
 </html>

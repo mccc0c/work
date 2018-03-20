@@ -16,12 +16,19 @@
 		// body...
 	})(window);
 	console.log(a);
-	var s = new SubType();
-	s.saySuperFlag();//false 继承了SuperType
-	s.saySubFlag();//true
+	var s = new SubType(),s1 = new SubType();
+	s.saySuperFlag();//true 继承了SuperType
+	s.saySubFlag();//false
 	console.log(checkObj(document.getElementsByTagName('body')));//HTMLCollection
 	var arr = [43,41,42];
 	console.log(arr.indexOf(42,1));//参数1：查询字符创，参数2：规定在字符串中开始检索的位置
+	s.subcolor.push('pink');
+	s.color.push('pink');
+	//未加SuperType.call(this);	
+	console.log(s1.subcolor.toString());//red,blue
+	console.log(s1.color.toString());//red,blue,pink
+	s1.saySubFlag();
+	console.log(SubType.prototype.constructor);
 
 </script>
 </body>

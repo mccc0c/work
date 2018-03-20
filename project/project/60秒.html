@@ -18,18 +18,18 @@
 	<script>
 	$(function() {
 		var settime = 20,
-			clicktime = "setclicktime",//用户名来命名
+			clicktime = "setclicktime",//cookie的key
 			flag = true,
-			wait = settime;
-
+			wait = settime,
+			clickBtn = $('.checkReal');//点击的按钮
 		if (getCookie(clicktime)) {
 			console.log(getCookie(clicktime));
 			var cha = difftime(getCookie(clicktime));
-			if (cha < settime) {
-                $('.checkReal').addClass('clickwaiting');
+			if (cha <= settime) {
+                clickBtn.addClass('clickwaiting');
 				wait = settime - cha;
 				console.log(wait);
-				time($('.checkReal'));
+				time(clickBtn);
 				flag = false;
 			} else {
 				flag = true;
@@ -37,20 +37,20 @@
 		}
 
 		function time(ele) {
-			if (wait == 0) {
+			if (wait < 0) {
 				flag = true;
 				ele.text("check");
 				ele.removeClass('clickwaiting');
 				wait = settime;
-                removeCookie('clicktime');
+                removeCookie(clicktime);
 			} else {
 				/*ele.addClass('clickwaiting');*/
 				ele.text("wait(" + wait + ")");
 				wait--;
 				setTimeout(function() {
-						time(ele)
+						time(ele);
 					},
-					1000)
+					1000);
 			}
 		}
 		/*计算点击到刷新的时间差*/
@@ -58,12 +58,10 @@
 			var diff = Math.floor((new Date().getTime() - clicktime) / 1000);
 			return diff;
 		}
-
-		$('body').on('click', '.checkReal', function() {
-			if (!flag) { return; };
+		$(document).on('click', '.checkReal', function() {
+			if (!flag) { return; }
             $(this).addClass('clickwaiting');
-			setCookie(clicktime, new Date().getTime());
-            
+			setCookie(clicktime, new Date().getTime());           
 			time($(this));
 			flag = false;
 		});

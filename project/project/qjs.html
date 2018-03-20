@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/easy.css">
+	<style>
+	/*点击弹窗触发多次事件*/
+
+	.clicklist li.on {
+		color: #ccc;
+	}
+	/*滚动刷新数据*/
+
+	.loading1,
+	.loading1_empty {
+		text-align: center;
+		padding-bottom: 10px;
+		height: 32px;
+		line-height: 32px;
+		position: relative;
+	}
+
+	.loading1_icon {
+		position: absolute;
+		top: 2px;
+		left: 50%;
+		margin-left: -16px;
+		width: 24px;
+		height: 24px;
+		border: 2px solid #237FE5;
+		border-radius: 24px;
+		-webkit-animation: loading1 1s infinite linear;
+		clip: rect(0 auto 12px 0);
+	}
+
+	@-webkit-keyframes loading1 {
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+
+	#scrollBox {
+		height: 200px;
+		border-bottom: 1px solid #ccc;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="dclick">click</div>
+	<div class="dialog dialog_del dialog_info">
+		<!-- style="display: block;" -->
+		<a href="#" class="dclose">&nbsp;</a>
+		<div class="dcontent" style="text-align: center;">
+			<ul class="clicklist">
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+			</ul>
+			<div class="dbtn"><a class="dcancle">否</a> <a class="dokay">是</a></div>
+		</div>
+	</div>
+	<div id="scrollBox">
+		<ul id="result"></ul>
+		<div class="loading1" id="loading1"><i class="loading1_icon"></i></div>
+		<div class="loading1_empty hide" id="loading1_empty">没有更多内容了~</div>
+	</div>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/easy.js"></script>
+	<script>
+	/*//点击弹窗，多选触发n次	
+							$(document).on('click', '.dclick', function(e) {
+							//事件是叠加的，每次点击click按钮，就给li绑定一次事件所以点击几次，就绑定几次事件，事件是叠加的
+							//嵌套的clcik事件，里面的click事件每次都要解绑
+								e.stopPropagation();
+								var dialog = $('.dialog_del').modal({
+									width: '200px',
+									heigth: '200px',
+									bgclose:true
+								});
+								dialog.open();
+								$(document).off('click','.clicklist li');
+								$(document).on('click', '.clicklist li', function(e) {
+									e.stopPropagation();
+									var ele = $(this);
+									ele.toggleClass('on');
+									console.log(ele.attr('class'));
+									return false;
+								});
+								return false;
+							});*/
+	</script>
+	<script>
+	/*滚动刷新数据分为向上刷新和向下加载*/
+	(function($) {
+		$.fn.extend({
+			waterfall: function(options) {
+				var defaults = {
+					scrollBox: null,
+					moreHeight: 0,
+					scrollToEnd: function() {},
+					scrollToTop: function() {}
+
+				};
+				var set = $.extend({}, defaults, options);
+				return this.each(function() {
+					var $t = $(this);
+					var flag = true,topFlag = true;
+					console.log($t);
+					$t.scroll(function() {
+						var height = set.scrollBox ? $(set.scrollBox).height() - set.moreHeight : $(document).height() - set.moreHeight;
+						console.log($t.scrollTop(), height, $t.height());
+						if ($t.scrollTop() >= height - $t.height()) { //scrollTop()滚出可视区域的高度
+							if (flag) {
+								set.scrollToEnd();
+								flag = false;
+							}
+							setTimeout(function() {
+								flag = true;
+							}, 1200);
+						}
+						if ($t.scrollTop() <= set.moreHeight) { //向上滚
+							if (topFlag) {
+								set.scrollToTop();
+								topFlag = false;
+							}
+							setTimeout(function() {
+								topFlag = true;
+							}, 1200);
+						}
+					});
+				});
+			}
+		});
+	}(jQuery));
+	</script>
+	<script>
+	var playlist;
+	$(function() {
+		search(0);
+		var h = $(window).height();
+		$('#scrollBox').waterfall({
+			scrollBox: '#result',
+			moreHeight: 10,
+			scrollToEnd: function() {
+				console.log('下');
+				var num = $('#result li').length;
+				search(num);
+			},
+			scrollToTop: function() {
+				console.log('上');
+				$.ajax({
+					url: './data/book.json',
+					type: 'get',
+					dataType: 'json',
+					data: {
+						'num': 10
+					},
+					success: function(r) {
+						var arr = r,
+						s = "";
+
+						for(var i =0;i<arr.length;i++){
+							s=s+'<li>'+arr[i].id+'<br><span>'+arr[i].content+'</span></li>';
+						}
+						console.log(s);
+						$('#result').prepend(s);
+						/*if (arr < 10) {
+							$('#loading1').hide();
+							$('#loading1_empty').show();
+						}*/
+					}
+				});
+			}
+		});
+	})
+
+	function search(num) {
+		$.ajax({
+			url: './data/singer.json',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				'num': num
+			},
+			success: function(r) {
+				playlist = r;
+				$('#result').tmpl('tmpl', playlist);
+				if (playlist.length < 10) {
+					$('#loading1').hide();
+					$('#loading1_empty').show();
+				}
+			}
+		});
+	}
+	</script>
+	<script type="text/html" id="tmpl">
+		<% for ( var i = 0; i < playlist.length; i++ ) { %>
+			<li>
+				<%=playlist[i].title%>
+					<br><span><%=playlist[i].title%></span></li>
+			<% } %>
+	</script>
+</body>
+
+</html>

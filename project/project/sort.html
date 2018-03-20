@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>排序</title>
+</head>
+<table>
+	<thead>
+		<tr>
+			<td data-sorttype="none" class="name" data-type="china">1</td>
+			<td data-sorttype="none" data-type="">2</td>
+			<td data-sorttype="none" class="price" data-type="">3</td>
+			<td data-sorttype="none" class="year" data-type="data">4</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>就好撒大家</td>
+			<td>1</td>
+			<td>11</td>
+			<td>2012-10-12</td>
+		</tr>
+		<tr>
+			<td>啥地方</td>
+			<td>2</td>
+			<td>2.2</td>
+			<td>2011-02-03</td>
+		</tr>
+		<tr>
+			<td>是否</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2014-11-22</td>
+		</tr>
+		<tr>
+			<td>是否</td>
+			<td>23</td>
+			<td>3</td>
+			<td>2018-03-19</td>
+		</tr>
+	</tbody>
+</table>
+
+<body>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/easy.js"></script>
+	<script>
+	function sortChange(indexId, el, datatype) {
+		datatype = datatype || 'number';
+		var sortType = el.attr("data-sorttype"),
+			table = el.parents('table'),
+			trArr = table.find('tbody tr');
+		el.children('a').addClass('active');
+		/*cookie*/
+		setCookie('setIndex', indexId, '3600');
+		setCookie('setSortType', sortType, '3600');
+		/*cookie end*/
+		if (sortType == "none") {
+			sortType = "asc";
+			el.find("i").removeClass('active');
+			el.find("i.up").addClass('active');
+		} else if (sortType == "asc") {
+			sortType = "desc";
+			el.find("i").removeClass('active');
+			el.find("i.down").addClass('active');
+
+		} else if (sortType == "desc") {
+			sortType = "none";
+			el.find("i").removeClass('active');
+			el.find("i.up").addClass('active');
+		}
+
+		el.attr("data-sorttype", sortType);
+		trArr.sort(function(ele1, ele2) {
+			var aEle = $(ele1).find('td:eq(' + indexId + ')'),
+				bEle = $(ele2).find('td:eq(' + indexId + ')');
+			var a = aEle.text(),
+				b = bEle.text();
+			/*if (indexId == 3) {
+				a = aEle.children("i").text();
+				b = bEle.children("i").text();
+				if (a == "停牌") {
+					a = 0;
+				}
+				if (b == "停牌") {
+					b = 0;
+				}
+			}
+			a = Number(a);
+			b = Number(b);*/
+			// return (sortType === "asc" ? a > b : a < b) ? 1 : -1;
+			switch (datatype) {
+				case 'china':
+					return sortType === "asc" ? a.localeCompare(b) : b.localeCompare(a);
+				case 'data':
+					a = new Date(a.replace(/'-'/g, '/')).getTime();
+					b = new Date(b.replace(/'-'/g, '/')).getTime();
+					return (sortType === "asc" ? a > b : a < b) ? 1 : -1;
+				default:
+					a = Number(a);
+					b = Number(b);
+					return (sortType === "asc" ? a > b : a < b) ? 1 : -1;
+			}
+
+		});
+
+		table.find('tbody').empty().append(trArr);
+		return sortType;
+	}
+	$(function() {
+		$(document).on('click', 'table thead td', function() {
+			var ele = $(this),
+				index = ele.index(),
+				dataType = ele.attr('data-type');
+			// console.log(index,ele);
+			sortChange(index, ele, dataType);
+		});
+		var getIndex = getCookie('setIndex'),
+			getSortType = getCookie('setSortType');
+		if (getIndex) {
+			// console.log(getIndex, getSortType);
+			$('table thead td').eq(getIndex).attr('data-sorttype', getSortType);
+			// console.log($('table thead td').eq(getIndex));
+			$('table thead td').eq(getIndex).trigger('click');//trigger之前必须先绑定事件，才可以触发
+		}
+	});
+	</script>
+</body>
+
+</html>

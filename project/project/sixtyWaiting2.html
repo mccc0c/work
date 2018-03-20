@@ -28,57 +28,59 @@
     <script>
     /*var pCount = getCookie('pCount');
         if (pCount) {
-            $('.checkReal').addClass('btnclickon').css('visibility', 'visible');
+            clickEle.addClass('btnclickon').css('visibility', 'visible');
         } else {
-            $('.checkReal').css('visibility', 'visible');
+            clickEle.css('visibility', 'visible');
         }*/
     $(function() {
         var pCount = getCookie('pCount');
         var cTimer;
         var cFlag = true;
+        var clickEle = $('.checkReal'),
+        pWait = 5;
         if (pCount) {
             cFlag = false;
             var pTime = getCookie('pTime');
             var time2 = (new Date()).getTime();
             var a = pCount - Math.floor((time2 - pTime) / 1000);
-            $('.checkReal').text("重新发送(" + a + ")");
+            clickEle.text("重新发送(" + a + ")");
             counter(a);
             if (a < 0) {
                 resetCounter();
-                $('.checkReal').removeClass('btnclickon');
-                $('.checkReal').closest('li').find('input[name="custName"]').removeClass("noinput");
-            };
+                clickEle.removeClass('btnclickon');
+                clickEle.closest('li').find('input[name="custName"]').removeClass("noinput");
+            }
             /*var name = getCookie('companyInput');*/
             /*get_enterprise_info(name)*/
-        };
+        }
 
         function resetCounter() {
             clearInterval(cTimer);
             /*$('.sms').removeClass('on');*/
             cFlag = true;
-            $('.checkReal').text("check");
+            clickEle.text("check");
             /*$('#custName').attr("readonly", false);*/
             removeCookie('pCount');
             removeCookie('pTime');
-        };
-
+        }
         function counter(a) {
             /*$('#custName').attr("readonly", "readonly");*/
-            $('.checkReal').addClass('btnclickon');
-            /*$('.checkReal').closest('li').find('input[name="custName"]').addClass("noinput");*/
+            clickEle.addClass('btnclickon');
+            clickEle.text("重新发送(" + a + ")");
+            /*clickEle.closest('li').find('input[name="custName"]').addClass("noinput");*/
             cTimer = setInterval(function() {
                 if (a > 0) {
                     a--;
-                    $('.checkReal').text("重新发送(" + a + ")");
+                    clickEle.text("重新发送(" + a + ")");
                     setCookie('pCount', a);
                     setCookie('pTime', (new Date()).getTime());
                 } else {
                     resetCounter();
-                    $('.checkReal').removeClass('btnclickon');
-                    /*$('.checkReal').closest('li').find('input[name="custName"]').removeClass("noinput");*/
+                    clickEle.removeClass('btnclickon');
+                    /*clickEle.closest('li').find('input[name="custName"]').removeClass("noinput");*/
                 }
             }, 1000);
-        };
+        }
         /*var rcom = getCookie('companyInput');
         if (rcom) {
             $('#custName').val(rcom);
@@ -87,8 +89,8 @@
         $('body').on('click', '.checkReal', function() {
             if (!cFlag) {
                 return;
-            };
-            var a = getCookie('pCount') || 60;
+            }
+            var a = getCookie('pCount') || pWait;
             counter(a);
             /*setCookie('companyInput', name);*/
             cFlag = false;
