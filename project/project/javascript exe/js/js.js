@@ -25,7 +25,15 @@ var clone = function(option) {
 	}
 	return o;
 };
-
+//去重，不改变原来数组顺序
+function dedupe(arr){
+	var arrD = [],arrO = {};
+	arr.forEach(function(v,i){
+		if(!arrO[v]){arrD.push(v);arrO[v]=1;}
+	});
+	// console.log(arrD,arrO);
+	return arrD;
+}
 function compare(val1, val2, flag) {
 	var flagVal = "asc"; //递增
 	if (flag) { flagVal = "desc"; } //递减
@@ -75,16 +83,19 @@ function createPerson(name, age, job) {
 	return o;
 }
 //构造函数
-//每个方法在每个实例化上都要创建一遍
+//每个方法在每个实例化上都要创建一遍,更改某个实例方法，其他实例方法无法改变
 //可将sayName方法写在全局，通过指针调用改方法，但是全局方法只能特定对象调用，且失去封装性
-function Person(name, age, job) {
+function Person(name, age) {
 	this.name = name;
 	this.age = age;
-	this.job = job;
-	this.sayName = function() { //其实是this.name = new Function(){}
-		return this.name;
-	};
+	this.eat = ['meat', 'rice', 'veg'];
 }
+Person.prototype.sayName = function() { //其实是this.name = new Function(){}
+	return this.name;
+};
+Person.prototype.sleep = function() {
+	console.log('sleep');
+};
 //原型模式
 function PersonTo() {
 
@@ -109,25 +120,34 @@ Object.defineProperty(PersonTo.prototype, 'constructor', {
 	value: PersonTo
 });
 
-//继承
-function SuperType() {
-	this.superFlag = true;
-	this.color = ['red','blue'];
+//原型链
+//缺点：引用类型会共享
+function Student(stuId, schoolName) {
+	this.stuId = stuId;
+	this.schoolName = schoolName;
 }
-SuperType.prototype.saySuperFlag = function() {
-	console.log(this.superFlag);
-};
+Student.prototype.characterist = "朝气";
+Student.prototype.examItem = ['语文', '数学', '英语'];
 
-function SubType() {
-	this.subcolor = ['red','blue'];
-	this.subFlag = false;
-	SuperType.call(this);
+//借用构造函数
+//缺点：内存占用大，每个实例都要拷贝
+//实例的方法不通用
+function Worker(name, age, job) {
+	Person.call(this, name, age); //Worker的实例复制一套Person
+	this.job = job;
+
 }
-SubType.prototype = new SuperType();
-/*SubType.prototype = {};*/
-SubType.prototype.saySubFlag = function() {
-	console.log(this.subFlag);
+Worker.prototype.sayJob = function() {
+	console.log(this.job);
 };
+//组合继承
+function Worker2(name, age, job) {
+	Person.call(this, name, age);
+	this.job = job;
+}
+Worker2.prototype = new Person();
+Worker2.prototype.constructor = Worker2;
+
 //判断类型
 function checkObj(obj) {
 	var getType = Object.prototype.toString;

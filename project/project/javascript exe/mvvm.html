@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="app">name:<span style="color:{{namecolor}}">{{name}}</span>,age:<span style="color:{{agecolor}}">{{age}}</span></div>
+	<script>
+	//
+	function MVVM(opt) {
+		this.dom = document.querySelector(opt.el);
+		this.data = opt.data || {},
+			this.renderDom(this.dom);
+		observe(this.data);
+		// this.walk(this.data);
+	}
+
+	// function Obser
+	//遍历DOM树节点属性（attributes）和子节点（childNodes），然后调用渲染函数render。当DOM树子节点的类型是元素时，递归调用遍历DOM树的方法。根据DOM树节点类型一直遍历子节点，直到文本节点。
+	MVVM.prototype = {
+		init: {
+			sTag: '{{',
+			eTag: '}}'
+		},
+		render: function(node) {
+			var self = this;
+			var sTag = self.init.sTag;
+			var eTag = self.init.eTag;
+			var matchs = node.textContent.split(sTag);
+			// console.log(matchs);
+			if (matchs.length) {
+				var ret = '';
+				for (var i = 0; i < matchs.length; i++) {
+					var match = matchs[i].split(eTag);
+					// console.log(match);
+					if (match.length == 1) {
+						ret += matchs[i];
+					} else {
+						for (var j = 0; j < match.length; j++) {
+							if (j == 0) {
+								if (self.data[match[0]]) {
+									ret += self.data[match[0]];
+								}
+							} else {
+								ret += match[j];
+							}
+						}
+					}
+					node.textContent = ret;
+				}
+			}
+		},
+		renderDom: function(dom) {
+			var self = this;
+			var attrs = dom.attributes;
+			var nodes = dom.childNodes;
+			// console.log(nodes);
+			Array.prototype.forEach.call(attrs, function(item) {
+				// console.log(item);
+				//遍历属性的文本内容，查找{{}}
+				self.render(item);
+			});
+			Array.prototype.forEach.call(nodes, function(item) {
+				//遍历子节点的文本内容，查找{{}}
+				// console.log(item);
+				if (item.nodeType === 1) {
+					return self.renderDom(item); //递归遍历子节点（分为子节点和属性）
+				}
+				self.render(item);
+			});
+		},
+		walk: function(obj) {
+			var keys = Object.keys(obj);
+			console.log(keys);
+			for (var i = 0, l = keys.length; i < l; i++) {
+				this.convert(keys[i], obj[keys[i]]);
+			}
+		},
+		convert: function(key, val) {
+			this.defineReactive(this.value, key, val);
+		},
+		defineReactive: function(obj, key, val) {
+			var property = Object.getOwnPropertyDescriptor(obj, key); //返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+			if (property && property.configurable === false) {
+				return;
+			}
+
+			// 保存对象属性预先定义的getter/setter
+			var getter = property && property.get;
+			var setter = property && property.set;
+
+			var childOb = observe(val);
+			Object.defineProperty(obj, key, {
+				enumerable: true,
+				configurable: true,
+				get: function reactiveGetter() {
+					var value = getter ? getter.call(obj) : val;
+					console.log("访问：" + key);
+					return value;
+				},
+				set: function reactiveSetter(newVal) {
+					var value = getter ? getter.call(obj) : val;
+					if (newVal === value) {
+						return;
+					}
+					if (setter) {
+						setter.call(obj, newVal);
+					} else {
+						val = newVal;
+					}
+					// 对新值进行监听
+					childOb = observe(newVal);
+					console.log('更新：' + key + ' = ' + newVal);
+				}
+			});
+		},
+		 observe:function(value) {
+			// 当值不存在或者不是对象类型时，不需要继续深入监听
+			if (!value || typeof value !== 'object') {
+				return;
+			}
+			return new Observer(value);
+		}
+	};
+	var app = new MVVM({
+		el: '.app',
+		data: {
+			name: 'zhaomenghuan',
+			age: 24,
+			agecolor: 'red',
+			namecolor: 'green'
+		}
+	});
+	</script>
+	<script>
+	//检测视图数据更新实现数据绑定的方法有很多种，目前主要分为三个流派，Angular使用的是脏检查，只在特定的事件下才会触发视图刷新，Vue使用的是Getter/Setter机制，而React则是通过 Virtual DOM 算法检查DOM的变动的刷新机制。
+	// var o = { a: 0 };
+	// Object.defineProperty(o, "b", {
+	// 	get: function() {
+	// 		return this.a;
+	// 	},
+	// 	set: function(value) {
+	// 		this.a = value;
+	// 	}
+	// });
+	// var des = Object.getOwnPropertyDescriptor(o, 'b');
+	// console.log(des);
+	// console.log(des.get);
+	// o.b = 13;
+	// // console.log(o.a); //13
+	// o.a = 14;
+	// // console.log(o.b); //14
+
+	// 观察者构造函数
+	function Observer(value) {
+		this.value = value;
+		this.walk(value);
+	}
+
+	// 递归调用，为对象绑定getter/setter
+	Observer.prototype.walk = function(obj) {
+		var keys = Object.keys(obj);
+		console.log(keys);
+		for (var i = 0, l = keys.length; i < l; i++) {
+			this.convert(keys[i], obj[keys[i]]);
+		}
+	};
+	// 将属性转换为getter/setter
+	Observer.prototype.convert = function(key, val) {
+		defineReactive(this.value, key, val);
+	};
+
+	// 创建数据观察者实例
+	function observe(value) {
+		// 当值不存在或者不是对象类型时，不需要继续深入监听
+		if (!value || typeof value !== 'object') {
+			return;
+		}
+		return new Observer(value);
+	}
+
+	// 定义对象属性的getter/setter
+	function defineReactive(obj, key, val) {
+		var property = Object.getOwnPropertyDescriptor(obj, key); //返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+		if (property && property.configurable === false) {
+			return;
+		}
+
+		// 保存对象属性预先定义的getter/setter
+		var getter = property && property.get;
+		var setter = property && property.set;
+
+		var childOb = observe(val);
+		Object.defineProperty(obj, key, {
+			enumerable: true,
+			configurable: true,
+			get: function reactiveGetter() {
+				var value = getter ? getter.call(obj) : val;
+				console.log("访问：" + key);
+				return value;
+			},
+			set: function reactiveSetter(newVal) {
+				var value = getter ? getter.call(obj) : val;
+				if (newVal === value) {
+					return;
+				}
+				if (setter) {
+					setter.call(obj, newVal);
+				} else {
+					val = newVal;
+				}
+				// 对新值进行监听
+				childOb = observe(newVal);
+				console.log('更新：' + key + ' = ' + newVal);
+			}
+		});
+	}
+	let data = {
+		user: {
+			name: 'zhaomenghuan',
+			age: '24'
+		},
+		address: {
+			city: 'beijing'
+		}
+	};
+	observe(data);
+
+	console.log(data.user.name);
+	// 访问：user 
+	// 访问：name
+
+	data.user.name = 'ZHAO MENGHUAN';
+	</script>
+	<!-- <script>
+		function extend(child,parent){
+			child.prototype = Object.create(parent.prototype);//只是共享方法 (new Parent())
+			child.prototype.constructor  = child;
+		}
+		function Pa(){
+			this.name = "Parent";
+			
+		}
+		Pa.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		Pa.prototype.sayColor = function(){
+			console.log(this.color.join(','));
+		};
+		function Ch(){
+			this.name = "Child";
+			this.color = ['blue','pink'];
+		}
+		extend(Ch,Pa);
+		var child = new Ch();
+		child.sayName();
+		// child.color.push('black');
+		child.sayColor();
+	</script> -->
+</body>
+
+</html>

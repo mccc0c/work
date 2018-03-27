@@ -15,21 +15,22 @@
 		var s="ss";
 		// body...
 	})(window);
-	console.log(a);
-	var s = new SubType(),s1 = new SubType();
-	s.saySuperFlag();//true 继承了SuperType
-	s.saySubFlag();//false
-	console.log(checkObj(document.getElementsByTagName('body')));//HTMLCollection
-	var arr = [43,41,42];
-	console.log(arr.indexOf(42,1));//参数1：查询字符创，参数2：规定在字符串中开始检索的位置
-	s.subcolor.push('pink');
-	s.color.push('pink');
-	//未加SuperType.call(this);	
-	console.log(s1.subcolor.toString());//red,blue
-	console.log(s1.color.toString());//red,blue,pink
-	s1.saySubFlag();
-	console.log(SubType.prototype.constructor);
-
+	var work1 = new Worker('m11',23,'worker');
+	var work2 = new Worker('m22',21,'worker');
+	work1.eat.push('noodle');
+	console.log(work2.eat);//["meat", "rice", "veg"]
+	Worker.prototype.sayJob=function(){
+		console.log('My job:'+this.job);
+	};
+	work1.sayJob=function(){
+		console.log('change:'+this.job);
+	};
+	Worker.prototype.sleep = function(){
+		console.log('worker sleep');
+	};//继承的方法无法统一修改，work1,work2都copy了父类的sleep方法，继承的方法无法统一复用修改
+	work1.sayJob();//change:worker
+	work2.sayJob();//My job:worker
+	work1.sleep();//worker sleep
 </script>
 </body>
 </html>

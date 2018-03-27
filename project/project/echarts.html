@@ -8,23 +8,24 @@
 <body>
 	<div class="circle" style="width: 128px;height: 128px;"></div>
 	<div class="circle1" style="width: 128px;height: 128px;"></div>
+	<div class="line" style="width: 100%;height: 500px;"></div>
 	<script src="./js/jquery.js"></script>
 	<script src="./js/echarts.js"></script>
 	<script src="./js/jQueryRotate.js"></script>
 	<script>
-	var node = [];	
+	var node = [];
 	$(function() {
 		function chartresize(node) {
-            $.each(node, function(index, value) {
-                $(this).resize();
-            })
-        }
+			$.each(node, function(index, value) {
+				$(this).resize();
+			});
+		}
 
-        chartresize(node);
-        //echarts自适应
-        window.onresize = function() {
-            chartresize(node);
-        };
+		chartresize(node);
+		//echarts自适应
+		window.onresize = function() {
+			chartresize(node);
+		};
 		chart(50, '.circle');
 		chart(100, '.circle1');
 		/*var angle = 0;
@@ -41,12 +42,12 @@
 				colarr = [
 					[val / 100, '#397be9'],
 					[100 - val / 100, "#ddd"]
-				]
+				];
 			} else {
 				colarr = [
 					[val / 100, '#2caf60'],
 					[100 - val / 100, "#ddd"]
-				]
+				];
 				colo = '#2caf60';
 				status = "还款成功";
 			}
@@ -76,7 +77,7 @@
 					endAngle: -20,
 					center: ['50%', '70%'], // 默认全局居中
 					radius: 60,
-					animation:true,
+					animation: true,
 					axisLine: { // 坐标轴线
 						lineStyle: { // 属性lineStyle控制线条样式
 							width: 7,
@@ -148,7 +149,92 @@
 			myChart.setOption(option, true);
 			node.push(myChart);
 		}
-	})
+	});
+	</script>
+	<script>
+	$(function() {
+		var x ="周四",
+		ymax = 1500,
+		ymin = 0;
+		var option = {
+			title: {
+				text: '某楼盘销售情况',
+				subtext: '纯属虚构'
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['意向', '预购', '成交']
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					dataView: { show: true, readOnly: false },
+					magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			calculable: true,
+			xAxis: [{
+				type: 'category',
+				boundaryGap: false,
+				data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+			}],
+			yAxis: [{
+				type: 'value'
+			}],
+			series: [{
+					name: '成交',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					// data: [10, 12, 21, 54, 260, 830, 710],
+					markLine: {
+						itemStyle: {
+							normal: { lineStyle: { type: 'solid', color: 'green' }, label: { show: true, position: 'left' } }
+						},
+						large: true,
+						effect: {
+							show: false,
+							loop: true,
+							period: 0,
+							scaleSize: 2,
+							color: null,
+							shadowColor: null,
+							shadowBlur: null
+						},
+						data: [
+							[
+								/*{ name: '标线1起点', value: 400, xAxis: -1, yAxis: 400 }, // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
+								{ name: '标线1终点', xAxis: '周日', yAxis: 400 }, // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配*/
+								{name: '', xAxis: x,  yAxis: ymax,/*x:'600',y:'0'*/},
+        						{name: '', xAxis: x,  yAxis: ymin,/*x:'600',y:'1000'*/}
+							],
+						]
+					}
+				},
+				{
+					name: '预购',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					data: [30, 182, 434, 791, 390, 30, 10]
+				},
+				{
+					name: '意向',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					data: [1320, 1132, 601, 234, 120, 90, 20]
+				}
+			]
+		};
+		var myChart = echarts.init($('.line')[0]);
+		myChart.setOption(option, true);
+	});
 	</script>
 </body>
 

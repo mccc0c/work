@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .hide{display:none;}
+    .upload{border:1px dashed #b5b5b5;width:318px;cursor:pointer;display:inline-block;position:relative;}
+    .upload .upload_before, .upload .uploading, .upload .upload_after{padding: 20px;
+    }
+    .upload input{position:absolute;width:100%;height:100%;opacity:0;filter:alphy(opacity=0);z-index:9;cursor:pointer}
+    .upload .upload_describe{display: inline-block;vertical-align: middle;max-width: 74%;}
+    .upload .upload_describe .title{color:#333;font-size:18px;margin:0;border:none;}
+    .upload img{display: inline-block;
+    vertical-align: middle;}
+    .upload .upload_after i{display:inline-block;height:16px;width:16px;background:url(./images/reupload.png) no-repeat;vertical-align:middle;margin-left:5px}
+    .upload .download{background:#209deb;border-radius:4px;width:142px;height:40px;line-height:40px;color:#fff;margin-left:84px;margin-top:20px;cursor:pointer}
+    .upload .download img{margin-left:30px}
+    .upload .progress{position:relative;width:180px;background:#d8d8d8;border-radius:4px;margin-top:6px}
+    .upload .bar{background-color:#209deb;width:0%;height:10px;border-radius:4px}
+    .upload .subtitle{color:#666;font-size:14px}
+    .upload .upload_after .subtitle{text-decoration:underline;display:inline-block;word-wrap:break-word;}
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label style="vertical-align: top">附件上传：</label>
+        <div class="upload" style="position: relative;">
+            <input type="file" name="file" class="uploadfile" onchange="fileChange(this,'');">
+            <!-- <input class="file" name="img_url" type="hidden" value=""> -->
+            <div class="upload_before">
+                <img src="./images/upload.png">
+                <div class="upload_describe">
+                    <div class="title">选择文件</div>
+                    <div class="subtitle">添加你需要上传的文件</div>
+                    <div class="subtitle" style="font-size: 11px">(格式仅限图片或pdf类型，大小20M)</div>
+                </div>
+            </div>
+            <div class="uploading hide">
+                <img  src="./images/file_ing.png">
+                <div class="upload_describe">
+                    <div class="title">上传中</div>
+                    <div class="progress">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload_after hide">
+                <img src="./images/file_finsh.png">
+                <div class="upload_describe">
+                    <div class="title">上传成功</div>
+                    <div class="subtitle">重新上传附件<i></i></div>
+                </div>
+            </div>
+        </div>
+        <input class="fileName" name="fileName" type="hidden" value="" required>
+        <p class="msg">请上传</p>
+        
+    </form>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.form.min.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+
+</html>

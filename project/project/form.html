@@ -4,7 +4,7 @@
 <head>
 	<title></title>
 	<style>
-		
+	/*input[type="radio" i]{appearance: none;-webkit-appearance:none;background: url(./images/m_06.png)no-repeat center;}*/
 	</style>
 </head>
 
@@ -30,9 +30,10 @@
 			</li>
 			<li>
 				<label>sex</label>
-				<input type="radio" name="sex" value="1" id="male"><label for="male">male</label>
-				
-				<input type="radio" name="sex" value="2" id="female"><label for="female">female</label>
+				<input type="radio" name="sex" value="1" id="male">
+				<label for="male">male</label>
+				<input type="radio" name="sex" value="2" id="female">
+				<label for="female">female</label>
 			</li>
 			<li>
 				<label>array</label>
@@ -48,6 +49,7 @@
 		<input type="hidden" name="id" value="333">
 		<div class="submit">submit</div>
 	</form>
+	
 	<script src="js/jquery.js"></script>
 	<script>
 	$.fn.serializeObject = function() {
@@ -89,10 +91,10 @@
 			}
 		});
 	};
-	var getDate = { "name": "2", "bankId": "1", "age": "1", "city": "2", "sex": "2", "id": "22", "texta": "会计师肯德基阿卡减肥开始打","arr":["1","3"] };
+	var getDate = { "name": "2", "bankId": "1", "age": "1", "city": "2", "sex": "2", "id": "22", "texta": "会计师肯德基阿卡减肥开始打", "arr": ["1", "3"] };
 	$(function() {
 		//disabled会过滤掉
-		// $('#form').setForm(getDate);
+		$('#form').setForm(getDate);
 		$(document).on('click', '.submit', function() {
 			var f = $('#form'),
 				fs = f.serialize(),
@@ -104,7 +106,8 @@
 			console.log(fsO); //Object{name: "1", bankId: "1", age: "1"}
 			console.log(JSON.stringify(fsO));
 		});
-	})
+		
+	});
 	</script>
 </body>
 

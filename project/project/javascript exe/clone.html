@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 </head>
+
 <body>
-<script src="./js/js.js"></script>
-<script>
-	var s = {"name":"mxx","info":{"age":20,"interest":['running',]}},
-	s1 = clone(s);
-	s1.name="xx";
-	console.log(s1);
-	console.log(s.name);
-</script>
+	<script src="./js/js.js"></script>
+	<script>
+	var s = { "name": "mxx", "info": { "age": 20, "interest": ['running', ] } },
+		s1 = clone(s);
+	s1.name = "xx";
+	/*console.log(s1);
+	console.log(s.name);*/
+	//数组深度克隆
+	//slice(),concat(),es6
+	var arr = [{ "name": "mxx", "info": { "age": 20, "interest": ['running', ] } }, 222, [{ "name": "mxx2", "info": { "age": 20, "interest": ['running', ] } }]];
+	var arrClone = arr.slice(0),
+		arrClone2 = arr.concat();
+	/*console.log(arrClone[0].name);
+	console.log(arrClone[2][0].name);
+	console.log(arrClone2[0].name);
+	console.log(arrClone2[2][0].name);*/
+	//ES6 IE不支持
+	/*var [...arr2] = arr;
+	console.log(arr2[0].name);
+	console.log(arr2[2][0].name);*/
+
+	var sobj = JSON.parse(JSON.stringify(s));
+	console.log(sobj.info.interest[0]); //running
+	</script>
 </body>
+
 </html>

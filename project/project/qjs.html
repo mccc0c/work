@@ -75,27 +75,27 @@
 	<script src="./js/jquery.js"></script>
 	<script src="./js/easy.js"></script>
 	<script>
-	/*//点击弹窗，多选触发n次	
-							$(document).on('click', '.dclick', function(e) {
-							//事件是叠加的，每次点击click按钮，就给li绑定一次事件所以点击几次，就绑定几次事件，事件是叠加的
-							//嵌套的clcik事件，里面的click事件每次都要解绑
-								e.stopPropagation();
-								var dialog = $('.dialog_del').modal({
-									width: '200px',
-									heigth: '200px',
-									bgclose:true
-								});
-								dialog.open();
-								$(document).off('click','.clicklist li');
-								$(document).on('click', '.clicklist li', function(e) {
-									e.stopPropagation();
-									var ele = $(this);
-									ele.toggleClass('on');
-									console.log(ele.attr('class'));
-									return false;
-								});
-								return false;
-							});*/
+	//点击弹窗，多选触发n次	
+	$(document).on('click', '.dclick', function(e) {
+		//事件是叠加的，每次点击click按钮，就给li绑定一次事件所以点击几次，就绑定几次事件，事件是叠加的
+		//嵌套的clcik事件，里面的click事件每次都要解绑
+		e.stopPropagation();
+		var dialog = $('.dialog_del').modal({
+			width: '200px',
+			heigth: '200px',
+			bgclose: true
+		});
+		dialog.open();
+		$(document).off('click', '.clicklist li');
+		$(document).on('click', '.clicklist li', function(e) {
+			e.stopPropagation();
+			var ele = $(this);
+			ele.toggleClass('on');
+			console.log(ele.attr('class'));
+			return false;
+		});
+		return false;
+	});
 	</script>
 	<script>
 	/*滚动刷新数据分为向上刷新和向下加载*/
@@ -112,7 +112,8 @@
 				var set = $.extend({}, defaults, options);
 				return this.each(function() {
 					var $t = $(this);
-					var flag = true,topFlag = true;
+					var flag = true,
+						topFlag = true;
 					console.log($t);
 					$t.scroll(function() {
 						var height = set.scrollBox ? $(set.scrollBox).height() - set.moreHeight : $(document).height() - set.moreHeight;
@@ -165,10 +166,10 @@
 					},
 					success: function(r) {
 						var arr = r,
-						s = "";
+							s = "";
 
-						for(var i =0;i<arr.length;i++){
-							s=s+'<li>'+arr[i].id+'<br><span>'+arr[i].content+'</span></li>';
+						for (var i = 0; i < arr.length; i++) {
+							s = s + '<li>' + arr[i].id + '<br><span>' + arr[i].content + '</span></li>';
 						}
 						console.log(s);
 						$('#result').prepend(s);

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<style>
+	.hide {
+		display: none;
+	}
+
+	.selectArea select {
+		width: auto;
+		height: 36px;
+		padding: 0 8px;
+		border: 1px solid #ddd;
+		font-size: 14px;
+		appearance: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		background: url("./images/arrow2.png") no-repeat scroll right center transparent;
+		/*background: url("./images/arrow.png") no-repeat scroll right center transparent;*/
+	}
+
+	.selectArea select::-ms-expand {
+		display: none;
+	}
+
+	.selectArea select option.unable {
+		background: #ddd;
+	}
+	</style>
+</head>
+
+<body>
+	<form>
+		<ul class="selectArea">
+		</ul>
+		<div class="add">add</div>
+	</form>
+	<div class="selectTmpl hide">
+		<li>
+			<select required class="selectbtn" name="citysele">
+				<!-- multiple="multiple" size='3' 多选 -->
+				<option value="">请选择</option>
+				<option value="1">上海</option>
+				<option value="2">嘉兴</option>
+				<option value="3">杨浦</option>
+				<option value="4">杨浦2</option>
+				<option value="5">杨浦3</option>
+			</select>
+			<i class="del">del</i>
+		</li>
+	</div>
+	<!-- <div>
+		<div class="inputSele">
+			<input type="text" name="inputtosele" oninput="selectInput(this)">
+			<ul class="selectList"></ul>
+			<label for="sel">select</label>
+			<select onchange="selectChange(this)" name="seletoinput" id="sel">
+				<option value="">请选择</option>
+				<option value="1">111</option>
+				<option value="2">211</option>
+				<option value="3">322</option>
+				<option value="4">422</option>
+				<option value="5">5qq</option>
+				<option value="6">6111</option>
+				<option value="7">7111</option>
+				<option value="8">8111</option>
+			</select>
+		</div>
+		<div class="search">search</div>
+	</div> -->
+	<script src="./js/jquery.js"></script>
+	<script>
+	// 新增select，选择不重复
+	$(function() {
+		$(document).on('click', '.select', function() {
+			var options = $('.sele option[value="1"]').text();
+			console.log(options);
+		});
+		$('.add').click(function() {
+			var tmpl = $('.selectTmpl').html(),
+				ul = $('.selectArea'),
+				num = ul.find('li:last').attr('data-index');
+			ul.append(tmpl);
+			var li = ul.find('li:last'),
+				select = li.find('select'),
+				name = select.attr("name"),
+				num = Number(num || 0) + 1;
+			select.attr('name', name + num);
+			li.attr('data-index', num);
+			selectCity();
+		});
+		$(document).on('click', '.del', function() {
+			var el = $(this),
+				pli = el.parent('li'),
+				pul = pli.parent('selectArea');
+			pli.remove();
+			selectCity();
+		});
+		$(document).on('change', '.selectArea .selectbtn', function() {
+			selectCity();
+		});
+		$('.add').trigger('click');
+		$('.selectArea li:first i.del').remove();
+	});
+
+	function selectCity() {
+		var allselect = $('.selectArea .selectbtn');
+		allselect.find('option').show();
+		allselect.each(function(i, e) {
+			var v = $(e).val();
+			// console.log(v);
+			if (v) {
+				if (v.push) { //多选
+					$.each(v, function(key, value) {
+						allselect.not(e).find("option").not(":selected").filter("option[value=" + value + "]").hide();
+						//allselect.not(e).find('option[value="'+value+'"]').hide();
+					});
+				} else { //单选
+					if (v) {
+						allselect.not(e).find('option[value="' + v + '"]').hide();
+					}
+					//allselect.not(e).find("option").not(":selected").filter("option[value=" + v + "]").hide();
+				}
+			}
+		});
+	}
+	</script>
+	<!-- <script>
+	function selectInput(this_) {
+		var input = $(this_),
+			select = input.parent().find('select'),
+			inputText = input.val();
+		select.trigger('click');
+		if (inputText) {
+			select.find('option:contains(' + inputText + ')').show();
+			select.find('option').not('option:contains(' + inputText + ')').hide();
+		}
+	}
+
+	function selectChange(this_) {
+		var select = $(this_),
+			input = select.parent().find('input'),
+			selectText = select.find('option:selected').text();
+		input.val(selectText);
+	}
+
+	function selectFocus(this_) {
+		var input = $(this_),
+			select = input.parent().find('select');
+		console.log(input.parent().find('select'));
+		/*if(!input.val()){select.find('option').shoe();}*/
+
+	}
+	$(function() {
+		$(document).on('click','.search',function(){
+			console.log($('select[name="seletoinput"]').val());	
+			console.log($('input[name="inputtosele"]').val());		
+		});
+		/*$(document).on('click','.inputSele input',function(){
+			var input = $(this),
+			select = input.parent().find('select');
+			input.focus();						
+		});*/
+	});
+	</script> -->
+</body>
+
+</html>
