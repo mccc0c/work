@@ -6,29 +6,17 @@
 </head>
 
 <body>
-	<script src="js/js.js"></script>
 	<script>
-	var arr = [1, 3, 2, 6, 3, 3, 1];
-	arr.forEach((v, i, arr) => { v += i; /*console.log(v,i,arr)*/ ; });
-	var arr2 = [...new Set(arr)]; //es6 Set数据结构成员值唯一 es6数组去重
-	console.log(arr2); //[1,2,3]
-	//Array.from方法可以将Set结构转为数组。
-	console.log(dedupe(arr)); //js数组去重
-	const template = data => `
-		  <p>name: ${data.name}</p>
-		  <p>age: ${data.profile.age}</p>
-		  <ul>
-		    ${data.skills.map(skill => `
-		      <li>${skill}</li>
-		    `).join('')}
-		  </ul>`
-	var data = {
-		name: 'zhaomenghuan',
-		profile: { age: 24 },
-		skills: ['html5', 'javascript', 'android']
-	};
-
-	document.body.innerHTML = template(data);
+		var tmp = new Date();
+		function f() {
+			console.log(tmp);
+			if(false){
+				var tmp = "hello";
+			}
+		}
+		f();//undefined 变量提升
+		let [a,b,c] = [1,2,3];
+		console.log(a,b,c);
 	</script>
 </body>
 

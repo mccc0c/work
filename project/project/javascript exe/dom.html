@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<ul id="list">
+		sdf
+		<li>x</li>
+		<li>w</li>
+		<li>r</li>
+		<li>c</li>
+		<li>df</li>
+		<li>d</li>
+	</ul>
+	<div class="minit" id="minit">发送</div>
+	<script type="text/javascript">
+	var url = location.href;
+
+
+	console.log(getUrlParam(url).name);
+	window.onload = function() {
+		var $list = document.getElementById('list');
+		$list.insertBefore($list.lastChild, $list.firstChild);
+		// console.log(convertToArray($list.childNodes));
+		var $newLIst = $list.cloneNode(true); //true深度复制，子元素也会复制，false只复制本身
+		// console.log($newLIst);
+		var $minit = document.getElementById("minit");
+
+	};
+
+	function convertToArray(nodes) {
+		var arr = [];
+		try {
+			arr = Array.prototype.slice.call(nodes, 0);
+		} catch (err) {
+			for (var i = 0; i < nodes.length; i++) {
+				arr.push(nodes[i]);
+			}
+		}
+		return arr;
+	}
+
+	function getUrlParam(url) {
+		url = decodeURIComponent(url);
+		var num = url.indexOf('?'),
+			str = url.substr(num + 1),
+			arr = str.split('&'),
+			t = {};
+		console.log(arr);
+		for (var i = 0; i < arr.length; i++) {
+			num = arr[i].indexOf('=');
+			if (num > 0) {
+
+				name = arr[i].substr(0, num);
+				value = arr[i].substr(num + 1);
+				t[name] = value;
+			}
+		}
+		/*var a = url.split('?')[1].split('&'),
+			arr = [];
+		if (a.lenght>0) {
+			for (var i = 0; i < a.length; i++) {
+				var s = a[i].split('=');
+				var t = {};
+				t.name = s[0];
+				t.value = s[1];
+				arr.push(t);
+			}
+		}*/
+
+		return t;
+	}
+	</script>
+</body>
+
+</html>

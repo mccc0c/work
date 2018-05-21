@@ -1,0 +1,19 @@
+{
+	"area": [
+	{
+		"areaId": 1,
+		"areaName": "青岛"
+	},
+	{
+		"areaId": 2,
+		"areaName": "舟山"
+	},
+	{
+		"areaId": 3,
+		"areaName": "台州"
+	},
+	{
+		"areaId": 4,
+		"areaName": "北京"
+	}]
+}

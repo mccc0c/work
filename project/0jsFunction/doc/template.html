@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>Template</title>
+<link rel="stylesheet" type="text/css" href="../images/highlight/styles/monokai-sublime.css">
+<link href="../css/q.css" rel="stylesheet" type="text/css" />
+<link href="../css/api.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="doc">
+  <h1>Template</h1>
+  <p>js模板</p>
+  <h2>Javascript</h2>
+  <pre><code class="javascript">var playlist;
+$(function() {
+	$.ajax({
+		url: 'images/songs.json',
+		type: 'get',
+		dataType: 'json',
+		success: function(r) {
+			playlist = r;
+			$('#result').tmpl('tmpl', playlist); //tmpl: 模板对应的id, playlist: json数据
+		}
+	})
+});</code></pre>
+  <h2>Html</h2>
+<pre><code class="xml">//模板的写法
+&lt;script type="text/html" id="tmpl"&gt;
+&lt;% for ( var i = 0; i &lt; playlist.length; i++ ) { %&gt;
+	&lt;li&gt;&lt;%=playlist[i].title%&gt;&lt;br&gt;&lt;span&gt;&lt;%=playlist[i].singer%&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;% } %&gt;
+&lt;/script&gt;</code></pre>
+<h2>Example</h2>
+<iframe name="main" src="../template.html" frameborder="0" scrolling="auto" width="400" height="400"></iframe>
+</div>
+<script src="../js/jquery.js"></script> 
+<script src="../images/highlight/highlight.pack.js"></script> 
+<script src="../js/clipboard.js"></script>
+<script src="../js/api.js"></script>
+</body>
+</html>

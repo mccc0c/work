@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	html{height: 100%;}
+		body{overflow: scroll;height: 100%;}
+		.wrapper{height: 120%}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<p class="sd">asdf</p>
+		<span class="numDes"></span>
+	</div>
+	<script type="text/javascript" src="./js/array.js"></script>
+	<script type="text/javascript">
+	var s = new Beautifier(document.querySelector('.sd'), { 'color': "red", "fontSize": "16px" });
+	s.beautify().sayHello();
+	console.log(s.$element);
+	console.log(s.option);
+
+	var observer = new IntersectionObserver(enters => {
+		console.log(enters[0].intersectionRatio);
+	}, {});
+	observer.observe(document.querySelector('.sd'));
+	</script>
+</body>
+
+</html>

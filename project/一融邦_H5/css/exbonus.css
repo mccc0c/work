@@ -1,0 +1,102 @@
+﻿@charset "UTF-8";
+/* 
+*@author ansl
+*@date 20170103
+ */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+html,body {
+	height: 100%;
+	/* 设置字体 */
+	font-family:tahoma,Arial,"Microsoft YaHei","SimHei";
+	background: #fee365 !important;
+}
+.main {
+	width: 100%;
+	padding-bottom: 0px;
+	overflow: hidden;
+}
+.bg2{
+	background: #e9e91d;
+}
+.basic_head_img > img {
+	width: 100%;
+}
+.pos{
+	position:relative;
+}
+.head_link{
+	display: block;
+	position: absolute;
+	bottom: 38%;
+	left: 0;
+	width: 100%;
+	height: 56px;
+}
+
+.basic_style_day {
+	text-align: center;
+}
+.icon_day_style {
+	display: inline-block;
+	width: 54px;
+	height: 57px;
+	background: url('../images/icon_day.png') no-repeat;
+	background-size: contain;
+	font-size: 40px;
+	color: #fff;
+	line-height: 53px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	margin-top: 10px;
+	text-align: center;
+}
+.day_time {
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+}
+.basic_style_day >span:first-of-type {
+	margin-right: 2px;
+}
+.basic_button {
+	text-align: center;
+	padding-bottom: 10px;
+}
+.basic_button_content {
+	margin: 10px 20%;
+	line-height: 44px;
+	border-radius: 22px;
+	color:#fff;
+	background: #e90648;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* css3怎样实现屏幕自适应,如果用这个，html界面中一定要引用<meta name="viewport" content="width=device-width, initial-scale=1"/> ansl */
+/*ip5、ip4 只有屏幕宽度小于320px 时下面的代码才会被使用 这部分叫做媒体查询代码*/
+@media only screen and (max-width: 320px){
+
+}
+/*GAlaxy5 只有屏幕宽度大于321px 并且小于360px 时才会使用这部分代码*/
+@media only screen and (min-width:321px) and (max-width: 399px){
+
+}
+/*ip6 只有屏幕宽度大于410px时才会使用这部分代码*/
+@media only screen and (min-width:410px){
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:411px) and (max-device-width:434px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:435px) and (max-device-width:767px) {
+
+}
+/*apid 只有屏幕宽度在768-1024之间时才会显示这部分代码*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+}

@@ -1,0 +1,170 @@
+<html>
+
+<head>
+    <!-- <base href="http://ent.h5.easyrong.com:80/"> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>春季企业政策红包大派送</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link href="static/css/fund-common.css" rel="stylesheet">
+    <link href="static/css/fund-question.css" rel="stylesheet"> -->
+    <link href="./css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jweixin-1.0.0.js"></script>
+    <script>
+    var appId = 'wx468f4e63c041af03';
+    var timestamp = '1512035683';
+    var nonceStr = 'hhwZF1hkS6V4bkYd';
+    var signature = '9b8d88a2e7ce78b2bac1ccd05878ccd83dbc2e3b';
+    //分享标题
+    var shareTitle = '2017年政策红利大派送';
+    //分享的内容
+    var shareDesc = '2017年500亿政策红利大派送 快来测一测 我能拿多少';
+    //分享的连接地址
+    var shareLink = 'http://ent.h5.easyrong.com/fund/load';
+    //分享的图片地址
+    var shareImgUrl = 'http://ent.h5.easyrong.com/static/images/new/WX_pic2.png';
+    //朋友圈分享内容
+    var shareTimeLine = '500亿政策红利近在眼前，算一算能拿的还不少！';
+    </script>
+    <script src="./js/weixin.js">
+    </script>
+    <script type="text/javascript">
+    $(function() {
+
+        $('.message-input li input').on('focus', function() {
+            $(this).siblings('p.error').hide();
+        })
+        $('#submit').on('click', function() {
+            var val = $('#mobile').val();
+            var incub_val = $('#incubatorName').val();
+            var flag = false;
+            if (val == '') {
+                $('#mobile').siblings('.error').show();
+                flag = true;
+            }
+            if (incub_val == '') {
+                $('#incubatorName').siblings('.error').show();
+                flag = true;
+            }
+            if (flag) {
+                return;
+            }
+            if ($('#submit').text() == "快速提交") {
+                submit();
+            } else {
+                submit_2();
+            }
+
+        });
+    })
+    </script>
+</head>
+
+<body>
+    <form id="createUserInfoFrom" action="fund/fund_baseInfo?source=" method="post">
+        <!--联系人名称-->
+        <input type="hidden" id="userName" name="userName" />
+        <input type="hidden" id="enterpriseName" name="enterpriseName" />
+        <input type="hidden" id="telephone" name="telephone" />
+        <input type="hidden" id="useraction" name="useraction" value="B" />
+        <input type="hidden" name="regionId" value="" />
+        <input type="hidden" id="_incubatorName1" name="yqName" />
+    </form>
+    <form id="createUserInfoFromAndshowResult" action="fund/fund_baseInfo?source=" method="post">
+        <!--联系人名称-->
+        <input type="hidden" id="userName_2" name="userName" />
+        <input type="hidden" id="enterpriseName_2" name="enterpriseName" />
+        <input type="hidden" id="telephone_2" name="telephone" />
+        <!--用户id-->
+        <input type="hidden" id="userId" name="userId" />
+        <!--//选择的结果-->
+        <input type="hidden" id="userAnswer" name="userAnswer" />
+        <input type="hidden" id="useraction" name="useraction" value="B" />
+        <input type="submit" style="display: none" id="testsubmit">
+        <input type="hidden" name="regionId" value="" />
+        <input type="hidden" id="_incubatorName2" name="yqName" />
+    </form>
+    <div class="wrapper">
+        <div class="base-message">
+            <p>补充基本信息，</p>
+            <p>查看您的企业可获补贴金额。</p>
+        </div>
+        <!--信息填写-->
+        <ul class="message-input">
+            <li>
+                <label>企业名称</label>
+                <input name="" id="qiyemingc" type="input" />
+            </li>
+            <li>
+                <label>您的称呼</label>
+                <input name="" id="nindechenghu" type="input" />
+            </li>
+            <li>
+                <label>*联系电话</label>
+                <input name="" id="mobile" type="input" class="w35" />
+                <p class="error">不能为空</p>
+            </li>
+        </ul>
+        <!--提交-->
+        <div class="message-submit">
+            <a href="javascript:void(0)" id="submit">查看结果</a>
+            <p>等不及？拨打热线即可咨询!4006-520-060</p>
+        </div>
+        <div style="position:absolute; margin-top: 50px; bottom:10px; width:100%; color:#b0d8ff; text-align:center; font-size: 0.85em; ">* 此活动最终解释权归舟山科技金融服务平台</div>
+    </div>
+    <script type="text/javascript">
+    //test A的提交
+    function submit() {
+        //企业名称
+        $("#enterpriseName").val($("#qiyemingc").val());
+        //联系人姓名
+        $("#userName").val($("#nindechenghu").val());
+        //联系人电话
+        $("#telephone").val($("#mobile").val());
+        $("#_incubatorName1").val($("#incubatorName").val());
+
+        $("#createUserInfoFrom").submit();
+    }
+    //test B的提交
+    function submit_2() {
+        //企业名称
+        $("#enterpriseName_2").val($("#qiyemingc").val());
+        //联系人姓名
+        $("#userName_2").val($("#nindechenghu").val());
+        //联系人电话
+        $("#telephone_2").val($("#mobile").val());
+        $("#_incubatorName2").val($("#incubatorName").val());
+        //得到累加结果
+        $('#userAnswer').val(window.localStorage.getItem("answer"));
+
+        //        alert($("#userName_2").val());
+        //        alert($("#telephone_2").val());
+        $("#createUserInfoFromAndshowResult").submit();
+        //$("#testsubmit").click();
+    }
+    </script>
+    <img src="http://c.cnzz.com/wapstat.php?siteid=1259628408&r=http%3A%2F%2Fent.h5.easyrong.com%2Ffund%2Ffund_question%3Fid%3D132%26areaId%3D16%26questionNo%3D6%26answer%3DD%26regionId%3D%26source%3D&rnd=1498238865" width="0" height="0" />
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-81404419-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

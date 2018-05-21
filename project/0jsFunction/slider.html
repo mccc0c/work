@@ -1,0 +1,369 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <link href="css/q.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <style>
+    .slider {
+        width: 200px;
+        height: 350px;
+        float: left;
+        margin-right: 30px;
+    }
+
+    .sl-custom-pager {
+        text-align: center;
+        margin-top: -30px;
+    }
+
+    .sl-custom-pager a {
+        margin: 0 3px;
+        width: 50px;
+        display: block;
+        float: left
+    }
+
+    .sl-custom-pager a img {
+        padding: 3px;
+        border: solid #ccc 1px;
+        width: 100%
+    }
+
+    .sl-custom-pager a:hover img,
+    .sl-custom-pager a.active img {
+        border: solid #5280DD 1px;
+    }
+
+    .setting {
+        float: left;
+    }
+
+    .setting .clear {
+        margin-bottom: 15px
+    }
+
+    a {
+        color: #000
+    }
+
+    .gallery-box li {
+        width: 50px;
+        float: left
+    }
+
+    .gallery-box li img {
+        width: 100%
+    }
+
+    .sl-wrapper .sl-pager.sl-custom-pager {
+        bottom: -95px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- horizontal -->
+    <div class="slider">
+        <ul id="horizontal">
+            <!--<li>
+<iframe src="http://player.vimeo.com/video/17914974"width="500"height="281"frameborder="0"webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</li>-->
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+            <li><img src="images/08.jpg" title="The long and winding road" /></li>
+        </ul>
+        <!--<div id="bx-pager">
+<a data-slide-index="0"href=""><img src="images/01.jpg"/></a>
+<a data-slide-index="1"href=""><img src="images/02.jpg"/></a>
+<a data-slide-index="2"href=""><img src="images/03.jpg"/></a>
+<a data-slide-index="3"href=""><img src="images/04.jpg"/></a>
+<a data-slide-index="4"href=""><img src="images/05.jpg"/></a>
+<a data-slide-index="5"href=""><img src="images/06.jpg"/></a>
+<a data-slide-index="6"href=""><img src="images/07.jpg"/></a>
+<a data-slide-index="7"href=""><img src="images/08.jpg"/></a>
+</div>-->
+    </div>
+    <!-- Vertical -->
+    <div class="slider">
+        <ul id="vertical">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+        </ul>
+    </div>
+    <!-- fade -->
+    <div class="slider">
+        <ul id="fade">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+        </ul>
+    </div>
+    <!-- adaptiveHeight -->
+    <div class="slider">
+        <ul id="adaptiveHeight">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li>
+                <iframe src="images/video.mp4" width="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </li>
+            <li><img src="images/02.jpg" height="100" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+        </ul>
+    </div>
+    <!-- carousel -->
+    <div class="slider">
+        <ul id="carousel">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+        </ul>
+    </div>
+    <!-- carousel control outside -->
+    <div class="slider" style="width:400px">
+        <ul id="carouselOutside">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+        </ul>
+    </div>
+    <!-- Vertical carousel -->
+    <div class="slider">
+        <ul id="verticalCarousel">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+        </ul>
+    </div>
+    <!-- Thumbnail pager -->
+    <div class="slider" style="width:400px; height:800px">
+        <ul id="gallery">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+            <li><img src="images/08.jpg" title="The long and winding road" /></li>
+        </ul>
+        <ul class="gallery">
+            <li><img src="images/01.jpg" /></li>
+            <li><img src="images/02.jpg" /></li>
+            <li><img src="images/03.jpg" /></li>
+            <li><img src="images/04.jpg" /></li>
+            <li><img src="images/05.jpg" /></li>
+            <li><img src="images/06.jpg" /></li>
+            <li><img src="images/07.jpg" /></li>
+            <li><img src="images/08.jpg" /></li>
+        </ul>
+        <!--  <div class="gallery-nav">
+<div class="gallery-prev"></div>
+<div class="gallery-box">
+<ul>
+<li><img src="images/01.jpg"/></li>
+<li><img src="images/02.jpg"/></li>
+<li><img src="images/03.jpg"/></li>
+<li><img src="images/04.jpg"/></li>
+<li><img src="images/05.jpg"/></li>
+<li><img src="images/06.jpg"/></li>
+<li><img src="images/07.jpg"/></li>
+<li><img src="images/08.jpg"/></li>
+</ul>
+</div>
+<div class="gallery-next"></div>
+</div>-->
+    </div>
+    <div class="slider" style="width:550px; height:800px">
+        <ul id="gallery2">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+            <li><img src="images/08.jpg" title="The long and winding road" /></li>
+        </ul>
+        <ul class="gallery">
+            <li><img src="images/01.jpg" /></li>
+            <li><img src="images/02.jpg" /></li>
+            <li><img src="images/03.jpg" /></li>
+            <li><img src="images/04.jpg" /></li>
+            <li><img src="images/05.jpg" /></li>
+            <li><img src="images/06.jpg" /></li>
+            <li><img src="images/07.jpg" /></li>
+            <li><img src="images/08.jpg" /></li>
+        </ul>
+    </div>
+    <!-- thumbnail add -->
+    <div class="slider">
+        <ul id="thumbnailAdd">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+        </ul>
+    </div>
+    <!-- Ticker -->
+    <div class="slider">
+        <ul id="ticker">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+            <li><img src="images/04.jpg" title="Funky roots" /></li>
+            <li><img src="images/05.jpg" title="The long and winding road" /></li>
+            <li><img src="images/06.jpg" title="Happy trees" /></li>
+            <li><img src="images/07.jpg" title="Funky roots" /></li>
+            <li><img src="images/08.jpg" title="The long and winding road" /></li>
+        </ul>
+    </div>
+    <!-- new settings -->
+    <div class="slider">
+        <ul id="newSetting">
+            <li><img src="images/01.jpg" title="Funky roots" /></li>
+            <li><img src="images/02.jpg" title="The long and winding road" /></li>
+            <li><img src="images/03.jpg" title="Happy trees" /></li>
+        </ul>
+    </div>
+    <!-- custom Control -->
+    <div class="setting">
+        <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
+        <div class="clear"></div>
+        <!-- methods -->
+        <a href="" id="slider-next2">go to the next slide</a>
+        <br />
+        <a href="" id="slider-count">total slide count</a>
+        <div class="clear"></div>
+        <!-- newSetting -->
+        <a href="" id="reload-slider2">reload with new settings</a>
+        <div class="clear"></div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <!-- Custom easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Responsive video -->
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/slider.js"></script>
+    <script>
+    $(function() {
+
+                /*  $('#horizontal').slider({
+                    mode: 'horizontal',
+                    event: 'click',
+                    loop: true,
+                    slideMargin: 0,
+                    start: 0,
+                    captions: false,
+                    ticker: false,
+                    tickerHover: false,
+                    disableBtn: false,
+                    pager: true,
+                    auto: false,
+                    pause: 4000,
+                  nextSelector: '#slider-next',
+                    prevSelector: '#slider-prev',
+                    // carousel
+                    num: 1,
+                    move: 0,
+                    slideWidth: 0,
+                    // gallery
+                    gallery: false,
+                    galleryMode: 'horizontal',
+                    galleryNum: 5,
+                    galleryMargin: 5,
+                    galleryMove: 1,
+                    // callbacks
+                    onLoad: function() {},
+                    onSlideBefore: function() {},
+                    onSlideAfter: function() {},
+                    onSlideNext: function() {},
+                    onSlidePrev: function() {},
+                    onResize: function() {}
+                  });
+
+                slider.slideTo();//滚动到第几页
+                slider.total();//获取幻灯片数量
+                slider.activeIndex();
+                slider.reload();//重新渲染
+                slider.destroy();
+                slider.update();
+                slider.page();
+                slider.startAuto();
+                slider.stopAuto();
+                slider.slideNext();
+                slider.slidePrev();
+                */
+                $('#horizontal').slider({
+                            event: 'mouseenter'
+                            //outside:true}
+                        }); 
+                $('#vertical').slider({ mode: 'vertical' }); 
+                $('#fade').slider({
+                            mode: 'fade',
+                            captions: true,
+                            startSlide: 1,
+                            auto: true,
+                            autoControls: true,
+                            onLoad: function() { //console.log('finished loading.');}
+                                , onSlideAfter: function() { //console.log('finished transitioning.');}
+                                }}});
+                            $('#adaptiveHeight').slider({ adaptiveHeight: true, video: true, useCSS: false, loop: false, disableBtn: true });
+                            $('#carousel').slider({ moveSlides: 1, slideWidth: 100, minSlides: 2, maxSlides: 3, slideMargin: 10, cOutside: false });
+                            $('#carouselOutside').slider({ move: 1, num: 3, slideMargin: 10 });
+                            $('#verticalCarousel').slider({ mode: 'vertical', slideWidth: 100, minSlides: 2, slideMargin: 10, pager: false });
+                            var gallery1 = $('#gallery').slider({ mode: 'fade', gallery: true, galleryNum: 5, gallerymove: 1, galleryMargin: 5, event: 'mouseenter' });
+                            var gallery2 = $('#gallery2').slider({ mode: 'fade', gallery: true, galleryMode: 'vertical', galleryNum: 4, gallerymove: 1, galleryMargin: 5, galleryWidth: 400, controls: false });
+                            $('#thumbnailAdd').slider({
+                                buildPager: function(slideIndex) {
+                                    switch (slideIndex) {
+                                        case 0:
+                                            return '<img src="images/01.jpg">';
+                                        case 1:
+                                            return '<img src="images/02.jpg">';
+                                        case 2:
+                                            return '<img src="images/03.jpg">';
+                                        case 3:
+                                            return '<img src="images/04.jpg">'; }
+                                }
+                            });
+                            $('#ticker').slider({ minSlides: 4, maxSlides: 4, slideWidth: 200, slideMargin: 10, ticker: true, tickerHover: true, speed: 6000 });
+                            var slider1 = $('#newSetting').slider({
+                                mode: 'horizontal',
+                                nextSelector: '#slider-next',
+                                prevSelector: '#slider-prev',
+                                nextText: 'On ward →', //custom control
+                                prevText: '← Go back'
+                            });
+                            //new setting
+                            $(document).on('click', '#reload-slider2', function(e) {
+                                e.preventDefault();
+                                $('#newSetting').append('<li><img src="images/04.jpg"title="Funky roots"/></li>');
+                                slider1.reload({ mode: 'fade', auto: true, pause: 1000, speed: 500 });
+                            });
+                            //methods
+                            $(document).on('click', '#slider-next2', function() { slider1.slideNext(); return false; })
+                            $(document).on('click', '#slider-count', function() { var count = slider1.total();
+                                console.log('Slide count:' + count); return false; });
+                        });
+    </script>
+</body>
+
+</html>

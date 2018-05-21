@@ -1,0 +1,170 @@
+<html>
+
+<head>
+    <!-- <base href="http://ent.h5.easyrong.com:80/"> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>春季企业政策红包大派送</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--  <link href="./css/common.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/flickity-docs.css" media="screen" />
+    <link href="./css/popup-h5.css" rel="stylesheet">
+    <link href="./css/fund-1.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/exbonus.css" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="./js/exbonus.js"></script>
+</head>
+
+<body>
+    <div class="indexarea page0" style="display: none;">
+        <img src="./images/head_img_new.png" alt="" style="width: 100%;">
+        <div class="basic_button_content link2">进入测试</div>
+    </div>
+    <div class="quesArea page1" style="display: none;">
+        <ul id="quesDate">
+        </ul>
+    </div>
+    <div class="formarea page2" style="display: none;">
+        <div class="wrapper">
+            <div class="base-message">
+                <p>补充基本信息，</p>
+                <p>查看您的企业可获补贴金额。</p>
+            </div>
+            <!--信息填写-->
+            <form id="form1">
+                <ul class="message-input">
+                    <li>
+                        <label>企业名称</label>
+                        <input name="comName" id="comName" type="input" />
+                        <p class="error">不能为空</p>
+                    </li>
+                    <li>
+                        <label>您的称呼</label>
+                        <input name="yourname" id="yourname" type="input" />
+                        <p class="error">不能为空</p>
+                    </li>
+                    <li>
+                        <label>联系电话</label>
+                        <input name="mobile" id="mobile" type="input" class="w35" />
+                        <p class="error">不能为空</p>
+                    </li>
+                    <input type="hidden" name="areaId">
+                    <input type="hidden" name="selectQues">
+                    <!-- <input type="hidden" name="selectCount"> -->
+                </ul>
+                <!--提交-->
+                <div class="message-submit">
+                    <a href="javascript:void(0)" id="submit">查看结果</a>
+                    <p>等不及？拨打热线即可咨询!4006-520-060</p>
+                </div>
+            </form>
+            <div style="position:absolute; margin-top: 50px; bottom:10px; width:100%; color:#b0d8ff; text-align:center; font-size: 0.85em; ">* 此活动最终解释权归舟山科技金融服务平台</div>
+        </div>
+    </div>
+    <script src="./js/jweixin-1.0.0.js"></script>
+    <script>
+    var appId = 'wx468f4e63c041af03';
+    var timestamp = '1512016871';
+    var nonceStr = 'QALUK1sn1YGiK8ut';
+    var signature = '27d61d877c3de9668a95642d8fb2585be96dce12';
+    //分享标题
+    var shareTitle = '2017年政策红利大派送';
+    //分享的内容
+    var shareDesc = '2017年500亿政策红利大派送 快来测一测 我能拿多少';
+    //分享的连接地址
+    var shareLink = 'http://ent.h5.easyrong.com/fund/load';
+    //分享的图片地址
+    var shareImgUrl = 'http://ent.h5.easyrong.com/static/images/new/WX_pic2.png';
+    //朋友圈分享内容
+    var shareTimeLine = '500亿政策红利近在眼前，算一算能拿的还不少！';
+    </script>
+    <script src="./js/share.js"></script>
+    <script type="text/javascript" src="./js/easy.js"></script>
+    <!--弹出层-->
+    <div class="cover"></div>
+    <div class="popup">
+        <h3>选择公司注册地区</h3>
+        <a href="javascript:void(0)" class="close-popup"></a>
+        <ul id="popupArea">
+        </ul>
+        <p class="tip-p"><i></i>向上滑动查看更多
+            <p>
+    </div>
+    <script type="text/javascript" src="./js/js.js"></script>
+    <img src="http://c.cnzz.com/wapstat.php?siteid=1259628408&r=&rnd=753570195" width="0" height="0" />
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-81404419-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <script type="text/html" id="ques_tmpl">
+        <% var len = getquesDate.question.length;for ( var i = 0; i < len; i++ ) { var e=getquesDate.question[i];var lwidth = 100/len*(i+1);%>
+            <%if(i!=0){%>
+                <li style="display: none;">
+                    <%}else{%>
+                        <li>
+                            <%}%>
+                                <div class="wrapper">
+                                    <div class="subject-box">
+                                        <div class="process" style="width:<%=lwidth%>%"></div>
+                                        <p>剩余
+                                            <%=i+1%>/
+                                                <%=len%>
+                                        </p>
+                                    </div>
+                                    <div class="sideBar">
+                                        <i></i><span>您可获得0元补贴金额</span>
+                                    </div>
+                                    <div class="subject-content">
+                                        <h2 id="tihao"><%=i+1%>、<%=e.qname%></h2>
+                                        <ul class="quesul">
+                                            <% var choosedate=e.choose;for ( var j = 0; j < choosedate.length; j++ ) { var e2=choosedate[j];%>
+                                                <li exOth="0" mutex="" data-id="<%=j%>">
+                                                    <b><%=e2.cid%></b>
+                                                    <p>
+                                                        <%=e2.cname%>
+                                                    </p>
+                                                </li>
+                                                <% } %>
+                                        </ul>
+                                        <%if(i!=0){%>
+                                            <div class="history">
+                                                <a href="javascript:void(0)" onclick="skipBack(<%=i%>)" class="back"></a>
+                                                <%if(i==len-1){%>
+                                                    <a href="javascript:void(0)" onclick="submit(this)" id="resultOfView" class="result" style="display: none;">快速提交</a>
+                                                    <%}%>
+                                            </div>
+                                            <%}%>
+                                    </div>
+                                </div>
+                        </li>
+                        <% } %>
+    </script>
+    <script type="text/html" id="area_tmpl">
+        <% var len = getareaDate.area.length;for ( var i = 0; i < len; i++ ) { var e=getareaDate.area[i];%>
+            <li>
+                <a href="javascript:void(0)" onclick="skip(<%=e.areaId%>)">
+                    <span><%=e.areaName%></span>
+                </a>
+            </li>
+            <% } %>
+    </script>
+</body>
+
+</html>

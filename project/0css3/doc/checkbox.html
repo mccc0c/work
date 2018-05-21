@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>Checkbox</title>
+<link rel="stylesheet" type="text/css" href="../images/highlight/styles/monokai-sublime.css">
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="../css/api.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="doc">
+  <h1>Checkbox</h1>
+  <p>css美化</p> 
+    <h2>Javascript</h2>
+  <pre><code class="javascript">$(document).on('click', '.choose li', function() {
+    if (!$(this).is('.on')) {
+        $(this).addClass('on');
+    } else {
+        $(this).removeClass('on');
+    }
+});</code></pre>  
+<h2>Html</h2>
+  <pre><code class="xml">自定义js
+&lt;div class="choose"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;i&gt;&lt;/i&gt; &lt;span&gt;全部&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt; &lt;i&gt;&lt;/i&gt; &lt;span&gt;闸北&lt;/span&gt; &lt;/li&gt;
+    &lt;li&gt; &lt;i&gt;&lt;/i&gt; &lt;span&gt;浦东&lt;/span&gt; &lt;/li&gt;
+    &lt;li&gt; &lt;i&gt;&lt;/i&gt; &lt;span&gt;虹桥&lt;/span&gt; &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+iphone checkbox
+是否设为常用地址
+&lt;input type="checkbox" name="toggle" id="toggle"&gt;
+&lt;label for="toggle"&gt;&lt;/label&gt;
+
+图片
+&lt;div class="agree"&gt;
+    &lt;input type="checkbox" id="test1" checked='checked' /&gt;
+    &lt;label for="test1"&gt;同意条款&lt;/label&gt;    
+&lt;/div&gt;
+
+代码
+&lt;div class="demo"&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-checkbox" type="checkbox" name="layout" id="c1"&gt;
+      &lt;label for="c1"&gt;Normal&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-checkbox" type="checkbox" name="layout" id="c2" checked&gt;
+      &lt;label for="c2"&gt;Checked&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-checkbox" type="checkbox" name="layout" id="c3" value="option2" disabled&gt;
+      &lt;label for="c3" style="color:#ccc"&gt;Disabled&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-checkbox" type="checkbox" name="layout" id="c4" checked disabled&gt;
+      &lt;label for="c4" style="color:#ccc"&gt;Checked && Disabled&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-radio" type="radio" name="radio" id="r1" value="option1"&gt;
+      &lt;label for="r1"&gt;Normal&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-radio" type="radio" name="radio" id="r2" value="option2" checked&gt;
+      &lt;label for="r2"&gt;Checked&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-radio" type="radio" name="radio" id="r3" value="option3" disabled&gt;
+      &lt;label for="r3" style="color:#ccc"&gt;禁用&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="opt"&gt;
+      &lt;input class="magic-radio" type="radio" id="r4" value="option4" checked disabled&gt;
+      &lt;label for="r4" style="color:#ccc"&gt;Checked && Disabled&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+  <h2>Css</h2>
+  <pre><code class="css">/*自定义js*/
+.choose li { clear: both; width: 100%; padding: 2px 0; overflow: hidden; cursor: pointer; }
+.choose i { position: relative; padding-left: 0px; cursor: pointer; width: 30px; height: 20px; display: inline-block; vertical-align: middle; float: left; margin-top: 3px; }
+.choose i { background: url(images/select.png) no-repeat; background-size: 16px; }
+.choose li.on i { background: url(images/selected.png) no-repeat; background-size: 16px; }
+.choose span { float: left; width: 85% }
+
+/*iphone checkbox*/
+input#toggle { max-height: 0; max-width: 0; opacity: 0; }
+input#toggle + label { display: inline-block; position: relative; box-shadow: inset 0 0 0px 1px #d5d5d5; text-indent: -5000px; height: 30px; width: 50px; border-radius: 15px; vertical-align: middle;cursor: pointer; }
+input#toggle + label:before { content: ""; position: absolute; display: block; height: 30px; width: 30px; top: 0; left: 0; border-radius: 15px; background: rgba(19, 191, 17, 0); -moz-transition: .25s ease-in-out; -webkit-transition: .25s ease-in-out; transition: .25s ease-in-out; }
+input#toggle + label:after { content: ""; position: absolute; display: block; height: 30px; width: 30px; top: 0; left: 0px; border-radius: 15px; background: white; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2), 0 2px 4px rgba(0, 0, 0, .2); -moz-transition: .25s ease-in-out; -webkit-transition: .25s ease-in-out; transition: .25s ease-in-out; }
+input#toggle:checked + label:before { width: 50px; background: rgba(19, 191, 17, 1); }
+input#toggle:checked + label:after { left: 20px; box-shadow: inset 0 0 0 1px rgba(19, 191, 17, 1), 0 2px 4px rgba(0, 0, 0, .2); }
+
+/*图片*/
+.agree [type="checkbox"] { position: absolute; left: -9999px; }
+.agree [type="checkbox"] + label { position: relative; padding-left:25px; cursor: pointer;}
+.agree [type="checkbox"]:not(:checked) + label { background: url(images/select.png) no-repeat;}
+.agree [type="checkbox"]:checked + label { background: url(images/selected.png) no-repeat;}
+/*.agree label:hover:before { border: 1px solid #4778d9 !important; }*/
+    
+/*代码*/
+.opt{height:30px;line-height:24px}
+@keyframes hover-color {
+  from { border-color: #c0c0c0; }
+  to { border-color: #3e97eb; }
+}
+.magic-radio, .magic-checkbox { position: absolute; display: none; }
+.magic-radio[disabled], .magic-checkbox[disabled] { cursor: not-allowed; }
+.magic-radio + label, .magic-checkbox + label { position: relative; display: block; padding-left: 30px; cursor: pointer; vertical-align: middle; }
+.magic-radio + label:hover:before, .magic-checkbox + label:hover:before { animation-duration: 0.4s; animation-fill-mode: both; animation-name: hover-color; }
+.magic-radio + label:before, .magic-checkbox + label:before { position: absolute; top: 0; left: 0; display: inline-block; width: 20px; height: 20px; content: ''; border: 1px solid #c0c0c0; }
+.magic-radio + label:after, .magic-checkbox + label:after { position: absolute; display: none; content: ''; }
+.magic-radio[disabled] + label, .magic-checkbox[disabled] + label { cursor: not-allowed; color: #e4e4e4; }
+.magic-radio[disabled] + label:hover, .magic-radio[disabled] + label:before, .magic-radio[disabled] + label:after, .magic-checkbox[disabled] + label:hover, .magic-checkbox[disabled] + label:before, .magic-checkbox[disabled] + label:after { cursor: not-allowed; }
+.magic-radio[disabled] + label:hover:before, .magic-checkbox[disabled] + label:hover:before { border: 1px solid #e4e4e4; animation-name: none; }
+.magic-radio[disabled] + label:before, .magic-checkbox[disabled] + label:before { border-color: #e4e4e4; }
+.magic-radio:checked + label:before, .magic-checkbox:checked + label:before { animation-name: none; }
+.magic-radio:checked + label:after, .magic-checkbox:checked + label:after { display: block; }
+.magic-radio + label:before { border-radius: 50%; }
+.magic-radio + label:after { top: 7px; left: 7px; width: 8px; height: 8px; border-radius: 50%; background: #3e97eb; }
+.magic-radio:checked + label:before { border: 1px solid #3e97eb; }
+.magic-radio:checked[disabled] + label:before { border: 1px solid #c9e2f9; }
+.magic-radio:checked[disabled] + label:after { background: #c9e2f9; }
+.magic-checkbox + label:before { border-radius: 3px; }
+.magic-checkbox + label:after { top: 2px; left: 7px; box-sizing: border-box; width: 6px; height: 12px; transform: rotate(45deg); border-width: 2px; border-style: solid; border-color: #fff; border-top: 0; border-left: 0; }
+.magic-checkbox:checked + label:before { border: #3e97eb; background: #3e97eb; }
+.magic-checkbox:checked[disabled] + label:before { border: #c9e2f9; background: #c9e2f9; }
+</code></pre>
+<h2>Example</h2>
+<iframe name="main" src="../checkbox.html" frameborder="0" scrolling="no" width="100%" height="600" class="left"></iframe>
+</div>
+<script src="../js/jquery.js"></script> 
+<script src="../images/highlight/highlight.pack.js"></script> 
+<script src="../js/api.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-05 23:06:56
+ * @version $Id$
+ */
+
+*{
+	padding: 0;
+	margin: 0;
+}
+body,html{
+	height: 100%;
+}
+body{
+	font-family: '微软雅黑',tahoma,arial,'Heiti';
+}
+a{
+	text-decoration: none;
+}
+ol,ul{
+	list-style: none;
+}
+img{
+	display: block;
+}
+
+.wrapper{
+	width: 100%;
+	min-height: 100%;
+	background: #41a0fc
+}
+
+/*题目进度条*/
+.subject-box{
+	height: 14px;
+	background: #2284e4;
+	padding: 2px 2%;
+	position: relative;
+}
+.process{
+	background: #88bff3;
+	float: left;
+	height: 14px;
+}
+.subject-box p{
+	text-align: center;
+	height: 14px;
+	font-size: 0.7em;
+	color: #fff;
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 100%;
+}
+.w12{
+	width: 14%;
+}
+
+.w12{
+	width: 14%;
+}
+.w24{
+	width: 28%;
+}
+.w36{
+	width: 40%;
+}
+.w48{
+	width: 54%;
+}
+.w60{
+	width: 62%;
+}
+.w72{
+	width: 74%;
+}
+.w84{
+	width: 88%;
+}
+.w96{
+	width: 100%;
+}
+.bg2 { background:#41a0fc url('../images/bg2.jpg') no-repeat; background-size:100% 100%}

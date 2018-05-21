@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>城市三级联动 - citys-原生js封装</title>
+	<link rel="shortcut icon" href="../public/image/favicon.ico" type="images/x-icon"/>
+	<link rel="icon" href="../public/image/favicon.png" type="images/png"/>
+	<link rel="stylesheet" type="text/css" href="../public/style/cssreset-min.css">
+	<link rel="stylesheet" type="text/css" href="../public/style/common.css">
+	<style type="text/css">
+		.citys{
+            margin-bottom: 10px;
+        }
+        .citys p{
+            line-height: 28px;
+        }
+        .warning{
+            color: #c00;
+        }
+        table a{
+            margin-right: 8px;
+            color: #369;
+        }
+	</style>
+	<script type="text/javascript" src="../code/citys.js"></script>
+</head>
+<body>
+	<div class="header">
+        <a href="https://github.com/huanghanzhilian/widget" target="_blank">项目地址</a>
+        <a href="/widget/">返回首页</a>
+    </div>
+    <div class="main">
+
+        </script>
+
+        <div id="demo1" class="citys">
+            <p>
+                <select name="province"></select>
+                <select name="city"></select>
+                <select name="area"></select>
+            </p>
+        </div>
+        <div class="code">
+            <p>通过地区名称初始化设置</p>
+<pre>
+new citys("#demo1", {
+    province: '江西',
+    city: '抚州',
+    area: '宜黄县',
+});
+</pre>
+        </div>
+        <script type="text/javascript">
+            new citys("#demo1", {
+                province: '江西',
+                city: '抚州',
+                area: '宜黄县',
+            });
+        </script>
+        <div id="demo2" class="citys">
+            <p>
+                <select name="province"></select>
+                <select name="city"></select>
+                <select name="area"></select>
+            </p>
+            <p id="place">请选择地区</p>
+        </div>
+        <div class="code">
+        <p>事件处理</p>
+<pre>
+var place=document.getElementById("place")
+new citys("#demo2", {
+    required: false,
+    nodata:'disabled',
+    onChange:function(data){
+        place.innerHTML='当前选中地区：'+data['province']+' '+data['city']+' '+data['area'];
+    }
+});
+</pre>
+        </div>
+        <script type="text/javascript">
+            var place=document.getElementById("place")
+            new citys("#demo2", {
+                required: false,
+                nodata:'disabled',
+                onChange:function(data){
+                    place.innerHTML='当前选中地区：'+data['province']+' '+data['city']+' '+data['area'];
+                }
+            });
+        </script>
+
+
+
+    	<div id="demo3" class="citys">
+            <p>
+                <select name="province"></select>
+                <select name="city"></select>
+                <select name="area"></select>
+            </p>
+            <p id="place3">请选择地区</p>
+        </div>
+        <div class="code">
+        <p>事件处理</p>
+<pre>
+var place=document.getElementById("place")
+new citys("#demo2", {
+    required: false,
+    nodata:'disabled',
+    onChange:function(data){
+        place3.innerHTML='当前选中地区：'+data['province']+' '+data['city']+' '+data['area'];
+    }
+});
+</pre>
+        </div>
+        <script type="text/javascript">
+            var place3=document.getElementById("place3")
+            new citys("#demo3", {
+                required: false,
+                onChange:function(data){
+                    place3.innerHTML='当前选中地区：'+data['province']+' '+data['city']+' '+data['area'];
+                }
+            });
+        </script>
+
+
+
+
+        <div class="example">
+            <div class="call">
+                <h1>调用方法：</h1>
+                <p>new citys("selector",options,callback(api));</p>
+            </div>
+            <h2> options参数</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="150">参数</th>
+                        <th width="120">默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dataUrl</td>
+                        <td>[数据库地址]</td>
+                        <td>
+                          <p>最新数据库（2016年08月）：<a href="http://www.huanghanlian.com/data_location/list.json" target="_blank">JSON格式</a></p>
+                          <p>数据库项目：<a href="https://github.com/huanghanzhilian/data_location" target="_blank">中国行政区划</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>provinceField</td>
+                        <td>'province'</td>
+                        <td>省份(省级)字段名</td>
+                    </tr>
+                    <tr>
+                        <td>cityField</td>
+                        <td>'city'</td>
+                        <td>城市(地级)字段名</td>
+                    </tr>
+                    <tr>
+                        <td>areaField</td>
+                        <td>'area'</td>
+                        <td>地区(县区级)字段名</td>
+                    </tr>
+                    <tr>
+                        <td>province</td>
+                        <td>[无]</td>
+                        <td>省份(省级),可以为地区名称</td>
+                    </tr>
+                    <tr>
+                        <td>city</td>
+                        <td>[无]</td>
+                        <td>城市(地级),可以为地区名称</td>
+                    </tr>
+                    <tr>
+                        <td>area</td>
+                        <td>[无]</td>
+                        <td>地区(县区级),可以为地区名称</td>
+                    </tr>
+                    <tr>
+                        <td>required</td>
+                        <td>true</td>
+                        <td>是否必须选中(是否自动选择地区)</td>
+                    </tr>
+                    <tr>
+                        <td>nodata</td>
+                        <td>'hidden'</td>
+                        <td>当无数据时的表现形式:'hidden'隐藏,'disabled'禁用,为空不做任何处理</td>
+                    </tr>
+                    <tr>
+                        <td>onChange</td>
+                        <td>[无]</td>
+                        <td>地区切换时触发,回调函数传入地区信息:province省份(省级)名称,city城市(地级)名称,area地区(县区级)名称</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>callback(api)参数</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="200">方法</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>getInfo(data)</td>
+                        <td>获取当前选中的地区信息:province省份(省级)名称,city城市(地级)名称,area地区(县区级)名称,code地区编码</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+
+
+</script>

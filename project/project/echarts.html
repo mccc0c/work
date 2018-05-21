@@ -3,25 +3,100 @@
 
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/easy.css">
+	<style type="text/css">
+	.tab .nav {
+		display: block;
+		overflow: hidden;
+	}
+
+	.tab .content {
+		display: block;
+	}
+	</style>
 </head>
 
 <body>
-	<div class="circle" style="width: 128px;height: 128px;"></div>
-	<div class="circle1" style="width: 128px;height: 128px;"></div>
-	<div class="line" style="width: 100%;height: 500px;"></div>
-	<script src="./js/jquery.js"></script>
+	<div class="tab">
+		<div class="nav">
+			<ul>
+				<li class="current">nav1</li>
+				<li>nav2</li>
+				<li>nav3</li>
+				<li>nav4</li>
+				<li>nav5</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul>
+				<li style="display:block">
+					<div class="circle" style="width: 128px;height: 128px;" data-echartID="3"></div>
+				</li>
+				<li>
+					<div class="circle1" style="width: 128px;height: 128px;" data-echartID="3"></div>
+				</li>
+				<li>
+					<div class="line" style="width: 100%;height: 300px;" data-echartID="3"></div>
+				</li>
+				<li>content4</li>
+				<li>content5</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/easy.js"></script>
 	<script src="./js/echarts.js"></script>
 	<script src="./js/jQueryRotate.js"></script>
-	<script>
+	<!-- 	<script>
 	var node = [];
+	var nodeObbj = {}
 	$(function() {
-		function chartresize(node) {
-			$.each(node, function(index, value) {
-				$(this).resize();
-			});
-		}
+		$('.tab').tab({
+			event: 'click',
+			auto: false,
+			before: function(a) {
+				console.log(a);
+			},
+			after: function(a) {
+				// chartresize(node);
+				chartresizeObj(nodeObbj);
+				setTimeout(function() {
+					nodeObj['3'].setOption({
+						title: {
+							text: 'ECharts 数据统计'
+						},
+						series: [{
+							name: '访问量',
+							type: 'pie',
+							radius: '60%',
+							data: servicedata,
+						}]
 
-		chartresize(node);
+					});
+				}, 50000);
+
+			}
+		});
+	});
+	</script>
+	<script>
+	function chartresize(node) {
+		console.log(node);
+		$.each(node, function(index, value) {
+			$(this).resize();
+		});
+	}
+
+	function chartresizeObj(nodeObj) {
+		console.log(nodeObj);
+		for (var key in nodeObj) {
+			nodeObj[key].resize();
+		}
+	}
+	$(function() {
+
+
+		// chartresize(node);
 		//echarts自适应
 		window.onresize = function() {
 			chartresize(node);
@@ -147,15 +222,16 @@
 			};
 			var myChart = echarts.init($(elName)[0]);
 			myChart.setOption(option, true);
+
 			node.push(myChart);
 		}
 	});
 	</script>
 	<script>
 	$(function() {
-		var x ="周四",
-		ymax = 1500,
-		ymin = 0;
+		var x = "周四",
+			ymax = 1500,
+			ymin = 0;
 		var option = {
 			title: {
 				text: '某楼盘销售情况',
@@ -210,8 +286,8 @@
 							[
 								/*{ name: '标线1起点', value: 400, xAxis: -1, yAxis: 400 }, // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
 								{ name: '标线1终点', xAxis: '周日', yAxis: 400 }, // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配*/
-								{name: '', xAxis: x,  yAxis: ymax,/*x:'600',y:'0'*/},
-        						{name: '', xAxis: x,  yAxis: ymin,/*x:'600',y:'1000'*/}
+								{ name: '', xAxis: x, yAxis: ymax, /*x:'600',y:'0'*/ },
+								{ name: '', xAxis: x, yAxis: ymin, /*x:'600',y:'1000'*/ }
 							],
 						]
 					}
@@ -234,6 +310,238 @@
 		};
 		var myChart = echarts.init($('.line')[0]);
 		myChart.setOption(option, true);
+		var id = $('.line')[0].getAttribute('data-echartID');
+		nodeObbj[id] = myChart;
+		// console.log(myChart);
+		// node.push(myChart);
+	});
+	</script> -->
+	<script>
+	$(function() {
+		var ec = {
+			node: [],
+			initEchart: function(option, el) {
+				var myChart = echarts.init($(el)[0]);
+				myChart.setOption(option, true);
+				this.node.push(myChart);
+			},
+			resize: function() {
+				$.each(this.node, function(index, value) {
+					$(this).resize();
+				});
+			}
+		};
+		window.ec = ec;
+	}(window));
+	function create(val) {
+		var status = "还款中",
+			colo = '#397be9';
+		if (val >= 0 && val < 100) {
+			colarr = [
+				[val / 100, '#397be9'],
+				[100 - val / 100, "#ddd"]
+			];
+		} else {
+			colarr = [
+				[val / 100, '#2caf60'],
+				[100 - val / 100, "#ddd"]
+			];
+			colo = '#2caf60';
+			status = "还款成功";
+		}
+
+		var option = {
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: {
+						show: true
+					},
+					restore: {
+						show: true
+					},
+					saveAsImage: {
+						show: true
+					}
+				}
+			},
+			series: [{
+				name: '业务指标',
+				type: 'gauge',
+				startAngle: 220,
+				endAngle: -40,
+				center: ['50%', '70%'], // 默认全局居中
+				radius: 60,
+				animation: true,
+				axisLine: { // 坐标轴线
+					lineStyle: { // 属性lineStyle控制线条样式
+						width: 7,
+						color: colarr
+					}
+				},
+				splitLine: {
+					show: false
+				},
+				axisTick: { // 坐标轴小标记
+					show: false,
+					splitNumber: 10, // 每份split细分多少段
+					length: 9 // 属性length控制线长
+
+				},
+				axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+					formatter: function(v) {
+						switch (v + '') {
+							case '10':
+								return '';
+							case '50':
+								return '';
+							case '90':
+								return '';
+							default:
+								return '';
+						}
+					},
+					textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+						color: '#fff',
+						fontSize: 0,
+						fontWeight: 'bolder'
+					}
+				},
+				pointer: {
+					show: false,
+					width: 8,
+					length: '80%'
+				},
+				title: {
+					show: true,
+					offsetCenter: [0, '15%'], // x, y，单位px
+					textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+						color: colo,
+						fontSize: 14
+					}
+				},
+				detail: {
+					show: true,
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',
+					width: 100,
+					height: 40,
+					offsetCenter: [0, "-30%"], // x, y，单位px
+					formatter: '{value}%',
+					textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+						fontSize: 24
+					}
+				},
+				data: [{
+					value: val,
+					name: status,
+				}]
+			}]
+		};
+		return option;
+	}
+	$(function() {
+		window.onresize = function() {
+			ec.resize();
+		};
+		ec.initEchart({
+			title: {
+				text: '某楼盘销售情况',
+				subtext: '纯属虚构'
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['意向', '预购', '成交']
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					dataView: { show: true, readOnly: false },
+					magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			calculable: true,
+			xAxis: [{
+				type: 'category',
+				boundaryGap: false,
+				data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+			}],
+			yAxis: [{
+				type: 'value'
+			}],
+			series: [{
+					name: '成交',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					// data: [10, 12, 21, 54, 260, 830, 710],
+					markLine: {
+						itemStyle: {
+							normal: { lineStyle: { type: 'solid', color: 'green' }, label: { show: true, position: 'left' } }
+						},
+						large: true,
+						effect: {
+							show: false,
+							loop: true,
+							period: 0,
+							scaleSize: 2,
+							color: null,
+							shadowColor: null,
+							shadowBlur: null
+						},
+						data: [
+							[
+								/*{ name: '标线1起点', value: 400, xAxis: -1, yAxis: 400 }, // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
+								{ name: '标线1终点', xAxis: '周日', yAxis: 400 }, // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配*/
+								{ name: '', xAxis: "周二", yAxis: 1500, /*x:'600',y:'0'*/ },
+								{ name: '', xAxis: "周四", yAxis: 1500, /*x:'600',y:'1000'*/ }
+							],
+						]
+					}
+				},
+				{
+					name: '预购',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					data: [30, 182, 434, 791, 390, 30, 10]
+				},
+				{
+					name: '意向',
+					type: 'line',
+					smooth: true,
+					// itemStyle: { normal: { areaStyle: { type: 'default' } } },
+					data: [1320, 1132, 601, 234, 120, 90, 20]
+				}
+			]
+		}, '.line');
+		ec.initEchart(create('50'),'.circle');
+		ec.initEchart(create('100'),'.circle1');
+		$('.tab').tab({
+			event: 'click',
+			auto: false,
+			before: function(a) {
+				console.log(a);
+			},
+			after: function(a) {
+				// chartresize(node);
+				console.log(ec.node);
+				ec.resize();
+				setTimeout(function() {
+					console.log(ec.node);
+				}, 5000);
+
+			}
+		});
 	});
 	</script>
 </body>

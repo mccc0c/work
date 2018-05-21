@@ -1,0 +1,446 @@
+<html lang="en">
+
+<head>
+    <!-- <base href="http://ent.h5.easyrong.com:80/"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no" />
+    <title>春季企业政策红包大派送</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <!-- <link rel="stylesheet" href="./css/fund-question.css">
+    <link rel="stylesheet" href="./css/fund-common.css"> -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+<script src="./wx/jweixin-1.0.0.js"></script>
+<script>
+var appId = 'wx468f4e63c041af03';
+var timestamp = '1512020078';
+var nonceStr = 'Qj7P3qzTVfhTFXwi';
+var signature = 'd70a4f01d0db49302f33f49ed15ce055b6af9f5d';
+//分享标题
+var shareTitle = '2017年政策红利大派送';
+//分享的内容
+var shareDesc = '2017年500亿政策红利大派送 快来测一测 我能拿多少';
+//分享的连接地址
+var shareLink = 'http://ent.h5.easyrong.com/fund/load';
+//分享的图片地址
+var shareImgUrl = 'http://ent.h5.easyrong.com/static/images/new/WX_pic2.png';
+//朋友圈分享内容
+var shareTimeLine = '500亿政策红利近在眼前，算一算能拿的还不少！';
+</script>
+<script src="./wx/weixin.js">
+</script>
+<script type="text/javascript">
+//获取url参数
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return r[2];
+    }
+    return null;
+}
+//已选的答案
+var answerChoice = '';
+
+function reloadAnswer() {
+
+    var process = $('.process');
+    var processValue = 12;
+    processValue = "w" + processValue;
+    process.addClass(processValue);
+
+    var answer = window.localStorage.getItem("answer");
+    if (answer != null && answer.length >= 1) {
+        var answerArray = answer.split(";");
+        for (var i = 0; i < answerArray.length; i++) {
+            var answerTmp = answerArray[i];
+            if (answerTmp == null || answerTmp.length <= 0) {
+                continue;
+            }
+            if (answerTmp.indexOf(",") == -1) { //单选
+                $('.subject-content ul li').each(function() {
+                    var answerId = $(this).attr('id');
+                    var answerChoiceTmp = 1 + answerId;
+                    if (answerTmp == answerChoiceTmp) {
+                        answerChoice = answerChoiceTmp;
+                        $(this).addClass('cur');
+                    }
+                });
+            } else {
+                var answerArrayMore = answerTmp.split(",");
+                if (answerArrayMore != null && answerArrayMore.length > 0) {
+                    for (var j = 0; j < answerArrayMore.length; j++) {
+                        var answerValueTmp = answerArrayMore[j];
+                        if (answerValueTmp != null && answerValueTmp.length > 0) {
+                            $('.subject-content ul li').each(function() {
+                                var answerId = $(this).attr('id');
+
+                                var answerFlagTmp = 1 + answerId;
+                                if (answerValueTmp == answerFlagTmp) {
+                                    answerChoice += answerFlagTmp + ","
+                                    $(this).addClass('cur');
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+$(function() {
+    //第一题清除缓存
+    if (getQueryString('s') == 'init') {
+        window.localStorage.removeItem("answer");
+    }
+    //重新加载已选项
+    reloadAnswer();
+    var removeAnswer = '';
+    var newChoiceAnswer = '';
+    //是否为单选
+    var singleChoiceFlag = true;
+    //点击选项
+    $('.subject-content ul li').on('click', function() {
+        var jump = false;
+        if ($(this).hasClass('cur')) {
+            removeAnswer = $(this).children('b').text();
+            removeAnswer = 1 + removeAnswer;
+            $(this).removeClass('cur');
+            $(this).children('input[type=hidden]').val('');
+        } else {
+            if (singleChoiceFlag) {
+                $('.subject-content ul li').each(function() {
+                    if ($(this).hasClass('cur')) {
+                        removeAnswer = $(this).children('b').text();
+                        removeAnswer = 1 + removeAnswer;
+                    }
+                });
+            }
+            newChoiceAnswer = $(this).children('b').text();
+            $(this).children('input[type=hidden]').val(newChoiceAnswer);
+            $(this).addClass('cur');
+            if (singleChoiceFlag) {
+                $(this).siblings('li').removeClass('cur');
+            }
+            //新选项值
+            newChoiceAnswer = 1 + newChoiceAnswer;
+            jump = true;
+        }
+        var answer = window.localStorage.getItem("answer");
+        // 单选
+        if (singleChoiceFlag) {
+            if (answer != null) {
+                if (removeAnswer != '' && removeAnswer.length > 0) {
+                    if (newChoiceAnswer != null & newChoiceAnswer.length > 0) {
+                        answer = answer.replace(removeAnswer, newChoiceAnswer).replace(';;', ';');
+                    }
+                } else {
+                    answer = answer + newChoiceAnswer + ";";
+                }
+                window.localStorage.setItem("answer", answer);
+            } else {
+                window.localStorage.setItem("answer", newChoiceAnswer + ";")
+            }
+            if (jump) {
+                // 当选不是最后一题，则跳转
+                if (true) {
+                    var answer = "";
+                    $('.subject-content ul li').each(function() {
+                        if ($(this).hasClass('cur')) {
+                            answer = $(this).attr("id");
+                        }
+                    });
+                    window.location.href = "fund/fund_question?id=113&areaId=14&questionNo=1&answer=" + answer + "&regionId=" + '&source=';
+                }
+            }
+        } else { // 多选
+            if ($(this).attr("exOth") == 1) { // 所有互斥
+                //step1 清除其他选项样式
+                $(this).siblings('li').removeClass('cur');
+
+                // 前部分
+                var beforeAnswer = "";
+                if (answer.indexOf(1) != -1) {
+                    beforeAnswer = answer.substring(0, answer.indexOf(1));
+                } else {
+                    beforeAnswer = answer;
+                }
+                // 后部分
+                var afterAnswer = "";
+                if (answer.indexOf(1) != -1) {
+                    afterAnswer = answer.substring(answer.indexOf(1));
+                } else {
+                    newChoiceAnswer = newChoiceAnswer + ";";
+                }
+                // 去除该题选择的所有答案
+                var delAfterAnswer = "";
+                if (afterAnswer.indexOf(";") != -1) {
+                    delAfterAnswer = afterAnswer.substr(afterAnswer.indexOf(";"));
+                }
+                // 拼凑封装数据
+                var answer = beforeAnswer + newChoiceAnswer + delAfterAnswer;
+
+                window.localStorage.setItem("answer", answer);
+            } else if ($(this).attr("mutex") != '') { // 如果是局部互斥
+                if (removeAnswer != '' && removeAnswer.length > 0) { // 删除
+                    doRemoveAnswer(removeAnswer);
+                    removeAnswer = '';
+                } else {
+                    // 获取互斥项
+                    var mutex = $(this).attr("mutex");
+                    $(this).siblings('li').each(function() {
+                        if (mutex.indexOf($(this).attr("id")) > -1) {
+                            $(this).removeClass("cur");
+                            doRemoveAnswer(1 + $(this).attr("id"));
+                        }
+                    });
+                    var answer = addAnswer(newChoiceAnswer);
+                    window.localStorage.setItem("answer", answer);
+                }
+            } else {
+                var isExistsExOth = false;
+                $(this).siblings("li").each(function() {
+                    if ($(this).attr("exOth") == 1 && $(this).hasClass("cur")) {
+                        isExistsExOth = true;
+                    }
+                });
+                if (isExistsExOth) {
+                    //      step3.1 清除样式
+                    var curExOthVal = "";
+                    $('.subject-content ul li').each(function() {
+                        if ($(this).attr("exOth") == 1) {
+                            $(this).removeClass('cur');
+                            curExOthVal = 1 + $(this).attr("id");
+                        }
+                    });
+                    //      step3.2 清除值
+                    var lastAnswer = curExOthVal;
+                    if (lastAnswer != null && lastAnswer.length > 0) {
+                        answer = answer.replace(lastAnswer, newChoiceAnswer).replace(";;", ";");
+                    } else {
+                        answer = answer + newChoiceAnswer;
+                    }
+                    window.localStorage.setItem("answer", answer);
+                }
+
+                if (!isExistsExOth) {
+                    if (removeAnswer != '' && removeAnswer.length > 0) {
+                        answer = answer.replace(removeAnswer, '').replace(';;', ';').replace(',,', ',').replace(';,', ';').replace(",;", ";");
+                        // 去除第一个题目为多选导致的值问题
+                        if (answer.indexOf(";") == 0) {
+                            answer = answer.substr(1, answer.length);
+                        }
+                        removeAnswer = '';
+                        window.localStorage.setItem("answer", answer);
+                    } else {
+                        var answer = addAnswer(newChoiceAnswer);
+                        window.localStorage.setItem("answer", answer);
+                    }
+                }
+            }
+        }
+
+    });
+
+    // 删除所选答案
+    function doRemoveAnswer(removeAnswer) {
+        var oldAnswer = window.localStorage.getItem("answer");
+        var newAnswer = oldAnswer.replace(removeAnswer, '').replace(';;', ';').replace(',,', ',').replace(';,', ';').replace(",;", ";");
+        // 去除第一个题目为多选导致的值问题
+        if (newAnswer.indexOf(";") == 0) {
+            newAnswer = oldAnswer.substr(1, newAnswer.length);
+        }
+        window.localStorage.setItem("answer", newAnswer);
+    }
+
+    // 添加所选答案
+    function addAnswer(newChoiceAnswer) {
+        var result = "";
+        var answer = window.localStorage.getItem("answer");
+        if (answer != null && answer != '') {
+            // 前部分
+            var beforeAnswer = "";
+            var isExtQuestionNo = answer.indexOf(1) != -1;
+            if (isExtQuestionNo) {
+                beforeAnswer = answer.substring(0, answer.indexOf(1));
+            } else {
+                beforeAnswer = answer;
+            }
+            // 后部分
+            var afterAnswer = "";
+            if (isExtQuestionNo) {
+                afterAnswer = answer.substring(answer.indexOf(1));
+            }
+
+            if (isExtQuestionNo) {
+                if (afterAnswer.indexOf(";") != -1) {
+                    var selectedVal = afterAnswer.substr(0, afterAnswer.indexOf(";"));
+                    var delValAfterAnswer = afterAnswer.substr(afterAnswer.indexOf(";"));
+                    result = beforeAnswer + selectedVal + "," + newChoiceAnswer + delValAfterAnswer;
+                } else {
+                    result = beforeAnswer + afterAnswer + "," + newChoiceAnswer;
+                }
+            } else {
+                result = answer + newChoiceAnswer + ";";
+            }
+        } else {
+            result += newChoiceAnswer + ";";
+        }
+
+        return result;
+    }
+
+    $('.subject-content ul li').each(function() {
+        var h = $(this).children('p').height();
+        if (h > 45) {
+            $(this).children('p').css({ 'line-height': '24px', 'padding-top': '5px', 'padding-bottom': '5px' });
+            var $h = $(this).children('p').height() + 10;
+            var H = $h + 'px';
+            $(this).children('b').height($h);
+            $(this).children('b').css('line-height', H);
+
+        } else {
+            $(this).children('p').css('line-height', '45px');
+            $(this).children('b').css('line-height', '45px');
+            $(this).children('b').height(45);
+            $(this).children('p').height(45);
+        }
+    });
+
+})
+</script>
+
+<body>
+    <form id="viewResult" method="post" action="fund/fund_showResult?source=">
+        <!--用户id-->
+        <input type="hidden" id="userId" name="userId" />
+        <input type="hidden" name="regionId" value="" />
+        <!--//选择的结果-->
+        <input type="hidden" id="userAnswer" name="userAnswer" />
+    </form>
+    <form id="viewResult_2" method="post" action="fund/initBaseInfo?source=">
+        <input type="hidden" id="useraction" name="useraction" />
+        <input type="hidden" name="areaId" value="14" />
+        <input type="hidden" name="regionId" value="" />
+    </form>
+    <div class="wrapper">
+        <!--题目进度条-->
+        <div class="subject-box">
+            <div class="process"></div>
+            <p>剩余6/7</p>
+        </div>
+        <!--侧滑栏-->
+        <div class="sideBar">
+            <i></i><span>您可获得0元补贴金额</span>
+        </div>
+        <!--题目内容-->
+        <div class="subject-content">
+            <h2 id="tihao">1、您企业成立年限（以工商注册时间为准）？</h2>
+            <ul>
+                <li exOth="0" mutex="" id="A">
+                    <b>A</b>
+                    <p>1年以内</p>
+                    <input name="" type="hidden" value="">
+                </li>
+                <li exOth="0" mutex="" id="B">
+                    <b>B</b>
+                    <p>1年（含）-2年</p>
+                    <input name="" type="hidden" value="">
+                </li>
+                <li exOth="0" mutex="" id="C">
+                    <b>C</b>
+                    <p>2年（含）-3年</p>
+                    <input name="" type="hidden" value="">
+                </li>
+                <li exOth="0" mutex="" id="D">
+                    <b>D</b>
+                    <p>3年（含）-5年</p>
+                    <input name="" type="hidden" value="">
+                </li>
+                <li exOth="0" mutex="" id="E">
+                    <b>E</b>
+                    <p>5年（含）以上</p>
+                    <input name="" type="hidden" value="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    function skipBack() {
+        if (false) {
+            if (false) {
+                // 取得当前题的上上题号
+                var backQuestionNo = -1;
+                var answer = getAnswer(backQuestionNo);
+                window.location.href = "fund/fund_question?id=&areaId=14&questionNo=" + backQuestionNo + "&answer=" + answer + "&regionId=" + '&source=';
+            } else {
+                window.location.href = "fund/fund_question?id=&areaId=14" + "&regionId=" + '&source=';
+            }
+        }
+    }
+
+    // 根据题号，得到第一个答案
+    function getAnswer(backQuestionNo) {
+        // 得到选择的答案
+        var selectedAnswers = window.localStorage.getItem("answer");
+        // 截取上上题号后面的答案
+        var afterAnswers = selectedAnswers.substr(selectedAnswers.indexOf(backQuestionNo) + 1, selectedAnswers.length);
+        // 截取上上题选择的答案
+        var currentAnswer = afterAnswers.substr(0, afterAnswers.indexOf(";"));
+        // 截取上上题选择的第一个答案
+        var answer = currentAnswer.split(",")[0];
+        return answer;
+    }
+
+    function checkSubmit() {
+        // 不选择,则不能下一题
+        if (!$('.subject-content ul li').hasClass("cur")) {
+            return false;
+        }
+        var answer = getAnswer(1);
+        window.location.href = "fund/fund_question?id=113&areaId=14&questionNo=1&answer=" + answer + "&regionId=" + '&source=';
+    }
+
+    function submit() {
+        // 第八题没选任何选项不能点击“查看结果”
+        if (!$('.subject-content ul li').hasClass("cur")) {
+            return false;
+        }
+        var answer = window.localStorage.getItem("answer");
+
+        if ($('#resultOfView').text() == "查看结果") {
+            //得到累加结果
+            $('#userAnswer').val(window.localStorage.getItem("answer"));
+            //得到userId
+            $('#userId').val('03a954e924e99ae94514bba76396e634');
+            //提交表单
+            $('#viewResult').submit();
+        } else if ($('#resultOfView').text() == "快速提交") {
+            $('#useraction').val("B");
+            $('#viewResult_2').submit();
+
+        }
+    }
+    </script>
+    <img src="http://c.cnzz.com/wapstat.php?siteid=1260979518&r=http%3A%2F%2Fent.h5.easyrong.com%2Ffund%2Fguide%3Fsource%3D&rnd=744320826" width="0" height="0" />
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-81404419-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

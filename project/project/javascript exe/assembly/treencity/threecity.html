@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<style>
+		.trselect1{margin-bottom: 10px;}
+	</style>
+</head>
+
+<body>
+	<div class="trselect1">
+		<select class="trprovice"></select>
+		<select class="trcity"></select>
+		<select class="trdistrict"></select>
+	</div>
+	<div class="trselect">
+		<select class="trprovice"></select>
+		<select class="trcity"></select>
+		<select class="trdistrict"></select>
+	</div>
+	<div id="getSelDate">getVal</div>
+	<script type="text/javascript" src="./js/threecity.js"></script>
+	<script>
+	var pcd = new Treencity('.trselect1', {
+		province: "北京市",
+		onChange: function(data) {
+			console.log(data);
+		}
+	}); /*,city:"北京市",area:'东城区'*/
+	var pcd1 = new Treencity('.trselect', {
+		province: "江苏省",
+		onChange: function(data) {
+			console.log(data.province);
+		}
+	},function(e){
+		console.log(e);
+		e.$province.style.background='red';		
+	});
+	// console.log(pcd);
+	document.getElementById('getSelDate').onclick = function() {
+		console.log(pcd.getValue('json'));
+		console.log(pcd1.getValue('json'));
+	};
+	</script>
+</body>
+
+</html>

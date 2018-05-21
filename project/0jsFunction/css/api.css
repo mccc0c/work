@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+/*api*/
+body { font-size:14px;}
+.hljs-comment, .hljs-deletion, .hljs-meta { color:#999}
+pre { margin:0;}
+.api { margin-bottom:30px;}
+.api a { color:#333}
+.api a.on { color:#49bafd; font-weight:bold}
+.api a:hover { color:#49bafd}
+.api .main { width:1500px; margin:0 auto;}
+.vbox3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+}
+.vbox3 .side {
+  position: relative;
+  z-index: 1;
+  width: 180px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  border-right:1px solid #e5e5e5;
+}
+.vbox3 .article {
+ -webkit-box-flex: 1;
+ -webkit-flex: 1 1 auto;
+  min-width: 0px;
+  padding-left:30px;
+  height:3500px
+}
+.api .title { margin-bottom:30px; overflow:hidden}
+.api h1 { font-size:50px; float:left; margin-right:100px;}
+.api .nav { line-height:70px;}
+.api .nav a { margin:20px; font-size:16px;}
+.api .side li{ line-height:34px; font-size:15px;}
+.api .side a:nth-child(2) { float:right; width:70px; color:#e1e1e1; display:inline-block;height:34px; opacity:0}
+.api .side a:nth-child(2):hover { opacity:1;}
+.doc h1 { font-size:32px;}
+.doc h2 { font-size:24px; margin-bottom:6px;margin-top:30px;}
+.doc h2:first-child { margin-top:0;}
+.doc p, .doc pre { margin-left:2px;}
+.qr1 { float:left; margin-left:20px;}
+.copy { background:url(../images/copy.png) no-repeat right 4px;background-size:16px; width:50px; height:50px;position:absolute; right:5px; cursor:pointer}

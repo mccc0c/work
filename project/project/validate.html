@@ -121,6 +121,9 @@ select {
 
 
 
+
+
+
 /*.myform .error:not(input){width:100%;text-align:center;display:inline-block;line-height: 20px;margin-bottom: 10px;}
     .myform textarea.error{width: 62%;}
     .myform .error{color:red;}
@@ -156,6 +159,9 @@ select {
     margin: 0 auto;
     display: inline-block;
 }
+
+
+
 
 
 
@@ -203,6 +209,9 @@ select {
     background: url(./images/warning.png) no-repeat left center;
     text-indent: 20px;
 }
+
+
+
 
 
 
@@ -305,6 +314,9 @@ select {
 
 
 
+
+
+
 /*myform2*/
 
 .myform2 p.msg {
@@ -331,14 +343,14 @@ select {
                     <span for="phone">电话</span>
                     <input id="cphone" name="phone" type="text">
                 </li>
-                <!-- <li>
+                <li>
                     <span for="file">image</span>
                     <input id="file" name="file" type="file" required>
                 </li>
                 <li>
                     <span for="cemail">E-Mail</span>
                     <input id="cemail" type="email" name="email" required>
-                </li>-->
+                </li>
                 <li>
                     <span for="password">密码</span>
                     <input id="password" name="password" type="password">
@@ -449,15 +461,53 @@ select {
                 <li>
                     <span>xx</span>
                     <input type="text" name="form2in1" required>
-                    <p class="msg"><i></i>必填</p>
+                    <p class="msg">必填</p>
                 </li>
                 <li>
                     <span>xx</span>
                     <input type="text" name="form2in2" required>
-                    <p class="msg"><i></i>必填</p>
+                    <p class="msg">必填</p>
                 </li>
             </ul>
             <div class="btn submit2">submit</div>
+        </form>
+    </div>
+    <!-- 自定义验证 -->
+    <div class="formdiv form3">
+        <form class="myform myform3" id="form3">
+            <ul>
+                <li>
+                    <span>小数点保留n位：</span>
+                    <input type="number" name="form3in1" required decimal="3">
+                </li>
+                <li>
+                    <span>传真：</span>
+                    <input type="text" name="form3in2" required isFax="true">
+                </li>
+                <li>
+                    <span>价格(正数，保留2位小数，不带+)：</span>
+                    <input type="text" name="form3in3" required isPrice2="true">
+                </li>
+                <li>
+                    <span>价格(可带+,自定义保留几位小数)：</span>
+                    <input type="text" name="form3in4" required isPrice="4">
+                    <!-- month="true" -->
+                </li>
+                <li>
+                    <span>人数(正整数)：</span>
+                    <input type="text" name="form3in5" required digits="true">
+                </li>
+                <li>
+                    <span>月份(1-12)：</span>
+                    <input type="text" name="form3in6" required range="[1,12]" digits="true">
+                    <!-- month="true" -->
+                </li>
+                <li>
+                    <span>利润：</span>
+                    <input type="number" name="form3in7" required decimal="2">
+                </li>
+            </ul>
+            <div class="btn submit3">submit</div>
         </form>
     </div>
     <script src="js/jquery.js"></script>
@@ -482,16 +532,36 @@ select {
             rangelength: $.validator.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
             range: $.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
             max: $.validator.format("请输入一个最大为 {0} 的值"),
-            min: $.validator.format("请输入一个最小为 {0} 的值")
+            min: $.validator.format("请输入一个最小为 {0} 的值"),
+
         });
     }(jQuery));
     </script>
     <script>
+    //this.optional(element)判断element是否是可选的，也就是是否指定了required
+    /*保留n位小数,可正可负,默认保留2位*/
+    jQuery.validator.addMethod("decimal", function(value, element, params) {
+        var returnVal = true;
+        inputZ = value;
+        var ArrMen = inputZ.split("."); //截取字符串
+        if (ArrMen.length == 2) {
+            if (ArrMen[1].length > params) { //判断小数点后面的字符串长度
+                returnVal = false;
+                return false;
+            }
+        }
+        return this.optional(element) || returnVal;
+    }, $.validator.format("保留{0}位小数"));
+    /*传真*/
+    jQuery.validator.addMethod("isFax", function(value, element) {
+        return this.optional(element) || /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value);
+    }, "传真号码错误");
+
     /*$.validator.setDefaults({
-                    submitHandler: function() {
-                       alert("提交成功!");
-                    }
-            });*/
+                        submitHandler: function() {
+                           alert("提交成功!");
+                        }
+                });*/
     /*自定义验证*/
     /* addMethod 的第一个参数,就是添加的验证方法的名子,这时是af
      * addMethod 的第三个参数,就是自定义的错误提示,这里的提示为:”必须是一个字母,且a-f”
@@ -512,7 +582,7 @@ select {
             return false;
         }
     }, '必须是一个字母, 且a - f');
-    //验证正整数
+    //验证正整数(可以有+)
     jQuery.validator.addMethod("posinteger", function(value, element) {
 
         var tel = /^[+]{0,1}(\d+)$/g;
@@ -521,14 +591,14 @@ select {
 
     }, "请输入正整数");
     /*验证输入的是非负数，带小数点，可验证价格*/
-    jQuery.validator.addMethod("integer", function(value, element) {
+    jQuery.validator.addMethod("isPrice", function(value, element, params) {
+        var reg = "^[+]{0,1}(\\d+)$|^[+]{0,1}(\\d+\.\\d{0," + params + "})$";
+        var regExp = new RegExp(reg, "g");
+        return this.optional(element) || (regExp.test(value));
 
-        var integer = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/g;
-
-        return this.optional(element) || (integer.test(value));
-
-    }, "请输入非负数");
-    /*验证输入数字是1-12*/
+    }, $.validator.format("价格出错(保留{0}位小数)"));
+    // 验证输入数字是1-12
+    //range="[1,12]" digits="true"
     jQuery.validator.addMethod("month", function(value, element) {
 
         var tel = /^([1-9]|1[0-2])$/g;
@@ -538,17 +608,7 @@ select {
     }, "1-12月份");
 
     /*自定义验证：价格：小数点最多输入两位*/
-    jQuery.validator.addMethod("minNumber", function(value, element) {
-        /*var returnVal = true;
-        inputZ = value;
-        var ArrMen = inputZ.split("."); //截取字符串
-        if (ArrMen.length == 2) {
-            if (ArrMen[1].length > 2) { //判断小数点后面的字符串长度
-                returnVal = false;
-                return false;
-            }
-        }
-        return returnVal;*/
+    jQuery.validator.addMethod("isPrice2", function(value, element) {
         var price = /^\d*\.{0,1}\d{0,2}$/g;
 
         return this.optional(element) || (price.test(value));
@@ -597,7 +657,7 @@ select {
 
         $('.new').append(a);
         $('.new tr:last .addinput0').attr('name', 'addinput[' + num + '][0]');
-        $('.new tr:last .addinput1').attr('name', 'addinput[' + num + '][1]').rules("add", { minNumber:true,min:0});
+        $('.new tr:last .addinput1').attr('name', 'addinput[' + num + '][1]').rules("add", { isPrice:true,min:0});
         $('.new tr:last .addinput2').attr('name', 'addinput[' + num + '][2]').rules("add", { min:1 ,digits:true,messages:{digits:"输入正整数"}});
         $rand_arr.shift();
         prod_autocomplete();
@@ -605,8 +665,12 @@ select {
     /****************************************************/
     </script>
     <script>
+    //js计算，保留n位小数
+    function round2(number, fractiondigits) {
+        return Math.round(number * Math.pow(10, fractiondigits)) / Math.pow(10, fractiondigits);
+    }
     $(function() {
-        //验证
+        //form1
         var form1 = $("#form1").validate({
             //如果为true，当表单得到焦点时，移除在该表单上的errorClass并隐藏所有错误消息。避免与focusInvalid一起使用。
             //focusCleanup: true,
@@ -635,7 +699,7 @@ select {
                 price: {
                     required: true,
                     number: true,
-                    minNumber: true
+                    isPrice: true
                 },
                 total: {
                     required: true,
@@ -754,6 +818,7 @@ select {
             }
             alert('success');
         });
+        //form2
         var form2 = $("#form2").validate({
             rules: {
                 /*amount: { integer: true },
@@ -819,7 +884,87 @@ select {
             }
             alert('success');
         });
+        //form3
+        var form3 = $("#form3").validate({
+            //如果为true，当表单得到焦点时，移除在该表单上的errorClass并隐藏所有错误消息。避免与focusInvalid一起使用。
+            //focusCleanup: true,
+            //错误消息统一存放的容器
+            //errorLabelContainer: $("#form1 .myerror>span"),
+            // wrapper: 'span', //指定使用什么标签再把上边的 errorELement 包起来
+            errorElement: "p",
+            errorClass: "msg",
+            rules: {},
+            messages: {
+                // form3in1: { decimal: "保留3位小数" }
 
+            },
+            //ignore:当进行表单验证时，过滤掉选择器所选择的表单。用了jQuery not方法（ not() ）。类型为submit和reset的表单总是被忽略的。 
+            ignore: "not:hidden",
+
+            //invalidHandler:当未通过验证的表单提交时，可以在该回调函数中处理一些事情。该回调函数有两个参数：第一个为一个事件对象，第二个为验证器（validator） 
+            invalidHandler: function(form, validator) {
+                $(form.currentTarget).find('p.msg').remove();
+                var errors = validator.numberOfInvalids();
+                var el = $(validator.errorList[0].element),
+                    li = el.parent('li');
+                el.focus(); //光标显示在第一个出错的地方
+                // console.log(li.html());
+                //验证出错时滚动到初始错误处，用于页面过长
+                if (el.offset().top < $(window).scrollTop()) {
+                    $('html,body').animate({
+                        scrollTop: (li.offset().top - 84) + 'px'
+                    }, 300);
+                }
+            },
+            //可以显示总共有多少个未通过验证的元素
+            /*showErrors: function(errorMap, errorList) {
+                $("#summary").html("Your form contains " + this.numberOfInvalids() + " errors,see details below.");
+                this.defaultShowErrors();
+            },*/
+            //errorPlacement: Override error placement to not show error messages beside elements 
+            errorPlacement: function(error, element) {
+                //显示第一个，验证创建的代码,通过name唯一性判断
+                var firstErrEle = $(form3.errorList[0].element).attr('name'),
+                    nowErrEle = $(element).attr('name');
+                if (firstErrEle == nowErrEle) {
+                    // console.log(firstErrEle,nowErrEle);
+                    var li = element.parent('li');
+                    // console.log(error);
+                    // error.prepend('<i></i>');
+                    error.appendTo(li);
+                }
+            },
+            //submitHandler:当表单通过验证，提交表单。回调函数有个默认参数form 
+            submitHandler: function() {
+                // alert("提交成功!");
+            },
+            onclick: function(element, event) { //可验证select
+                $(element).valid();
+            },
+            //失去交时执行
+            onfocusout: function(element, event) {
+                $(element).valid();
+
+            },
+            //键盘输入时执行
+            onkeyup: function(element) {
+                $(element).valid();
+            }
+            //highlight:将未通过验证的表单元素设置高亮。 
+            // highlight: function(element, errorClass) {
+            //    console.log(errorClass);
+            //     $(element).fadeOut(function() {
+            //         $(element).fadeIn()
+            //     })
+            // }
+        });
+        
+        $(document).on('click', '.submit3', function() {
+            if (!$("#form3").valid()) {
+                return;
+            }
+            alert('success');
+        });
         //日历
         $('#repay_start_time').datepicker({
             dateFormat: 'yy-mm-dd',

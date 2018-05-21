@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>春季企业政策红包大派送</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link href="static/css/fund-common.css" rel="stylesheet">
+    <link href="/static/css/fund-question.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/lastpage.css"> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jweixin-1.0.0.js"></script>
+    <script>
+    var appId = 'wx468f4e63c041af03';
+    var timestamp = '1512024692';
+    var nonceStr = 'oMiQM4qvhLPaWJX5';
+    var signature = '48a26237487cf2d21849d62cf3dc795282d21168';
+    //分享标题
+    var shareTitle = '2017年政策红利大派送';
+    //分享的内容
+    var shareDesc = '2017年500亿政策红利大派送 快来测一测 我能拿多少';
+    //分享的连接地址
+    var shareLink = 'http://ent.h5.easyrong.com/fund/load';
+    //分享的图片地址
+    var shareImgUrl = 'http://ent.h5.easyrong.com/static/images/new/WX_pic2.png';
+    //朋友圈分享内容
+    var shareTimeLine = '哇塞！我的企业能抢到技术先进型服务企业红包！你也来测一下吧！';
+    </script>
+    <script src="./js/share.js"></script>
+</head>
+
+<body>
+    <div class="wrapper succarea">
+        <!--奖杯-->
+        <div class="prize">
+            <img src="./images/prize.png" alt="">
+            <p>您的资质打败了<b>33%</b>的企业</p>
+        </div>
+        <!--政策内容-->
+        <div class="policy-box">
+            <div class="policy-content">
+                <i></i>
+                <p></p>
+                <p>高新技术企业认定
+                </p>
+                <p>企业所得税减按15%税率征收</p>
+                <p>
+                    <p>每年可减免40%企业所得税</p>
+                </p>
+                <p>核心技术人才引进</p>
+            </div>
+            <div class="policy-tip" style="text-align: center;">
+                恭喜！您的企业符合 <br>2018年的高新技术认定的基本申报条件！
+            </div>
+            <div class="baisc_mid">
+                <div class="basic_mid_top2">马上申报</div>
+                <div class="basic_mid_bottom testagain">再测一次</div>
+            </div>
+            <div class="tip">
+                *以上测试结果仅供参考
+            </div>
+        </div>
+    </div>
+    <div class="wrapper failarea" style="display: none;">
+        <!--奖杯-->
+        <div class="prize">
+            <img src="./images/none-policy.png" alt="">
+            <p>很遗憾，您的条件暂不符合申报</p>
+            <p>2018年的高新技术企业认定的基本条件</p>
+        </div>
+        <!--政策内容-->
+        <div class="policy-box">
+            <div class="policy-content">
+                <p>好消息！</p>
+                <p>126位政策专家将免费为您辅导！</p>
+            </div>
+            <div class="policy-tip" style="text-align: center;">
+                关注一融网！更多人才、研发、小微企业专项等资金等着您哦！
+            </div>
+            <div class="baisc_mid">
+                <div class="basic_mid_top">分享给朋友</div>
+                <div class="basic_mid_bottom testagain">再测一次</div>
+            </div>
+            <div class="tip">
+                *以上测试结果仅供参考
+            </div>
+        </div>
+    </div>
+    <img src="http://c.cnzz.com/wapstat.php?siteid=1259628408&r=http%3A%2F%2Fent.h5.easyrong.com%2Ffund%2FinitBaseInfo%3Fsource%3D&rnd=216031577" width="0" height="0" />
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-81404419-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <form id="tijiao_njg" method="post" action="fund/userInfo">
+        <input type="hidden" id="useraction" name="useraction" />
+    </form>
+    <div class="fund-cover">
+        <img src="images/share.png" alt="">
+    </div>
+    <script>
+    $(function() {
+        var h = $(window).height();
+        $('.fund-cover').height(h);
+        $('.fund-cover').hide();
+
+        $(".basic_mid_top").on("click", function() {
+            $(".fund-cover").show();
+        })
+    });
+    </script>
+    <script src="./js/js.js"></script>
+</body>
+
+</html>

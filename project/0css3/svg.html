@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>浦东旅游会展服务中心工作报告</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+body { background: #000 }
+.svgbox { position: relative; width: 100%; height: 100%; }
+.point { position: absolute; background: #51dbff; border-radius: 100%; width: 10px; height: 10px; }
+#point0 { left: 50%; top: 3% }
+#point1 { left: 50%; top: 18% }
+#point2 { right: 7%; top: 18% }
+#point3 { right: 7%; bottom: 10% }
+#point4 { right: 22%; bottom: 3% }
+#point5 { left: 14%; bottom: 3% }
+#go { width: 50px; height: 50px; position: absolute; left: 50%; margin-left: -25px; top: 3%; z-index: 30; opacity: 0; }
+svg { width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="svgbox">
+  <div id="point0" class="point"></div>
+    <div id="point1" class="point"></div>
+    <div id="point2" class="point"></div>
+    <div id="point3" class="point"></div>
+    <div id="point4" class="point"></div>
+    <div id="point5" class="point"></div>
+  </div>
+  <div class="svg"> </div>
+  <div class="logo animate" id="go"><img src="images/go.png" width="100%" /></div>
+
+<script src="svg/images/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.transit.js"></script> 
+<script type="text/javascript" src="js/snap.svg-min.js"></script> 
+<script src="js/svg.js"></script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>jQuery</title>
+<link href="css/q.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<ul id="result"></ul>
+<script type="text/html" id="item_tmpl">
+<% for ( var i = 0; i < playlist.length; i++ ) { %>
+  <li><%=playlist[i].title%><br><span><%=playlist[i].singer%></span></li>
+  <% } %>
+</script>
+<!--Tab-->
+<div class="tab">
+  <div class="nav">
+    <ul>
+      <li class="current">nav1</li>
+      <li>nav2</li>
+      <li>nav3</li>
+      <li>nav4</li>
+      <li>nav5</li>
+    </ul>
+  </div>
+  <div class="content">
+    <ul>
+      <li style="display:block">content1</li>
+      <li>content2</li>
+      <li>content3</li>
+      <li>content4</li>
+      <li>content5</li>
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+<br>
+<br>
+
+<!--fix menu-->
+<div class="fixmenu">顶部固定菜单</div>
+<div class="clear"></div>
+<!--经过展开-->
+<dl class="accordion">
+  <dt>Heading1</dt>
+  <dd>accordion accordion use oils or lotions which contain oils on your bird. They gunk up the feathers,
+    and ruin their insulating properties. This means a chilled bird.</dd>
+  <dt>Heading2</dt>
+  <dd>Schedule a "well-bird" checkup. Prevention is the best medicine. Even though the bird might appear outwardly healthy, it may have a low-grade infection or something not so readily apparent.</dd>
+  <dt>Heading3</dt>
+  <dd>No. Don't attempt this, especially if the leg is broken or swollen. The vet will be able
+    to remove the band, and deal with whatever injury maybe lurking under the banded area.</dd>
+</dl>
+<div class="clear"></div>
+<br />
+
+<!--经过图片文字说明-->
+<div class="ilist">
+  <div class="img"> <img src="images/001.jpg" width="350" /> </div>
+  <div class="title">
+    <p>美丽风景</p>
+  </div>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--下拉菜单-->
+<div class="dropdown">
+  <ul>
+    <li>1
+      <ul>
+        <li>1
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </li>
+    <li>2</li>
+    <li>3
+      <ul>
+        <li>1
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </li>
+        <li>2
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </li>
+        <li>3
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>4</li>
+  </ul>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!--hover 123幻灯-->
+<div class="slide123">
+  <div class="content">
+    <ul>
+      <li><a href="#"><img src="images/s01.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s02.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s01.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s02.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s01.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s02.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s01.jpg" width="530" height="180" /></a></li>
+      <li><a href="#"><img src="images/s02.jpg" width="530" height="180" /></a></li>
+    </ul>
+  </div>
+  <div class="num">
+    <ul>
+      <li class="on">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--li向下滚动-->
+<div class="scrollone">
+  <ul>
+    <li>
+      <div class="p-img"> <a href="#"><img width="50" height="50" src="images/s1.jpg"></a> </div>
+      <div class="p-name"><a href="#">1你进入 28纳米时代了吗？</a></div>
+      <div class="p-detail"><a href="#">你进入28纳米时代了吗？酷比魔方携手瑞芯微，发帖赢A9 28纳米</a></div>
+    </li>
+    <li>
+      <div class="p-img"> <a href="#"><img width="50" height="50" src="images/s2.jpg"></a> </div>
+      <div class="p-name"><a href="#">2春装清仓 1折起</a></div>
+      <div class="p-detail"><a href="#">春装清仓低至1折、淑女装、型男装、内衣秀场</a></div>
+    </li>
+    <li>
+      <div class="p-img"> <a href="#"><img width="50" height="50" src="images/s1.jpg"></a> </div>
+      <div class="p-name"><a href="#">3你进入 28纳米时代了吗？</a></div>
+      <div class="p-detail"><a href="#">你进入28纳米时代了吗？酷比魔方携手瑞芯微，发帖赢A9 28纳米</a></div>
+    </li>
+    <li>
+      <div class="p-img"> <a href="#"><img width="50" height="50" src="images/s2.jpg"></a> </div>
+      <div class="p-name"><a href="#">4春装清仓 1折起</a></div>
+      <div class="p-detail"><a href="#">春装清仓低至1折、淑女装、型男装、内衣秀场</a></div>
+    </li>
+    <li>
+      <div class="p-img"> <a href="#"><img src="images/s1.jpg" width="50" height="50"></a> </div>
+      <div class="p-name"><a href="#">5你进入 28纳米时代了吗？</a></div>
+      <div class="p-detail"><a href="#">你进入28纳米时代了吗？酷比魔方携手瑞芯微，发帖赢A9 28纳米</a></div>
+    </li>
+    <li>
+      <div class="p-img"> <a href="#"><img src="images/s2.jpg" width="50" height="50"></a> </div>
+      <div class="p-name"><a href="#">6春装清仓 1折起</a></div>
+      <div class="p-detail"><a href="#">春装清仓低至1折、淑女装、型男装、内衣秀场</a></div>
+    </li>
+  </ul>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--右侧展开-->
+<div class="sidemenu">
+  <div class="content">
+    <ul>
+      <li style="border:none">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </div>
+  <div class="title"></div>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--输入字数-->
+<div class="myform">
+  <form action="" method="post">
+    <p class="textleft">你还可以输入<span style="color:#C00">110</span>个字符。</p>
+    <p class="textinput">
+      <label>
+        <textarea name="" cols="" rows="" maxlength="110" style="height:60px; width:400px"></textarea>
+      </label>
+    </p>
+  </form>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--单行滚动-->
+<div class="scrollline">
+  <ul>
+    <li><a href="#">欢迎浏览新浪网</a></li>
+    <li><a href="#">欢迎浏览网易</a></li>
+    <li><a href="#">欢迎进入程序员之家</a></li>
+    <li><a href="#">很好的源代码下载区</a></li>
+    <li><a href="#">欢迎浏览网易</a></li>
+    <li><a href="#">欢迎浏览百度网</a></li>
+  </ul>
+</div>
+<div class="clear"></div>
+<br />
+
+<!--弹出层可拖动-->
+<div><a href="#" class="dopen">弹出层可拖动</a></div>
+<div class="dialog">
+  <div class="dtitle">
+    <h3></h3>
+    <a href="#" class="dclose">关闭窗口</a> </div>
+  <div class="dcontent">您已投过票。</div>
+  <div class="dbtn">
+    <input type="button" value="确定" class="dokay">
+    <input type="button" value="取消" class="dcancle">
+  </div>
+</div>
+<div class="popbg"></div>
+<div class="clear"></div>
+<br />
+<!--点击滚动-->
+<div class="slider slider1"> <a href="#none" class="prev"></a>
+  <div class="list">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>11</li>
+      <li>12</li>
+    </ul>
+  </div>
+  <a href="#none" class="next"></a> </div>
+<div class="clear"></div>
+<br />
+<!--经典首页渐隐渐现-->
+<div style="clear:both; margin-bottom:20px;">
+  <ul id="pub_slideplay">
+    <li> <a target="_blank" href="#"> <img alt="" src="images/001.jpg" width="500px" />
+      <p>昨天身材超好的新娘 晒马代蜜月</p>
+      </a> </li>
+    <li> <a target="_blank" href="#"> <img alt="" src="images/002.jpg" width="500px"/>
+      <p>给我人生中第一个一克拉的钻</p>
+      </a> </li>
+    <li> <a target="_blank" href="#"> <img alt="" src="images/003.jpg" width="500px"/>
+      <p>"我喜欢自己二十岁时甜美的笑</p>
+      </a> </li>
+    <li> <a target="_blank" href="#"> <img alt="" src="images/001.jpg" width="500px"/>
+      <p>昨天身材超好的新娘 晒马代蜜月</p>
+      </a> </li>
+    <li> <a target="_blank" href="#"> <img alt="" src="images/002.jpg" width="500px"/>
+      <p>给我人生中第一个一克拉的钻</p>
+      </a> </li>
+    <li> <a target="_blank" href="#"> <img alt="" src="images/003.jpg" width="500px"/>
+      <p>"我喜欢自己二十岁时甜美的笑</p>
+      </a> </li>
+  </ul>
+</div>
+<!--渐隐渐现-->
+<div class="inout">
+  <div class="content">
+    <ul>
+      <li><a href="#"><img src="images/001.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/001.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="500" height="300" /></a></li>
+    </ul>
+  </div>
+  <div class="num">
+    <ul>
+      <li class="on">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+<br />
+<!--延迟显示-->
+<div class="delayshow">
+  <div class="content">
+    <ul>
+      <li style="display:block"><a href="#"><img src="images/001.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/001.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="500" height="300" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="500" height="300" /></a></li>
+    </ul>
+  </div>
+  <div class="nav">
+    <ul>
+      <li><a href="#"><img src="images/001.jpg" width="150" height="90" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="150" height="90" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="150" height="90" /></a></li>
+      <li><a href="#"><img src="images/001.jpg" width="150" height="90" /></a></li>
+      <li><a href="#"><img src="images/002.jpg" width="150" height="90" /></a></li>
+      <li><a href="#"><img src="images/003.jpg" width="150" height="90" /></a></li>
+    </ul>
+  </div>
+</div>
+<!--电话验证-->
+<input type="text" id="" name="" value="" class="phone1" />
+<em class="tips tipsphone1"></em>
+<div class="clear"></div>
+<br />
+<!--点击空白隐藏-->
+<input type="button" id="btnShow" value="显示提示内容" />
+<div id="divTop" style=" background-color:#99CCFF; border: solid 2px #ff0000; position:absolute; display:none; width:400px; height:200px;">
+  <div style="text-align:center;">点击本区域或空白隐藏弹出层</div>
+</div>
+<div class="clear"></div>
+<br />
+<!--为指定name的radio设置选中值-->
+<div>
+  <input type="radio" name="radio1" value="a">
+  第一项
+  <input type="radio" name="radio1" value="b">
+  第二项
+  <button id="btn">选完后点击我测试</button>
+</div>
+<!--form-->
+<div class="myform">
+  <form>
+    <ul>
+      <li>
+        <label>用户名：</label>
+        <input type="text" name="user" class="cinput">
+        <div class="clear"></div>
+        <p>用户名为6～12位英文与数字组合</p>
+      </li>
+      <li>
+        <label>密码：</label>
+        <input type="text" name="user" class="cinput">
+        <div class="clear"></div>
+        <p>密码为6～12位英文与数字组合</p>
+      </li>
+      <li>
+        <label>确认密码：</label>
+        <input type="text" name="user" class="cinput">
+        <div class="clear"></div>
+      </li>
+    </ul>
+  </form>
+</div>
+
+<!--产品详情-->
+<div class="goodsShow">
+  <div class="containner jqzoom mainpic"> <img src="images/1.jpg" width="300" height="300"> </div>
+  <div class="thumbIMG">
+    <div class="slidetrains">
+      <ul>
+        <li> <img class="on" src="images/1.jpg" width="42" height="42"> </li>
+        <li> <img src="images/2.jpg" width="42" height="42"> </li>
+        <li> <img src="images/3.jpg" width="42" height="42"> </li>
+        <li> <img src="images/4.jpg" width="42" height="42"> </li>
+        <li> <img src="images/1.jpg" width="42" height="42"> </li>
+        <li> <img src="images/2.jpg" width="42" height="42"> </li>
+        <li> <img src="images/3.jpg" width="42" height="42"> </li>
+        <li> <img src="images/4.jpg" width="42" height="42"> </li>
+      </ul>
+    </div>
+    <a href="javascript:;" class="spec-control" id="spec-forward"></a> <a href="javascript:;" class="spec-control" id="spec-backward"></a> </div>
+</div>
+<div class="clear"></div>
+<!--全选-->
+<form>
+  <input type="checkbox" name='items' value="足球1">
+  足球
+  <input type="checkbox" name='items' value="足球2">
+  足球
+  <input type="checkbox" name='items' value="足球3">
+  足球
+  <input type="checkbox" name='items' value="足球4">
+  足球
+  <input type="checkbox" name='items' value="足球5">
+  足球
+  <input type="checkbox" name='items' value="足球6">
+  足球<br>
+  <br>
+  <input type="checkbox" id="checkall" value="全选">
+  <input type="button" id="uncheckall" value="全不选">
+  <input type="button" id="fan" value="反选">
+  <input type="submit" id="submit" value="提交">
+</form>
+
+<!--滚回顶部-->
+<div class="anchor">返回顶部</div>
+
+<!--自定义滚动条-->
+<div class="scrollbar">
+<div class="bar2">
+  <div class="bar3">俄总统新闻秘书佩斯科夫8日坚称，苏尔科夫辞职与未能完全履行总统令有关，而与其管理的&ldquo;斯科尔科沃&rdquo;创业基金会资金丑闻没有关联。他说：&ldquo;苏尔科夫拥有如此才干和工作经验，毫无疑问将在许多地方发挥领导作用。&rdquo;俄总理梅德韦杰夫的新闻发言人也表示，苏尔科夫辞职是其本人的个人意愿，而且他在辞职前曾与总理多次见面。<br />
+    <br />
+    <p>　　克里姆林宫新闻局8日表示，俄总统普京签署命令，解除俄联邦政府副总理兼政府办公厅主任苏尔科夫的职务，原因是他自愿请辞。&ldquo;三朝元老&rdquo;苏尔科夫被称为&ldquo;克里姆林宫的灰衣主教&rdquo;，他的辞职无疑在俄政坛投下一枚重磅炸弹，俄罗斯各界感到震惊之余，对他的辞职原因猜测纷纷。</p>
+    <p>　　俄总统新闻秘书佩斯科夫8日坚称，苏尔科夫辞职与未能完全履行总统令有关，而与其管理的&ldquo;斯科尔科沃&rdquo;创业基金会资金丑闻没有关联。他说：&ldquo;苏尔科夫拥有如此才干和工作经验，毫无疑问将在许多地方发挥领导作用。&rdquo;俄总理梅德韦杰夫的新闻发言人也表示，苏尔科夫辞职是其本人的个人意愿，而且他在辞职前曾与总理多次见面。</p>
+    <p>　　俄新网9日回顾称，苏尔科夫是俄政坛的&ldquo;思想家&rdquo;、&ldquo;战略家&rdquo;。他先后效力于叶利钦、普京、梅德韦杰夫三位总统。外界将其称为&ldquo;克里姆林宫的灰衣主教&rdquo;、&ldquo;普京政治体系的设计师&rdquo;、&ldquo;俄政局的幕后操盘手&rdquo;等。他是统一俄罗斯党2001年组建时的主要创立者，还是俄很有影响力的亲政府青年组织&ldquo;纳什&rdquo;的幕后策划者。他是俄罗斯&ldquo;主权民主&rdquo;理论的提出者，也是俄党派政治的设计者。普京去年5月宣誓就任总统后，苏尔科夫留任副总理一职同时兼任政府办公厅主任。在外界看来，苏尔科夫是俄政府中仅次于总理梅德韦杰夫和第一副总理舒瓦洛夫之后的&ldquo;三号人物&rdquo;。他是俄政府负责履行总统令委员会负责人，同时负责管理政府辖下的&ldquo;斯科尔科沃&rdquo;创业基金会。今年4月，俄侦查委员会对该基金会进行搜查，并对基金会副总裁别利秋科夫提起刑事诉讼，指控其违规使用项目资金。苏尔科夫多次公开维护基金会，指责调查委员会的&ldquo;高调&rdquo;调查有损&ldquo;斯科尔科沃&rdquo;项目。他5月1日在伦敦政治经济学院演讲时还对侦查委员会表示不满，称&ldquo;斯科尔科沃&rdquo;创业基金会是俄&ldquo;最干净&rdquo;的项目之一。</p>
+  </div>
+</div>
+<div class="bar0">
+  <div class="bar1"></div>
+</div>
+</div>
+<div class="clear"></div>
+<!--page navigation-->
+<div class="page"> <a class="prev-off" href="#">&lt; Prev</a> <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a class="active" href="#">4</a> <a href="#">5</a> <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a> <a href="#">10</a> <a class="next" href="#">Next &gt;</a> </div>
+<div class="clear"></div>
+<p class="b1">bottom</p>
+<script src="js/jquery.js"></script> 
+<script src="js/qjs.js"></script> 
+<script src="js/js.js"></script>
+</body>
+</html>

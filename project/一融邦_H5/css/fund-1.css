@@ -1,0 +1,439 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-05 23:24:15
+ * @version $Id$
+ */
+.subject-content{
+	padding: 20% 20px 10% 20px;
+}
+
+.subject-content h2{
+	font-size: 1.5em;
+	font-weight: normal;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 10%;
+}
+
+.subject-content ul li{
+	border-radius: 5px;
+	overflow: hidden;
+	background: #d6ebff;
+	margin-bottom:20px;
+}
+
+.subject-content ul li.cur{
+	background: #fff588
+}
+
+.subject-content ul li b{
+	display: block;
+	float: left;
+	height: 45px;
+	background: #0a6fd1;
+	font-size: 1.2em;
+	width: 15%;
+	text-align: center;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.subject-content ul li.cur b{
+	background: #fc930c
+}
+
+.subject-content ul li p{
+	color: #333;
+	font-size: 0.9em;
+	text-align: center;
+	width: 80%;
+	line-height: 45px;
+	padding:0 2.5%;
+	float: left;
+}
+.history{
+	height: 45px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 95%;
+	background: rgba(0,0,0,0.3);
+	padding:10px 2.5%;
+}
+.back{
+	display: block;
+	width: 45px;
+	height: 45px;
+	float: left;
+	background:url('../styimg/history.png') no-repeat;
+	background-size: 100% auto;
+}
+.result{
+	display: block;
+	float: right;
+	height: 45px;
+	width: 80%;
+	background:#fff158;
+	border-radius: 5px;
+	color: #cb6900;
+	font-size: 1.2em;
+	text-align: center;
+	line-height: 45px;
+}
+
+
+/*基本信息*/
+.base-message{
+	padding: 5% 20px 5% 20px;
+	font-size: 0.9em;
+	color: #fff;
+}
+.base-message p{
+	line-height: 2em;
+}
+.message-input{
+	background: #2284e4;
+	padding: 5% 20px;
+}
+.message-input li{
+	background: #fff;
+	border-radius: 5px;
+	height: 45px;
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	line-height: 45px;
+}
+.message-input li label{
+	float: left;
+	height: 45px;
+	color: #999;
+	display: block;
+	width: 25%;
+	text-align: right;
+}
+.message-input li input{
+	float: left;
+	height: 35px;
+	border:0;
+	outline: none;
+	width: 65%;
+	padding: 0 5%;
+	line-height: 35px;
+	margin-top: 5px;
+	color: #999;
+}
+.message-input li input.w35{
+	width: 35%;
+}
+.message-input li p{
+	float: left;
+	font-size: 0.8em;
+	line-height: 45px;
+	color: #fc5656;
+	width: 25%;
+	display: none;
+}
+
+.message-submit{
+	padding: 8% 20px;
+}
+.message-submit a{
+	display: block;
+	height: 45px;
+	background: #fff158;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 45px;
+	color: #cb6900;
+	font-size: 1em;
+	margin-bottom: 20px;
+}
+.message-submit p{
+	font-size: 1em;
+	color: #b0d8ff;
+	line-height: 2em;
+}
+
+
+/*提交成功*/
+.success-box{
+	padding: 10% 20px;
+	font-size: 1.1em;
+	color: #fff;
+	text-align: center;
+}
+.success-box img{
+	display: block;
+	width: 90px;
+	height: 90px;
+	margin: 0 auto 20px auto;
+}
+.success-message{
+	background:#2284e4 url('../styimg/message_success.png') no-repeat;
+	background-size: 100% auto;
+	padding: 5% 20px;
+	font-size: 0.9em;
+	color: #fff;
+	text-align: center;
+}
+.success-message p{
+	line-height: 2em;
+}
+.success-message a{
+	display: block;
+	height: 45px;
+	background:#fff158;
+	font-size: 1.2em;
+	color: #cb6900;
+	line-height: 45px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.success-box p{
+	font-size: 0.85em;
+	line-height: 24px;
+	margin-top: 10px;
+}
+
+/*结果*/
+.prize{
+	padding: 8% 0;
+}
+.prize img{
+	display: block;
+	width: 130px;
+	height: 130px;
+	margin: 0 auto 20px auto;
+}
+.prize p{
+	font-size: 1.1em;
+	color: #fff;
+	line-height: 2em;
+	text-align: center;
+}
+.prize p b{
+	font-size: 1.6em;
+	color: #fff158
+}
+
+.policy-box{
+	padding: 0 20px;
+}
+.policy-content{
+	background:#2c93f7;
+	border-radius: 5px;
+	padding: 10% 20px;
+	position: relative;
+	text-align: center;
+	font-size: 1.2em;
+	color: #fff;
+	margin-bottom: 20px;
+}
+.policy-content p{
+	line-height: 1.7em;
+	color: #fff158;
+	font-weight: 600;
+}
+.policy-content i{
+	display: block;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	background: url('../styimg/ico_z.png') no-repeat;
+	background-size: 100% auto;
+}
+
+.policy-tip{
+	margin-bottom: 20px;
+	font-size: 1em;
+	color: #fff;
+	line-height: 1.9em;
+}
+
+.result-btn{
+	height: 45px;
+	margin-bottom: 30px;
+}
+.result-left{
+	display: block;
+	float: left;
+	height: 45px;
+	width: 67%;
+	background:#fff158;
+	border-radius: 5px;
+	color: #cb6900;
+	font-size: 1.2em;
+	text-align: center;
+	line-height: 45px;
+}
+.result-right{
+	float: right;
+	display: block;
+	width: 28%;
+	border:2px solid #fff;
+	border-radius: 5px;
+	font-size: 1.2em;
+	text-align: center;
+	line-height: 41px;
+	height: 41px;
+	color: #fff;
+}
+.tip{
+	font-size: 1em;
+	color: #b0d8ff;
+	padding-bottom: 20px;
+}
+
+
+/*引导页*/
+.yindao{
+	min-height: 637px;
+	width: 100%;
+	background: #2493ff url('../styimg/yindao-bg.jpg') top center no-repeat;
+	background-size: 100% 100%;
+}
+
+.process-line{
+	width: 80%;
+	margin: 0 10% 0 10%;
+	padding-top: 30%;
+}
+.process-line p{
+	font-size: 1.3em;
+	color: #fffdfd;
+	text-align: center;
+	line-height: 2em;
+	margin-bottom: 15px;
+}
+
+.process-box{
+	width: 100%;
+	height: 20px;
+	background:#0a6fd1;
+	border-radius: 10px;
+	position: relative;
+}
+
+.process-content{
+	width: 10%;
+	height: 20px;
+	background:#fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+}
+.process-line b{
+	font-size: 2.2em;
+	text-align: center;
+	line-height: 2em;
+	display: block;
+	color: #fff;
+	font-weight: normal;
+}
+
+.link{
+	display:block;
+	width:150px;
+	height:150px;
+	position:fixed;
+	bottom:8%;
+	/*left:50%;*/
+	margin-left:-75px;
+	z-index:1000;
+	border-radius: 75px;
+}
+
+/*分享说明*/
+.fund-cover{
+	background: rgba(0,0,0,0.6);
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.fund-cover img{
+	display: block;
+	width: 100%;
+}
+
+.link:link{background: none;}
+.link:active{background: none;}
+.link:visited{background: none;}
+.link:hover{background: none;}
+
+.sideBar{
+	background: #fff;
+	height: 24px;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #fc930c;
+	line-height: 24px;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	border-top-left-radius: 17px;
+	border-bottom-left-radius: 17px;
+}
+
+.sideBar i{
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	background: url('/static/styimg/money_icon.png') no-repeat;
+	background-size: 100% auto;
+	float: left;
+	margin-right: 10px;
+}
+
+
+@media screen and (max-width:320px){
+	.yindao{
+		min-height: 568px;
+	}
+}
+
+@media screen and (max-width:360px){
+	.yindao{
+		min-height: 640px;
+	}
+
+	.flickity-page-dots{
+		bottom: 40px;
+	}
+	.link{
+		bottom:9%;
+	}
+}
+
+@media screen and (max-width:375px){
+	.yindao{
+		min-height: 637px;
+	}
+	.flickity-page-dots{
+		bottom: 40px;
+	}
+}
+
+
+
+@media screen and (min-width:414px){
+	.yindao{
+		min-height: 736px;
+	}
+	.flickity-page-dots{
+		bottom: -20px;
+	}
+
+	.link{
+		bottom:10%;
+	}
+
+}

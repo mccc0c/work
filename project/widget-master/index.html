@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>我的组件库</title>
+		<link rel="shortcut icon" href="./public/image/favicon.ico" type="images/x-icon"/>
+		<link rel="icon" href="./public/image/favicon.png" type="images/png"/>
+		<link rel="stylesheet" type="text/css" href="./public/style/cssreset-min.css">
+		<link rel="stylesheet" type="text/css" href="./public/style/common.css">
+		<style type="text/css">
+			header{
+				margin-bottom: 100px;
+			}
+			.container{
+				padding-bottom: 120px;
+			}
+			.main{
+				width:960px;
+				margin:0 auto;
+			}
+			footer{
+				position: absolute;
+			    bottom: 0;
+			    width: 100%;
+			    height: 40px;
+			    line-height: 40px;
+			    z-index: 99;
+			}
+			.mod-head{
+				width: 960px;
+				padding-top: 120px;
+				margin: 0 auto 50px;
+				line-height: 1.2;
+				text-align: center;
+			}
+			.mod-head h1{
+				font-size: 48px;
+			}
+			.mod-head p{
+				font-size: 16px;
+			}
+			.mod-list{
+				width: 960px;
+				margin: 0 auto 20px;
+				text-align: center;
+			}
+			.mod-list li{
+				display: inline-block;
+				margin:0 5px;
+			}
+			.mod-list .btn{
+				display: block;
+				padding: 6px 12px;
+			    background-color: #fff;
+			    border: 1px solid #333;
+			    border-radius: 3px;
+			    color: #333;
+			    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+			}
+			.mod-list .btn:hover{
+				background-color: #333;
+				color:#fff;
+			}
+			.mod-botton{
+				width: 960px;
+				height: 32px;
+				margin: 0 auto 20px;
+				text-align: center;
+			}
+			.mod-content{
+				width:840px;
+				margin:0 10px 0 auto;
+			}
+			.mod-content ul{
+				overflow: hidden;
+			}
+			.mod-content li{
+				float: left;
+				width: 50%;
+				margin-bottom: 10px;
+				line-height: 20px;
+			}
+			.mod-content a:hover{
+				border-bottom: 1px dotted #666;
+			}
+			.mod-foot{
+				text-align: center;
+				padding:0 30px;
+				color:#999;
+			}
+			.mod-foot a{
+				color:#999;
+			}
+
+			::selection {
+			    color: white;
+			    background-color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<div class="mod-head">
+					<h1>我的Web组件库</h1>
+					<p>让前端开发快到飞起来～</p>
+				</div>
+				<div class="mod-list">
+					<ul>
+						<li><a class="btn" href="http://www.huanghanlian.com/" target="_blank">个人网站</a></li>
+						<li><a class="btn" href="https://github.com/huanghanzhilian/widget" target="_blank">查看GitHub</a></li>
+						<li><a class="btn" href="https://github.com/huanghanzhilian/widget/archive/master.zip" target="_blank">下载 .zip</a></li>
+					</ul>
+				</div>
+
+			</header>
+			<div class="container">
+				<div class="main">
+					<div class="mod-content">
+						<ul>
+							<li>
+								<p><a class="hot" href="/widget/range/" target="_blank">滑动条-range-原生js封装</a><p>
+								<p>new range("selector",options,callback(api));</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/scrollbar/" target="_blank">滚动条-scrollbar-原生js封装</a><p>
+								<p>new scrollbar("selector",options,callback(api));</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/calendar/" target="_blank">日历-原生js封装</a><p>
+								<p>new calendar("selector",options);</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/bannerha/" target="_blank">无缝轮播图-原生js封装</a><p>
+								<p>new bannerha(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/tabpanel/" target="_blank">Tab面板-原生js封装</a><p>
+								<p>new tabpanel(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/scrollup/" target="_blank">无缝向上滚动-原生js封装</a><p>
+								<p>new scrollup(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/magnifier/" target="_blank">放大镜-原生js封装</a><p>
+								<p>new magnifier(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/accordion/" target="_blank">手风琴-原生js封装</a><p>
+								<p>new accordion(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/countdown/" target="_blank">倒计时-原生js封装</a><p>
+								<p>new countdown(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/select/" target="_blank">下拉框-原生js封装</a><p>
+								<p>new select(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/tabs/" target="_blank">标签页-tabs-原生js封装</a><p>
+								<p>new tabs(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/imagezoom/" target="_blank">图片聚焦-imagezoom-原生js封装</a><p>
+								<p>new imagezoom(selector,{options});</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/dialog/" target="_blank">弹出框-dialog-原生js封装</a><p>
+								<p>new dialog(selector,options,callback(api));</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/citys/" target="_blank">城市三级联动 - citys-原生js封装</a><p>
+								<p>new citys("selector",options,callback(api));</p>
+							</li>
+							<li>
+								<p><a class="hot" href="/widget/inputFormat/" target="_blank">格式化输入框-inputFormat-原生js封装</a><p>
+								<p>new inputFormat("selector",options,callback(api));</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<div class="mod-foot">
+					<p>Copyright &copy; <span>huanghanlian.com</span></p>
+				</div>
+			</footer>
+		</div>
+
+	</body>
+</html>

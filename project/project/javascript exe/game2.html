@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<style type="text/css">
+	html,
+	body,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+	}
+
+	.list {
+		width: 200px;
+		height: 200px;
+	}
+
+	.list li {
+		list-style: none;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		background: #ddd;
+		border: 1px solid #ddd;
+	}
+
+	.list li.on {
+		border: 1px solid #e89e8e;
+	}
+	.wrapper{position: relative;}
+	.drawBac{position: absolute;top: 0;left: 0;}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<ul class="list"></ul>
+		<canvas width="200" height="200" class="drawBac"></canvas>
+	</div>
+	<!-- <div class="stop">stop</div> -->
+	<script>
+	(function() {
+		function Point() {
+			this.x = 0;
+			this.y = 0;
+		}
+		Point.prototype = {
+			init: function() {
+				var self = this;
+				var $list = document.querySelector('.list'),
+					$li = $list.querySelectorAll('li'),
+					len = $li.length;
+				while (len < 100) {
+					this.drawRect(len);
+					len++;
+				}
+				this.drawBac();
+				var draw = setInterval(randomRent, 100, self);
+				document.onkeydown = function(e) {
+					e = e ? e : window.event;
+					var $list = document.querySelector('.list'),
+						$li = $list.querySelectorAll('li'),
+						len = $li.length;
+						console.log(e.keyCode);
+					if (e.keyCode == 13) {
+						clearInterval(draw);
+						return;
+					}
+					if (e.keyCode == 49) {
+						draw = setInterval(randomRent, 100, self);
+						return;
+					}
+					var diff = e.keyCode - 37;
+					if (diff >= 0 && diff < 4) {
+						var n = [-1, -1, 1, 1][diff];
+						//左上右下 37、38、39、40
+						if (diff % 2 == 0) {
+							self.y += n;
+						} else {
+							self.x += n;
+						}
+						self.addClass($li, self.tansToNum());
+					}
+				};
+
+				function randomRent(self) {
+
+					var $list = document.querySelector('.list'),
+						$li = $list.querySelectorAll('li');
+					self.x = Math.floor(9 * Math.random());
+					self.y = Math.floor(9 * Math.random());
+					// console.log(point.x, point.y, len, $li);
+					self.addClass($li, self.tansToNum());
+
+				}
+
+			},
+			drawRect: function(len) {
+				var $list = document.querySelector('.list'),
+					$newConto = document.createTextNode(len + 1),
+					$newLi = document.createElement('li');
+				$newLi.appendChild($newConto);
+				$list.appendChild($newLi);
+			},
+			addClass: function($li, num) {
+				for (var i = 0; i < $li.length; i++) {
+					if (i == num) {
+						$li[i].setAttribute('class', 'on');
+					} else {
+						$li[i].setAttribute('class', '');
+					}
+				}
+			},
+			tansToNum: function() {
+				return this.x * 10 + this.y;
+			},
+			numToPoint: function(num) {
+				this.x = num / 10;
+				this.y = num % 10;
+			},
+			drawBac:function(){
+				var drawing = document.querySelector('.drawBac');
+				var len = 10;
+				if(drawing.getContext){
+					var ct = drawing.getContext('2d');
+					for(var i=0;i<len;i++){
+						for(var j=0;j<len;j++){
+						ct.beginPath();
+						ct.arc(len+i*20, len+j*20, 9, 0, 2*Math.PI, false);
+						ct.moveTo(len+i*20+7,len+j*20);
+						ct.arc(len+i*20, len+j*20, 7, 0, 2*Math.PI, false);
+						ct.strokeStyle = "#fff";
+						/*ct.moveTo(100,100);
+						ct.lineTo(100,15);
+						ct.moveTo(100,100);
+						ct.lineTo(35,100);*/
+						ct.stroke();
+						}
+						
+					}
+					
+				}
+			}
+			
+		};
+		var p = new Point();
+		p.init();
+		/*var $submit = document.querySelector('.submit'),
+			point = { x: 0, y: 0 },
+			draw = init();
+
+		function init() {
+			var $list = document.querySelector('.list'),
+				$li = $list.querySelectorAll('li'),
+				len = $li.length;
+			while (len < 100) {
+				drawRect(len);
+				len++;
+			}
+			return setInterval(function() {
+				var $list = document.querySelector('.list'),
+					$li = $list.querySelectorAll('li');
+				point.x = Math.floor(9 * Math.random());
+				point.y = Math.floor(9 * Math.random());
+				// console.log(point.x, point.y, len, $li);
+				addClass($li, tansToNum(point));
+
+			}, 100);
+
+		}
+
+		function tansToNum(point) {
+			return point.x * 10 + point.y;
+		}
+
+		function numToPoint(num) {
+			point.x = num / 10;
+			point.y = num % 10;
+		}
+
+		function drawRect(len) {
+			var $list = document.querySelector('.list'),
+				$newConto = document.createTextNode(len + 1),
+				$newLi = document.createElement('li');
+			$newLi.appendChild($newConto);
+			$list.appendChild($newLi);
+		}
+
+		function addClass($li, num) {
+			for (var i = 0; i < $li.length; i++) {
+				if (i == num) {
+					$li[i].setAttribute('class', 'on');
+				} else {
+					$li[i].setAttribute('class', '');
+				}
+			}
+		}
+		document.onkeydown = function(e) {
+			e = e ? e : window.event;
+			var $list = document.querySelector('.list'),
+				$li = $list.querySelectorAll('li'),
+				len = $li.length;
+			// console.log(len);
+			if (e.keyCode == 13) {
+				clearInterval(draw);
+				return;
+			}
+			var n = [-1, -1, 1, 1][e.keyCode - 37];
+			//左上右下 37、38、39、40
+			if ((e.keyCode - 37) % 2 == 0) {
+				point.y += n;
+			} else {
+				point.x += n;
+			}
+			addClass($li, tansToNum(point));
+		};*/
+	})();
+	</script>
+</body>
+
+</html>

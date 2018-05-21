@@ -12,11 +12,8 @@
 	function MVVM(opt) {
 		this.dom = document.querySelector(opt.el);
 		this.data = opt.data || {},
-			this.renderDom(this.dom);
-		observe(this.data);
-		// this.walk(this.data);
+		this.renderDom(this.dom);
 	}
-
 	// function Obser
 	//遍历DOM树节点属性（attributes）和子节点（childNodes），然后调用渲染函数render。当DOM树子节点的类型是元素时，递归调用遍历DOM树的方法。根据DOM树节点类型一直遍历子节点，直到文本节点。
 	MVVM.prototype = {
@@ -70,58 +67,6 @@
 				}
 				self.render(item);
 			});
-		},
-		walk: function(obj) {
-			var keys = Object.keys(obj);
-			console.log(keys);
-			for (var i = 0, l = keys.length; i < l; i++) {
-				this.convert(keys[i], obj[keys[i]]);
-			}
-		},
-		convert: function(key, val) {
-			this.defineReactive(this.value, key, val);
-		},
-		defineReactive: function(obj, key, val) {
-			var property = Object.getOwnPropertyDescriptor(obj, key); //返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
-			if (property && property.configurable === false) {
-				return;
-			}
-
-			// 保存对象属性预先定义的getter/setter
-			var getter = property && property.get;
-			var setter = property && property.set;
-
-			var childOb = observe(val);
-			Object.defineProperty(obj, key, {
-				enumerable: true,
-				configurable: true,
-				get: function reactiveGetter() {
-					var value = getter ? getter.call(obj) : val;
-					console.log("访问：" + key);
-					return value;
-				},
-				set: function reactiveSetter(newVal) {
-					var value = getter ? getter.call(obj) : val;
-					if (newVal === value) {
-						return;
-					}
-					if (setter) {
-						setter.call(obj, newVal);
-					} else {
-						val = newVal;
-					}
-					// 对新值进行监听
-					childOb = observe(newVal);
-					console.log('更新：' + key + ' = ' + newVal);
-				}
-			});
-		},
-		 observe:function(value) {
-			// 当值不存在或者不是对象类型时，不需要继续深入监听
-			if (!value || typeof value !== 'object') {
-				return;
-			}
-			return new Observer(value);
 		}
 	};
 	var app = new MVVM({

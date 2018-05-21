@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/easy.css">
+	<link rel="stylesheet" type="text/css" href="./css/selfvalidate.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="main-bar changeback chbox">
+			<div class="changebox">
+				<div class="article2">
+					<div class="box3">
+						<h3>修改密码</h3>
+					</div>
+				</div>
+				<form class="changepass" method="post" id="changePwdForm">
+					<ul class="password_list">
+						<li>
+							<label>现用密码：</label>
+							<input type="password" name="oldpass" id="oldpass">
+							<p class="exclamation"></p>
+						</li>
+						<li>
+							<label>新密码：</label>
+							<input type="password" name="newpass" id="newpass">
+							<p class="exclamation"></p>
+						</li>
+						<li>
+							<label>确认新密码：</label>
+							<input type="password" name="checknewpass" id="checknewpass">
+							<p class="exclamation"></p>
+						</li>
+					</ul>
+					<a href="javascript:void(0)" class="changepassbtn">确定</a>
+				</form>
+			</div>
+		</div>
+		<div class="main-bar changeback chbox" style="padding-top: 45px;">
+			<div class="changebox">
+				<div class="article2">
+					<div class="box3">
+						<h3>接收消息手机号设置</h3>
+					</div>
+				</div>
+				<div class="newPhone">
+					<label>原手机号:</label><span th:text="${session.SessionId!=null?session.SessionId.getMobile():null}"></span><i></i></div>
+				<div class="addNewPhone">新增手机号</div>
+				<form action="" method="post" class="addNewPhoneForm" id="changemobile_form">
+					<div class="register_box2">
+						<ul>
+							<li>
+								<label class="myphone">手机号</label>
+								<input id="user_type" type="hidden" name="user_type" value="1">
+								<input id="mobile" type="text" name="mobile" placeholder="请填写中国大陆手机号" class="reg_input reg_input_w forget_input" value="">
+								<p class="warn">请输入您的手机号</p>
+							</li>
+							<li>
+								<label>短信验证码</label>
+								<input type="text" id="captcha_msg" class="reg_input reg_input_w2 forget_input" name="captcha_msg" placeholder="请输入短信验证码" value="">
+								<input type="button" class="getVerification_code" value="获取验证码">
+								<p class="warn" style="margin-left: 256px">请输入短信验证码</p>
+							</li>
+						</ul>
+						<a href="javascript:void(0)" class="reg_button" id="submit_button">设置</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/selfvalidate.js"></script>
+</body>
+
+</html>
